@@ -1,0 +1,19 @@
+name = "Harthamid conquest of Mazandaran"
+
+casus_belli = {
+	actor = 130000127
+	recipient = 163166
+	casus_belli = duchy_adventure
+	landed_title = d_mazandaran
+	date = 888.1.1
+}
+
+888.1.1 = {
+	add_attacker = 130000127
+	add_defender = 163166
+}
+
+889.1.1 = {
+	rem_attacker = 130000127
+	rem_defender = 163166
+}

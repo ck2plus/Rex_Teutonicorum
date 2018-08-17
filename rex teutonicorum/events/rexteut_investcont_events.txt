@@ -1,0 +1,2286 @@
+namespace = rexteut
+
+
+###Start of the Investiture Controversy (POPE EVENT)###
+letter_event = {
+
+          id = rexteut.2001
+	  desc = OK
+	  
+		religion = catholic
+		only_independent = yes
+		only_men = yes
+		prisoner = no
+		capable_only = yes
+		min_age = 16
+		war = no
+          
+          trigger = {
+					 year = 1000
+                     controls_religion = yes
+		     has_landed_title = k_papal_state
+		     independent = yes
+		     OR = {
+			   e_hre = { has_law = investiture_law_1 }
+			   e_karling = { has_law = investiture_law_1 }
+				  }
+                     NOT = { has_global_flag = "investiture_begin" }  
+                    }
+
+          mean_time_to_happen = { years = 15 }
+      
+          option = {
+                    name = YES
+                    ai_chance = { 
+			         factor = 85
+				 modifier = {
+					     factor = 10
+					     trait = zealous
+					    } 
+				}
+		    clr_global_flag = "investiture_bookmark"
+                    set_global_flag = "investiture_controversy"
+                    set_global_flag = "investiture_begin"
+                    set_character_flag = "no_invest_end"
+                    any_playable_ruler = {
+                                             narrative_event = { 
+								id = rexteut.2002 
+							       }
+                                            }
+                   }
+ 
+          option = { 
+                    name = NO
+		    ai_chance = { 
+				 factor = 5 
+				 modifier = {
+					     factor = 10
+					     trait = cynical
+				            }
+				}
+                   }
+	
+		  }
+
+###Dictatus Papae###
+narrative_event = {
+
+          id = rexteut.2002
+          title = EVTNAME_rexteut_2002
+          desc = EVTDESC_rexteut_2002
+          picture = GFX_evt_cathedral
+	  border = GFX_event_narrative_frame_religion
+	  
+          is_triggered_only = yes
+
+          religion = catholic
+		  only_playable = yes
+
+          
+
+          option = {
+                    trigger = { rex_teutonicorum_trigger = yes }
+                    name = EVTOPTA_rexteut_2002
+                    ai_chance = { 
+				 factor = 1 
+				 modifier = {
+					     factor = 0
+					     OR = {
+					           trait = humble
+					           trait = content
+					           trait = craven
+						  }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+					            opinion = {
+							       who = FROM
+							       value = -20
+						              }
+						   }
+					    }
+				 modifier = {
+					     factor = 10
+					     NOT = {
+					            opinion = {
+							       who = FROM
+							       value = -40
+						              }
+						   }
+					    }
+				}
+                    set_character_flag = "no_invest_end"
+                    prestige = 50
+                    custom_tooltip = { text = "investiture_c_1" }
+                    hidden_tooltip = { 
+                                      set_global_flag = "emperor_angry"
+					  FROM = {
+							  letter_event = {
+											  id = rexteut.2003
+											  days = 14
+											 }
+							 }
+				      opinion = {
+						 who = FROM
+						 modifier = opinion_pope_demand
+						 years = 25
+						}
+				      chronicle = {
+						   entry = CHRON_REXTEUT_DICTATUS_PAPAE
+						   portrait = [Root.GetID]
+						   picture = GFX_evt_cathedral
+						  }
+				     }
+                                     
+                   }
+
+          option = {
+                    trigger = { rex_teutonicorum_trigger = yes }
+                    name = EVTOPTB_rexteut_2002
+                    ai_chance = { 
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = stubborn
+					     	   trait = proud
+					     	   trait = ambitious
+					    	   trait = cynical
+						  }
+					    }
+			         modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = humble
+					     	   trait = zealous
+					     	   trait = content
+					     	   trait = craven
+					     	   opinion = {
+							      who = FROM
+						              value = 30
+						             }
+						  }
+					    }
+				}
+                    piety = 100
+                    custom_tooltip = { text = "investiture_c_2" }
+                    primary_title = {
+			             revoke_law = investiture_law_1
+			             add_law = investiture_law_0
+		                    }
+                    set_global_flag = "investiture_papal"
+                    clr_global_flag = "investiture_controversy"
+                                     
+                   }
+
+          option = {
+                    trigger = { 
+			       rex_teutonicorum_trigger = no
+			       primary_title = { has_law = investiture_law_1 } 
+			      }
+                    name = EVTOPTC_rexteut_2002
+		    hidden_tooltip = {
+		   		 chronicle = {
+				 	      entry = CHRON_REXTEUT_DICTATUS_PAPAE
+				 	      portrait = [Root.GetID]
+				 	      picture = GFX_evt_cathedral
+					     }
+				     }
+                   }
+
+          option = {
+                    trigger = { 
+				rex_teutonicorum_trigger = no
+                               NOT = { primary_title = { has_law = investiture_law_1 } }
+			      }
+                    name = EVTOPTD_rexteut_2002
+		    hidden_tooltip = {
+		   		 chronicle = {
+				 	      entry = CHRON_REXTEUT_DICTATUS_PAPAE
+				 	      portrait = [Root.GetID]
+				 	      picture = GFX_evt_cathedral
+					     }
+				     }
+                   }
+
+                  }
+
+
+###Pope receives angry response (POPE EVENT)###
+letter_event = {
+
+          id = rexteut.2003
+	  desc = OK
+	  
+	  is_triggered_only = yes
+
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     religion = catholic
+                     controls_religion = yes
+                     has_global_flag = "emperor_angry"
+                     NOT = { has_global_flag = "concordat_of_worms" }
+                    }
+
+          option = {
+                    ai_chance = { factor = 95 }
+                    clr_global_flag = "emperor_angry"
+                    set_character_flag = "no_invest_end"
+                    any_playable_ruler = {
+                                          narrative_event = { id = rexteut.2004 }
+                                         }
+                            
+                    religion_authority = { modifier = investiture_controversy_1 }
+                   }
+
+          option = {
+		    ai_chance = { 
+				 factor = 5
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = stubborn
+					     	   trait = proud
+					     	   trait = zealous
+					     	   trait = ambitious
+						  }
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					           trait = craven
+					           trait = humble
+					           trait = content
+						  }
+					    }
+			         modifier = {
+					     factor = 0.5
+					     e_hre = {
+						      holder_scope = { ai = yes }
+						     }
+					    }
+				}
+                    clr_global_flag = "emperor_angry"
+                    any_playable_ruler = {
+                                          narrative_event = { id = rexteut.2005 }
+                                         }
+                    prestige = -750
+                   }
+
+                  }
+
+###HREmperor receives news of his excommunication###
+narrative_event = {
+
+          id = rexteut.2004
+          title = EVTNAME_rexteut_2004
+          desc = EVTDESC_rexteut_2004
+          picture = GFX_evt_pope_feast
+	  border = GFX_event_narrative_frame_religion
+	  
+          is_triggered_only = yes
+
+
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+					 religion = catholic
+                    }
+
+          immediate = {
+				 if = {
+					   limit = { rex_teutonicorum_trigger = yes }
+			     hidden_tooltip = {
+					       any_realm_lord = {
+							         character_event = {
+										    id = rexteut.2023
+										    days = 7
+										   }
+								}
+					      }
+		       primary_title = {
+				        change_variable = {
+						           which = imperial_decadence
+							   value = 1
+							  }
+				       }
+		       character_event = { id = Plus.1852 }
+                       excommunicate = yes 
+		       reverse_opinion = {
+					  who = FROM
+					  modifier = opinion_pope_demand_refused
+					  years = 25
+					 }
+		       if = {
+			     limit = {
+				      NOT = { has_global_flag = "emperor_excommunicated_one" }
+				     }
+			     chronicle = {
+				          entry = CHRON_REXTEUT_EMPEROR_DEFIES
+				          portrait = [Root.GetID]
+				          picture = GFX_evt_holy_emperor
+				         }
+			    }
+			      }
+                      }
+          
+          option = { #Deal with it#
+                    trigger = { rex_teutonicorum_trigger = yes }
+                    name = EVTOPTA_rexteut_2004
+		    ai_chance = {
+				 factor = 1
+				}
+                    set_character_flag = "no_invest_end"
+                    custom_tooltip = { text = "investiture_c_3" }
+                    hidden_tooltip = { set_character_flag = "defied_pope"
+                                       religion_authority = { 
+                                                             modifier = investiture_controversy_1 
+                                                            }
+		                       set_global_flag = "emperor_excommunicated_one"
+                                     }
+                                     
+                   }
+          
+          option = { #Repent#
+					trigger = { rex_teutonicorum_trigger = yes }
+                    name = EVTOPTB_rexteut_2004
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = stubborn
+					     	   trait = proud
+					     	   trait = ambitious
+					     	   trait = cynical
+						  }
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = zealous
+					     	   trait = humble
+					     	   trait = craven
+						  }
+					    }
+				}
+                    custom_tooltip = { text = investiture_c_4 }
+                    hidden_tooltip = { 
+                                      FROM = {
+											  letter_event = {
+															  id = rexteut.2006
+															  days = 14
+															 }
+											 }
+                                      set_character_flag = "repentant_emperor"
+		                      set_global_flag = "emperor_excommunicated_one"
+                                     }
+                                     
+                    religion_authority = { modifier = investiture_controversy_1 }
+                   }
+
+          option = {
+                    trigger = { rex_teutonicorum_trigger = no }
+                    name = OK
+                   }
+
+                  }
+
+###HREmperor receives Pope's submission###
+narrative_event = {
+
+          id = rexteut.2005
+          title = EVTNAME_rexteut_2005
+          desc = EVTDESC_rexteut_2005
+          picture = GFX_evt_pope
+	  border = GFX_event_narrative_frame_religion
+	  
+          is_triggered_only = yes
+
+
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     religion = catholic
+                    }
+
+          option = {
+                    trigger = { rex_teutonicorum_trigger = yes }
+                    name = EVTOPTA_rexteut_2005
+                    prestige = 1000
+                    add_character_modifier = { name = beat_the_pope
+                                               duration = -1 }
+                    hidden_tooltip = {
+                                      clr_global_flag = "investiture_controversy"
+                                      clr_character_flag = "defied_pope"
+                                      set_global_flag = "investiture_imperial"
+									  primary_title = { clr_title_flag = "ended_co_crownings" }
+                                      religion_authority = { 
+                                                            modifier = investiture_controversy_4 
+                                                           }
+									  any_vassal = {
+													clr_character_flag = "investiture_support_emperor"
+													clr_character_flag = "investiture_support_pope"
+												   }
+				      opinion = {
+						 who = FROM
+						 modifier = opinion_pope_submission
+						 years = 25
+						}
+		                      chronicle = {
+				                   entry = CHRON_REXTEUT_POPE_SUBMITS
+				                   portrait = [Root.GetID]
+				                   picture = GFX_evt_pope
+				                  }
+		                      primary_title = {
+				                       change_variable = {
+						                          which = imperial_decadence
+							                  value = -10
+							                 }
+				                      }
+		                      character_event = { id = Plus.1852 }
+                                     }
+                   }
+ 
+          option = {
+                    trigger = { rex_teutonicorum_trigger = no }
+                    name = OK
+		    chronicle = {
+				 entry = CHRON_REXTEUT_POPE_SUBMITS
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_pope
+				}
+                   }
+
+                  }
+
+
+###Pope receives HREmperor's repentance (POPE EVENT)###
+letter_event = {
+ 
+          id = rexteut.2006
+	      desc = OK
+		  
+		  is_triggered_only = yes
+
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     religion = catholic
+                     controls_religion = yes                 
+                    }
+ 
+
+          option = { 
+                    name = YES
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     trait = kind
+					    }
+				}
+                    any_independent_ruler = {
+                                             narrative_event = { id = rexteut.2007 }
+                                            }
+                            
+                   }
+
+          option = {
+                    name = NO
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					           trait = stubborn
+					           trait = proud
+						   trait = cruel
+						   trait = arbitrary
+						  }
+					    }
+				 modifier = {
+							 factor = 0
+							 FROM = { has_character_flag = "pope_supported_king" }
+							}
+				}
+                    set_character_flag = "no_invest_end"
+                    any_playable_ruler = {
+                                          narrative_event = { id = rexteut.2008 } 
+                                         } 
+                   }
+
+                  }
+
+###HREmperor hears of Pope's acceptance of repentance###
+narrative_event = {
+ 
+          id = rexteut.2007
+          title = EVTNAME_rexteut_2007
+          desc = EVTDESC_rexteut_2007
+          picture = GFX_evt_pope
+	  border = GFX_event_narrative_frame_religion
+	  
+          is_triggered_only = yes
+
+ 
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     religion = catholic
+                    }
+					
+
+          option = {
+                    trigger = { rex_teutonicorum_trigger = yes }
+                    name = EVTOPTA_rexteut_2007
+                    primary_title = {
+			             revoke_law = investiture_law_1
+			             add_law = investiture_law_0
+		                    }
+                    excommunicate = no
+                    prestige = -250
+                    piety = 100
+                    hidden_tooltip = {
+                                      clr_global_flag = "investiture_controversy"
+                                      clr_character_flag = "defied_pope"
+                                      clr_character_flag = "repentant_emperor"
+                                      set_global_flag = "investiture_papal"
+									  any_vassal = {
+													clr_character_flag = "investiture_support_emperor"
+													clr_character_flag = "investiture_support_pope"
+												   }
+                                      religion_authority = { 
+                                                            modifier = investiture_controversy_3 
+                                                           }
+		                      chronicle = {
+				                   entry = CHRON_REXTEUT_POPE_WINS
+				                   portrait = [Root.GetID]
+				                   picture = GFX_evt_pope
+				                  }
+		                      primary_title = {
+				                       change_variable = {
+						                          which = imperial_decadence
+							                  value = 3
+							                 }
+				                      }
+		                      character_event = { id = Plus.1852 }
+                                     }
+                   }
+
+          option = {
+                    trigger = { rex_teutonicorum_trigger = no }
+                    name = OK
+		    chronicle = {
+				 entry = CHRON_REXTEUT_POPE_WINS
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_pope
+				}
+                   }
+
+                  }
+
+
+
+###HREmperor hears of Pope's rejection of repentance###
+narrative_event = {
+                  
+          id = rexteut.2008
+          title = EVTNAME_rexteut_2008
+          desc = EVTDESC_rexteut_2008
+          picture = GFX_evt_pope_feast
+	  border = GFX_event_narrative_frame_religion
+	  
+          is_triggered_only = yes
+
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     rex_teutonicorum_trigger = yes
+                     religion = catholic
+                     has_character_flag = "repentant_emperor"
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_2008
+                    custom_tooltip = { text = "investiture_c_3" }
+                    hidden_tooltip = {
+                                      set_character_flag = "defied_pope"
+                                      set_character_flag = "no_invest_end"
+                                      clr_character_flag = "repentant_emperor"
+                                      religion_authority = { 
+                                                            modifier = investiture_controversy_1 
+                                                           }
+				      opinion = {
+						 who = FROM
+						 modifier = opinion_refused_repentance
+						 years = 25
+						}
+		                      primary_title = {
+				                       change_variable = {
+						                          which = imperial_decadence
+							                  value = 1
+							                 }
+				                      }
+		                      character_event = { id = Plus.1852 } 
+                                     }
+                                     
+                   }
+         
+                  }
+
+
+###Situation for the excommunicated HREmperor is not great###
+character_event = {
+
+          id = rexteut.2009
+          desc = EVTDESC_rexteut_2009
+          picture = GFX_evt_council_quarrelling
+          
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     has_character_flag = "defied_pope"
+                     trait = excommunicated
+                     rex_teutonicorum_trigger = yes
+                     religion = catholic
+					 any_vassal = {
+								   OR = {
+										 in_faction = faction_pretender
+										 in_faction = faction_separatist
+										}
+								  }
+                    }
+
+          mean_time_to_happen = { 
+				 years = 3 
+				 modifier = {
+					     factor = 2
+						 OR = {
+					     war = yes
+					     any_vassal = {
+							   OR = { 
+								 in_faction = faction_pretender
+								 in_faction = faction_antiking
+									}
+									  }
+							  }
+					    }
+				}
+
+          option = { #Repent#
+                    name = EVTOPTA_rexteut_2009
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     trait = stubborn
+					    }
+				 modifier = {
+					     factor = 0.5
+					     OR = {
+					     	   trait = proud
+					     	   trait = cynical
+						  }
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					    	   trait = humble
+					     	   war = yes
+						  }
+					    }
+				}
+                    custom_tooltip = { text = "investiture_c_4" }
+                    hidden_tooltip = { 
+                      rightful_religious_head_scope = {
+													   letter_event = {
+																	   id = rexteut.2006
+																       days = 14
+																	  }
+													  }
+				      set_character_flag = "repentant_emperor"
+                                     }
+                                     
+                   }
+
+          option = { #Deal with it#
+                    name = EVTOPTB_rexteut_2009
+		    ai_chance = {
+				 factor = 1
+				}
+                    set_character_flag = "no_invest_end"
+                    custom_tooltip = { text = "investiture_c_3" }
+                    hidden_tooltip = {
+                                      religion_authority = { 
+                                                            modifier = investiture_controversy_1 
+                                                           }
+		                      primary_title = {
+				                       change_variable = {
+						                          which = imperial_decadence
+							                  value = 1
+							                 }
+				                      }
+		                      character_event = { id = Plus.1852 }
+                                     }
+                                     
+                   }
+
+                  }
+
+###New HREmperor has chance to end controversy###
+letter_event = {
+		id = rexteut.2027
+		hide_window = yes
+		
+		is_triggered_only = yes
+		
+		only_playable = yes
+		religion = catholic
+		
+		trigger = { 
+				   has_global_flag = "investiture_controversy"
+				   rex_teutonicorum_trigger = yes 
+				   NOR = {
+						  has_character_flag = "no_invest_end"
+						  has_global_flag = "investiture_imperial"
+						  has_global_flag = "investiture_papal"
+						  has_global_flag = "concordat_of_worms"
+						 }
+				   FROM = { 
+						   OR = {
+								 title = e_hre 
+								 title = e_karling
+								 title = e_roman_empire
+								}
+						  }
+				  }
+		
+		immediate = {
+				     character_event = {
+									    id = rexteut.2010
+										days = 7
+									   }
+					}
+}
+character_event = {
+
+          id = rexteut.2010
+          desc = EVTDESC_rexteut_2010
+          picture = GFX_evt_holy_emperor
+	  border = GFX_event_normal_frame_religion
+	  
+		  is_triggered_only = yes
+
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     rex_teutonicorum_trigger = yes
+                     religion = catholic
+                     NOR = { 
+			    has_character_flag = "no_invest_end"
+			    has_global_flag = "investiture_imperial"
+			    has_global_flag = "investiture_papal"
+			    has_global_flag = "concordat_of_worms" 
+			   }
+                    }
+
+          option = { #Attempt compromise#
+                    name = EVTOPTA_rexteut_2010
+		    ai_chance = {
+				 factor = 1.2
+				 modifier = {
+					     factor = 0
+					     trait = stubborn
+						 has_character_flag = "pope_supported_king"
+					    }
+				 modifier = {
+					     factor = 2
+					     had_global_flag = { 
+								flag = "investiture_begin"
+								days = 18250
+							       }
+					    }
+			        }
+                    set_character_flag = "no_invest_end"
+                    custom_tooltip = { text = "investiture_c_5" }
+                    hidden_tooltip = { 
+									  rightful_religious_head_scope = {
+																	   letter_event = {
+																					   id = rexteut.2011
+																					   days = 14
+																					  }
+																	  }
+									 }
+                                     
+                   }
+
+          option = { #Attempt demands#
+                    name = EVTOPTB_rexteut_2010
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = humble
+					     	   trait = content
+					     	   trait = zealous
+							   has_character_flag = "pope_supported_king"
+						  }
+					    }
+				}
+                    set_character_flag = "no_invest_end"
+                    custom_tooltip = { text = "investiture_c_6" }
+                    hidden_tooltip = { 
+									  set_global_flag = "emperor_angry" 
+									  rightful_religious_head_scope = {
+																	   letter_event = {
+																					   id = rexteut.2003
+																					   days = 14
+																					  }
+																	  }
+									 }
+                                     
+                   }
+
+          option = { #Submit#
+                    name = EVTOPTC_rexteut_2010
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = stubborn
+					     	   trait = proud
+					     	   trait = ambitious
+					     	   trait = cynical
+						  }
+					    }
+				}
+                    set_character_flag = "no_invest_end"
+                    custom_tooltip = { text = "investiture_c_4" }
+                    hidden_tooltip = { 
+				      rightful_religious_head_scope = {
+													   letter_event = {
+																	   id = rexteut.2006
+																	   days = 14
+																	  }
+													  }
+				      set_character_flag = "repentant_emperor"
+                                     }
+                                     
+                   }
+
+                  }
+
+###Pope hears of HREmperor's attempts to make inroads (POPE EVENT)###
+letter_event = {
+
+          id = rexteut.2011
+	  desc = OK
+		
+		  is_triggered_only = yes
+
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     religion = catholic
+                     controls_religion = yes
+                    }
+
+          option = {
+                    name = YES
+		    ai_chance = {
+			         factor = 1
+				 modifier = {
+					     factor = 0
+					     trait = stubborn
+					    }
+				 modifier = {
+					     factor = 2
+					     had_global_flag = { 
+								flag = "investiture_controversy"
+								days = 18250
+							       }
+					    }
+				}
+                    set_global_flag = "concordat_happening"
+					narrative_event = {
+									   id = rexteut.2015
+									   days = 20
+									  }
+					any_playable_ruler = {
+										  limit = { religion = catholic }
+										  narrative_event = {
+															 id = rexteut.2015
+															 days = 20
+															}
+										 }
+                   }
+
+          option = {
+                    name = NO
+		    ai_chance = {
+				 factor = 0.5				 
+				}
+                    set_character_flag = "no_invest_end"
+                    any_independent_ruler = {
+                                             narrative_event = { id = rexteut.2016 }
+                                            }
+                            
+                    religion_authority = { modifier = investiture_controversy_1 }
+                   }
+
+                  }
+
+###New Pope given opportunity to end Investiture Controversy (POPE EVENT)###
+letter_event = {
+
+          id = rexteut.2012
+	  desc = OK
+	  
+		  is_triggered_only = yes
+ 
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     religion = catholic
+                     controls_religion = yes 
+                     NOR = { 
+			    has_character_flag = "no_invest_end"
+			    has_global_flag = "investiture_imperial" 
+			    has_global_flag = "investiture_papal"
+			    has_global_flag = "concordat_of_worms"
+				FROM = { title = k_papal_state }
+			   }
+                    }
+ 
+          option = { #Compromise
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     trait = stubborn
+					    }
+				 modifier = {
+					     factor = 2
+					     had_global_flag = { 
+								flag = "investiture_controversy"
+								days = 18250
+							       }
+					    }
+				}
+                    set_character_flag = "no_invest_end"
+                    any_independent_ruler = {
+											 limit = { rex_teutonicorum_trigger = yes }
+											 narrative_event = {
+															    id = rexteut.2013
+																days = 21
+															   }
+											}
+                   }
+ 
+          option = { #Demand
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = proud
+					     	   trait = ambitious
+					     	   trait = zealous
+						  }
+					    }
+				}
+                    set_character_flag = "no_invest_end"
+                    any_independent_ruler = {
+											 limit = { rex_teutonicorum_trigger = yes }
+											 narrative_event = {
+																id = rexteut.2014
+																days = 21
+															   }
+											}
+                   }
+
+                  }
+
+###HREmperor hears of new Pope's desire for compromise###
+narrative_event = {
+
+          id = rexteut.2013
+          title = EVTNAME_rexteut_2013
+          desc = EVTDESC_rexteut_2013
+          picture = GFX_evt_pope
+	  border = GFX_event_narrative_frame_religion
+	  
+		  is_triggered_only = yes
+
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     religion = catholic
+                     rex_teutonicorum_trigger = yes
+                     has_global_flag = "papal_compromise"
+                    }
+
+          option = { #Accept compromise#
+                    name = EVTOPTA_rexteut_2013
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     trait = stubborn
+					    }
+				 modifier = {
+					     factor = 2
+					     had_global_flag = { 
+								flag = "investiture_controversy"
+								days = 18250
+							       }
+					    }
+				}
+                    clr_global_flag = "papal_compromise"
+                    custom_tooltip = { text = "investiture_c_7" }
+                    hidden_tooltip = { 
+									  set_global_flag = "concordat_happening"
+									  narrative_event = {
+														 id = rexteut.2015
+														 days = 20
+														}
+									  any_playable_ruler = {
+															limit = { religion = catholic }
+															narrative_event = {
+																			   id = rexteut.2015
+																			   days = 20
+																			  }
+														   }
+									 }
+                                     
+                   }
+
+          option = { #Reject compromise#
+                    name = EVTOPTB_rexteut_2013
+		    ai_chance = {
+				 factor = 0.9
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = proud
+					     	   trait = ambitious
+					     	   trait = cynical
+						  }
+					    }
+				}
+                    clr_global_flag = "papal_compromise"
+                    set_character_flag = "no_invest_end"
+                    custom_tooltip = { text = "investiture_c_8" }
+                    hidden_tooltip = { 
+									  set_global_flag = "emperor_angry" 
+									  FROM = {
+											  letter_event = {
+															  id = rexteut.2003
+															  days = 14
+															 }
+											 }
+									 }
+                                     
+                   }
+
+                  }
+
+###HREmperor hears of new Pope's demands###
+narrative_event = {
+
+          id = rexteut.2014
+          title = EVTNAME_rexteut_2014
+          desc = EVTDESC_rexteut_2014
+          picture = GFX_evt_pope_feast
+	  border = GFX_event_narrative_frame_religion
+	  
+		  is_triggered_only = yes
+
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     religion = catholic
+                     rex_teutonicorum_trigger = yes
+                     has_global_flag = "papal_demand"
+                    }
+
+	  immediate = {
+		       religion_head = {
+					reverse_opinion = {
+							   who = PREV
+							   modifier = opinion_pope_demand
+							   years = 25
+							  }
+				       }
+		      }
+
+          option = { #Accept demands#
+                    name = EVTOPTA_rexteut_2014
+		    ai_chance = {
+				 factor = 0.8
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = stubborn
+					     	   trait = proud
+					     	   trait = ambitious
+						   trait = cynical
+						  }
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = humble
+					     	   trait = content
+					     	   trait = craven
+					     	   trait = zealous
+						  }
+					    }
+				}
+                    clr_global_flag = "papal_demand"
+                    custom_tooltip = { text = "investiture_c_2" }
+                    hidden_tooltip = { 
+                                      FROM = {
+											  letter_event = {
+															  id = rexteut.2006
+															  days = 14
+															 }
+											 }
+                                      set_character_flag = "repentant_emperor"
+                                     }
+                                     
+                   }
+
+          option = { #Reject demands#
+                    name = EVTOPTB_rexteut_2014
+		    ai_chance = {
+				 factor = 1
+				}
+                    clr_global_flag = "papal_demand"
+                    set_character_flag = "no_invest_end"
+                    custom_tooltip = { text = "investiture_c_9" }
+                    hidden_tooltip = {
+									  FROM = {
+											  letter_event = {
+															  id = rexteut.2003
+															  days = 14
+															 }
+											 }
+									 }
+                                     
+                   }
+
+                  }
+
+
+###Concordat of Worms###
+narrative_event = {
+
+          id = rexteut.2015
+          title = EVTNAME_rexteut_2015
+          desc = EVTDESC_rexteut_2015
+          picture = GFX_evt_church_council
+	  border = GFX_event_narrative_frame_religion
+	  
+		  is_triggered_only = yes
+
+
+          trigger = {
+                     has_global_flag = "investiture_controversy"
+                     has_global_flag = "concordat_happening"
+                     religion = catholic
+                    }
+
+          option = {
+                    trigger = { rex_teutonicorum_trigger = yes }
+                    name = EVTOPTA_rexteut_2015
+                    excommunicate = no
+                    primary_title = {
+						 set_title_flag = "ended_co_crownings"
+			             revoke_law = investiture_law_1
+			             add_law_w_cooldown = investiture_law_0
+				     if = {
+					   limit = { has_law = crown_authority_4 }
+					   revoke_law = crown_authority_4
+					   add_law = crown_authority_2
+					   break = yes
+					  }
+				     if = {
+					   limit = { has_law = crown_authority_3 }
+					   revoke_law = crown_authority_3
+					   add_law = crown_authority_1
+					   break = yes
+					  }
+				     if = {
+					   limit = { has_law = crown_authority_2 }
+					   revoke_law = crown_authority_2
+					   add_law = crown_authority_0
+					   break = yes
+					  }
+				     if = {
+					   limit = { has_law = crown_authority_1 }
+					   revoke_law = crown_authority_1
+					   add_law = crown_authority_0
+					   break = yes
+					  }
+		                    }
+                    custom_tooltip = { text = "investiture_c_10" }
+                    hidden_tooltip = {
+                                      clr_global_flag = "investiture_controversy"
+                                      clr_global_flag = "concordat_happening"
+                                      set_global_flag = "concordat_of_worms"
+                                      religion_authority = { 
+                                                            modifier = investiture_controversy_2 
+                                                           }
+									  any_vassal = {
+													clr_character_flag = "investiture_support_emperor"
+													clr_character_flag = "investiture_support_pope"
+												   }
+		                      chronicle = {
+				                   entry = CHRON_REXTEUT_WORMS
+				                   portrait = [Root.GetID]
+				                   picture = GFX_evt_church_council
+				                  }
+		                      primary_title = {
+				                       change_variable = {
+						                          which = imperial_decadence
+							                  value = 3
+							                 }
+				                      }
+		                      character_event = { id = Plus.1852 }
+                                     }
+                                     
+                   }
+
+          option = {
+                    trigger = { rex_teutonicorum_trigger = no }
+                    name = EVTOPTA_rexteut_2015
+		    chronicle = {
+				 entry = CHRON_REXTEUT_WORMS
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_church_council
+				}
+                   }
+
+                  }
+
+
+
+
+###HREmperor hears of Pope's refusal to compromise###
+narrative_event = {
+
+          id = rexteut.2016
+          title = EVTNAME_rexteut_2016
+          desc = EVTDESC_rexteut_2016
+	  picture = GFX_evt_pope_feast
+	  border = GFX_event_narrative_frame_religion
+	  
+          is_triggered_only = yes
+
+          trigger = {
+		     has_global_flag = "investiture_controversy"
+                     religion = catholic
+		     rex_teutonicorum_trigger = yes
+		    }
+
+          option = {
+                    name = EVTOPTA_rexteut_2016
+                    excommunicate = yes
+                    custom_tooltip = { text = "investiture_c_3" }
+                    hidden_tooltip = {
+				      opinion = {
+						 who = FROM
+						 modifier = opinion_refusal_to_compromise
+					         years = 25
+						}
+                                      set_character_flag = "defied_pope"
+                                      set_character_flag = "no_invest_end"
+                                      religion_authority = { 
+                                                            modifier = investiture_controversy_1 
+                                                           }
+		                      primary_title = {
+				                       change_variable = {
+						                          which = imperial_decadence
+							                  value = 1
+							                 }
+				                      }
+		                      character_event = { id = Plus.1852 }
+                                     }
+                                     
+ 		   }
+
+                  }
+
+###Vassalised Pope ends Investiture Controversy in Imperial favour###
+letter_event = { #POPE#
+		id = rexteut.2028
+		hide_window = yes
+		
+		is_triggered_only = yes
+		
+		only_men = yes
+		religion = catholic
+		
+		trigger = {
+				   has_global_flag = "investiture_controversy"
+				   NOT = { has_global_flag = "investiture_imperial" }
+				   FROM = { rex_teutonicorum_trigger = yes }
+				  }
+				  
+		immediate = {
+					 any_playable_ruler = {
+										   limit = { religion = catholic }
+										   narrative_event = {
+															  id = rexteut.2017
+															  days = 4
+															 }
+										  }
+					}
+}
+narrative_event = {
+
+      id = rexteut.2017
+	  title = EVTNAME_rexteut_2017
+	  desc = EVTDESC_rexteut_2017
+	  picture = GFX_evt_holy_emperor
+	  
+	  is_triggered_only = yes
+
+	  trigger = {
+		     has_global_flag = "investiture_controversy"
+			 religion = catholic
+			 religion_head = { liege = { rex_teutonicorum_trigger = yes } }
+		    }
+
+	  option = {
+		    trigger = { rex_teutonicorum_trigger = yes }
+		    name = EVTOPTA_rexteut_2017
+		    clr_global_flag = "investiture_controversy"
+		    set_global_flag = "investiture_imperial"
+			primary_title = { clr_title_flag = "ended_co_crownings" }
+		    prestige = 250
+		    add_character_modifier = {
+					      name = beat_the_pope
+					      duration = -1
+					     }
+		    hidden_tooltip = {
+                   religion_authority = { modifier = investiture_controversy_4 }
+				   religion_head = { set_character_flag = "emperor_installed_pope" }
+		   		   chronicle = {
+				 		entry = CHRON_REXTEUT_POPE_SUBMITS
+						portrait = [Root.GetID]
+				 		picture = GFX_evt_pope
+					       }
+						any_vassal = {
+									  clr_character_flag = "investiture_support_emperor"
+									  clr_character_flag = "investiture_support_pope"
+									 }
+		    		   primary_title = {
+				     		    change_variable = {
+						       		       which = imperial_decadence
+								       value = -10
+						       		      }
+				    		   }
+		    		   character_event = { id = Plus.1852 }
+					   character_event = {
+										  id = rexteut.2029
+										  days = 10
+										 }
+				     }
+		   }
+	  option = {
+		    trigger = { rex_teutonicorum_trigger = no }
+		    name = OK
+		    chronicle = {
+				 entry = CHRON_REXTEUT_POPE_SUBMITS
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_pope
+				}
+		   }
+
+		  }
+
+###Pope can support anti-king/pretender (POPE)###
+letter_event = {
+
+	  id = rexteut.2018
+	  desc = OK
+	  
+	  religion = catholic
+	  only_men = yes
+	  only_rulers = yes
+	  prisoner = no
+	  capable_only = yes
+	  
+	  trigger = {
+		     controls_religion = yes
+		     has_landed_title = k_papal_state
+		     independent = yes
+		     OR = {
+				   has_global_flag = "investiture_papal"
+				   AND = {
+						  has_global_flag = "investiture_controversy"
+						  e_hre = {
+								   holder_scope = { trait = excommunicated }
+								  }
+						  
+						 }
+				   AND = {
+						  has_global_flag = "investiture_controversy"
+						  e_karling = {
+									   holder_scope = { trait = excommunicated }
+									  }
+						  
+						 }
+				  }
+		     NOT = { has_character_flag = "chose_new_emperor" }
+		     OR = {
+		           e_hre = {
+			            holder_scope = {
+						    NOT = {
+							   religion_head = {
+		                                           		    opinion = {
+							      	              	       who = PREV
+							                      	       value = -25
+				                                                      }
+									   }
+							  }
+					           }
+			           }
+		           e_karling = {
+			                holder_scope = {
+						    NOT = {
+							   religion_head = {
+		                                           		    opinion = {
+							      	              	       who = PREV
+							                      	       value = -25
+				                                                      }
+									   }
+							  }
+					               }
+			               }
+			  }
+		    }
+
+	  mean_time_to_happen = { years = 1 }
+
+	  option = {
+		    name = OK
+		    ai_chance = { 
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = kind
+					     	   trait = just
+						  }
+					    } 
+				 modifier = {
+					     factor = 2
+					     OR = {
+					           e_hre = {
+						      holder_scope = {
+								      NOT = {
+								             reverse_opinion = {
+											        who = ROOT
+											        value = -50
+											       }
+									    }
+								     }
+						            }
+					            e_karling = {
+						          holder_scope = {
+								      NOT = {
+								             reverse_opinion = {
+											        who = ROOT
+											        value = -50
+											       }
+									    }
+								         }
+						                }
+						   }
+					    }
+				}
+		    set_character_flag = "chose_new_emperor"
+		    random_character = {
+					limit = {
+						 OR = {
+							   has_character_flag = "hre_investiture_antiking"
+							   AND = {
+									  liege = { rex_teutonicorum_trigger = yes }
+									  reverse_opinion = {
+														 who = ROOT
+														 value = 25
+														}
+									  NOT = { trait = excommunicated }
+									 }
+							  }
+						}
+					set_character_flag = "pope_supported_king"
+					character_event = {
+							   id = rexteut.2020
+							  }										       
+				       }					   
+		   }
+	  option = {
+		    name = OK
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     OR = {
+					           trait = stubborn
+					     	   trait = arbitrary
+						  }
+					    }
+				}
+		   }
+
+		  }
+
+###Emperor hears Pope supports vassal###
+narrative_event = {
+
+	  id = rexteut.2019
+	  title = EVTNAME_rexteut_2019
+	  desc = {
+			  trigger = { 
+						 NOR = { 
+								 has_global_flag = "investiture_papal" 
+								 has_global_flag = "concordat_of_worms"
+							   } 
+						}
+			  text = EVTDESCA_rexteut_2019
+			 }
+	  desc = {
+			  trigger = { has_global_flag = "investiture_papal" }
+			  text = EVTDESCB_rexteut_2019
+			 }
+	  desc = {
+			  trigger = { has_global_flag = "concordat_of_worms" }
+			  text = EVTDESCC_rexteut_2019
+			 }
+	  picture = GFX_evt_pope_feast
+	  
+	  is_triggered_only = yes
+
+	  trigger = {
+		     rex_teutonicorum_trigger = yes
+		     has_global_flag = "investiture_papal"
+		    }
+
+	  immediate = {
+		       opinion = {
+				  who = FROM
+				  modifier = opinion_papal_deposition
+				  years = 25
+				 }
+		      }
+
+	  option = {
+		    trigger = { NOT = { has_global_flag = "permanent_investiture_papal" } }
+		    name = EVTOPTA_rexteut_2019
+		    ai_chance = {
+				 factor = 2
+				}
+			if = {
+			limit = { has_global_flag = "investiture_papal" }
+				clr_global_flag = "investiture_papal"
+				set_global_flag = "investiture_controversy"
+				set_global_flag = "emperor_angry"
+				set_character_flag = "no_invest_end"
+				custom_tooltip = { text = investiture_c_3 }
+				hidden_tooltip = {
+						any_character = {
+								limit = { has_character_flag = "pope_supported_king" }
+								character_event = { id = rexteut.0004 }
+										}
+							     }
+				}
+		   }
+
+	  option = {
+			trigger = { has_global_flag = "investiture_papal" }
+		    name = EVTOPTB_rexteut_2019
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = proud
+					     	   trait = stubborn
+					     	   trait = cynical
+						  }
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					    	   trait = craven
+					     	   trait = zealous
+						  }
+					    }
+				}
+		    set_character_flag = "deposed_by_pope"
+		    custom_tooltip = { text = investiture_c_11 }
+		    hidden_tooltip = {
+		    		any_character = {
+				     		 limit = { has_character_flag = "pope_supported_king" }
+				     		 narrative_event = {
+						        	    id = rexteut.2021
+						        	    days = 3
+						       		   }
+				    		}
+				     }
+		   }
+
+		  }
+
+###Vassal hears that the pope has chosen them for Emperor###
+character_event = {
+
+	  id = rexteut.2020
+	  desc = EVTDESC_rexteut_2020
+	  picture = GFX_evt_pope
+	  
+	  is_triggered_only = yes
+
+	  trigger = {
+		     has_character_flag = "pope_supported_king"
+		     religion = catholic
+			 liege = { rex_teutonicorum_trigger = yes }
+		    }
+
+	  option = {
+		    name = EVTOPTA_rexteut_2020
+			ai_chance = {
+						 factor = 1
+						 modifier = {
+									 factor = 2
+									 OR = {
+										   trait = proud
+										   trait = envious
+										   trait = arbitrary
+										   liege = {
+													NOT = {
+														   reverse_opinion = {
+																			  who = ROOT
+																			  value = -20
+																			 }
+														  }
+												   }
+										  }
+									}
+						 modifier = {
+									 factor = 0.1
+									 has_character_flag = "investiture_support_emperor"
+									}
+						}
+		    if = {
+			  limit = { e_hre = { has_holder = yes } }
+			  add_claim = e_hre
+			 }
+		    if = {
+			  limit = { e_karling = { has_holder = yes } }
+			  add_claim = e_karling
+			 }
+		    prestige = 100
+		    clr_character_flag = "hre_investiture_antiking"
+			hidden_tooltip = {
+							  liege = {
+									   narrative_event = { id = rexteut.2019 }
+									  }
+							 }
+		   }
+	  option = {
+		    name = EVTOPTB_rexteut_2020
+			ai_chance = {
+						 factor = 1
+						 modifier = {
+									 factor = 2
+									 OR = {
+										   trait = humble
+										   trait = kind
+										   trait = craven
+										   trait = content
+										   trait = just
+										   liege = {
+													reverse_opinion = {
+																	   who = ROOT
+																	   value = 35
+																	  }
+												   }
+										  }
+									}
+						 modifier = {
+									 factor = 0
+									 trait = ambitious
+									}
+						}
+			clr_character_flag = "pope_supported_king"
+			FROM = { 
+					clr_character_flag = "chose_new_emperor" 
+					if = {
+						  limit = {
+								   OR = {
+										 has_global_flag = "investiture_papal"
+										 has_global_flag = "investiture_controversy"
+										}
+								  }
+						  letter_event = { id = rexteut.2018 days = 5 }
+						 }
+					if = {
+						  limit = { has_global_flag = "concordat_of_worms" }
+						  letter_event = { id = rexteut.4017 days = 30 }
+						 }
+				   }
+		   }
+		   
+
+		  }
+
+###Vassal hears that the Emperor has abdicated, and they are now Emperor###
+narrative_event = {
+
+	  id = rexteut.2021
+	  title = EVTNAME_rexteut_2021
+	  desc = {
+		  trigger = { has_character_flag = "pope_supported_king" }
+		  text = EVTDESCA_rexteut_2021
+		 }
+	  desc = {
+		  trigger = { NOT = { has_character_flag = "pope_supported_king" } }
+		  text = EVTDESCB_rexteut_2021
+		 }
+	  picture = GFX_evt_holy_emperor
+	  
+	  is_triggered_only = yes
+
+	  major = yes
+	  religion = catholic
+
+	  trigger = {
+		     has_character_flag = "pope_supported_king"
+		     religion = catholic
+		    }
+			
+	  major_trigger = { 
+					   OR = {
+							 religion = catholic 
+							 top_liege = { has_landed_title = e_hre }
+							}
+					  }
+
+	  immediate = {
+		       if = {
+			     limit = { e_hre = { has_holder = yes } }
+		             e_hre = { gain_title = PREV }
+			    }
+		       if = {
+			     limit = { e_karling = { has_holder = yes } }
+		             e_karling = { gain_title = PREV }
+			    }
+		       religion_head = { clr_character_flag = "chose_new_emperor" }
+		       clr_character_flag = "hre_investiture_antiking"
+		       any_war = { end_war = invalid }
+		      }
+
+	  option = {
+		    trigger = { has_character_flag = "pope_supported_king" }
+		    name = EVTOPTA_rexteut_2021
+		    add_trait = crowned_by_pope
+		   }
+	  option = {
+		    trigger = { 
+			       has_character_flag = "deposed_by_pope" 
+			       NOT = { has_character_flag = "pope_supported_king" }
+			      }
+		    name = EVTOPTB_rexteut_2021
+		    clr_character_flag = "deposed_by_pope"
+		    prestige = -200
+		    opinion = {
+			       who = ROOT
+			       modifier = opinion_pope_deposed
+			       years = 50
+			      }
+		   }
+	  option = {
+		    trigger = {
+			       NOT = { has_character_flag = "deposed_by_pope" }
+			       NOT = { has_character_flag = "pope_supported_king" }
+			       liege = { rex_teutonicorum_trigger = yes }
+			      }
+		    name = EVTOPTC_rexteut_2021
+		   }
+	  option = {
+		    trigger = {
+			       NOT = { has_character_flag = "deposed_by_pope" }
+			       NOT = { has_character_flag = "pope_supported_king" }
+			       NOT = { liege = { rex_teutonicorum_trigger = yes } }
+			      }
+		    name = OK
+		   }
+
+		  }
+
+###Non-excommunicated Emperor has option to try compromise###
+character_event = {
+
+	  id = rexteut.2022
+	  desc = EVTDESC_rexteut_2022
+	  picture = GFX_evt_pope
+	  
+	  only_playable = yes
+	  religion = catholic
+	  
+	  trigger = {
+		     rex_teutonicorum_trigger = yes
+		     war = no
+	             has_global_flag = "investiture_controversy"
+	 	     NOT = { trait = excommunicated }
+		     NOT = { has_global_flag = "emperor_angry" }
+		     NOT = { has_global_flag = "emperor_compromise" }
+		     NOT = { has_character_flag = "ignoring_problem" }
+			 NOT = {
+					any_vassal = {
+								  religion = catholic
+								  controls_religion = yes
+								 }
+				   }
+			 ruled_years = 0.08
+		    }
+
+	  mean_time_to_happen = { months = 1 }
+
+	  option = { #Attempt Compromise#
+		    name = EVTOPTA_rexteut_2022
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     trait = stubborn
+					    }
+				}
+		    custom_tooltip = { text = investiture_c_5 }
+		    hidden_tooltip = {
+							  rightful_religious_head_scope = {
+															   letter_event = {
+																			   id = rexteut.2011
+																			   days = 14
+																			  }
+															  }
+							 }
+		   }
+	  option = { #Attempt demands#
+		    name = EVTOPTB_rexteut_2022
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = craven
+					     	   trait = humble
+					     	   trait = content
+						  }
+					    }
+				}
+		    custom_tooltip = { text = investiture_c_6 }
+		    set_global_flag = "emperor_angry"
+			hidden_tooltip = {
+							  rightful_religious_head_scope = {
+											 letter_event = {
+															 id = rexteut.2003
+															 days = 14
+															}
+															  }
+							 }
+		   }
+	  option = { #Ignore the Problem#
+		    name = EVTOPTC_rexteut_2022
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = content
+					     	   trait = craven
+						  }
+					    }
+				}
+		    set_character_flag = "ignoring_problem"
+		   }
+
+		  }
+
+###Imperial vassals can choose to support Emperor or Pope###
+letter_event = {
+
+	  id = rexteut.2023
+	  hide_window = yes
+	  is_triggered_only = yes
+	
+	  trigger = {
+			 NOR = {
+					has_character_flag = "investiture_support_emperor"
+					has_character_flag = "investiture_support_pope"
+				   }
+		     independent = no
+		     liege = {
+			      rex_teutonicorum_trigger = yes
+			      trait = excommunicated
+			     }
+			 primary_title = { title = FROM }
+		    }
+			
+	  immediate = {
+			character_event = { id = rexteut.20231 days = 2 }
+	  }
+				  }
+	  
+character_event = {
+	  id = rexteut.20231
+	  desc = EVTDESC_rexteut_2023
+	  picture = GFX_evt_rival_rulers
+	  
+	  is_triggered_only = yes
+	
+	  trigger = {
+			 NOR = {
+					has_character_flag = "investiture_support_emperor"
+					has_character_flag = "investiture_support_pope"
+				   }
+		     independent = no
+		     liege = {
+			      rex_teutonicorum_trigger = yes
+			      trait = excommunicated
+			     }
+		    }
+
+	  option = {
+		    name = EVTOPTA_rexteut_2023 #support Emperor
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0.5
+					     religion_head = {
+					     		      reverse_opinion = {
+										 who = ROOT
+										 value = 30
+						       				}
+							     }
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   opinion = {
+							      who = liege
+							      value = 50
+						             }
+					     	   trait = cynical
+							   trait = content
+						  }
+					    }
+				}
+		    opinion = {
+			       who = liege
+			       modifier = opinion_supported_liege
+			       years = 50
+			      }
+			religion_head = {
+							 opinion = {
+										who = ROOT
+										modifier = opinion_unsupported_the_pope
+										years = 10
+									   }
+							}
+		    liege = {
+			     opinion = {
+					who = ROOT
+					modifier = opinion_supported_emperor
+					years = 10
+				       }
+			    }
+			set_character_flag = "investiture_support_emperor"
+		   }
+	  option = { #Support Pope
+		    name = EVTOPTB_rexteut_2023
+		    ai_chance = {
+				 factor = 1.2
+				 modifier = {
+					     factor = 0.5
+					     NOT = {
+					            religion_head = {
+					     		      reverse_opinion = {
+										 who = ROOT
+										 value = 30
+						       				}
+							    	    }
+						   }
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   NOT = {
+					            	  opinion = {
+							             who = liege
+							             value = 0
+						                    }
+						         }
+					     	   trait = zealous
+							   trait = ambitious
+						  }
+					    }
+				}
+			opinion = {
+					   who = liege
+					   modifier = opinion_unsupported_liege
+					   years = 10
+					  }
+			religion_head = {
+							 opinion = {
+										who = ROOT
+										modifier = opinion_supported_the_pope
+										years = 10
+									   }
+							}
+		    liege = {
+			     opinion = {
+					who = PREV
+					modifier = opinion_unsupported_emperor
+				        years = 10
+				       }
+			    }
+			set_character_flag = "investiture_support_pope"
+		   }
+
+		  }
+
+###New Pope after Imperial victory can attempt to restart controversy (POPE)###
+letter_event = {
+	
+	id = rexteut.2024
+	desc = OK
+
+	is_triggered_only = yes
+
+	trigger = {
+		   has_global_flag = "investiture_imperial"
+		   NOT = { has_global_flag = "permanent_investiture_imperial" }
+		   religion = catholic
+		   controls_religion = yes
+		   NOT = { has_character_flag = "emperor_installed_pope" }
+		   FROM = { title = k_papal_state }
+		  }
+
+	option = {
+		  name = YES
+		  ai_chance = {
+			       factor = 2
+				   modifier = {
+							   factor = 10
+							   has_global_flag = "unlawful_imperial_coronation"
+							  }
+			      }
+		  clr_global_flag = "investiture_imperial"
+		  clr_global_flag = "unlawful_imperial_coronation"
+		  set_global_flag = "investiture_controversy"
+		  set_defacto_liege = THIS
+		  any_character = { 
+				   limit = { rex_teutonicorum_trigger = yes }
+				   narrative_event = { 
+									  id =  rexteut.2025 
+									  days = 10
+									 }
+				  }
+		 }
+	option = {
+		  name = NO
+		  ai_chance = {
+			       factor = 1
+			      }
+		  clr_global_flag = "unlawful_imperial_coronation"
+		 }
+
+}
+
+###The Emperor hears of the new Pope's actions###
+narrative_event = {
+	  id = rexteut.2025
+	  title = EVTNAME_rexteut_2025
+	  desc = EVTDESC_rexteut_2025
+	  picture = GFX_evt_pope
+
+	  is_triggered_only = yes
+
+	  trigger = { rex_teutonicorum_trigger = yes }
+
+	  immediate = {
+		       FROM = { set_defacto_liege = THIS }
+		      }
+
+	  option = {
+		    name = EVTOPTA_rexteut_2025
+		    ai_chance = { factor = 1 }
+		    set_character_flag = "no_invest_end"
+		    custom_tooltip = { text = investiture_c_1 }
+                    hidden_tooltip = { 
+                                      set_global_flag = "emperor_angry"
+				      opinion = {
+						 who = FROM
+						 modifier = opinion_pope_demand
+						 years = 25
+						}
+				      any_character = {
+						       limit = {
+								primary_title = { higher_tier_than = BARON }
+								religion = catholic
+								rex_teutonicorum_trigger = no
+							       }
+						       narrative_event = { id = rexteut.2026 }
+						      }
+				     }
+		   }
+	  option = {
+		    name = EVTOPTB_rexteut_2025
+		    ai_chance = { factor = 0.2 }
+                    piety = 100
+                    custom_tooltip = { text = "investiture_c_2" }
+                    primary_title = {
+			             revoke_law = investiture_law_1
+			             add_law = investiture_law_0
+		                    }
+                    set_global_flag = "investiture_papal"
+                    clr_global_flag = "investiture_controversy"
+		    custom_tooltip = { text = investiture_c_2 }
+		    hidden_tooltip = {
+				      any_character = {
+						       limit = {
+								primary_title = { higher_tier_than = BARON }
+								religion = catholic
+								rex_teutonicorum_trigger = no
+							       }
+						       narrative_event = { id = rexteut.2026 }
+						      }
+				     }
+		   }
+
+		  }
+
+###The rest of the Catholic world hears how the Emperor responded###
+narrative_event = {
+	  id = rexteut.2026
+	  title = EVTNAME_rexteut_2025
+	  desc = {
+		  trigger = { 
+			     has_global_flag = "emperor_angry"
+			     NOT = { has_global_flag = "investiture_papal" }
+			    }
+		  text = EVTDESCA_rexteut_2026
+		 }
+	  desc = {
+		  trigger = { 
+			     NOT = { has_global_flag = "emperor_angry" }
+			     has_global_flag = "investiture_papal"
+			    }
+		  text = EVTDESCB_rexteut_2026
+		 }
+	  picture = GFX_evt_pope
+
+	  is_triggered_only = yes
+
+	  trigger = {
+		     religion = catholic
+		     rex_teutonicorum_trigger = no
+		    }
+	  option = {
+		    trigger = { 
+			       has_global_flag = "emperor_angry"
+			       NOT = { has_global_flag = "investiture_papal" }
+			      }
+		    name = EVTOPTA_rexteut_2026
+		   }
+	  option = {
+		    trigger = { 
+			       NOT = { has_global_flag = "emperor_angry" }
+			       has_global_flag = "investiture_papal"
+			      }
+		    name = EVTOPTB_rexteut_2026
+		   }
+
+		  }
+		  
+###After vassalising Pope, uncrowned Emperor can get a cheaper crowning###
+character_event = {
+		id = rexteut.2029
+		desc = EVTDESC_rexteut_2029
+		picture = GFX_evt_papal_crowning
+		
+		is_triggered_only = yes
+		
+		religion = catholic
+		only_playable = yes
+		min_age = 16
+		prisoner = no
+		capable_only = yes
+		
+		trigger = {
+				   rex_teutonicorum_trigger = yes
+				   trait = uncrowned
+				   NOT = { trait = crowned_by_pope }
+				   any_vassal = { controls_religion = yes }
+				   has_global_flag = "investiture_imperial"
+				   NOT = { has_global_flag = "investiture_controversy" }
+				  }
+				  
+		option = {
+				  name = EVTOPTA_rexteut_2029
+				  ai_chance = {
+							   factor = 5
+							   modifier = {
+										   factor = 2
+										   OR = {
+												 trait = proud
+												 trait = greedy
+												 trait = ambitious
+												}
+										  }
+							  }
+				  scaled_wealth = -0.75
+				  hidden_tooltip = {
+									set_global_flag = "unlawful_imperial_coronation"
+									any_vassal = {
+												  limit = {
+														   is_adult = yes
+														   OR = {
+																 tier = COUNT
+																 tier = DUKE
+																 tier = KING
+																}
+														   NOR = {
+																  trait = excommunicated
+																  is_incapable = yes
+																  is_heretic = yes
+																 }
+														   religion_group = christian
+														   prisoner = no
+														   }
+												  letter_event = { id = Plus.1179 } # Invitation to coronation
+												 }
+								    character_event = { id = Plus.1290 days = 59 } # Regnal name
+									character_event = { id = Plus.1181 days = 60 } # Coronation begins
+								   }
+				 }		  
+		option = {
+				  name = EVTOPTB_rexteut_2029
+				  ai_chance = {
+							   factor = 1
+							   modifier = {
+										   factor = 2
+										   OR = {
+												 trait = content
+												 trait = craven
+												 trait = humble
+												}
+										  }
+							  }
+				  prestige = -200
+				 }
+				 
+		
+				  }
+				  
+				  
+###

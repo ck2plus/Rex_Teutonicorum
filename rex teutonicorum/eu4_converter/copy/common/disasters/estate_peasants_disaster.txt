@@ -1,0 +1,125 @@
+estate_peasants_disaster = {
+	potential = {
+		has_dlc = "The Cossacks"
+		has_estate = estate_peasants
+		estate_influence = {
+			estate = estate_peasants
+			influence = 60
+		}
+	}
+
+
+	can_start = {
+		has_any_disaster = no
+		estate_influence = {
+			estate = estate_peasants
+			influence = 80
+		}
+	}
+	
+	can_stop = {
+		NOT = {
+			estate_influence = {
+				estate = estate_peasants
+				influence = 80
+			}		
+		}
+	}
+	
+	down_progress = {
+		factor = 1
+	}
+	
+	progress = {
+		modifier = {
+			factor = 1
+			estate_influence = {
+				estate = estate_peasants
+				influence = 80
+			}
+			hidden_trigger = {
+				NOT = {
+					estate_influence = {
+						estate = estate_peasants
+						influence = 85
+					}			
+				}			
+			}
+		}
+		modifier = {
+			factor = 2
+			estate_influence = {
+				estate = estate_peasants
+				influence = 85
+			}
+			hidden_trigger = {
+				NOT = {
+					estate_influence = {
+						estate = estate_peasants
+						influence = 90
+					}			
+				}			
+			}
+		}
+		modifier = {
+			factor = 3
+			estate_influence = {
+				estate = estate_peasants
+				influence = 90
+			}
+			hidden_trigger = {
+				NOT = {
+					estate_influence = {
+						estate = estate_peasants
+						influence = 95
+					}			
+				}			
+			}
+		}	
+		modifier = {
+			factor = 4
+			estate_influence = {
+				estate = estate_peasants
+				influence = 95
+			}
+			hidden_trigger = {
+				NOT = {
+					estate_influence = {
+						estate = estate_peasants
+						influence = 100
+					}			
+				}			
+			}
+		}	
+		modifier = {
+			factor = 5
+			estate_influence = {
+				estate = estate_peasants
+				influence = 100
+			}
+		}		
+	}
+	
+	can_end = {
+		custom_trigger_tooltip = {
+			tooltip = EST_CRUSHED_PEASANTS
+			OR = {
+				NOT = { has_country_flag = peasant_estate_in_power }
+				has_country_flag = church_estate_in_power
+			}
+		}
+	}
+	
+	modifier = {	
+		global_tax_modifier = -0.2
+		production_efficiency = -0.2
+		global_autonomy = 0.15
+	}
+
+	on_start = rexteut.3001
+	on_end = rexteut.3002
+	
+	on_monthly = {
+	}
+}
+

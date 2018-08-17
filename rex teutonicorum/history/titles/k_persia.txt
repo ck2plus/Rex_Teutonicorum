@@ -1,0 +1,71 @@
+#Buyids
+934.1.1 = {
+	holder = 1000254502 #Ali
+}
+949.12.5 = {
+    holder = 1000254506 #Adud
+}
+983.1.1 = {
+	holder = 1000254510 #Sharaf
+}
+989.1.1 = {
+	holder = 1000254511 #Samsan
+}
+998.12.1 = {
+	holder = 1000254512 #Baha
+	set_global_flag = seljuk_spawned
+}
+1012.12.22 = {
+	holder = 100000025 #Sultan
+}
+1024.12.1 = {
+	holder = 100000026 #Abu Kalijar
+}
+1048.10.1 = {
+	holder = 100000027 #Abu Mansur
+}
+1051.1.1 = {
+	holder = 100000028 #Abu Said
+}
+1054.1.1 = {
+	holder = 100000027 #Abu Mansur
+}
+
+#Seljuks
+1055.1.1 = {
+	holder = 3038
+	law = crown_authority_2
+}
+1063.9.4 = {
+	holder = 3040
+}
+1072.11.1 = {
+	holder = 3042
+}
+1092.11.1 = {
+	holder = 144012
+}
+1094.1.1 = {
+	holder = 144013
+}
+1105.3.1 = {
+	holder = 144014
+}
+1118.4.18 = {
+	holder = 144015
+}
+1157.5.8 = {
+	holder = 0 # End of the Seljuk Turks
+}
+1194.3.1 = {
+	holder = 230000
+}
+1200.1.1 = {
+	holder = 93052
+}
+1221.1.1 = {
+	holder = 125501
+}
+1227.12.2 = {
+holder = 0
+}

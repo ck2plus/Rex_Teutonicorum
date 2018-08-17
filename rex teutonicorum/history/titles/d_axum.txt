@@ -1,0 +1,122 @@
+# Dukedom of Axum
+656.1.1 = {
+	liege="k_abyssinia"
+}
+
+# Solomonid
+706.1.1={
+	holder=145983 #Degna Mikael
+}
+727.1.1={
+	holder=145984 #Bahr Ikela
+}
+746.1.1={
+	holder=145985 #Gum
+}
+770.1.1={
+	holder=145986 #Asgwomgum
+}
+775.1.1={
+	holder=145987 #Letem
+}
+791.1.1={
+	holder=145988 #Talatem
+}
+812.1.1={
+	holder=145989 #Oda Gosh
+}
+825.1.1={
+	holder=145990 #Ayzur
+}
+825.1.2={
+	holder=145991 #Dedem
+}
+830.1.1={
+	holder=145992 #Wededem
+}
+840.1.1={
+	holder=145993 #Wedem Asfare
+}
+870.1.1={
+	holder=145994 #Rema Armah
+}
+875.1.1={
+	holder=167707 #Degna Djan
+}
+910.1.1 = {
+holder = 167708 #Anbasa Wedem
+}
+
+950.1.1 = {
+holder = 32225 #Dil Na'od
+}
+
+960.8.1 = {
+	holder = 0
+}
+
+#Zagwe
+
+1137.1.1 = {
+holder = 32227 #Mara Takla Haymanot
+}
+1140.1.1 = {
+holder = 32228 #Tatadim
+}
+1162.1.1 = {
+holder = 32229 #Jan Seyum
+}
+1165.1.1 = {
+holder = 32230 #Germa Seyum
+}
+1167.1.1 = {
+holder = 32231 #Yamrehana Krestos
+}
+1176.1.1 = {
+holder = 32232 #Kedus Harba
+}
+1181.1.1 = {
+holder = 32233 #Lalibela
+}
+1221.1.1 = {
+holder = 32234 #Na'akuelo La'ab
+}
+1222.6.1 = {
+holder = 32235 #Yetbarak
+}
+1247.1.1 = {
+holder = 32236 #Mairari
+}
+1262.1.1 = {
+holder = 32237 #Harbai
+}
+
+#Solomonid
+
+1270.1.1 = {
+holder = 32247
+}
+1285.1.1 = {
+holder = 32248
+}
+1294.1.1 = {
+holder = 32252
+}
+1295.1.1 = {
+holder = 32253
+}
+1296.1.1 = {
+holder = 32254
+}
+1297.1.1 = {
+holder = 32263
+}
+1298.1.1 = {
+holder = 32255
+}
+1299.1.1 = {
+holder = 32249
+}
+1314.1.1 = {
+holder = 32251
+}

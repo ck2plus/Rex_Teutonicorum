@@ -1,0 +1,5333 @@
+namespace = rexteut
+
+###HRE vassal has chance to support greater autonomy###
+character_event = {
+
+	  id = rexteut.5001
+	  desc = EVTDESC_rexteut_5001
+	  picture = GFX_evt_rival_rulers
+	  
+	  is_triggered_only = yes
+	  
+	  only_playable = yes
+
+	  trigger = {
+		     year = 1200
+			 has_global_flag = "sifp_begin"
+		     OR = {
+  			   has_global_flag = "concordat_of_worms"
+			   has_global_flag = "investiture_papal"
+			  }
+		     independent = no
+			 liege = {
+					  OR = {
+							rex_teutonicorum_trigger = yes
+							primary_title = { has_title_flag = "former_hre_empire" }
+						   }
+					 }
+		     has_regent = no
+		     NOT = { has_character_flag = "supported_autonomy" }
+		     NOT = { has_character_flag = "unsupported_autonomy" }
+		     NOT = { has_global_flag = "statutum_in_favorem_principum" }
+			 primary_title = { title = FROM }
+		    }
+
+	  option = {
+		    name = EVTOPTA_rexteut_5001
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					    	   trait = proud
+					     	   trait = greedy
+					     	   NOT = {
+						    	  opinion = {
+						               	     who = liege
+						               	     value = -20
+						              	    }
+						   	 }
+					     	   liege = {
+						      	    primary_title = {
+								       	     has_law = crown_authority_2
+								      	    }
+						      	    NOT = { culture_group = central_germanic }
+						     	   }
+						  }
+					    }
+				 modifier = {
+					     factor = 10
+					     OR = {
+					     	   trait = envious
+					     	   NOT = {
+						    	  opinion = {
+						               	     who = liege
+							       	     value = -30
+						              	    }
+						   	 }
+					     	   liege = {
+						      	    primary_title = {
+								       	     OR = {
+									     	   has_law = crown_authority_3
+									     	   has_law = crown_authority_4
+									    	  }
+								      	    }	
+						     	   }
+						  }
+					    }
+				 modifier = {
+					     factor = 1.25
+					     OR = {
+					     	   culture_group = central_germanic
+					     	   higher_tier_than = DUKE
+						  }
+					    }
+				 modifier = {
+							 factor = 5
+							 tier = KING
+							}
+				 modifier = {
+							 factor = 0
+							 liege = { current_heir = { character = ROOT } }
+							}
+				}
+		    set_character_flag = "supported_autonomy"
+			log = "[Root.GetTitledName] supported greater autonomy for the Imperial Princes"
+		   }
+	  option = {
+		    name = EVTOPTB_rexteut_5001
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     trait = ambitious
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = humble
+					     	   trait = charitable
+					     	   trait = content
+					     	   opinion = {
+							      who = liege
+							      value = 50
+						       	     }
+						  }
+					    }
+				 modifier = {
+					     factor = 1.25
+					     lower_tier_than = DUKE
+					    }
+				}
+		    set_character_flag = "unsupported_autonomy"
+			log = "[Root.GetTitledName] did not support greater autonomy for the Imperial Princes"
+		   }
+
+
+		  }
+
+###HREmperor learns of vassals' calls for autonomy###
+character_event = {
+
+	  id = rexteut.5002
+	  desc = EVTDESC_rexteut_5002
+	  picture = GFX_evt_council_quarrelling
+	  
+	  only_playable = yes
+	  prisoner = no
+	  capable_only = yes
+	
+	  trigger = {
+		     year = 1200
+		     NOT = { has_global_flag = "statutum_in_favorem_principum" }
+		     NOT = { has_character_flag = "emperor_responds" }
+		     OR = {
+				   rex_teutonicorum_trigger = yes
+				   primary_title = { has_title_flag = "former_hre_empire" }
+				  }
+		     any_vassal = {
+				   has_character_flag = "supported_autonomy"
+				  }
+		    }
+
+	  mean_time_to_happen = { days = 30 }
+
+	  immediate = {
+		       any_vassal = {
+				     limit = { has_character_flag = "supported_autonomy" }
+				     reverse_opinion = {
+							who = PREV
+						        modifier = opinion_demand_autonomy
+							years = 20
+						       }
+				    }
+		      }
+
+	  option = {
+		    name = EVTOPTA_rexteut_5002
+		    ai_chance = {
+				 factor = 2
+				 modifier = {
+					     factor = 0.5
+					     OR = {
+					     	   trait = ambitious
+					     	   trait = stubborn
+							   trait = proud
+						  }
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = content
+					     	   trait = slothful
+					     	   trait = kind
+					     	   trait = charitable
+					     	   trait = craven
+							   trait = just
+							   trait = humble
+						  }
+					    }
+				}
+		    set_character_flag = "emperor_responds"
+		    custom_tooltip = { text = imp_power_1 }
+		    hidden_tooltip = {
+		    narrative_event = {
+				       id = rexteut.5003
+				       days = 14
+				      }
+				     }
+		   }
+	  option = {
+		    name = EVTOPTB_rexteut_5002
+		    ai_chance = { 
+						 factor = 1 
+						 modifier = {
+									 factor = 0
+									 has_global_flag = "investiture_papal"
+									}
+						}
+		    set_character_flag = "emperor_responds"
+		    set_global_flag = "sifp_activated"
+		    custom_tooltip = { text = imp_power_2 }
+		    hidden_tooltip = {
+		    any_realm_lord = {
+				      character_event = {
+							 id = rexteut.5004
+							 days = 14
+							}
+				     }
+				     }
+			log = "[Root.GetTitledName] rejected calls for greater autonomy for the Imperial Princes"
+		   }
+
+		  }
+
+###Statutum in favorem Principum###
+narrative_event = {
+
+	  id = rexteut.5003
+	  title = EVTNAME_rexteut_5003
+	  desc = EVTDESC_rexteut_5003
+	  picture = GFX_evt_conclave
+	  
+	  is_triggered_only = yes
+
+	  major = yes
+	  religion = catholic
+	  only_playable = yes
+
+	  trigger = {
+		     rex_teutonicorum_trigger = yes
+		    }
+			
+	  major_trigger = { religion = catholic }
+
+	  option = {
+		    name = OK
+		    trigger = {
+			       rex_teutonicorum_trigger = yes
+			      }
+		    set_global_flag = "statutum_in_favorem_principum"
+		    primary_title = {
+					 set_title_flag = "ended_co_crownings"
+				     revoke_law = crown_authority_1
+				     revoke_law = crown_authority_2
+				     revoke_law = crown_authority_3
+				     revoke_law = crown_authority_4
+				     add_law = crown_authority_0
+				     revoke_law = feudal_obligations_1
+				     revoke_law = feudal_obligations_2
+				     revoke_law = feudal_obligations_3
+				     revoke_law = feudal_obligations_4
+				     add_law = feudal_obligations_0
+				     revoke_law = temple_obligations_1
+				     revoke_law = temple_obligations_2
+				     revoke_law = temple_obligations_3
+				     revoke_law = temple_obligations_4
+				     add_law = temple_obligations_0
+				     revoke_law = city_obligations_1
+				     revoke_law = city_obligations_2
+				     revoke_law = city_obligations_3
+				     revoke_law = city_obligations_4
+				     add_law = city_obligations_0
+				     revoke_law = kings_peace_2
+				     revoke_law = kings_peace_1
+				     add_law = kings_peace_0
+				     if = {
+					   limit = { has_dlc = "Zeus" }
+					   revoke_law = law_voting_power_0
+					   add_law = law_voting_power_1
+					   revoke_law = war_voting_power_0
+					   add_law = war_voting_power_1
+					   revoke_law = revoke_title_voting_power_0
+					   add_law = revoke_title_voting_power_1
+					   revoke_law = imprison_voting_power_0
+					   add_law = imprison_voting_power_1
+					   revoke_law = grant_title_voting_power_0
+					   add_law = grant_title_voting_power_1
+					   revoke_law = banish_voting_power_0
+					   add_law = banish_voting_power_1
+					   revoke_law = execution_voting_power_0
+					   add_law = execution_voting_power_1
+					  }
+				    }
+		    add_character_modifier = {
+					      name = "stat_fav_prin"
+					      duration = -1
+					     }
+		    chronicle = {
+				 entry = CHRON_REXTEUT_STAT_FAV_PRIN
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_holy_emperor
+				}		
+			log = "[Root.GetTitledName] issued the Statutum in favorem Principum, limiting the centralised power of the realm"
+		   }
+
+	  option = {
+		    name = OK
+		    trigger = {
+			       rex_teutonicorum_trigger = no
+			      }
+		    chronicle = {
+				 entry = CHRON_REXTEUT_STAT_FAV_PRIN
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_holy_emperor
+				}	
+		   } 
+
+		  }
+
+###Vassals hear of HREmperor's lack of support for autonomy###
+character_event = {
+
+	  id = rexteut.5004
+	  desc = EVTDESC_rexteut_5004
+	  picture = GFX_evt_rival_rulers
+	  
+	  is_triggered_only = yes
+
+	  trigger = {
+		     has_character_flag = "supported_autonomy"
+		     NOT = { has_character_flag = "unsupported_autonomy" }
+		    }
+
+	  option = {
+		    name = EVTOPTA_rexteut_5004
+		    ai_chance = { factor = 80 }
+		    set_character_flag = "angry_vassal"
+		    custom_tooltip = { text = imp_power_3 }
+		    opinion = {
+			       who = FROM
+			       modifier = opinion_denied_autonomy
+			       years = 20
+			      }
+		   }
+
+	  option = {
+		    name = EVTOPTB_rexteut_5004
+		    ai_chance = { factor = 20 }
+		    clr_character_flag = "supported_autonomy"
+		    set_character_flag = "unsupported_autonomy"
+		   }
+
+		  }
+
+###Head of faction sends ultimatum to HREmperor###
+letter_event = {
+    id = rexteut.5005
+    desc = EVTDESCA_rexteut_5005
+	border = GFX_event_letter_frame_war
+	   
+    is_triggered_only = yes
+	   
+	trigger = { FROM = { leads_faction = faction_sifp } }
+	   
+	immediate = {
+				 FROM = {
+						 clr_character_flag = civil_war_faction_leader
+						 clr_character_flag = civil_war_faction_member
+						 clr_character_flag = will_join_civil_war
+						 diplomatic_immunity = yes 
+						 any_faction_backer = {
+											   faction = faction_sifp
+											   diplomatic_immunity = yes
+											   clr_character_flag = "civil_war_faction_leader"
+											   clr_character_flag = "civil_war_faction_member"
+											   clr_character_flag = "will_join_civil_war"
+											  }
+						}
+				}
+
+       option = { #Agree
+		 name = EVTOPTA_rexteut_5005
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0.1
+					     OR = {
+					     	   trait = ambitious
+					     	   trait = stubborn
+						  }
+					    }
+				 modifier = {
+					     factor = 2
+					     trait = craven
+					    }
+				 modifier = {
+							 factor = 1.2
+							 faction_power = {
+											  faction = faction_sifp
+											  power = 1
+											 }
+							}
+				 modifier = {
+							 factor = 1.5
+							 faction_power = {
+											  faction = faction_sifp
+											  power = 2
+											 }
+							}
+				 modifier = {
+							 factor = 2
+							 faction_power = {
+											  faction = faction_sifp
+											  power = 3
+											 }
+							}
+				}
+	 	 narrative_event = {
+				    id = rexteut.5003
+				    days = 14
+				    tooltip = imp_power_4
+				   }
+			  FROM = { 
+					  diplomatic_immunity = yes 
+					  clr_character_flag = "preparing_sifp_war"
+					  any_faction_backer = {
+										    faction = faction_sifp
+										    diplomatic_immunity = yes
+										   }
+					 }
+		}
+       option = { #Defy
+		 name = EVTOPTB_rexteut_5005
+		 ai_chance = {
+			      factor = 1
+			      modifier = {
+				 	  factor = 0.5
+					  trait = proud
+					 }
+				 modifier = {
+							 factor = 2
+							 NOT = {
+									faction_power = {
+													 faction = faction_sifp
+													 power = 0.9
+													}
+								   }
+							}
+			     }
+		 custom_tooltip = { text = imp_power_5 }
+		 hidden_tooltip = {
+			  FROM = { 
+					  letter_event = { id = rexteut.5006 } 
+					  diplomatic_immunity = yes
+					  clr_character_flag = "faction_sifp_ultimatum_taken"
+					  pf_setup_rebel_effect = yes
+					  any_faction_backer = {
+										    faction = faction_sifp
+										    diplomatic_immunity = no
+										    pf_setup_rebel_effect = yes
+										   }
+					 }
+			  hidden_tooltip = {
+							    any_vassal = {
+											  clr_character_flag = "angry_vassal"
+											  limit = { pf_war_trait_trigger = no }
+											  letter_event = { 
+															  id = PlusFaction.403 
+															  days = 3
+															 }
+											 }
+							   }
+				  }
+		 reverse_war = {
+			        target = FROM
+				casus_belli = weaken_imperial_authority
+				faction = faction_sifp
+			       }
+		}
+
+	       }
+
+###Faction members informed HREmperor has rejected their demands###
+letter_event = {
+
+       id = rexteut.5006
+       desc = EVTDESC_rexteut_5006
+	   
+       is_triggered_only = yes
+
+       trigger = {
+		  in_faction = faction_sifp
+		 }
+
+       option = {
+		 name = EVTOPTA_rexteut_5006
+			  clr_character_flag = "preparing_sifp_war"
+		}
+
+	       }
+		   
+		   
+character_event = { #For the ai I guess
+	id = rexteut.50051
+
+	hide_window = yes
+
+	min_age = 16
+	only_playable = yes
+	prisoner = no
+	capable_only = yes
+	ai = yes
+	war = no
+	
+	trigger = {
+		leads_faction = faction_sifp
+		faction_power = {
+			faction = faction_sifp
+			power = 0.75
+		}
+		pf_pending_civil_war_trigger = no
+		liege = {
+			pf_war_flag_trigger = no
+			OR = {
+				independent = yes
+				AND = {
+					will_liege_enforce_peace = no
+					has_liege_enforced_peace = no
+				}
+			}
+		}
+		ai_not_busy_trigger = yes
+		e_placeholder = { had_title_flag = { flag = startup days = 730 } }
+	}
+
+	mean_time_to_happen = {
+		months = 40
+		modifier = {
+			factor = 3.0
+			NOT = {
+				faction_power = {
+					faction = faction_sifp
+					power = 1.0
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			faction_power = {
+				faction = faction_sifp
+				power = 1.5
+			}
+		}
+		modifier = {
+			factor = 0.5
+			faction_power = {
+				faction = faction_sifp
+				power = 2.0
+			}
+		}
+		modifier = {
+			factor = 0.5
+			faction_power = {
+				faction = faction_sifp
+				power = 3.0
+			}
+		}
+		modifier = {
+			factor = 0.5
+			faction_power = {
+				faction = faction_sifp
+				power = 4.0
+			}
+		}
+	}
+
+	immediate = {
+		set_character_flag = "preparing_sifp_war"
+		custom_tooltip = {
+			text = MAY_TAKE_ULTIMATUM_DECISION
+			hidden_tooltip = {
+				set_character_flag = "civil_war_faction_leader"
+				add_character_modifier = {
+					name = declare_civil_war_timer
+					duration = 30
+					hidden = yes
+				}
+			}
+		}
+		liege = {
+			custom_tooltip = { text = INVITE_TO_JOIN_CIVIL_WAR }
+			hidden_tooltip = {
+				any_vassal = {
+					limit = { NOT = { in_faction = faction_sifp } }
+					letter_event = { id = rexteut.50052 }
+				}
+			}
+		}
+		hidden_tooltip = {
+			any_faction_backer = {
+				faction = faction_sifp
+				set_character_flag = civil_war_faction_member
+			}
+		}
+	}
+}
+
+letter_event = { #Vassal invite to civil war
+	id = rexteut.50052
+	border = GFX_event_letter_frame_war
+	
+	desc = EVTDESCB_rexteut_5005
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	only_rulers = yes
+	
+	trigger = {
+		is_landed = yes
+		pf_war_trait_trigger = no
+	}
+	
+	option = {
+		name = EVTOPTA_PlusFaction_415 #join the rebellion
+		trigger = {
+			prisoner = no
+			NOT = { is_incapable = yes }
+			is_adult = yes
+			liege = {
+				NOR = {
+					reverse_has_truce = ROOT
+					has_non_aggression_pact_with = ROOT
+					reverse_has_opinion_modifier = { who = ROOT modifier = opinion_coerced_into_leaving_faction }
+					reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated }
+					reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated_other_rel }
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				liege = { current_heir = { character = ROOT } }
+			}
+			modifier = {
+				factor = 0.5
+				liege = {
+					OR = {
+						is_allied_with = ROOT
+						has_non_aggression_pact_with = ROOT
+						dynasty = ROOT
+						is_close_relative = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 5
+				liege = { is_rival = ROOT }
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 1.25
+				OR = {
+					is_allied_with = FROM
+					has_non_aggression_pact_with = FROM
+					is_close_relative = FROM
+				}
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = -50 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = -75 } }
+			}
+			modifier = {
+				factor = 1.25
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.25
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.25
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0
+				opinion = { who = liege value = 0 }
+			}
+			modifier = {
+				factor = 3
+				NOT = { opinion = { who = liege value = -25 } }
+			}
+			modifier = {
+				factor = 3
+				NOT = { opinion = { who = liege value = -50 } }
+			}
+			modifier = {
+				factor = 3
+				NOT = { opinion = { who = liege value = -75 } }
+			}
+			modifier = {
+				factor = 0
+				trait = ghibelline
+			}
+		}
+		set_character_flag = "will_join_civil_war"
+		custom_tooltip = { text = MUST_MANUALLY_JOIN_FACTION }
+	}
+	option = {
+		name = EVTOPTB_PlusFaction_415 #refuse
+		trigger = {
+			prisoner = no
+			NOT = { is_incapable = yes }
+			is_adult = yes
+			liege = {
+				NOR = {
+					reverse_has_truce = ROOT
+					has_non_aggression_pact_with = ROOT
+					reverse_has_opinion_modifier = { who = ROOT modifier = opinion_coerced_into_leaving_faction }
+					reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated }
+					reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated_other_rel }
+				}
+			}
+#			NOT = { # But not an offer that they couldn't refuse
+#				FROM = { has_character_modifier = emf_faction_rebel_antichrist }
+#			}
+		}
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 2
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				trait = content
+			}
+			modifier = {
+				factor = 1.25
+				trait = humble
+			}
+			modifier = {
+				factor = 0
+				trait = guelph
+			}
+		}
+		reverse_opinion = { who = FROM modifier = opinion_disappointed years = 5 }
+	}
+	option = {
+		trigger = {
+			NAND = {
+				prisoner = no
+				NOT = { is_incapable = yes }
+				is_adult = yes
+				liege = {
+					NOR = {
+						reverse_has_truce = ROOT
+						has_non_aggression_pact_with = ROOT
+						reverse_has_opinion_modifier = { who = ROOT modifier = opinion_coerced_into_leaving_faction }
+						reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated }
+						reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated_other_rel }
+					}
+				}
+			}
+		}
+		name = {
+			text = EVTOPTC_PlusFaction_415_prisoner #I am imprisoned
+			trigger = {
+				prisoner = yes
+			}
+		}
+		name = {
+			text = EVTOPTC_PlusFaction_415_incapable #I am NOT up to such a fight...
+			trigger = {
+				prisoner = no
+				is_incapable = yes
+			}
+		}
+		name = {
+			text = EVTOPTC_PlusFaction_415_child #I am a child
+			trigger = {
+				prisoner = no
+				NOT = { is_incapable = yes }
+				is_adult = no
+			}
+		}
+		name = {
+			text = EVTOPTC_PlusFaction_415_truce #I cannot
+			trigger = {
+				prisoner = no
+				NOT = { is_incapable = yes }
+				is_adult = yes
+				liege = {
+					OR = {
+						reverse_has_truce = ROOT
+						has_non_aggression_pact_with = ROOT
+						reverse_has_opinion_modifier = { who = ROOT modifier = opinion_coerced_into_leaving_faction }
+						reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated }
+						reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated_other_rel }
+					}
+				}
+			}
+		}
+	}
+}
+
+###HREmperor defeats vassals and maintains power###
+narrative_event = {	
+
+	  id = rexteut.5007
+	  title = EVTNAME_rexteut_6009
+	  desc = EVTDESC_rexteut_5007
+	  picture = GFX_evt_holy_emperor
+	  
+	  is_triggered_only = yes
+
+	  trigger = { 
+				 OR = {
+					   OR = {
+							 rex_teutonicorum_trigger = yes
+							 primary_title = { has_title_flag = "former_hre_empire" }
+							}
+					   liege = {
+							    OR = {
+									  rex_teutonicorum_trigger = yes
+									  primary_title = { has_title_flag = "former_hre_empire" }
+									 }
+							   }
+					  }
+				}
+
+	  option = {
+		    trigger = {
+					   OR = {
+							 rex_teutonicorum_trigger = yes
+							 primary_title = { has_title_flag = "former_hre_empire" }
+							} 
+					  }
+		    name = EVTOPTA_rexteut_5007
+		    prestige = 100
+		    set_global_flag = "imperial_power_preserved"
+		   }
+	  option = {
+		    trigger = { 
+					   rex_teutonicorum_trigger = no 
+					   NOT = { primary_title = { has_title_flag = "former_hre_empire" } }
+					  }
+		    name = EVTOPTB_rexteut_5007
+		   }
+
+		  }
+
+###Event ensuring that 5001 fires for all vassals simultaneously###
+character_event = {
+
+	  id = rexteut.5008
+	  hide_window = yes
+	  
+	  only_playable = yes
+	  capable_only = yes
+	  prisoner = no
+	
+	  trigger = {
+		     year = 1200
+		     OR = {
+				   rex_teutonicorum_trigger = yes
+				   primary_title = { has_title_flag = "former_hre_empire" }
+				  }
+		     OR = {
+			   has_global_flag = "concordat_of_worms"
+			   has_global_flag = "investiture_papal"
+			  }
+			 NOT = { has_global_flag = "sifp_begin" }
+		     NOT = { has_character_modifier = stat_fav_prin }
+		     NOT = { has_global_flag = "imperial_power_preserved" }
+		     NOT = { has_character_flag = "emperor_defied_vassals" }
+		    }
+
+	   mean_time_to_happen = { 
+				  years = 30
+				  modifier = {
+					      factor = 0.5
+					      NOT = { culture_group = central_germanic }
+					      e_hre = {
+						       NOT = { has_title_flag = "french_hre" }
+						       NOT = { has_title_flag = "italian_hre" }
+						      }
+					     }
+				  modifier = {
+					      factor = 0.5
+					      NOR = { 
+						     culture = frankish
+						     culture = occitan
+						     culture = norman
+						     culture = old_frankish
+						    }
+					      e_hre = { has_title_flag = "french_hre" }
+					     }
+				  modifier = {
+					      factor = 0.5
+					      NOR = {
+						     culture = sicilian
+						     is_italian_trigger = yes
+						    }
+					      e_hre = { has_title_flag = "italian_hre" }
+					     }
+				  modifier = {
+					      factor = 0.5
+					      year = 1230
+					     }
+				  modifier = {
+					      factor = 0.25
+					      has_global_flag = "investiture_papal"
+					     }
+				  modifier = {
+					      factor = 0.75
+					      primary_title = { has_law = crown_authority_2 }
+					     }
+				  modifier = {
+					      factor = 0.5
+					      NOR = { 
+						     capital_scope = {
+							              county = {
+									        de_jure_liege_or_above = e_hre
+									       }
+							             }
+						     capital_scope = {
+							              county = {
+									        de_jure_liege_or_above = e_karling
+									       }
+							             }
+					            }
+					     }
+				  modifier = {
+					      factor = 0.2			              
+					      	    primary_title = {
+							             OR = {
+								           has_law = crown_authority_3
+								           has_law = crown_authority_4
+								          }
+							            }
+					     }
+				  modifier = {
+					      factor = 0.3
+					      year = 1250
+					     }
+				 }
+
+	   immediate = {
+				set_global_flag = "sifp_begin"
+		        any_vassal = {
+				      limit = { higher_tier_than = BARON }
+				      character_event = { id = rexteut.5001 }
+				     }
+		       }
+
+		  }
+
+
+###HRE vassals informed Emperor wants to revoke SiFP###
+character_event = {
+
+	  id = rexteut.5009
+	  desc = EVTDESC_rexteut_5009
+	  picture = GFX_evt_holy_emperor
+	  
+	  is_triggered_only = yes
+
+	  trigger = {
+		     independent = no
+		     liege = {
+					  OR = {
+						    rex_teutonicorum_trigger = yes
+							primary_title = { has_title_flag = "former_hre_empire" }
+						   }
+					 }
+		    }
+
+	  immediate = { 
+		       liege = {
+			        change_variable = {
+						   which = hre_vassals
+						   value = 1
+						  }
+			       }
+		      }
+
+	  option = {
+		    name = EVTOPTA_rexteut_5009
+		    ai_chance = {
+			         factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					           trait = content
+					     	   trait = charitable
+					    	   trait = kind
+					     	   opinion = {
+							      who = liege
+							      value = 40
+						             }
+						  }
+					    }
+				 modifier = {
+					     factor = 0					     trait = content
+					     trait = ambitious
+					    }
+				}
+		    hidden_tooltip = { 
+		    liege = {
+			     change_variable = {
+						which = support_revoke
+						value = 1
+					       }
+			    }
+				     }
+		   }
+	  option = {
+		    name = EVTOPTB_rexteut_5009
+		    ai_chance = {
+			         factor = 2
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = proud
+					     	   trait = envious
+					     	   trait = greedy
+					     	   NOT = {
+					            	  opinion = {
+							       	     who = liege
+							       	     value = -25
+						              	    }
+						   	 }
+						  }
+					    }
+				}
+		    hidden_tooltip = {
+		    liege = {
+			     change_variable = {
+						which = oppose_revoke
+						value = 1
+					       }
+			    }
+				     }
+		   }
+
+		  }
+
+###Results for vassal support for revoking SiFP come in###
+character_event = {
+
+	  id = rexteut.5010
+	  hide_window = yes
+	  
+	  only_playable = yes
+	
+	  trigger = {
+			 OR = {
+				   rex_teutonicorum_trigger = yes
+				   primary_title = { has_title_flag = "former_hre_empire" }
+				  }
+		     has_character_flag = "voting_for_revoke"
+		    }
+
+	  mean_time_to_happen = { months = 1 }
+
+	  immediate = {
+		       divide_variable = {
+					  which = hre_vassals
+					  value = 2
+					 }
+		       character_event = { id = rexteut.5011 }
+		      }
+
+	          }
+
+character_event = {
+
+	  id = rexteut.5011
+	  desc = {
+		  trigger = {
+			     check_variable = {
+					       which = support_revoke
+					       which = hre_vassals
+					      }
+			    }
+		  text = EVTDESCA_rexteut_5011
+		 }
+	  desc = {
+		  trigger = {
+			     check_variable = {
+					       which = oppose_revoke
+					       which = hre_vassals
+					      }
+			    }
+		  text = EVTDESCB_rexteut_5011
+		 }
+	  picture = GFX_evt_holy_emperor
+	  is_triggered_only = yes
+
+	  trigger = {
+		     OR = {
+			   has_landed_title = e_hre
+			   has_landed_title = e_karling
+			  }
+		     has_character_modifier = stat_fav_prin
+		    }
+
+	  option = { #Vassals voted in favour
+		    trigger = {
+			       check_variable = {
+						 which = support_revoke
+						 which = hre_vassals
+						}
+			      }
+		    name = EVTOPTA_rexteut_5011
+		    hidden_tooltip = {
+		    set_variable = { which = hre_vassals value = 0 }
+		    set_variable = { which = support_revoke value = 0 }
+		    set_variable = { which = oppose_revoke value = 0 }
+		    clr_global_flag = "statutum_in_favorem_principum"
+		    remove_character_modifier = stat_fav_prin
+		    clr_character_flag = "voting_for_revoke"
+		    any_realm_lord = {
+				      narrative_event = { id = rexteut.5012 }
+				     }
+				     }
+		   }
+
+	  option = {
+		    trigger = {
+			       check_variable = {
+						 which = oppose_revoke
+						 which = hre_vassals
+						}
+			      }
+		    name = EVTOPTB_rexteut_5011
+		    ai_chance = { factor = 1 }
+		    hidden_tooltip = {
+		    set_variable = { which = hre_vassals value = 0 }
+		    set_variable = { which = support_revoke value = 0 }
+		    set_variable = { which = oppose_revoke value = 0 }
+		    set_character_flag = "revoke_failed"
+		    clr_character_flag = "voting_for_revoke"
+		    any_realm_lord = {
+				      narrative_event = { id = rexteut.5012 }
+				     }
+				     }
+		   }
+
+	  option = {
+		    trigger = {
+			       check_variable = {
+						 which = oppose_revoke
+						 which = hre_vassals
+						}
+			      }
+		    name = EVTOPTC_rexteut_5011
+		    ai_chance = { 
+				 factor = 0.2 
+				 modifier = {
+					     factor = 1.25
+					     OR = {
+					     	   trait = ambitious
+					     	   trait = stubborn
+						  }
+					    }
+				}
+		    custom_tooltip = { text = imp_power_6 }
+		    hidden_tooltip = {
+		    set_variable = { which = hre_vassals value = 0 }
+		    set_variable = { which = support_revoke value = 0 }
+		    set_variable = { which = oppose_revoke value = 0 }
+		    clr_global_flag = "statutum_in_favorem_principum"
+		    remove_character_modifier = stat_fav_prin
+		    set_character_flag = "emperor_defied_vassals"
+		    clr_character_flag = "voting_for_revoke"
+		    any_realm_lord = {
+				      narrative_event = { id = rexteut.5012 }
+				     }
+				     }
+		   }
+
+		  }
+
+###Notification of the revoke of the SiFP###
+narrative_event = {
+
+	  id = rexteut.5012
+	  title = EVTNAME_rexteut_5012
+	  desc = {
+		  trigger = {
+			     NOT = { liege = { has_character_flag = "emperor_defied_vassals" } }
+			     NOT = { liege = { has_character_modifier = stat_fav_prin } }
+			    }
+		  text = EVTDESCA_rexteut_5012
+		 }
+	  desc = {
+		  trigger = {
+			     liege = { has_character_flag = "emperor_defied_vassals" }
+			    }
+		  text = EVTDESCB_rexteut_5012
+		 }
+	  desc = {
+		  trigger = {
+			     liege = { has_character_modifier = stat_fav_prin }
+			    }
+		  text = EVTDESCC_rexteut_5012
+		 }
+	  picture = GFX_evt_holy_emperor
+	  
+	  is_triggered_only = yes
+	  
+	  only_playable = yes
+
+	  option = {
+		    trigger = { 
+			       NOT = { liege = { has_character_flag = "emperor_defied_vassals" } }
+			       NOT = { liege = { has_character_modifier = stat_fav_prin } }
+			      }
+		    name = OK
+		   }
+	  option = {
+		    trigger = { liege = { has_character_flag = "emperor_defied_vassals" } }
+		    name = EVTOPTA_rexteut_5012
+		    ai_chance = { factor = 1 }
+		    opinion = {
+			       who = FROM
+			       modifier = opinion_defied_princes
+			       years = 10
+			      }
+		   }
+	  option = {
+		    trigger = { liege = { has_character_flag = "emperor_defied_vassals" } }
+		    name = EVTOPTB_rexteut_5012
+		    ai_chance = { 
+				 factor = 8 
+				}
+		    custom_tooltip = { text = imp_power_3 }
+		    set_character_flag = "angry_vassal"
+		    opinion = {
+			       who = FROM
+			       modifier = opinion_defied_princes
+			       years = 50
+			      }
+		   }
+	  option = {
+		    trigger = {
+			       liege = { has_character_modifier = stat_fav_prin }
+			      }
+		    name = OK
+		   }
+
+		  }
+
+###Emperor informed voting has begun###
+character_event = {
+
+	  id = rexteut.5013
+	  desc = EVTDESC_rexteut_5013
+	  picture = GFX_evt_council
+	  
+	  is_triggered_only = yes
+	
+	  trigger = {
+				 OR = {
+					   rex_teutonicorum_trigger = yes
+					   primary_title = { has_title_flag = "former_hre_empire" }
+					  }
+		     has_character_flag = "voting_for_revoke"
+		    }
+
+	  option = {
+		    name = EVTOPTA_rexteut_5013
+		   }
+
+		  }
+
+###Prestige for implementing Erbreichsplan###
+character_event = {
+
+	  id = rexteut.5014
+	  desc = EVTDESC_rexteut_5014
+	  picture = GFX_evt_holy_emperor
+
+	  trigger = {
+		     has_landed_title = e_hre
+		     NOR = {
+					has_law = succ_feudal_elective
+					has_law = succ_elective_gavelkind
+					has_law = succ_tanistry
+				   }
+		     NOT = {
+			    e_hre = { has_title_flag = "hereditary_hre" }
+			   }
+		    }
+
+	  mean_time_to_happen = { days = 3 }
+
+	  option = {
+		    name = EVTOPTA_rexteut_5014
+		    prestige = 200
+		    e_hre = { set_title_flag = "hereditary_hre" }
+		   }
+
+		  }
+
+###Prestige boost for German HREmperor who vassalizes France###
+narrative_event = {
+
+          id = rexteut.5015
+          title = EVTNAME_rexteut_5015
+          desc = EVTDESC_rexteut_5015
+          picture = GFX_evt_holy_emperor
+		  
+		  only_playable = yes
+
+          trigger = {
+                     NOT = { e_hre = { has_title_flag = "hre_owns_france" } }
+		     NOT = { has_global_flag = "verdun_failed" }
+		     NOT = { e_hre = { has_title_flag = "french_hre" } }
+                     has_landed_title = e_hre
+                     completely_controls = k_france
+                    }
+
+	  mean_time_to_happen = { days = 7 }
+
+          option = {
+                    name = EVTOPTA_rexteut_5015
+                    prestige = 500
+                    e_hre = { set_title_flag = "hre_owns_france" }
+                   }
+
+                  }
+###Prestige boost for French HREmperor who vassalizes Germany###
+narrative_event = {
+
+          id = rexteut.5021
+          title = EVTNAME_rexteut_5021
+          desc = EVTDESC_rexteut_5021
+          picture = GFX_evt_holy_emperor
+		  
+		  only_playable = yes
+
+          trigger = {
+                     NOT = { e_hre = { has_title_flag = "hre_owns_germany" } }
+		     NOT = { has_global_flag = "verdun_failed" }
+		     e_hre = { has_title_flag = "french_hre" }
+                     has_landed_title = e_hre
+                     completely_controls = k_germany
+                    }
+
+	  mean_time_to_happen = { days = 7 }
+
+          option = {
+                    name = EVTOPTA_rexteut_5021
+                    prestige = 500
+                    e_hre = { set_title_flag = "hre_owns_germany" }
+					hidden_tooltip = { germany_stem_breakup_effect = yes }
+                   }
+
+                  }
+
+###Restored Roman Empire destroys HRE/Carolingian title###
+narrative_event = {
+
+          id = rexteut.5016
+          title = EVTNAME_rexteut_5016
+          desc = EVTDESC_rexteut_5016
+          picture = GFX_evt_rome_restored_byzantine
+
+          major = yes
+          religion_group = christian
+		  only_playable = yes
+          
+          trigger = {
+                     has_global_flag = "rome_restored"
+                     OR = {
+			   has_landed_title = e_hre
+			   has_landed_title = e_karling
+			  }
+                     NOT = { has_landed_title = e_roman_empire }
+
+                    }
+
+	  mean_time_to_happen = { days = 3 }
+
+          option = {
+                    trigger = { 
+			       OR = {
+				     has_landed_title = e_hre 
+				     has_landed_title = e_karling
+				    }
+			      }
+                    name = EVTOPTA_rexteut_5016
+                    custom_tooltip = { text = "hre_dissolved" }
+                    hidden_tooltip = {
+				       character_event = { id = rexteut.0004 }
+		                       chronicle = {
+				                    entry = CHRON_REXTEUT_ROME
+				                    portrait = [Root.GetID]
+				                    picture = GFX_evt_rome_restored_byzantine
+				                   }
+				      e_roman_empire = {
+							holder_scope = {
+									reverse_opinion = {
+											   who = ROOT
+											   modifier = opinion_former_roman
+											   years = 50
+											  }
+								       }
+						       } 
+					character_event = { 
+									   id = Plus.1170 
+									   days = 3
+									  } 
+					any_playable_ruler = { 
+										  character_event = { 
+															  id = Plus.1170 
+															  days = 3
+															 } 
+										 }
+					k_arch_austria = { 
+									  any_direct_de_jure_vassal_title = { de_jure_liege = k_austria } 
+									  k_austria = { de_jure_liege = e_hre }
+									 }
+					activate_title = {
+									  title = k_austria
+									  status = yes
+									 }
+					k_grand_bavaria = { 
+									   any_direct_de_jure_vassal_title = { de_jure_liege = k_bavaria } 
+									   k_bavaria = { de_jure_liege = e_hre }
+									  }
+					activate_title = {
+									  title = k_bavaria
+									  status = yes
+									 }
+					k_grand_franconia = { 
+										 any_direct_de_jure_vassal_title = { de_jure_liege = k_franconia } 
+										 k_franconia = { de_jure_liege = e_hre }
+										}
+					activate_title = {
+									  title = k_franconia
+									  status = yes
+									 }
+					k_grand_saxony = { 
+									  any_direct_de_jure_vassal_title = { de_jure_liege = k_saxony }
+									  k_saxony = { de_jure_liege = e_hre } 
+									 }
+					activate_title = {
+									  title = k_saxony
+									  status = yes
+									 }
+					k_grand_swabia = { 
+									  any_direct_de_jure_vassal_title = { de_jure_liege = k_swabia } 
+									  k_swabia = { de_jure_liege = e_hre }
+									 }
+					activate_title = {
+									  title = k_swabia
+									  status = yes
+									 }
+					k_grand_naples = {
+									  any_direct_de_jure_vassal_title = { de_jure_liege = k_naples }
+									  k_naples = { de_jure_liege = e_hre }
+									 }
+					k_grand_lorraine = { 
+										any_direct_de_jure_vassal_title = { de_jure_liege = k_lotharingia } 
+										k_lotharingia = { de_jure_liege = e_hre }
+									   }
+					activate_title = {
+									  title = k_lotharingia
+									  status = yes
+									 }
+					k_grand_holland = { 
+									   any_direct_de_jure_vassal_title = { de_jure_liege = k_frisia } 
+									   k_frisia = { de_jure_liege = e_hre }
+									  }
+					activate_title = {
+									  title = k_frisia
+									  status = yes
+									 }
+					k_grand_aquitaine = { 
+									   any_direct_de_jure_vassal_title = { de_jure_liege = k_aquitaine} 
+									   k_aquitaine = { de_jure_liege = e_hre }
+									  }
+					activate_title = {
+									  title = k_aquitaine
+									  status = yes
+									 }
+					k_grand_normandy = { 
+									   any_direct_de_jure_vassal_title = { de_jure_liege = k_normandy } 
+									   k_normandy = { de_jure_liege = e_hre }
+									  }
+					activate_title = {
+									  title = k_normandy
+									  status = yes
+									 }
+					replace_hre_title_effect = yes
+                                     }
+                   }
+          option = {
+                    trigger = { has_landed_title = e_roman_empire }
+                    name = EVTOPTB_rexteut_5016 
+		    chronicle = {
+				 entry = CHRON_REXTEUT_ROME
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_rome_restored_byzantine
+				}
+                   }
+          option = {
+                    trigger = { 
+                               NOT = { has_landed_title = e_roman_empire }
+                               NOT = { has_landed_title = e_hre }
+			       NOT = { has_landed_title = e_karling }
+                              }
+                    name = OK   
+		    chronicle = {
+				 entry = CHRON_REXTEUT_ROME
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_rome_restored_byzantine
+				}
+                   }
+
+                  }
+
+###The Kingdom of Arles/Burgundy is officially absorbed into the HRE###
+letter_event = {
+	id = rexteut.5017
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   has_landed_title = k_burgundy
+			   NOT = { has_global_flag = "burgundy_absorbed" }
+			   FROM = { title = k_burgundy }
+			  }
+			  
+	immediate = {
+				 narrative_event = {
+									id = rexteut.50171
+									days = 8
+								   }
+				}
+				
+			   }
+			   
+			   
+narrative_event = {
+	  id = rexteut.50171
+	  title = EVTNAME_rexteut_5017
+	  desc = EVTDESC_rexteut_5017
+	  picture = GFX_evt_holy_emperor
+
+	  is_triggered_only = yes
+	  
+	  major = yes
+	  religion_group = christian
+	  only_playable = yes
+
+	  trigger = {
+		     has_landed_title = e_hre
+		     has_landed_title = k_burgundy
+		     NOT = { has_global_flag = "burgundy_absorbed" }
+		    }
+
+	  immediate = {
+		       k_burgundy = {
+					 de_jure_liege = e_hre
+				     destroy_landed_title = THIS
+				     set_title_flag = "union_with_hre"
+				    }
+			   set_global_flag = "burgundy_absorbed"
+		      }
+	
+	  option = {
+		    trigger = { has_landed_title = e_hre }
+		    name = EVTOPTA_rexteut_5017
+		    prestige = 250
+		    hidden_tooltip = {
+		    		      if = {
+					    limit = { has_global_flag = "arles_formed" }
+		    			    chronicle = {
+							 entry = CHRON_REXTEUT_ARLES_ABSORBED
+				 			 portrait = [Root.GetID]
+				 			 picture = GFX_evt_coronation
+							}
+					    break = yes
+			 		   }
+		    		      chronicle = {
+						   entry = CHRON_REXTEUT_BURGUNDY_ABSORBED
+				 		   portrait = [Root.GetID]
+				 		   picture = GFX_evt_coronation
+						  }
+				     }
+		   }
+	  option = {
+		    trigger = { NOT = { has_landed_title = e_hre } }
+		    name = OK
+		   }
+
+	  
+
+		  }
+
+###A kingdom in union with the HRE breaks away###
+letter_event = {
+	  id = rexteut.5018
+	  hide_window = yes
+
+	  is_triggered_only = yes
+
+	  trigger = {
+		     NOT = { has_landed_title = e_hre }
+		     any_demesne_title = { has_title_flag = "union_with_hre" }
+			 primary_title = { title = FROM }
+		    }
+
+	  immediate = {
+		     any_demesne_title = {
+				          limit = { has_title_flag = "union_with_hre" }
+					  clr_title_flag = "union_with_hre"
+				         }
+		       if = {
+			     limit = { 
+				      OR = {
+					    independent = yes
+					    liege = { 
+						     NOT = { 
+							    has_landed_title = e_hre 
+							   } 
+						    }
+					   }
+				     }
+			     set_character_flag = "broke_off_hre"
+			    }
+			e_hre = {
+				 holder_scope = {
+						 narrative_event = {
+								    id = rexteut.5019
+								    days = 7
+								   }
+						}
+				}
+		      }
+
+		 }
+
+narrative_event = {
+	  id = rexteut.5019
+	  title = EVTNAME_rexteut_5019
+	  desc = { #Still vassal, Italy#
+		  trigger = {
+			     FROM = { 
+				     NOT = { has_character_flag = "broke_off_hre" }
+				     has_landed_title = k_italy
+				    }
+			    }
+		  text = EVTDESCA_rexteut_5019
+		 }
+	  desc = { #Still vassal, Burgundy#
+		  trigger = {
+			     FROM = { 
+				     NOT = { has_character_flag = "broke_off_hre" }
+				     has_landed_title = k_burgundy
+				    }
+			    }
+		  text = EVTDESCB_rexteut_5019
+		 }
+	  desc = { #Still vassal, other#
+		  trigger = {
+			     FROM = { 
+				     NOT = { has_character_flag = "broke_off_hre" }
+				     NOR = {
+					    has_landed_title = k_italy
+					    has_landed_title = k_burgundy
+					   }
+				    }
+			    }
+		  text = EVTDESCC_rexteut_5019
+		 }
+	  
+	  desc = { #Independent, Italy#
+		  trigger = {
+			     FROM = { 
+				     has_character_flag = "broke_off_hre"
+				     has_landed_title = k_italy
+				    }
+			    }
+		  text = EVTDESCD_rexteut_5019
+		 }
+	  desc = { #Independent, Burgundy#
+		  trigger = {
+			     FROM = { 
+				     has_character_flag = "broke_off_hre"
+				     has_landed_title = k_burgundy
+				    }
+			    }
+		  text = EVTDESCE_rexteut_5019
+		 }
+	  desc = { #Independent, other#
+		  trigger = {
+			     FROM = { 
+				     has_character_flag = "broke_off_hre"
+				     NOR = {
+					    has_landed_title = k_italy
+					    has_landed_title = k_burgundy
+					   }
+				    }
+			    }
+		  text = EVTDESCF_rexteut_5019
+		 }
+	  picture = GFX_evt_coronation
+
+	  is_triggered_only = yes
+
+	  option = {
+		    trigger = {
+			       NOT = { FROM = { has_character_flag = "broke_off_hre"} }
+			      }
+		    name = EVTOPTA_rexteut_5019
+		    prestige = -50
+		   }
+	  option = {
+		    trigger = {
+			       FROM = { has_character_flag = "broke_off_hre"}
+			      }
+		    name = EVTOPTB_rexteut_5019
+		    prestige = -500
+		    FROM = { clr_character_flag = "broke_off_hre" }
+		   }
+	  
+
+		  }
+
+###Ducal title raised by Emperor to Grand Duchy/Archduchy/Kingdom###
+narrative_event = {
+	  id = rexteut.5020
+	  title = EVTNAME_rexteut_5020
+	  desc = EVTDESC_rexteut_5020
+	  picture = GFX_evt_coronation
+	
+	  is_triggered_only = yes
+	  
+	  immediate = {
+				   any_playable_ruler = {
+										 limit = {
+												  NOT = { has_character_flag = "raised_vassal" }
+												  OR = {
+														rex_teutonicorum_trigger = yes
+														liege = { rex_teutonicorum_trigger = yes }
+													   }
+												 }
+										 narrative_event = { id = rexteut.5022 }
+										}
+				  }
+
+	  option = {
+		    name = EVTOPTA_rexteut_5020
+			clr_character_flag = "raised_vassal"
+			hidden_tooltip = {
+							  if = {
+									limit = { has_landed_title = k_grand_lorraine }
+									k_lotharingia = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_lorraine
+																			}
+													}
+									activate_title = {
+													  title = k_lotharingia
+													  status = no
+													 }
+									k_grand_lorraine = { de_jure_liege = e_hre }
+								   }
+							  if = {
+									limit = { has_landed_title = k_grand_holland }
+									k_frisia = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_holland
+																			}
+											   }
+									activate_title = {
+													  title = k_frisia
+													  status = no
+													 }
+									k_grand_holland = { de_jure_liege = e_hre }
+								   }
+							  if = {
+									limit = { has_landed_title = k_grand_aquitaine }
+									k_aquitaine = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_aquitaine
+																			}
+											   }
+									activate_title = {
+													  title = k_aquitaine
+													  status = no
+													 }
+									k_grand_aquitaine = { de_jure_liege = e_hre }
+								   }
+							  if = {
+									limit = { has_landed_title = k_grand_normandy }
+									k_normandy = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_normandy
+																			}
+											   }
+									activate_title = {
+													  title = k_normandy
+													  status = no
+													 }
+									k_grand_normandy = { de_jure_liege = e_hre }
+								   }
+							  if = {
+									limit = { has_landed_title = k_grand_milan }
+									k_milan = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_milan
+																			}
+											   }
+									activate_title = {
+													  title = k_milan
+													  status = no
+													 }
+									k_grand_milan = { de_jure_liege = e_hre }
+								   }
+							  if = {
+									limit = { has_landed_title = k_grand_naples }
+									k_naples = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_naples
+																			}
+											   }
+									activate_title = {
+													  title = k_naples
+													  status = no
+													 }
+									k_grand_naples = { de_jure_liege = e_hre }
+								   }
+							 }
+		   }
+
+	          }
+
+
+###Others hear of vassal's raising to kingdom-level###
+narrative_event = {
+		id = rexteut.5022
+		title = EVTNAME_rexteut_5022
+		desc = {
+				trigger = { rex_teutonicorum_trigger = yes }
+				text = EVTDESCA_rexteut_5022
+			   }
+		desc = {
+				trigger = { rex_teutonicorum_trigger = no }
+				text = EVTDESCB_rexteut_5022
+			   }
+		picture = GFX_evt_coronation
+		
+		is_triggered_only = yes
+		
+		trigger = {
+				   NOT = { has_character_flag = "raised_vassal" }
+				   OR = {
+						 rex_teutonicorum_trigger = yes
+						 liege = { rex_teutonicorum_trigger = yes }
+					    }
+				  }
+				  
+		option = {
+				  name = OK
+				 }
+				  }
+
+###Emperor raises duchy to kingdom status###
+narrative_event = {
+		id = rexteut.5023
+		title = EVTNAME_rexteut_5023
+		desc = {
+				trigger = { rex_teutonicorum_trigger = yes }
+				text = EVTDESCA_rexteut_5023
+			   }
+		desc = {
+				trigger = { rex_teutonicorum_trigger = no }
+				text = EVTDESCB_rexteut_5023
+			   }
+		picture = GFX_evt_coronation
+		
+		is_triggered_only = yes
+		
+		option = {
+				  trigger = { rex_teutonicorum_trigger = yes }
+				  name = EXCELLENT
+				  if = {
+						limit = { 
+								 OR = {
+									   ai = no 
+									   NOT = { any_vassal = { ai = no } }
+									  }
+								}
+						clr_character_flag = "franconia_raised"
+						clr_character_flag = "swabia_raised"
+						clr_character_flag = "bavaria_raised"
+						clr_character_flag = "austria_raised"
+						clr_character_flag = "luxembourg_raised"
+						clr_character_flag = "tuscany_raised"
+						clr_character_flag = "saxony_raised"
+						clr_character_flag = "lorraine_raised"
+						clr_character_flag = "holland_raised"
+						clr_character_flag = "bohemia_raised"
+						clr_character_flag = "aquitaine_raised"
+						clr_character_flag = "burgundy_raised"
+						clr_character_flag = "normandy_raised"
+						clr_character_flag = "sicily_raised"
+						clr_character_flag = "milan_raised"
+						clr_character_flag = "naples_raised"
+					   }
+				  hidden_tooltip = {
+							  if = {
+									limit = { has_landed_title = k_grand_lorraine }
+									k_lotharingia = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_lorraine
+																			}
+													}
+									activate_title = {
+													  title = k_lotharingia
+													  status = no
+													 }
+									k_grand_lorraine = { de_jure_liege = e_hre }
+								   }
+							  if = {
+									limit = { has_landed_title = k_grand_holland }
+									k_frisia = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_holland
+																			}
+											   }
+									activate_title = {
+													  title = k_frisia
+													  status = no
+													 }
+									k_grand_holland = { de_jure_liege = e_hre }
+								   }
+							  if = {
+									limit = { has_landed_title = k_grand_aquitaine }
+									k_aquitaine = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_aquitaine
+																			}
+											   }
+									activate_title = {
+													  title = k_aquitaine
+													  status = no
+													 }
+									k_grand_aquitaine = { de_jure_liege = e_hre }
+								   }
+							  if = {
+									limit = { has_landed_title = k_grand_normandy }
+									k_normandy = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_normandy
+																			}
+											   }
+									activate_title = {
+													  title = k_normandy
+													  status = no
+													 }
+									k_grand_normandy = { de_jure_liege = e_hre }
+								   }
+							  if = {
+									limit = { has_landed_title = k_grand_milan }
+									k_milan = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_milan
+																			}
+											   }
+									activate_title = {
+													  title = k_milan
+													  status = no
+													 }
+									k_grand_milan = { de_jure_liege = e_hre }
+								   }
+							  if = {
+									limit = { has_landed_title = k_grand_naples }
+									k_naples = {
+										  any_direct_de_jure_vassal_title = {
+																			 de_jure_liege = k_grand_naples
+																			}
+											   }
+									activate_title = {
+													  title = k_naples
+													  status = no
+													 }
+									k_grand_naples = { de_jure_liege = e_hre }
+								   }
+								   }
+				 }
+		option = {
+				  trigger = { rex_teutonicorum_trigger = no }
+				  name = OK
+				  if = {
+						limit = { ai = no }
+						FROM = {
+								clr_character_flag = "franconia_raised"
+								clr_character_flag = "swabia_raised"
+								clr_character_flag = "bavaria_raised"
+								clr_character_flag = "austria_raised"
+								clr_character_flag = "luxembourg_raised"
+								clr_character_flag = "tuscany_raised"
+								clr_character_flag = "saxony_raised"
+								clr_character_flag = "lorraine_raised"
+								clr_character_flag = "holland_raised"
+								clr_character_flag = "bohemia_raised"
+								clr_character_flag = "aquitaine_raised"
+								clr_character_flag = "burgundy_raised"
+								clr_character_flag = "normandy_raised"
+								clr_character_flag = "sicily_raised"
+								clr_character_flag = "milan_raised"
+								clr_character_flag = "naples_raised"
+							   }
+						}
+				 }
+				  }
+
+###Guelphs and Ghibellines###
+letter_event = {
+		id = rexteut.5024
+		hide_window = yes
+		
+		only_playable = yes
+		
+		trigger = {
+				   rex_teutonicorum_trigger = yes
+				   has_global_flag = "concordat_of_worms"
+				   NOT = { has_global_flag = "guelphs_ghibellines" }
+				  }
+				  
+		mean_time_to_happen = { days = 10 }
+		
+		immediate = {
+					 narrative_event = { id = rexteut.5025 }
+					 any_realm_lord = { narrative_event = { id = rexteut.5025 } }
+					 set_global_flag = "guelphs_ghibellines"
+					}
+
+			   }
+narrative_event = {
+		id = rexteut.5025
+		title = EVTNAME_rexteut_5025
+		desc = EVTDESC_rexteut_5025
+		picture = GFX_evt_rival_rulers
+		
+		is_triggered_only = yes
+		
+		trigger = {
+				   NOT = { controls_religion = yes }
+				   OR = {
+						 rex_teutonicorum_trigger = yes
+						 OR = {
+							   top_liege = { rex_teutonicorum_trigger = yes }
+							   suzerain = { rex_teutonicorum_trigger = yes }
+							   top_liege = { suzerain = { rex_teutonicorum_trigger = yes } } 
+							  }
+						}
+				   NOR = {
+						  trait = guelph
+						  trait = ghibelline
+						 }
+				  }
+		
+		option = {
+				  trigger = {
+							 rex_teutonicorum_trigger = yes
+							}
+				  name = EVTOPTA_rexteut_5025
+				 }
+		option = {
+				  trigger = {
+							 rex_teutonicorum_trigger = no
+							 NOT = { any_demesne_title = { region = world_europe_south_italy } }
+							}
+				  name = EVTOPTA_rexteut_5025
+				 }
+		option = {
+				  trigger = {
+							 rex_teutonicorum_trigger = no
+							 any_demesne_title = { region = world_europe_south_italy }
+							}
+				  name = EVTOPTB_rexteut_5025
+				  ai_chance = {
+							   factor = 1
+							   modifier = {
+										   factor = 2
+										   trait = zealous
+										  }
+							   modifier = {
+										   factor = 2
+										   trait = ambitious
+										  }
+							   modifier = {
+										   factor = 1.5
+										   is_theocracy = yes
+										  }
+							   modifier = {
+										   factor = 2
+										   NOT = {
+										   liege = {
+													reverse_opinion = {
+																	   who = PREV
+																	   value = 0
+																	  }
+												   }
+												 }
+										  }
+							   modifier = {
+										   factor = 4
+										   NOT = {
+										   liege = {
+													reverse_opinion = {
+																	   who = PREV
+																	   value = -20
+																	  }
+												   }
+												 }
+										  }
+							   modifier = {
+										   factor = 2
+										   religion_head = {
+													reverse_opinion = {
+																	   who = PREV
+																	   value = 20
+																	  }
+														   }
+										  }
+							  }
+				  convert_to_guelph_effect = yes
+				 }
+		option = {
+				  trigger = {
+							 rex_teutonicorum_trigger = no
+							 any_demesne_title = { region = world_europe_south_italy }
+							}
+				  name = EVTOPTC_rexteut_5025
+				  ai_chance = {
+							   factor = 1
+							   modifier = {
+										   factor = 2
+										   trait = cynical
+										  }
+							   modifier = {
+										   factor = 1.5
+										   trait = content
+										  }
+							   modifier = {
+										   factor = 1.5
+										   culture = FROM
+										  }
+							   modifier = {
+										   factor = 2
+										   liege = {
+													reverse_opinion = {
+																	   who = PREV
+																	   value = 30
+																	  }
+												   }
+										  }
+							   modifier = {
+										   factor = 4
+										   liege = {
+													reverse_opinion = {
+																	   who = PREV
+																	   value = 50
+																	  }
+												   }
+										  }
+							   modifier = {
+										   factor = 2
+										   NOT = {
+										   religion_head = {
+													reverse_opinion = {
+																	   who = PREV
+																	   value = 0
+																	  }
+														    }
+												 }
+										  }
+							  }
+				  convert_to_ghibelline_effect = yes
+				 }
+		 
+				  }
+
+
+
+###New Italian vassal can choose a side between Guelphs and Ghibellines###
+letter_event = {
+		id = rexteut.5026
+		hide_window = yes
+		is_triggered_only = yes
+		
+		trigger = {
+				   NOT = { controls_religion = yes }
+				   has_global_flag = "guelphs_ghibellines"
+				   independent = no
+				   OR = {
+						 top_liege = { rex_teutonicorum_trigger = yes }
+						 suzerain = { rex_teutonicorum_trigger = yes }
+						 top_liege = { suzerain = { rex_teutonicorum_trigger = yes } } 
+						}
+				   any_demesne_title = { region = world_europe_south_italy }
+				   NOR = {
+						  trait = guelph
+						  trait = ghibelline
+						 }
+				   primary_title = { title = FROM } #PARP#
+				  }
+		immediate = { 
+					 character_event = {
+										id = rexteut.50261
+										days = 2
+									   }
+					}
+			}
+				  
+character_event = {
+		id = rexteut.50261
+		desc = EVTDESC_rexteut_5026
+		picture = GFX_evt_rival_rulers
+		
+		is_triggered_only = yes
+		
+		option = {
+				  name = EVTOPTB_rexteut_5025
+				  ai_chance = {
+							   factor = 1
+							   modifier = {
+										   factor = 2
+										   top_liege = {
+														NOT = {
+															   reverse_opinion = {
+																				  who = ROOT
+																				  value = -10
+																			     }
+															  }
+													   }
+										  }
+							   modifier = {
+										   factor = 2
+										   any_rival = { trait = ghibelline }
+										  }
+							   modifier = {
+										   factor = 1.2
+										   trait = zealous
+										  }
+							   modifier = {
+										   factor = 1.2
+										   is_theocracy = yes
+										  }
+							  }
+				  convert_to_guelph_effect = yes
+				  set_character_flag = "chose_side"
+				 }
+		option = {
+				  name = EVTOPTC_rexteut_5025
+				  ai_chance = {
+							   factor = 1
+							   modifier = {
+										   factor = 2
+										   top_liege = {
+														reverse_opinion = {
+																		   who = ROOT
+																		   value = 40
+																		  }
+													   }
+										  }
+							   modifier = {
+										   factor = 2
+										   any_rival = { trait = guelph }
+										  }
+							   modifier = {
+										   factor = 1.2
+										   trait = cynical
+										  }
+							  }
+				  convert_to_ghibelline_effect = yes
+				  set_character_flag = "chose_side"
+				 }
+
+				  }
+				  
+###Guelph/Ghibelline can change sides based on opinion of Emperor###
+character_event = {
+		id = rexteut.5027
+		desc = {
+				trigger = { trait = guelph }
+				text = EVTDESCA_rexteut_5027
+			   }
+		desc = {
+				trigger = { trait = ghibelline }
+				text = EVTDESCB_rexteut_5027
+			   }
+		picture = GFX_evt_rival_rulers
+			   
+		only_playable = yes
+		religion = catholic
+		min_age = 16
+		capable_only = yes
+		prisoner = no
+		
+		trigger = {
+				   independent = no
+				   has_global_flag = "guelphs_ghibellines"
+				   OR = {
+						 top_liege = { rex_teutonicorum_trigger = yes }
+						 suzerain = { rex_teutonicorum_trigger = yes }
+						 top_liege = { suzerain = { rex_teutonicorum_trigger = yes } } 
+						}
+				   OR = {
+						 AND = {
+								trait = guelph
+								top_liege = {
+											 reverse_opinion = {
+																who = ROOT
+																value = 30
+															   }
+											}
+							   }
+						 AND = {
+								trait = ghibelline
+								NOT = {
+									   top_liege = {
+													reverse_opinion = {
+																	   who = ROOT
+																	   value = -30
+																	  }
+												   }
+									  }
+							   }
+						}
+				  }
+				  
+		mean_time_to_happen = { years = 15 }
+		
+		option = {
+				  trigger = { trait = guelph }
+				  name = EVTOPTA_rexteut_5027
+				  ai_chance = {
+							   factor = 1
+							   modifier = {
+										   factor = 2
+										   opinion = {
+													  who = liege
+													  value = 75
+													 }
+										  }
+							  }
+				  convert_to_ghibelline_effect = yes
+				  prestige = -100
+				 }
+		option = {
+				  trigger = { trait = ghibelline }
+				  name = EVTOPTA_rexteut_5027
+				  ai_chance = {
+							   factor = 1
+							   modifier = {
+										   factor = 2
+										   NOT = {
+												  opinion = {
+															 who = liege
+														     value = -75
+															}
+												 }
+										  }
+							  }
+				  convert_to_guelph_effect = yes
+				  prestige = -100
+				 }
+		option = {
+				  name = EVTOPTB_rexteut_5027
+				  ai_chance = { factor = 2 }
+				 }
+
+				  }
+				  
+###Italian vassal without Imperial immediacy can change guelph/ghibelline based on direct liege###
+character_event = {
+	id = rexteut.5043
+	desc = {
+			trigger = { 
+					   trait = guelph 
+					   liege = { trait = guelph }
+					  }
+			text = EVTDESCA_rexteut_5043
+		   }
+	desc = {
+			trigger = { 
+					   trait = ghibelline 
+					   liege = { trait = ghibelline }
+					  }
+			text = EVTDESCB_rexteut_5043
+		   }
+	desc = {
+			trigger = { 
+					   trait = guelph 
+					   liege = { trait = ghibelline }
+					  }
+			text = EVTDESCC_rexteut_5043
+		   }
+	desc = {
+			trigger = { 
+					   trait = ghibelline 
+					   liege = { trait = guelph }
+					  }
+			text = EVTDESCD_rexteut_5043
+		   }
+	picture = GFX_evt_rival_rulers
+	
+	trigger = {
+			   OR = {
+					 top_liege = { rex_teutonicorum_trigger = yes }
+					 suzerain = { rex_teutonicorum_trigger = yes }
+					 top_liege = { suzerain = { rex_teutonicorum_trigger = yes } } 
+					}
+			   NOT = { liege = { rex_teutonicorum_trigger = yes } }
+			   OR = {
+					 AND = {
+							trait = guelph
+							liege = {
+									 trait = guelph
+									 NOT = {
+											reverse_opinion = {
+															   who = ROOT
+															   value = -20
+															  }
+										   }
+									}
+						   }
+					 AND = {
+							trait = ghibelline
+							liege = {
+									 trait = ghibelline
+									 NOT = {
+											reverse_opinion = {
+															   who = ROOT
+															   value = -20
+															  }
+										   }
+									}
+						   }
+					 AND = {
+							trait = guelph
+							liege = {
+									 trait = ghibelline
+									 reverse_opinion = {
+														who = ROOT
+														value = 20
+													   }
+									}
+						   }
+					 AND = {
+							trait = ghibelline
+							liege = {
+									 trait = guelph
+									 reverse_opinion = {
+														who = ROOT
+														value = 20
+													   }
+									}
+						   }
+					}
+			  }
+			  
+	mean_time_to_happen = { years = 10 }
+	
+	option = {
+			  name = EVTOPTA_rexteut_5027
+			  ai_chance = { factor = 1 }
+			  prestige = -50
+			  if = {
+					limit = {
+							 trait = guelph
+							 liege = {
+									  trait = guelph
+									  NOT = {
+											 reverse_opinion = {
+																who = ROOT
+																value = -20
+															   }
+											}
+									 }
+							}
+					convert_to_ghibelline_effect = yes
+					break = yes
+				   }
+			  if = {
+					limit = {
+							 trait = ghibelline
+							 liege = {
+									  trait = ghibelline
+									  NOT = {
+											 reverse_opinion = {
+																who = ROOT
+																value = -20
+															   }
+											}
+									 }	 
+							}
+					convert_to_guelph_effect = yes
+					break = yes
+				   }
+			  if = {
+					limit = {
+							 trait = guelph
+							 liege = {
+									  trait = ghibelline
+									  reverse_opinion = {
+														 who = ROOT
+														 value = 20
+														}
+									 }
+							}
+					convert_to_ghibelline_effect = yes
+					break = yes
+				   }
+			  if = {
+					limit = {
+							 trait = ghibelline
+							 liege = {
+									  trait = guelph
+									  reverse_opinion = {
+														 who = ROOT
+														 value = 20
+														}
+									 }
+							}
+					convert_to_guelph_effect = yes
+					break = yes
+				   }
+			 }
+	option = {
+			  name = EVTOPTB_rexteut_5027
+			  ai_chance = { factor = 2 }
+			 }
+
+				  }
+
+###Italian vassal can try and persuade one of their vassals to shift guelph/ghibelline alliegance###
+letter_event = {
+	id = rexteut.5044
+	hide_window = yes
+	
+	only_rulers = yes
+	
+	trigger = {
+			   NOT = { has_character_flag = "refused_g_g_change" }
+			   OR = {
+					 top_liege = { rex_teutonicorum_trigger = yes }
+					 suzerain = { rex_teutonicorum_trigger = yes }
+					 top_liege = { suzerain = { rex_teutonicorum_trigger = yes } } 
+					}
+			   liege = {
+						NOT = { rex_teutonicorum_trigger = yes }
+						NOR = {
+							   has_opinion_modifier = {
+													   who = ROOT 
+													   modifier = opinion_refused_change_allegiance
+													  }
+							   has_opinion_modifier = {
+													   who = ROOT 
+													   modifier = opinion_changed_allegiance
+													  }
+							  }
+					   }
+			   OR = {
+					 AND = {
+							trait = guelph
+							liege = { trait = ghibelline }
+						   }
+					 AND = {
+							trait = ghibelline
+							liege = { trait = guelph }
+						   }
+					}
+			  }
+			  
+	mean_time_to_happen = { years = 35 }
+	
+	immediate = {
+				 liege = {
+						  character_event = { id = rexteut.50441 }
+						 }
+				}
+	
+			   }
+			   
+character_event = {
+	id = rexteut.50441
+	desc = {
+			trigger = { 
+					   trait = guelph
+					   FROM = { trait = ghibelline }
+					  }
+			text = EVTDESCA_rexteut_5044
+		   }
+	desc = {
+			trigger = { 
+					   trait = ghibelline
+					   FROM = { trait = guelph }
+					  }
+			text = EVTDESCB_rexteut_5044
+		   }
+	picture = GFX_evt_rival_rulers
+		   
+	is_triggered_only = yes
+	
+	trigger = {
+			   OR = {
+					 AND = {
+							trait = guelph
+							FROM = { trait = ghibelline }
+						   }
+					 AND = {
+							trait = ghibelline
+							FROM = { trait = guelph }
+						   }
+					}
+			  }
+			  
+	option = {
+			  name = EVTOPTA_rexteut_5044
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   trait = guelph
+									   trait = zealous
+									  }
+						  }
+			  FROM = { 
+					  letter_event = { 
+									  id = rexteut.5045 
+									  days = 10
+									 } 
+					 }
+			 }
+			 
+	option = {
+			  name = EVTOPTB_rexteut_5044
+			  ai_chance = {
+						   factor = 1.5
+						  }
+			 }
+	
+				  }
+				  
+letter_event = { #Vassal hears of liege's offer
+	id = rexteut.5045
+	desc = {
+			trigger = {
+					   trait = guelph
+					   FROM = { trait = ghibelline }
+					  }
+			text = EVTDESCA_rexteut_5045
+		   }
+	desc = {
+			trigger = {
+					   trait = ghibelline
+					   FROM = { trait = guelph }
+					  }
+			text = EVTDESCB_rexteut_5045
+		   }
+		   
+	is_triggered_only = yes
+		   
+	trigger = {
+			   OR = {
+					 top_liege = { rex_teutonicorum_trigger = yes }
+					 suzerain = { rex_teutonicorum_trigger = yes }
+					 top_liege = { suzerain = { rex_teutonicorum_trigger = yes } } 
+					}
+			   NOT = { liege = { rex_teutonicorum_trigger = yes } }
+			   OR = {
+					 AND = {
+							trait = guelph
+							FROM = { trait = ghibelline }
+						   }
+					 AND = {
+							trait = ghibelline
+							FROM = { trait = guelph }
+						   }
+					}
+			  }
+			  
+	option = {
+			  name = EVTOPTA_rexteut_5045
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   trait = ghibelline
+									   trait = zealous
+									  }
+						   modifier = {
+									   factor = 0
+									   trait = guelph
+									   trait = zealous
+									  }
+						   modifier = {
+									   factor = 0.5
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = -10
+														}
+											 }
+									  }
+						  }
+			  if = {
+					limit = { trait = guelph }
+					convert_to_ghibelline_effect = yes
+					break = yes
+				   }
+			  if = {
+					limit = { trait = ghibelline }
+					convert_to_guelph_effect = yes
+					break = yes
+				   }
+			  FROM = { letter_event = { id = rexteut.5046 } }
+			 }
+	option = {
+			  name = EVTOPTB_rexteut_5045
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   trait = stubborn
+									  }
+						   modifier = {
+									   factor = 2
+									   trait = proud
+									  }
+						  }
+			  FROM = { letter_event = { id = rexteut.5046 } }
+			  hidden_tooltip = {
+								set_character_flag = "refused_g_g_change"
+								opinion = {
+										   modifier = opinion_tried_change_allegiance
+										   who = FROM
+										   years = 5
+										  }
+							   }
+			 }
+		   
+			   }
+			   
+			   
+letter_event = { #Liege hears of vassal's response
+	id = rexteut.5046
+	desc = {
+			trigger = {
+					   trait = guelph
+					   FROM = { trait = guelph }
+					  }
+			text = EVTDESCA_rexteut_5046
+		   }
+	desc = {
+			trigger = {
+					   trait = ghibelline
+					   FROM = { trait = ghibelline }
+					  }
+			text = EVTDESCB_rexteut_5046
+		   }
+	desc = {
+			trigger = {
+					   OR = {
+							 AND = {
+									trait = ghibelline
+									FROM = { trait = guelph }
+								   }
+							 AND = {
+									trait = guelph
+									FROM = { trait = ghibelline }
+								   }
+							}
+					  }
+			text = EVTDESCC_rexteut_5046
+		   }
+		   
+	is_triggered_only = yes
+	
+	option = {
+			  trigger = {
+					   OR = {
+							 AND = {
+									trait = guelph
+									FROM = { trait = guelph }
+								   }
+							 AND = {
+									trait = ghibelline
+									FROM = { trait = ghibelline }
+								   }
+							}
+					    }
+			  name = EXCELLENT
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_changed_allegiance
+										   who = FROM
+										   years = 5
+										  }
+							   }
+			 }
+	option = {
+			  trigger = {
+					   OR = {
+							 AND = {
+									trait = ghibelline
+									FROM = { trait = guelph }
+								   }
+							 AND = {
+									trait = guelph
+									FROM = { trait = ghibelline }
+								   }
+							}
+					    }
+			  name = CURSES
+			  prestige = -50
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_refused_change_allegiance
+										   who = FROM
+										   years = 5
+										  }
+							   }
+			 }
+			   }
+
+###The Margraviate of Brandenburg is formed###
+narrative_event = {
+	id = rexteut.5028
+	title = EVTNAME_rexteut_5028
+	desc = EVTDESC_rexteut_5028
+	picture = GFX_evt_large_army
+	
+	is_triggered_only = yes
+	
+	option = {
+			  trigger = { has_landed_title = k_brandenburg }
+			  name = EVTOPTA_rexteut_5028
+			 }
+			 
+	option = {
+			  trigger = { NOT = { has_landed_title = k_brandenburg } }
+			  name = OK
+			 }
+	
+				  }
+				  			  
+				  
+###Emperor tells Pope to get stuffed, ending Papal crownings###
+narrative_event = {
+	id = rexteut.5029
+	title = EVTNAME_rexteut_5029
+	desc = EVTDESC_rexteut_5029
+	picture = GFX_evt_holy_emperor
+	
+	is_triggered_only = yes
+	major = yes
+	
+	immediate = {
+				 if = {
+					   limit = { trait = crowned_by_pope }
+					   remove_trait = crowned_by_pope
+					   add_trait = crowned
+					   religion_authority = { modifier = end_papal_crowning }
+					   rightful_religious_head_scope = {
+										prestige = -500
+										opinion = {
+												   who = PREV
+												   modifier = opinion_end_papal_crowning
+												   years = 100
+												  }
+													   }
+					  }
+				}
+				
+	option = {
+			  trigger = { 
+						 OR = { 
+							   has_landed_title = e_roman_empire 
+							   has_landed_title = e_hre
+							   has_landed_title = e_karling
+							  } 
+						}
+			  name = EVTOPTA_rexteut_5029
+			 }
+	option = {
+			  trigger = { 
+						 NOR = { 
+								has_landed_title = e_roman_empire 
+								has_landed_title = e_hre
+								has_landed_title = e_karling
+							   } 
+						}
+			  name = OK
+			 }
+				  }
+				  
+###Ruler plans to try and recreate the HRE###
+character_event = {
+	id = rexteut.5030
+	desc = {
+			trigger = { 
+					   NOT = { primary_title = { has_title_flag = "former_hre_empire" } } 
+					   independent = yes
+					  }
+			text = EVTDESCA_rexteut_5030
+		   }
+	desc = {
+			trigger = { 
+					   primary_title = { has_title_flag = "former_hre_empire" } 
+					   independent = yes
+					  }
+			text = EVTDESCB_rexteut_5030
+		   }
+	desc = {
+			trigger = { independent = no }
+			text = EVTDESCC_rexteut_5030
+		   }
+	picture = GFX_evt_papal_crowning
+	
+	is_triggered_only = yes
+	
+	option = {
+			  trigger = { independent = yes }
+			  name = EVTOPTA_Plus_1175
+			  hidden_tooltip = { rightful_religious_head_scope = { letter_event = { id = Plus.1176 } } }
+			 }
+	option = {
+			  trigger = { independent = no }
+			  name = OK
+			 }
+
+				  }
+				  
+###Get positive response from Pope: the HRE is reborn###
+letter_event = {
+	id = rexteut.5031
+	desc = EVTDESC_rexteut_5031
+	
+	is_triggered_only = yes
+				
+	option = {
+			  name = EVTOPTA_Plus_1177
+			  hidden_tooltip = {
+							    any_vassal = {
+											  limit = {
+													   is_adult = yes
+													   OR = {
+															 tier = COUNT
+															 tier = DUKE
+															 tier = KING
+															}
+														NOR = {
+															   trait = excommunicated
+															   is_incapable = yes
+															   is_heretic = yes
+															  }
+														religion_group = christian
+														prisoner = no
+													  }
+											  letter_event = { id = Plus.1179 } # Invitation to coronation
+											 }
+								character_event = { id = Plus.1290 days = 59 } # Regnal name
+								character_event = { id = Plus.1181 days = 60 } # Coronation begins
+								if = {
+									  limit = { ai = no }
+									  chronicle = {
+												   entry = CHRON_REXTEUT_HRE_RESTORED
+												   portrait = [Root.GetID]
+												   picture = GFX_evt_papal_crowning
+												  }
+									 }
+							   }
+			  primary_title = {
+							   e_hre = {
+										copy_title_laws = PREV
+										if = {
+											  limit = { PREV = { has_title_flag = "former_hre_empire" } }
+											  copy_title_history = PREV
+											 }
+										gain_title = ROOT
+									   }
+							  }
+			  any_demesne_title = {
+								   limit = {
+											higher_tier_than = DUKE
+											NOT = { title = e_hre }
+										   }
+								   clr_title_flag = "former_hre_empire"
+								   destroy_landed_title = THIS
+								  }
+			  log = "[Root.RelHead.GetTitledName] agreed to crown [Root.GetTitledName] as Holy Roman Emperor, reviving the HRE"
+			 }
+
+			   }
+			   
+###HREmperor manages to force the Pope to crown them###
+narrative_event = {
+	id = rexteut.5032
+	title = EVTNAME_rexteut_5032
+	desc = {
+			trigger = { rex_teutonicorum_trigger = yes }
+			text = EVTDESCA_rexteut_5032
+		   }
+	desc = {
+			trigger = { rex_teutonicorum_trigger = no }
+			text = EVTDESCB_rexteut_5032
+		   }
+	picture = GFX_evt_holy_emperor
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	option = {
+			  trigger = { rex_teutonicorum_trigger = yes }
+			  name = EXCELLENT
+			  remove_trait = uncrowned
+			  add_trait = crowned_by_pope
+			  if = {
+					limit = { trait = excommunicated }
+					remove_trait = excommunicated
+				   }
+			  hidden_tooltip = {
+								any_playable_ruler = {
+													  limit = { religion = FROM }
+													  narrative_event = { id = rexteut.5032 }
+													 }
+								religion_authority = { modifier = forced_papal_crowning_ma }
+							   }
+			 }
+	
+	option = {
+			  trigger = { rex_teutonicorum_trigger = no }
+			  name = OK
+			 }
+	
+				  }
+				  
+				  
+########################
+###CO-CROWNING EVENTS###
+########################
+
+###Emperor gets confirmation to co-crown target###
+character_event = {
+	id = rexteut.5033
+	desc = EVTDESC_rexteut_5033
+	picture = GFX_evt_coronation
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   rex_teutonicorum_trigger = yes
+			   primary_title = { has_law = succ_feudal_elective }
+			  }
+	
+	option = { #Put the decision to the princes
+			  name = EVTOPTA_rexteut_5033
+			  ai_chance = { factor = 1 }
+			  scaled_wealth = -1
+			  custom_tooltip = {
+							    text = co_crown_1
+								hidden_tooltip = {
+												  any_realm_character = {
+																		 limit = { has_character_flag = "potential_co_crown" }
+																		 character_event = { id = rexteut.5034 }
+																		}
+												 }
+							   }
+			 }
+	option = { #Actually, never mind
+			  name = EVTOPTB_rexteut_5033
+			  ai_chance = { factor = 0 }
+			  FROM = { clr_character_flag = "potential_co_crown" }
+			  clr_character_flag = "co_crowned_heir"
+			 }
+				  }
+
+###Target is informed Emperor intends to co-crown them###
+character_event = {
+	id = rexteut.5034
+	desc = EVTDESCA_rexteut_5034
+	picture = GFX_evt_coronation
+	
+	is_triggered_only = yes
+	
+	trigger = { has_character_flag = "potential_co_crown" }
+	
+	option = {
+			  name = EXCELLENT
+			  ai_chance = { factor = 1 }
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_nominated_co_crown
+										   who = FROM
+										   years = 10
+										  }
+							    if = {
+									  limit = { 
+											   is_ruler = yes 
+											   liege = { character = FROM }
+											  }
+									  FROM = {
+											  change_variable = {
+																 which = support_emperor
+																 value = 1
+																}
+											 }
+									 }
+								FROM = {
+										letter_event = {
+														id = rexteut.5036
+														days = 21
+													   }
+										any_vassal = {
+													  limit = { NOT = { character = ROOT } }
+													  character_event = {
+																		 id = rexteut.5035
+																		 days = 5
+																		}
+													 }
+									   }
+							   }
+			 }
+	option = {
+			  name = EVTOPTA_rexteut_5034
+			  ai_chance = { factor = 0 }
+			  clr_character_flag = "potential_co_crown"
+			  hidden_tooltip = {
+							    if = {
+									  limit = { 
+											   is_ruler = yes 
+											   liege = { character = FROM }
+											  }
+									 }
+								FROM = {
+										letter_event = { id = rexteut.50341 }
+									   }
+							   }
+			 }
+				  }
+				  
+letter_event = { #No thanks
+	id = rexteut.50341
+	desc = EVTDESCB_rexteut_5034
+	
+	is_triggered_only = yes
+	
+	immediate = { clr_character_flag = "co_crowned_heir" }
+	
+	option = {
+			  name = EVTOPTB_rexteut_5034
+			 }
+
+			   }
+
+###Vassal can support or deny the Emperor's choice###
+character_event = {
+	id = rexteut.5035
+	desc = EVTDESC_rexteut_5035
+	picture = GFX_evt_coronation
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   independent = no
+			   liege = {
+					   rex_teutonicorum_trigger = yes
+					   primary_title = { has_law = succ_feudal_elective }
+					  }
+			  }
+			  
+	option = { #Support
+			  name = EVTOPTA_rexteut_5035
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 0.5
+									   liege = { current_heir = { character = ROOT } }
+									  }
+						   modifier = {
+									   factor = 0
+									   trait = ambitious
+									   liege = { current_heir = { character = ROOT } }
+									  }
+						   modifier = {
+									   factor = 0.7
+									   FROM = { has_character_flag = "previously_co_crowned" }
+									  }
+						   modifier = {
+									   factor = 2
+									   opinion = {
+												  who = FROM
+												  value = 50
+												 }
+									  }
+						   modifier = {
+									   factor = 2
+									   opinion = {
+												  who = FROMFROM
+												  value = 50
+												 }
+									  }
+						   modifier = {
+									   factor = 1.2
+									   culture = FROM
+									  }
+						  }
+			  set_character_flag = "support_co_crown"
+			  hidden_tooltip = {
+								liege = {
+										 change_variable = {
+															which = support_emperor
+															value = 1
+														   }
+										}
+							   }
+			 }
+	option = { #Do not support
+			  name = EVTOPTB_rexteut_5035
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 1.5
+									   NOT = { dynasty = FROM }
+									   liege = { current_heir = { dynasty = ROOT } }
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = -20
+														}
+											 }
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROMFROM
+														 value = -20
+														}
+											 }
+									  }
+						  }
+			  set_character_flag = "oppose_co_crown"
+			  hidden_tooltip = {
+								liege = {
+										 change_variable = {
+															which = unsupport_emperor
+															value = 1
+														   }
+										}
+							   }
+			 }
+
+				  }
+				  
+#Vote tally
+letter_event = {
+	id = rexteut.5036
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   rex_teutonicorum_trigger = yes
+			   primary_title = { has_law = succ_feudal_elective }
+			  }
+			  
+	immediate = {
+				 if = {
+					   limit = {
+							    check_variable = {
+												  which = support_emperor
+												  which = unsupport_emperor
+												 }
+							   }
+					   character_event = { id = rexteut.5037 }
+					   set_variable = { which = support_emperor value = 0 }
+					   set_variable = { which = unsupport_emperor value = 0 }
+					   break = yes
+					  }
+				 if = {
+					   limit = {
+							    check_variable = {
+												  which = unsupport_emperor
+												  which = support_emperor
+												 }
+							   }
+					   narrative_event = { id = rexteut.5040 }
+					   set_variable = { which = support_emperor value = 0 }
+					   set_variable = { which = unsupport_emperor value = 0 }
+					   break = yes
+					  }
+				}
+			   }
+
+###Emperor hears that vassals have supported his choice###
+character_event = {
+	id = rexteut.5037
+	desc = EVTDESC_rexteut_5037
+	picture = GFX_evt_conclave
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   rex_teutonicorum_trigger = yes
+			   primary_title = { has_law = succ_feudal_elective }
+			  }
+	
+	option = {
+			  name = EXCELLENT
+			  hidden_tooltip = {
+					   any_vassal = { 
+									  if = {
+											limit = { has_character_flag = "support_co_crown" }
+											reverse_opinion = {
+															   modifier = opinion_for_co_crown
+															   who = PREV
+															   years = 10
+															  }
+										   }
+									  if = {
+											limit = { NOT = { has_character_flag = "support_co_crown" } }
+											reverse_opinion = {
+															   modifier = opinion_against_co_crown
+															   who = PREV
+															   years = 10
+															  }
+										   }  
+									}
+					   any_character = {
+										limit = { has_character_flag = "potential_co_crown" }
+										character_event = { id = rexteut.5038 }
+									   }
+							   }
+			 }
+	
+				  }
+				  
+###Vassals/target hear vassals have supported the Emperor's choice###
+character_event = {
+	id = rexteut.5038
+	desc = {
+			trigger = { has_character_flag = "potential_co_crown" }
+			text = EVTDESCA_rexteut_5038
+		   }
+	desc = {
+			trigger = { NOT = { has_character_flag = "potential_co_crown" } }
+			text = EVTDESCB_rexteut_5038
+		   }
+	picture = GFX_evt_conclave
+	
+	is_triggered_only = yes
+	
+	option = {
+			  trigger = { has_character_flag = "potential_co_crown" }
+			  name = EVTOPTA_rexteut_5020
+			  hidden_tooltip = { 
+								narrative_event = { 
+												   id = rexteut.5039
+												   days = 14
+												  }
+								remove_opinion  = {
+												   who = FROM
+												   modifier = opinion_nominated_co_crown
+												  }
+								FROM = {
+										narrative_event = {
+														   id = rexteut.5039
+														   days = 14
+														  }
+										any_vassal = {
+													  if = {
+															limit = { NOT = { character = ROOT } }
+															character_event = { id = rexteut.5038 }
+														   }
+													  narrative_event = {
+																		 id = rexteut.5039
+																		 days = 14
+																		}
+													  if = {
+															limit = { has_character_flag = "support_co_crown" }
+															reverse_opinion = {
+																			   modifier = opinion_supported_co_crown
+																			   who = PREVPREV
+																			   years = 25
+																			  }
+														   }
+													  if = {
+															limit = { NOT = { has_character_flag = "support_co_crown" } }
+															reverse_opinion = {
+																			   modifier = opinion_opposed_co_crown
+																			   who = PREVPREV
+																			   years = 25
+																			  }
+														   }
+													 }
+									   }
+							   }
+			 }
+	option = {
+			  trigger = { NOT = { has_character_flag = "potential_co_crown" } }
+			  name = OK
+			 }
+				  }
+				  
+###Target is officially co-crowned###
+narrative_event = {
+	id = rexteut.5039
+	title = EVTNAME_rexteut_5039
+	desc = {
+			trigger = { has_character_flag = "potential_co_crown" }
+			text = EVTDESCA_rexteut_5039
+		   }
+	desc = {
+			trigger = { NOT = { has_character_flag = "potential_co_crown" } }
+			text = EVTDESCB_rexteut_5039
+		   }
+	picture = GFX_evt_coronation
+	
+	is_triggered_only = yes
+	
+	option = {
+			  trigger = { has_character_flag = "potential_co_crown" }
+			  name = EVTOPTA_rexteut_5039
+			  add_trait = co_crowned
+			  prestige = 100
+			  clr_character_flag = "potential_co_crown"
+			  hidden_tooltip = {
+								remove_opinion = {
+												  modifier = opinion_nominated_co_crown
+												  who = FROMFROM
+												 }
+								opinion = {
+										   modifier = opinion_co_crowned
+										   who = FROMFROM
+										   years = 50
+										  }
+							   }
+			 }
+	option = {
+			  trigger = { NOT = { has_character_flag = "potential_co_crown" } }
+			  name = OK
+			 }
+
+				  }
+				  
+###Everybody hears that vassals have opposed the Emperor's choice###
+narrative_event = {
+	id = rexteut.5040
+	title = EVTNAME_rexteut_5040
+	desc = {
+			trigger = { rex_teutonicorum_trigger = yes }
+			text = EVTDESCA_rexteut_5040
+		   }
+	desc = {
+			trigger = { 
+					   rex_teutonicorum_trigger = no
+					   has_character_flag = "potential_co_crown"
+					  }
+			text = EVTDESCB_rexteut_5040
+		   }
+	desc = {
+			trigger = { 
+					   rex_teutonicorum_trigger = no
+					   NOT = { has_character_flag = "potential_co_crown" }
+					  }
+			text = EVTDESCC_rexteut_5040
+		   }
+	picture = GFX_evt_conclave
+	
+	is_triggered_only = yes
+	
+	option = {
+			  trigger = { rex_teutonicorum_trigger = yes }
+			  name = EVTOPTA_rexteut_5040
+			  custom_tooltip = {
+								text = co_crown_3
+								hidden_tooltip = {
+												  any_demesne_title = {
+																	   limit = {
+																				OR = {
+																					  title = e_hre
+																					  title = e_karling
+																				     }
+																				has_law = succ_feudal_elective
+																			   }
+																	   set_title_flag = "ended_co_crownings"
+																	  }
+												 }
+							  }
+			  hidden_tooltip = {
+					   any_realm_character = {
+											  limit = { has_character_flag = "potential_co_crown" }
+											  narrative_event = { id = rexteut.5040 }
+											 }
+						any_vassal = {
+									  if = {
+											limit = { has_character_flag = "support_co_crown" }
+											reverse_opinion = {
+															   modifier = opinion_for_co_crown
+															   who = PREV
+															   years = 10
+															  }
+										   }
+									  if = {
+											limit = { NOT = { has_character_flag = "support_co_crown" } }
+											reverse_opinion = {
+															   modifier = opinion_against_co_crown
+															   who = PREV
+															   years = 10
+															  }
+										   }
+									 }
+							   }
+			 }
+	
+	option = {
+			  trigger = { 
+						 rex_teutonicorum_trigger = no
+						 NOT = { has_character_flag = "potential_co_crown" }
+						}
+			  name = OK
+			 }
+	
+	option = {
+			  trigger = { 
+						 rex_teutonicorum_trigger = no
+						 has_character_flag = "potential_co_crown"
+						}
+			  name = CURSES
+			  hidden_tooltip = {
+					   FROM = {
+							   any_vassal = { 
+											 if = {
+												   limit = { NOT = { has_character_flag = "potential_co_crown" } }
+												   narrative_event = { id = rexteut.5040 } 
+												  }
+											 if = {
+												   limit = { has_character_flag = "support_co_crown" }
+												   reverse_opinion = {
+																	  modifier = opinion_supported_co_crown
+																	  who = PREVPREV
+																	  years = 25
+																	 }
+												  }
+											 if = {
+												   limit = { NOT = { has_character_flag = "support_co_crown" } }
+												   reverse_opinion = {
+																	  modifier = opinion_opposed_co_crown
+																	  who = PREVPREV
+																	  years = 25
+																	 }
+												  }
+										    }
+							  }
+							  }
+			  clr_character_flag = "potential_co_crown"
+			 }
+	
+				  }
+
+
+###If title is usurped, co-crowned heir loses co-crowned status###
+letter_event = {
+	id = rexteut.5041
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   rex_teutonicorum_trigger = yes
+			   NOT = { has_character_flag = "co_crowned_heir" }
+			   any_character = { trait = co_crowned }
+			   primary_title = { title = FROM }
+			  }
+			  
+	immediate = {
+				 FROMFROM = { clr_character_flag = "co_crowned_heir" }
+				 any_realm_character = { clr_character_flag = "support_co_crown" }
+				 any_character = {
+								  limit = { trait = co_crowned }
+								  character_event = { id = rexteut.50411 }
+								 }
+				}
+			   }
+			   
+character_event = {
+	id = rexteut.50411
+	desc = EVTDESC_rexteut_5041
+	picture = GFX_evt_coronation
+	
+	is_triggered_only = yes
+	
+	trigger = { trait = co_crowned }
+	
+	option = {
+			  name = CURSES
+			  remove_trait = co_crowned
+			  set_character_flag = "was_co_crowned_heir"
+			  opinion = {
+						 modifier = opinion_usurped_co_crown
+						 who = FROM
+						 years = 50
+						}
+			 }
+				  }
+
+###If co-crowned character dies before Emperor###
+letter_event = {
+	id = rexteut.5042
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = { trait = co_crowned }
+	
+	immediate = {
+				 any_character = {
+								  limit = {
+										   rex_teutonicorum_trigger = yes
+										   has_character_flag = "co_crowned_heir"
+										  }
+								  character_event = {
+													 id = rexteut.50421
+													 days = 3
+													}
+								 }
+				}
+			   }
+			   
+character_event = {
+	id = rexteut.50421
+	desc = EVTDESC_rexteut_5042
+	picture = GFX_evt_death
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   rex_teutonicorum_trigger = yes
+			   has_character_flag = "co_crowned_heir"
+			  }
+			  
+	option = {
+			  name = EVTOPTA_rexteut_5042
+			  clr_character_flag = "co_crowned_heir"
+			  set_character_flag = "previously_co_crowned"
+			 }
+				  }
+			   
+			   
+############################
+###CO-CROWNING EVENTS END###
+############################			  			  
+
+
+
+###			  
+
+###HREmperor can try and make themselves heir of Burgundy if king is childless###
+character_event = {
+	id = rexteut.5051
+	desc = EVTDESC_rexteut_5051
+	picture = GFX_evt_coronation
+	
+	only_playable = yes
+	only_independent = yes
+	war = no
+	min_age = 16
+	prisoner = no
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   NOT = { has_character_flag = "burgundian_heir" }
+			   NOT = { has_character_flag = "not_burgundian_heir" }
+			   NOT = { has_character_flag = "burgundian_succession" }
+			   k_burgundy = {
+							 has_holder = yes
+							 NOR = {
+									has_law = succ_feudal_elective
+									has_law = succ_elective_gavelkind
+									has_law = succ_tanistry
+								   }
+							 holder_scope = {
+											 is_feudal = yes
+											 NOT = { government = communal_government }
+											 independent = yes
+											 ruled_years = 5
+											 current_heir = { 
+															 NOR = { 
+																	is_close_relative = PREV 
+																	character = ROOT
+																   } 
+															}
+										     borders_character_realm_trigger = yes
+											 NOR = {
+													has_truce = ROOT
+													has_non_aggression_pact_with = ROOT
+												   }
+											}
+							}
+			  }
+			  
+	mean_time_to_happen = { years = 5 }
+			  
+	option = { #Yeah boyee let's do it!
+			  name = EVTOPTA_rexteut_5051
+			  ai_chance = {
+						   factor = 5
+						   modifier = {
+									   factor = 2
+									   trait = ambitious
+									  }
+						  }
+			  set_character_flag = "burgundian_succession"
+			  k_burgundy = { holder_scope = { character_event = { id = rexteut.5052 } } }
+			 }
+			 
+	option = { #Meh
+			  name = EVTOPTB_rexteut_5051
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   trait = content
+									  }
+						  }
+			  set_character_flag = "burgundian_succession"
+			 }
+				  }
+
+
+###Burgundian king hears of HREmperor's "kind offer"###	  
+character_event = {
+	id = rexteut.5052
+	desc = EVTDESC_rexteut_5052
+	picture = GFX_evt_emissary
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = k_burgundy
+			   independent = yes
+			   k_burgundy = {
+							 NOR = {
+									has_law = succ_feudal_elective
+									has_law = succ_elective_gavelkind
+									has_law = succ_tanistry
+								   }
+							}							
+			   current_heir = { NOT = { is_close_relative = ROOT } }
+			  }
+			  
+	option = { #Sure, whatever
+			  name = EVTOPTA_rexteut_5052
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   trait = craven
+									  }
+						   modifier = {
+									   factor = 2
+									   opinion = {
+												  who = FROM
+												  value = 30
+												 }
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  current_heir = {
+															  reverse_opinion = {
+																			     who = ROOT
+																				 value = 0
+																				}
+															 }
+											 }
+									  }
+						   modifier = {
+									   factor = 10
+									   FROM = { dynasty = ROOT }
+									  }
+						   modifier = {
+									   factor = 5
+									   NOT = {
+											  relative_power = {
+																who = FROM
+																power = 0.5
+															   }
+											 }
+									  }
+						  }
+			  set_character_flag = "agreed_to_hre_succession"
+			  FROM = {
+					  letter_event = { 
+									  id = rexteut.5053
+									  days = 12
+									 }
+					 }
+			  hidden_tooltip = {
+								any_realm_lord = {
+												  character_event = { 
+																     id = rexteut.5055
+																	 days = 12
+																	}
+												 }
+							   }
+			 }
+			  
+	option = { #Nah mate
+			  name = EVTOPTB_rexteut_5052
+			  ai_chance = {
+						   factor = 0
+						   modifier = {
+									   factor = 2
+									   trait = proud
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = 0
+														}
+											 }
+									  }
+						   modifier = {
+									   factor = 2
+									   current_heir = {
+													   reverse_opinion = {
+																		  who = ROOT
+																		  value = 30
+																		 }
+													  }
+									  }
+						   modifier = {
+									   factor = 10
+									   relative_power = {
+														 who = FROM
+														 power = 1
+													    }
+									  }
+						  }
+			  FROM = {
+					  letter_event = { 
+									  id = rexteut.5054
+									  days = 12
+									}
+					 }
+			 }
+
+				  }				  
+
+###Emperor hears of positive response###
+letter_event = {
+	id = rexteut.5053
+	desc = EVTDESC_rexteut_5053
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   has_character_flag = "burgundian_succession"
+			  }
+			  
+	immediate = {
+				 clr_character_flag = "burgundian_succession"
+				 set_character_flag = "burgundian_heir"
+				}
+				
+	option = {
+			  name = EXCELLENT
+			  hidden_tooltip = { 
+								FROM = { 
+										add_character_modifier = { 
+																  name = burgundian_succession
+																  duration = -1
+																 }
+										current_heir = {
+														opinion = {
+																   modifier = opinion_stole_succession
+																   who = ROOT
+																   years = 50
+																  }
+													   }
+									   }
+								opinion = {
+										   modifier = opinion_named_as_heir
+										   who = FROM
+										   years = 50
+										   origin_description = burgundian_named_heir
+										  }
+							   }
+			 }
+
+			   }
+
+###Emperor hears of negative response###
+letter_event = {
+	id = rexteut.5054
+	desc = EVTDESC_rexteut_5054
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   has_character_flag = "burgundian_succession"
+			  }
+			  
+	immediate = {
+				 clr_character_flag = "burgundian_succession"
+				 set_character_flag = "not_burgundian_heir"
+				}
+				
+	option = {
+			  name = EVTOPTA_rexteut_5054
+			  custom_tooltip = { text = mf_tribute_absorb_2 }
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_rejected_succession_deal
+										   who = FROM
+										   years = 50
+										  }
+							   }
+			 }
+
+			   }
+
+###Burgundian vassals hear of change of plans###
+character_event = {
+	id = rexteut.5055
+	desc = EVTDESC_rexteut_5055
+	picture = GFX_evt_holy_emperor
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   top_liege = { has_landed_title = k_burgundy }
+			   independent = no
+			  }
+			  
+	option = {
+			  trigger = { 
+						 NOT = {
+								top_liege = {
+											 current_heir = { character = ROOT }
+											}
+							   }
+						}
+			  name = OK
+			 }
+			  
+	option = {
+			  trigger = { top_liege = { current_heir = { character = ROOT } } }
+			  name = CURSES
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_signed_succession_deal
+										   who = FROM
+										   years = 10
+										  }
+							   }
+			 }
+				  }
+###Actual event for giving Burgundy to the HREmperor###
+letter_event = {
+	id = rexteut.5056
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_rulers = yes
+	has_character_flag = "agreed_to_hre_succession"
+	only_independent = yes
+	
+	trigger = { has_landed_title = k_burgundy }
+	
+	immediate = {
+				 any_character = {
+								  limit = { has_character_flag = "burgundian_heir" }
+								  k_burgundy = { grant_title = PREV }
+								 }
+				}
+
+			   }
+
+
+###If Burgundian king is usurped, the deal is off###
+letter_event = {
+	id = rexteut.5057
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   NOT = { has_landed_title = e_hre }
+			   FROM = { title = k_burgundy }
+			   FROMFROM = { has_character_flag = "agreed_to_hre_succession" }
+			   e_hre = { holder_scope = { has_character_flag = "burgundian_heir" } }
+			  }
+			  
+	immediate = {
+				 FROMFROM = { 
+							 clr_character_flag = "agreed_to_hre_succession" 
+							 remove_character_modifier = burgundian_succession
+							}
+				 e_hre = {
+						  holder_scope = {
+										  character_event = {
+															 id = rexteut.50571
+															 days = 7
+															}
+										  remove_opinion = {
+															who = FROMFROM
+															modifier = opinion_named_as_heir
+														   }
+										 }
+						 }
+				}
+
+			   }
+			   
+character_event = {
+	id = rexteut.50571
+	desc = EVTDESC_rexteut_5057
+	picture = GFX_evt_rival_rulers
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   has_character_flag = "burgundian_heir"
+			   NOT = { has_landed_title = k_burgundy }
+			  }
+			  
+	option = { #Get angry
+			  name = EVTOPTA_rexteut_5057
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   trait = ambitious
+									  }
+						   modifier = {
+									   factor = 5
+									   trait = proud
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = stubborn
+											 trait = greedy
+											}
+									  }
+						   modifier = {
+									   factor = 5
+									   trait = wroth
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = -10
+														}
+											 }
+									  }
+						  }
+			  clr_character_flag = "burgundian_heir"
+			  set_character_flag = "burgundian_succession"
+			  add_claim = k_burgundy
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_stole_succession
+										   who = ROOT
+										   years = 50
+										  }
+							   }
+			 }
+			  
+	option = { #Let it go
+			  name = EVTOPTB_rexteut_5057
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   trait = content
+									  }
+						   modifier = {
+									   factor = 5
+									   trait = craven
+									  }
+						   modifier = {
+									   factor = 10
+									   FROM = {
+											   relative_power = {
+																 who = ROOT
+																 power = 1
+															    }
+											  }
+									  }
+						   modifier = {
+									   factor = 2
+									   opinion = {
+												  who = FROM
+												  value = 35
+												 }
+									  }
+						   modifier = {
+									   factor = 5
+									   war = yes
+									  }
+						  }
+			  clr_character_flag = "burgundian_heir"
+			  set_character_flag = "burgundian_succession"
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_stole_succession
+										   who = ROOT
+										   years = 50
+										  }
+							   }
+			 }
+				  }
+			   
+###King of Burgundy gets a dynastic heir and the deal is off###
+letter_event = {
+	id = rexteut.50581
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   father = {
+						 dynasty = ROOT
+						 has_landed_title = k_burgundy
+						 has_character_flag = "agreed_to_hre_succession"
+						}
+			   OR = {
+					 AND = {
+							k_burgundy = { has_law = agnatic_succession }
+							is_female = no
+						   }
+					 k_burgundy = { NOT = { has_law = agnatic_succession } }
+					}
+			  }
+			  
+	immediate = {
+				 father = {
+						   character_event = {
+											  id = rexteut.5058
+											  days = 3
+											 }
+						  }
+				}
+	
+			   }
+			   
+character_event = {
+	id = rexteut.5058
+	desc = EVTDESC_rexteut_5058
+	picture = GFX_evt_birth
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   FROM = { dynasty = ROOT }
+			   has_landed_title = k_burgundy
+			   NOT = { has_character_flag = e_hre }
+			   has_character_flag = "agreed_to_hre_succession"
+			  }
+			  
+	option = {
+			  name = EVTOPTA_rexteut_5058
+			  clr_character_flag = "agreed_to_hre_succession"
+			  remove_character_modifier = burgundian_succession
+			  hidden_tooltip = {
+								e_hre = {
+										 holder_scope = {
+														 letter_event = {
+																		 id = rexteut.5059
+																		 days = 5
+																		}
+														}
+										}
+							   }
+			 }
+
+				  }
+
+###HREmperor hears that, due to dynastic birth, the deal is off###
+letter_event = {
+	id = rexteut.5059
+	desc = EVTDESC_rexteut_5059
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   has_character_flag = "burgundian_heir"
+			   NOT = { has_landed_title = k_burgundy }
+			  }
+			  
+	option = { #Que sera sera
+			  name = EVTOPTA_rexteut_5059
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 10
+									   trait = just
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = kind
+											 trait = content
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   opinion = {
+												  who = FROM
+												  value = 10
+												 }
+									  }
+						   modifier = {
+									   factor = 5
+									   opinion = {
+												  who = FROM
+												  value = 40
+												 }
+									  }
+						   modifier = {
+									   factor = 5
+									   FROM = {
+											   relative_power = {
+																 who = ROOT
+																 power = 1
+																}
+											  }
+									  }
+						  }
+			  clr_character_flag = "burgundian_heir"
+			  set_character_flag = "burgundian_succession"
+			  hidden_tooltip = {
+								remove_opinion = {
+												  who = FROM
+												  modifier = opinion_named_as_heir
+												 }
+							   }
+			 }
+			 
+	option = { #I am altering the terms of the deal
+			  name = EVTOPTB_rexteut_5059
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 4
+									   trait = arbitrary
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = greedy
+											 trait = ambitious
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = -25
+														}
+											 }
+									  }
+						  }
+			  clr_character_flag = "burgundian_heir"
+			  set_character_flag = "burgundian_succession"
+			  add_claim = k_burgundy
+			  hidden_tooltip = {
+								remove_opinion = {
+												  who = FROM
+												  modifier = opinion_named_as_heir
+												 }
+								opinion = {
+										   modifier = opinion_succession_deal_cancelled
+										   who = FROM
+										   years = 50
+										  }
+							   }
+			 }
+
+			   }
+
+###HREmperor dies before the King of Burgundy###
+letter_event = {
+	id = rexteut.5060
+	hide_window = yes
+	
+	only_playable = yes
+	has_character_flag = "burgundian_heir"
+	
+	is_triggered_only = yes
+	
+	trigger = { 
+			   has_landed_title = e_hre 
+			   NOT = { has_landed_title = k_burgundy }
+			  }
+			  
+	immediate = {
+				 k_burgundy = {
+							   holder_scope = {
+											   character_event = {
+																  id = rexteut.5061
+																  days = 2
+																 }
+											  }
+							  }
+				}
+
+			   }
+
+character_event = { #King of Burgundy hears
+	id = rexteut.5061
+	desc = EVTDESC_rexteut_5061
+	picture = GFX_evt_death
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	only_independent = yes
+	has_character_flag = "agreed_to_hre_succession"
+	
+	trigger = {
+			   has_landed_title = k_burgundy
+			  }
+			  
+	option = {
+			  name = EVTOPTA_rexteut_5061
+			  clr_character_flag = "agreed_to_hre_succession"
+			  remove_character_modifier = burgundian_succession
+			  e_hre = {
+					   holder_scope = {
+									   set_character_flag = "burgundian_succession"
+									   character_event = {
+														  id = rexteut.5062
+														  days = 8
+														 }
+									  }
+					  }
+			 }
+
+				  }
+
+###New Emperor can decide what to do###
+character_event = {
+	id = rexteut.5062
+	desc = EVTDESC_rexteut_5062
+	picture = GFX_evt_rival_rulers
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			  }
+			  
+	option = { #The deal is still on
+			  name = EVTOPTA_rexteut_5062
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   trait = greedy
+									  }
+						   modifier = {
+									   factor = 10
+									   trait = ambitious
+									  }
+						   modifier = {
+									   factor = 1.5
+									   NOT = {
+											  FROM = {
+													  relative_power = {
+																		who = ROOT
+																		power = 0.5
+																	   }
+													 }
+											 }
+									  }
+						   modifier = {
+									   factor = 5
+									   trait = arbitrary
+									  }
+						  }
+			  FROM = {
+					  letter_event = {
+									  id = rexteut.5063
+									  days = 7
+									 }
+					 }
+			 }
+			  
+	option = { #The deal is off
+			  name = EVTOPTB_rexteut_5062
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   trait = content
+									  }
+						   modifier = {
+									   factor = 1.5
+									   trait = just
+									  }
+						   modifier = {
+									   factor = 2
+									   trait = kind
+									  }
+						   modifier = {
+									   factor = 1.5
+									   FROM = {
+											   relative_power = {
+																 who = ROOT
+																 power = 1
+																}
+											  }
+									  }
+						  }
+			  FROM = {
+					  letter_event = {
+									  id = rexteut.5064
+									  days = 7
+									 }
+					 }
+			 }
+
+				  }
+
+###King of Burgundy hears of new Emperor's decision###
+letter_event = { #Deal is still on
+	id = rexteut.5063
+	desc = EVTDESC_rexteut_5063
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = k_burgundy
+			  }
+			  
+	option = { #Accept
+			  name = EVTOPTA_rexteut_5063
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 10
+									   trait = craven
+									  }
+						   modifier = {
+									   factor = 2
+									   trait = content
+									  }
+						   modifier = {
+									   factor = 5
+									   NOT = {
+											  relative_power = {
+																who = FROM
+																power = 0.5
+															   }
+											 }
+									  }
+						   modifier = {
+									   factor = 2
+									   opinion = {
+												  who = ROOT
+												  value = 25
+												 }
+									  }
+						  }
+			  FROM = {
+					  letter_event = {
+									  id = rexteut.5065
+									 }
+					 }
+			 }
+			  
+	option = { #Deny
+			  name = EVTOPTB_rexteut_5063
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = proud
+											 trait = stubborn
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   trait = brave
+									  }
+						   modifier = {
+									   factor = 5
+									   relative_power = {
+														 who = FROM
+														 power = 1
+														}
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = 0
+														}
+											 }
+									  }
+						  }
+			  FROM = {
+					  letter_event = {
+									  id = rexteut.5066
+									 }
+					 }
+			 }
+			   }
+			   
+letter_event = { #Deal is off
+	id = rexteut.5064
+	desc = EVTDESC_rexteut_5064
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = k_burgundy
+			  }
+			  
+	option = {
+			  name = OK
+			  clr_character_flag = "agreed_to_hre_succession"
+			  remove_character_modifier = burgundian_succession
+			  hidden_tooltip = {
+							    opinion = {
+										   modifier = opinion_cancelled_succession_deal
+										   who = FROM
+										   years = 15
+										  }
+							   }
+			 }
+			   }
+
+###Emperor hears of response###
+letter_event = { #Accept
+	id = rexteut.5065
+	desc = EVTDESC_rexteut_5065
+	
+	is_triggered_only = yes
+	
+	trigger = { has_landed_title = e_hre }
+	
+	option = {
+			  name = EXCELLENT
+			  clr_character_flag = "burgundian_succession"
+			  set_character_flag = "burgundian_heir"
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_named_as_heir
+										   who = FROM
+										   years = 50
+										  }
+							   }
+			 }
+
+			   }
+			   
+letter_event = { #Deny
+	id = rexteut.5066
+	desc = EVTDESC_rexteut_5066
+	
+	is_triggered_only = yes
+	
+	trigger = { has_landed_title = e_hre }
+	
+	option = {
+			  name = EVTOPTA_rexteut_5054
+			  clr_character_flag = "burgundian_succession"
+			  set_character_flag = "not_burgundian_heir"
+			  custom_tooltip = { text = mf_tribute_absorb_2 }
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_succession_deal_cancelled
+										   who = FROM
+										   years = 50
+										  }
+							   }
+			 }
+			   }
+	
+	
+###King of Burgundy facing revolt allows HREmperor to make offer###
+letter_event = {
+	id = rexteut.5067
+	hide_window = yes
+	
+	is_triggered_only = yes
+	war = yes
+	only_independent = yes
+	
+	trigger = {
+			   has_landed_title = k_burgundy
+			   tier = KING
+			   k_burgundy = {
+							 is_contested = yes
+							 NOR = {
+									has_law = succ_feudal_elective
+									has_law = succ_elective_gavelkind
+								   }
+							}
+			   NOT = { has_character_flag = "agreed_to_hre_succession" }
+			   e_hre = {
+						has_holder = yes
+						holder_scope = { 
+										war = no
+										borders_character_realm_trigger = yes
+										NOT = { war_with = ROOT }
+										NOT = { is_foe = ROOT }
+										NOT = { has_character_flag = "burgundian_succession" } 
+										NOT = { has_character_flag = "burgundian_heir" }
+										NOT = { has_character_flag = "not_burgundian_heir" }
+										NOT = {
+											   ROOT = {
+													   current_heir = { character = PREV }
+													   relative_power = {
+																		 who = PREV
+																		 power = 0.4
+																		}
+													  }
+											  }
+									   }
+					   }
+			  }
+	
+	immediate = {
+				 e_hre = {
+						  holder_scope = {
+										  character_event = { 
+															 id = rexteut.5068 
+															 days = 14
+															}
+										 }
+						 }
+				}
+
+			   }
+			   
+character_event = {
+	id = rexteut.5068
+	desc = EVTDESC_rexteut_5068
+	picture = GFX_evt_battle
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   NOT = { has_character_flag = "burgundian_succession" }
+			   NOT = { has_character_flag = "burgundian_heir" }
+			   NOT = { has_character_flag = "not_burgundian_heir" }
+			  }
+			  
+	option = { #Yea
+			  name = EVTOPTA_rexteut_5068
+			  ai_chance = {
+						   factor = 0.8
+						   modifier = {
+									   factor = 5
+									   trait = ambitious
+									  }
+						   modifier = {
+									   factor = 2
+									   trait = greedy
+									  }
+						  }
+			  FROM = { letter_event = { id = rexteut.5069 } }
+			  set_character_flag = "burgundian_succession"
+			 }
+			  
+	option = { #Naw
+			  name = EVTOPTB_rexteut_5068
+			  ai_chance = {
+						   factor = 1.2
+						   modifier = {
+									   factor = 5
+									   trait = content
+									  }
+						  }
+			  set_character_flag = "burgundian_succession"
+			 }
+
+				  }
+	
+###King of Burgundy hears of HREmperor's offer###
+letter_event = {
+	id = rexteut.5069
+	desc = EVTDESC_rexteut_5069
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = k_burgundy
+			   k_burgundy = { is_contested = yes }
+			   NOT = { has_character_flag = "agreed_to_hre_succession" }
+			   war = yes
+			  }
+			  
+	option = { #Agree
+			  name = EVTOPTA_rexteut_5069
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 5
+									   trait = craven
+									  }
+						   modifier = {
+									   factor = 2
+									   current_heir = { NOT = { is_close_relative = ROOT } }
+									  }
+						   modifier = {
+									   factor = 2
+									   opinion = {
+												  who = FROM
+												  value = 40
+												 }
+									  }
+						  }
+			  FROM = {
+					  letter_event = {
+									  id = rexteut.5070
+									  days = 7
+									 }
+					 }
+			  set_character_flag = "agreed_to_hre_succession"
+			 }
+			 
+	option = { #Disagree
+			  name = EVTOPTB_rexteut_5069
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 5
+									   trait = brave
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = stubborn
+											 trait = proud
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = -10
+														}
+											 }
+									  }
+						  }
+			  FROM = {
+					  letter_event = {
+									  id = rexteut.5071
+									  days = 7
+									 }
+					 }
+			 }
+
+			      }
+
+###HREmperor hears of response###
+letter_event = {
+	id = rexteut.5070
+	desc = EVTDESC_rexteut_5070
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   NOT = { has_character_flag = "burgundian_heir" }
+			   NOT = { has_character_flag = "not_burgundian_heir" }
+			   FROM = { has_landed_title = k_burgundy }
+			  }
+			  
+	option = {
+			  name = EXCELLENT
+			  clr_character_flag = "burgundian_succession"
+			  set_character_flag = "burgundian_heir"
+			  join_defender_wars = FROM
+			  hidden_tooltip = { 
+								FROM = { 
+										add_character_modifier = { 
+																  name = burgundian_succession
+																  duration = -1
+																 }										
+									   }
+								opinion = {
+										   modifier = opinion_named_as_heir
+										   who = FROM
+										   years = 50
+										  }
+							   }
+			 }
+			  
+			   }
+			   
+letter_event = {
+	id = rexteut.5071
+	desc = EVTDESC_rexteut_5071
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   NOT = { has_character_flag = "burgundian_heir" }
+			   NOT = { has_character_flag = "not_burgundian_heir" }
+			   FROM = { has_landed_title = k_burgundy }
+			  }
+			  
+	option = {
+			  name = EVTOPTA_rexteut_5071
+			  ai_chance = {
+						   factor = 1.2
+						   modifier = {
+									   factor = 10
+									   trait = content
+									  }
+						   modifier = {
+									   factor = 2
+									   trait = just
+									  }
+						   modifier = {
+									   factor = 2
+									   trait = kind
+									  }
+						   modifier = {
+									   factor = 5
+									   opinion = {
+												  who = FROM
+												  value = 25
+												 }
+									  }
+						   modifier = {
+									   factor = 1.5
+									   trait = patient
+									  }
+						  }
+			  clr_character_flag = "burgundian_succession"
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_rejected_succession_deal
+										   who = FROM
+										   years = 10
+										  }
+							   }
+			 }
+			  
+	option = {
+			  name = EVTOPTB_rexteut_5071
+			  trigger = {
+						 OR = {
+							   trait = ambitious
+							   trait = greedy
+							   trait = arbitrary
+							   has_claim = k_burgundy
+							   FROM = {
+									   NOT = {
+											  current_heir = { is_close_relative = PREV }
+											 }
+									  }
+							  }
+						}
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   trait = ambitious
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = greedy
+											 trait = arbitrary
+											}
+									  }
+						   modifier = {
+									   factor = 1.5
+									   OR = {
+											 trait = stubborn
+											 trait = wroth
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = -10
+														}
+											 }
+									  }
+						  }
+			  clr_character_flag = "burgundian_succession"
+			  set_character_flag = "not_burgundian_heir"
+			  custom_tooltip = { text = mf_tribute_absorb_2 }
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_rejected_succession_deal
+										   who = FROM
+										   years = 15
+										  }
+							   }
+			 }
+			   }
+
+###Emperor considers adding Middle-Francian tributary to the Empire###
+letter_event = {
+	id = rexteut.5072
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	war = no
+	
+	trigger = {
+			   tier = KING
+			   OR = {
+					 has_landed_title = k_lotharingia
+					 has_landed_title = k_burgundy
+					 has_landed_title = k_frisia
+					}
+			   is_tributary = yes
+			   e_hre = {
+						has_holder = yes
+						holder_scope = {
+										NOT = { has_character_flag = "mf_tribute_absorb" }
+										war = no
+										ROOT = { pays_tribute_to = PREV }
+										borders_character_realm_trigger = yes
+										NOR = {
+											   has_truce = ROOT
+											   has_non_aggression_pact_with = ROOT
+											  }
+									   }
+					   }
+			  }
+			  
+	immediate = {
+				 e_hre = {
+						  holder_scope = {
+										  character_event = { id = rexteut.50721 }
+										 }
+						 }
+			    }
+
+			   }
+			   
+character_event = {
+	id = rexteut.50721
+	desc = EVTDESC_rexteut_5072
+	picture = GFX_evt_emissary
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	only_independent = yes
+	prisoner = no
+	min_age = 16
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   war = no
+			   NOR = {
+					  has_global_flag = "investiture_papal"
+					  has_global_flag = "concordat_of_worms"
+					  has_character_modifier = stat_fav_prin
+					 }
+			   FROM = { 
+					   tier = KING
+					   OR = {
+							 has_landed_title = k_burgundy
+							 has_landed_title = k_frisia
+							 has_landed_title = k_lotharingia
+							}
+					   pays_tribute_to = ROOT 
+					   borders_character_realm_trigger = yes
+					  }
+			   NOT = { has_character_flag = "mf_tribute_absorb" }
+			  }
+			  
+	option = { #Do it
+			  name = EVTOPTA_rexteut_3001
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = ambitious
+											 trait = greedy
+											 trait = envious
+											 trait = proud
+											}
+									  }
+						  }
+			  set_character_flag = "mf_tribute_absorb"
+			  FROM = {
+					  character_event = {
+										 id = rexteut.5073
+									    }
+					 }
+			 }
+	option = { #Don't actually
+			  name = EVTOPTB_rexteut_3001
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = craven
+											 trait = kind
+											 trait = slothful
+											 trait = content
+											 trait = humble
+											}
+									  }
+						  }
+			  set_character_flag = "mf_tribute_absorb"
+			 }
+				  }
+				  
+###MF ruler hears of Emperor's offer###
+character_event = {
+	id = rexteut.5073
+	desc = EVTDESC_rexteut_5073
+	picture = GFX_evt_emissary
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	only_independent = yes
+	
+	trigger = {
+			   tier = KING
+			   OR = {
+					 has_landed_title = k_burgundy
+					 has_landed_title = k_lotharingia
+					 has_landed_title = k_frisia
+					}
+			   FROM = { has_landed_title = e_hre }
+			   pays_tribute_to = FROM
+			  }
+			  
+	option = { #Agree
+			  name = EVTOPTA_rexteut_5073
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = craven
+											 trait = content
+											 trait = charitable
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   opinion = {
+												  who = FROM
+												  value = 35
+												 }
+									  }
+						  }
+			  FROM = {
+					  letter_event = {
+									  id = rexteut.5074
+									  days = 12
+									 }
+					 }
+			 }
+	option = { #Oppose
+			  name = EVTOPTB_rexteut_5073
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+										     trait = proud
+											 trait = stubborn
+											 trait = ambitious
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = -20
+														}
+											 }
+									  }
+						  }
+			  hidden_tooltip = {
+								opinion = { 
+										   modifier = opinion_tributary_vassal
+										   who = FROM
+										   years = 50
+										  }
+							   }
+			  FROM = {
+					  letter_event = {
+									  id = rexteut.5075
+									  days = 12
+									 }
+					 }
+			 }
+
+				  }
+
+###Emperor hears of ruler's response###
+letter_event = {
+	id = rexteut.5074
+	desc = EVTDESC_rexteut_5074
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	only_independent = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   FROM = {
+					   tier = KING
+					   OR = {
+							 has_landed_title = k_frisia
+							 has_landed_title = k_lotharingia
+							 has_landed_title = k_burgundy
+							}
+					   pays_tribute_to = ROOT
+					  }
+			  }
+			  
+	option = {
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = mf_tribute_absorb_1
+								hidden_tooltip = {
+												  remove_tributary = FROM
+												  FROM = { 
+														  set_defacto_liege = ROOT 
+														  any_demesne_title = {
+																			   limit = { tier = KING }
+																			   de_jure_liege = e_hre
+																			  }
+														 }
+												  any_playable_ruler = {
+																		limit = { is_catholic_group_trigger = yes }
+																		narrative_event = { id = rexteut.5076 }
+																	   }
+												 }
+							   }
+			 }
+
+			   }
+			   
+letter_event = {
+	id = rexteut.5075
+	desc = EVTDESC_rexteut_5075
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	only_independent = yes
+	
+	trigger = {
+			   has_landed_title = e_hre
+			   FROM = {
+					   tier = KING
+					   OR = {
+							 has_landed_title = k_frisia
+							 has_landed_title = k_lotharingia
+							 has_landed_title = k_burgundy
+							}
+					   pays_tribute_to = ROOT
+					  }
+			  }
+			  
+	option = {
+			  name = EVTOPTA_rexteut_3004
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = ambitious
+											 trait = proud
+											 trait = stubborn
+											 trait = greedy
+											 trait = arbitrary
+											}
+									  }
+						   modifier = {
+									   factor = 1.5
+									   OR = {
+											 trait = cruel
+											 trait = wroth
+											 trait = envious
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = -20
+														}
+											 }
+									  }
+						  }
+			  hidden_tooltip = { remove_tributary = FROM }
+			  set_character_flag = "invading_tributary"
+			  FROM = { set_character_flag = "former_tribute_target" }
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_tributary_refused
+										   who = FROM
+										   years = 25
+										  }
+							   }
+			 }
+			 
+	option = {
+			  name = EVTOPTB_rexteut_3004
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = craven
+											 trait = humble
+											 trait = kind
+											 trait = just
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   trait = content
+									  }
+						   modifier = {
+									   factor = 2
+									   opinion = {
+												  who = FROM
+												  value = 30
+												 }
+									  }
+						   modifier = {
+									   factor = 10
+									   war = yes
+									  }
+						  }
+			  prestige = -150
+			  hidden_tooltip = { remove_tributary = FROM }
+			  hidden_tooltip = {
+								opinion = {
+										   modifier = opinion_tributary_refused
+										   who = FROM
+										   years = 25
+										  }
+							   }
+			 }
+
+			   }
+
+###Others informed if the kingdom becomes part of the HRE###
+narrative_event = {
+	id = rexteut.5076
+	title = EVTNAME_rexteut_5076
+	desc = EVTDESC_rexteut_5076
+	picture = GFX_evt_holy_emperor
+	
+	is_triggered_only = yes
+	
+	trigger = { is_catholic_group_trigger = yes }
+	
+	option = {
+			  name = OK
+			 }
+
+				  }
+
+###

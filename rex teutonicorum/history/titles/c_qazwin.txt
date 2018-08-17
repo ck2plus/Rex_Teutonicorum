@@ -1,0 +1,137 @@
+750.1.1={
+	liege=d_hamadan
+}
+768.1.1={
+	holder = 188725
+}
+864.1.1 = {
+	liege = "d_mazandaran"
+	holder = 45108
+}
+884.1.1 = {
+	holder = 163166
+}
+945.1.1 = {
+	liege = d_hamadan
+	holder = 1000254503
+}
+976.1.1 = {
+	holder = 1000254505
+}
+997.1.1 = {
+	holder = 1000254509
+	liege = "k_persia"
+}
+
+#Buyids thereafter
+
+1029.8.5 = {
+	holder = 144125 # Mahmud
+}
+1030.1.1 = {
+	holder = 144126 # Muhammad
+}
+1031.1.1 = {
+	holder = 144127 # Musud
+}
+
+1040.5.23 = {
+	holder = 3038
+}
+1063.9.4 = {
+	holder = 3040
+}
+1072.11.1 = {
+	holder = 3042
+}
+1092.11.1 = {
+	holder = 144012
+}
+1094.1.1 = {
+	holder = 144013
+}
+1105.3.1 = {
+	holder = 144014
+}
+1118.4.18 = {
+	holder = 144043
+}
+1131.1.1 = {
+	holder = 144048
+}
+1132.1.1 = {
+	holder = 144050
+}
+1133.1.1 = {
+	holder = 144049
+}
+1152.10.2 = {
+	holder = 144053
+}
+1153.1.1 = {
+	holder = 144054
+}
+1157.5.8 = {
+	liege = 0
+} 
+1159.1.1 = {
+	holder = 144055
+}
+1175.12.31 = {
+	holder = 144056
+}
+1194.3.1 = {
+	liege = "k_persia" 
+	holder = 230000
+}
+1200.1.1 = {
+	holder = 93052
+}
+1210.1.1 = {
+	holder = 93054
+}
+1221.1.1 = {
+	liege = "e_mongol_empire" 
+	holder = 125520
+}
+1227.12.2 = {
+	liege = "e_il-khanate"
+}
+1232.1.1 = {
+	holder = 478011
+}
+1265.2.8 = {
+	holder = 478010
+}
+1282.1.1 = {
+	holder = 125523
+}
+1284.1.1 = {
+	holder = 478008
+}
+1291.1.1 = {
+	holder = 125525
+}
+1295.1.1 = {
+	holder = 125522
+}
+1295.8.1 = {
+	holder = 125524
+}
+1304.5.11 = {
+	holder = 478007
+}
+1316.12.16 = {
+	holder = 478006
+}
+1327.1.1 = {
+    liege = "e_il-khanate"
+	holder = 478001
+}
+1328.1.1 = {
+	holder = 478035
+}
+1336.7.24 = {
+	liege = k_chupanid
+        holder = 478035	
+}

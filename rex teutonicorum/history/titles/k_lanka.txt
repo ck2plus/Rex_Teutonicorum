@@ -1,0 +1,93 @@
+100.1.1 = {
+	de_jure_liege = "e_placeholder"
+}
+741.1.1 = {
+	holder = 189005
+}
+866.1.1 = {
+	holder = 175010
+}
+901.1.1 = {
+	holder = 189015
+}
+929.1.1 = {
+	holder = 189019
+}
+939.1.1 = {
+	holder = 189020
+}
+940.1.1 = {
+	holder = 189021
+}
+952.1.1 = {
+	holder = 189022
+}
+975.1.1 = {
+	holder = 189023
+}
+991.1.1 = {
+	holder = 189024
+}
+1001.1.1 = {
+	holder = 189025
+}
+1017.1.1 = {
+	holder = 0
+}
+1072.1.1 = {
+	holder = 189029
+}
+1110.1.1 = {
+	holder = 217370 # Srivallabha
+}
+1138.1.1 = {
+	holder = 217374 # Manabharana
+}
+1153.1.1 = {
+	holder = 217366 # Parakramabahu I 'The Great'
+}
+1186.1.1 = {
+	holder = 217375 # Vijayabahu II
+}
+1187.6.1 = {
+	holder = 217376 # Mahinda VI
+}
+1187.6.6 = {
+	holder = 217377 # Nissanka
+}
+1196.1.1 = {
+	holder = 217379 # Virabahu
+}
+1196.4.4 = {
+	holder = 217391 # Vikramabahu II
+}
+1196.7.1 = {
+	holder = 217380 # Chodaganga
+}
+1197.4.1 = {
+	holder = 217371 # Lilavati 1st time
+}
+1200.8.23 = {
+	holder = 217383 # Sahassamalla
+}
+1202.1.1 = {
+	holder = 217382 # Kalyanavati
+}
+1208.1.1 = {
+	holder = 217384 # Dharmasoka
+}
+1209.4.5 = {
+	holder = 217385 # Anikanga
+}
+1209.4.22 = {
+	holder = 217371 # Lilavati 2nd time
+}
+1210.1.1 = {
+	holder = 217390 # Lokissara
+}
+1210.10.1 = {
+	holder = 217371 # Lilavati 3rd time
+}
+1212.1.1 = {
+	holder = 0
+}

@@ -1,0 +1,50 @@
+710.1.1={
+	liege=e_arabia
+}
+
+769.1.1={
+	holder=188603
+	liege = 0 # De facto
+	set_tribute_suzerain = { who = e_arabia type = permanent }
+}
+
+864.1.1={
+	holder = 163099
+	clear_tribute_suzerain = e_arabia
+}
+892.8.1 = {
+	liege = k_khwarizm
+	holder = 163157
+}
+907.1.1 = {
+	holder = 1000254523
+}
+914.1.12 = {
+	holder = 120000138
+}
+945.1.1 = {
+	holder = 120000139
+}
+999.6.1 = {
+	holder = 0
+}
+1137.1.1={
+	historical_nomad = yes
+	liege=0 # Kara Khitan expansion
+	holder = 188905 # Yelü-Dashi
+}
+1143.1.1={
+	holder = 188907 # Yelü-Yilie
+}
+1163.1.1={
+	holder = 188908 # Pusuwan
+}
+1177.1.1={
+	holder = 188912 # Yelü-Zhilugu
+}
+1211.1.1={
+	holder = 188914 # Kuchlug (de facto)
+}
+1218.1.1={
+	holder=0
+}

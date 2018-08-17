@@ -1,0 +1,74 @@
+740.1.1={
+	holder = 131717 #Agnerald de Chaumontis
+	liege = k_france
+}
+790.1.1={
+	holder = 131716
+}
+842.1.1 = {
+	liege = "k_lotharingia"
+	holder = 7979
+}
+844.1.1 = {
+	holder = 131716
+}
+860.1.2 = {
+	holder = 131715
+}
+890.1.2 = {
+	holder = 131714
+}
+923.1.1 = {
+	liege = "d_upper_lorraine"
+}
+936.1.1 = {
+	holder = 120000115 #Rudolf I
+}
+946.1.1 = {
+	holder = 120000116 #Rudolf II Son of above
+}
+948.1.1 = {
+	holder = 120000120 #Stephen
+}
+956.1.1 = {
+	holder = 6410 #Otto
+}
+987.1.1 = {
+	holder = 161916 #Louis I
+}
+1025.1.1 = {
+	holder = 161917 #Louis II
+}
+1060.1.1 = {
+holder = 161918 #Arnold
+}
+1066.1.1 = {
+liege = "d_luxembourg"
+}
+1105.1.1 = {
+holder = 33207
+}
+1126.1.1 = {
+holder = 900020
+}
+1162.1.1 = {
+holder = 900021
+}
+1189.8.12 = {
+holder = 900022
+}
+1226.1.1 = {
+holder = 900023
+}
+1268.1.1 = {
+holder = 33082
+}
+1299.1.1 = {
+holder = 33089
+}
+1327.8.22 = {
+holder = 33092
+}
+1336.4.22 = {
+holder = 462162
+}

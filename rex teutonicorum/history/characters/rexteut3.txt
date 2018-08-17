@@ -1,0 +1,1922 @@
+#888/899 characters###
+
+130000001 = {
+	name = "Æthelred"
+	dynasty = 813
+	religion = chalcedonian
+	culture = saxon
+	father = 163102
+	mother = 168594
+
+	855.1.1 = {
+		   birth = yes
+		  }
+
+	887.1.1 = {
+		   add_spouse = 130000002 
+		  }
+
+	911.1.1 = {
+		   death = yes
+		  }
+	
+
+}
+130000002 = {
+	name = "Æthelflæd"
+	female = yes
+	dynasty = 100072
+	religion = chalcedonian
+	culture = saxon
+	father = 7627
+
+	869.1.1 = {
+		   birth = yes
+		  }
+
+	887.1.1 = {
+		   add_spouse = 130000001 
+		  }
+
+	918.6.12 = {
+		    death = yes
+		   }
+	
+
+}
+130000003 = {
+	name = "Ælfwynn"
+	female = yes
+	dynasty = 813
+	religion = chalcedonian
+	culture = saxon
+	father = 130000001
+	mother = 130000002
+
+	888.1.1 = {
+		   birth = yes
+		  }
+
+	918.1.1 = {
+		   add_spouse = 120000004
+		  }
+
+	952.1.1 = {
+		   death = yes
+		  }
+	
+
+}
+
+130000004 = {
+	name = "Cerball"
+	dynasty = 690
+	religion = chalcedonian	
+	culture = irish
+	father = 100000142
+	
+	852.1.1 = {
+		   birth = yes
+		  }
+	
+	909.1.1 = {
+		   death = yes
+		  }
+}
+
+130000005 = {
+	name = "Giric"
+	dynasty = 688
+	religion = chalcedonian
+	culture = scottish
+	father = 6022
+
+	832.1.1 = {
+		   birth = yes
+		  }
+
+	889.1.1 = {
+		   death = yes
+		  }
+}
+
+
+130000006 = {
+	name = "Braslav"
+	dynasty = 100000049
+	religion = chalcedonian	
+	culture = bohemian
+	
+	850.1.1 = {
+		   birth = yes
+		  }
+	
+	896.1.1 = {
+		   death = yes
+		  }
+}
+
+130000007 = {
+	name = "Abi' Saj"
+	dynasty = 100000050
+	religion = sunni
+	culture = persian
+
+	815.1.1 = {
+		   birth = yes
+		  }
+
+	879.1.1 = {
+		   death = yes
+		  }
+
+}
+
+130000008 = {
+	name = "Muhammed"
+	dynasty = 100000050
+	religion = sunni
+	culture = persian
+	father = 130000007
+
+	859.1.1 = {
+		   birth = yes
+		  }
+
+	901.1.1 = {
+		   death = { death_reason = death_poor_health }
+		  }
+
+}
+
+130000009 = {
+	name = "Devdad"
+	dynasty = 100000050
+	religion = sunni
+	culture = persian
+	father = 130000008
+
+	882.1.1 = {
+		   birth = yes
+		  }
+
+	901.5.1 = {
+                   death = {
+                            death_reason = death_murder  
+                            killer = 130000010
+                           }
+		  }
+
+}
+
+130000010 = {
+	name = "Yusuf"
+	dynasty = 100000050
+	religion = sunni
+	culture = persian
+	father = 130000007
+
+	870.1.1 = {
+		   birth = yes
+		  }
+
+	928.1.1 = {
+		   death = {
+			    death_reason = death_execution
+			    killer = 100000044
+			   }
+		  }
+
+}
+
+130000011 = {
+	name = "Abu'l"
+	dynasty = 100000050
+	religion = sunni
+	culture = persian
+	father = 130000008
+
+	894.1.1 = {
+		   birth = yes
+		  }
+
+	929.1.1 = {
+		   death = { death_reason = death_murder_unknown }
+		  }
+
+}
+
+130000012 = {
+	name = "Dasu" #Fictional
+	dynasty = 1041124
+	religion = hindu
+	culture = panjabi
+	trait = kshatriya
+	trait = shaivist_hindu
+	father = 178024
+
+	862.1.1 = {
+		   birth = yes
+		  }
+
+	915.1.1 = {
+		   death = yes
+		  }
+}
+
+130000013 = {
+	name = "Ranjit" #Fictional
+	dynasty = 1041122
+	religion = hindu
+	culture = panjabi
+	trait = kshatriya
+	trait = shaivist_hindu
+	father = 178022
+
+	856.1.1 = {
+		   birth = yes
+		  }
+
+	909.1.1 = {
+		   death = yes
+		  }
+}
+
+130000014 = {
+	name = "Salusio" #Fictional
+	dynasty = 1042808
+	religion = chalcedonian
+	culture = sardinian
+	father = 184009
+
+	859.1.1 = {
+		   birth = yes
+		  }
+
+	902.1.1 = {
+		   death = yes
+		  }
+}
+
+130000015 = {
+	name = "Ali" #Fictional
+	dynasty = 7518
+	religion = sunni
+	culture = levantine_arabic
+	father = 163133
+	
+	860.1.1 = {
+		   birth = yes
+		  }
+
+	915.1.1 = {
+		   death = yes
+		  }
+}
+
+130000016 = {
+	name = "Abu'l Ward" #Fictional
+	dynasty = 7517
+	religion = sunni
+	culture = turkish
+	father = 163132
+	
+	848.1.1 = {
+		   birth = yes
+		  }
+
+	902.1.1 = {
+		   death = yes
+		  }
+}
+
+130000017 = {
+	name = "Hrolfr" #Fictional
+	dynasty = 824
+	religion = norse_pagan
+	culture = norse
+	father = 41266
+
+	868.1.1 = {
+		   birth = yes
+		  }
+
+	923.1.1 = {
+		   death = yes
+		  }
+}
+
+130000018 = {
+	name = "Eirikr" #Fictional
+	dynasty = 825
+	religion = norse_pagan
+	culture = norse
+	father = 41267
+
+	860.1.1 = {
+		   birth = yes
+		  }
+
+	923.1.1 = {
+		   death = yes
+		  }
+}
+
+130000019 = {
+	name = "Ketill" #Fictional
+	dynasty = 822
+	religion = norse_pagan
+	culture = norse
+	father = 41258
+
+	871.1.1 = {
+		   birth = yes
+		  }
+
+	893.1.1 = {
+		   death = yes
+		  }
+}
+
+130000020 = {
+	name = "Þorolfr" #Fictional
+	dynasty = 823
+	religion = norse_pagan
+	culture = norse
+	father = 41259
+
+	868.1.1 = {
+		   birth = yes
+		  }
+
+	909.1.1 = {
+		   death = yes
+		  }
+}
+
+130000021 = {
+	name = "Yngvar" #Fictional
+	dynasty = 1043308
+	religion = norse_pagan
+	culture = norse
+	father = 186016
+
+	865.1.1 = {
+		   birth = yes
+		  }
+
+	910.1.1 = {
+		   death = yes
+		  }
+}
+
+130000022 = {
+	name = "Dyre" #Fictional
+	dynasty = 832
+	religion = norse_pagan
+	culture = norse
+	father = 6840
+
+	860.1.1 = {
+		   birth = yes
+		  }
+
+	901.1.1 = {
+		   death = yes
+		  }
+}
+
+130000023 = {
+	name = "Ivar" #Fictional
+	dynasty = 1043309
+	religion = norse_pagan
+	culture = norse
+	father = 186015
+
+	869.1.1 = {
+		   birth = yes
+		  }
+
+	934.1.1 = {
+		   death = yes
+		  }
+}
+
+130000024 = {
+	name = "Æthelwold "
+	dynasty = 100072
+	religion = chalcedonian
+	culture = saxon
+	father = 33358
+
+	868.1.1 = {
+		   birth = yes
+		  }
+
+	902.1.1 = {
+		   death = { death_reason = death_battle }
+		  }
+}
+
+130000025 = {
+	name = "Ragnall"
+	dynasty = 20084
+	religion = norse_pagan
+	culture = norse
+	father = 40608
+
+	866.1.1 = {
+		   birth = yes
+		  }
+
+	921.1.1 = {
+		   death = yes
+		  }
+}
+
+130000026 = {
+	name = "Guðrøðr"
+	dynasty = 20084
+	religion = norse_pagan
+	culture = norse
+	father = 40609
+
+	877.1.1 = {
+		   birth = yes
+		  }
+
+	934.1.1 = {
+		   death = { death_reason = death_poor_health }
+		  }
+}
+
+130000027 = {
+	name = "Olafr"
+	dynasty = 20084
+	religion = chalcedonian
+	culture = norse
+	father = 130000026
+
+	897.1.1 = {
+		   birth = yes
+		  }
+
+	941.1.1 = {
+		   death = yes
+		  }
+}
+
+130000028 = {
+	name = "Blákári"
+	dynasty = 20084
+	religion = chalcedonian
+	culture = norse
+	father = 130000026
+
+	899.1.1 = {
+		   birth = yes
+		  }
+
+	948.1.1 = {
+		   death = yes
+		  }
+}
+
+130000029 = {
+	name = "Guðröðr"
+	dynasty = 100000051
+	religion = norse_pagan
+	culture = norse
+
+	845.1.1 = {
+		   birth = yes
+		  }
+
+	899.1.1 = {
+		   death = yes
+		  }
+}
+
+130000030 = {
+	name = "Hroðgar"
+	dynasty = 100000052
+	religion = norse_pagan
+	culture = norse
+
+	851.1.1 = {
+		   birth = yes
+		  }
+
+	910.1.1 = {
+		   death = yes
+		  }
+}
+
+130000031 = {
+	name = "Bragi"
+	dynasty = 100000053
+	religion = norse_pagan
+	culture = norse
+
+	839.1.1 = {
+		   birth = yes
+		  }
+
+	894.1.1 = {
+		   death = yes
+		  }
+}
+
+130000032 = {
+	name = "Tryggve"
+	dynasty = 100000054
+	religion = norse_pagan
+	culture = norse
+
+	857.1.1 = {
+		   birth = yes
+		  }
+
+	912.1.1 = {
+		   death = yes
+		  }
+}
+
+130000033 = {
+	name = "Kolbjörn"
+	dynasty = 100000055
+	religion = norse_pagan
+	culture = norse
+
+	858.1.1 = {
+		   birth = yes
+		  }
+
+	910.1.1 = {
+		   death = yes
+		  }
+}
+
+130000034 = {
+	name = "Haraldr"
+	dynasty = 100000056
+	religion = norse_pagan
+	culture = norse
+
+	846.1.1 = {
+		   birth = yes
+		  }
+
+	906.1.1 = {
+		   death = yes
+		  }
+}
+
+130000035 = {
+	name = "Rashid"
+	dynasty = 12277
+	religion = ibadi
+	culture = bedouin_arabic
+	
+	827.1.1 = {
+			birth = yes
+			}
+			
+	890.1.1 = {
+			death = yes
+			}
+}
+
+130000036 = {
+	name = "Abdallah"
+	dynasty = 1042182
+	religion = ibadi
+	culture = bedouin_arabic
+	
+	848.1.1 = {
+			birth = yes
+			}
+			
+	900.1.1 = {
+			death = yes
+			}
+}
+
+130000037 = {
+	name = "al-Khalil"
+	dynasty = 1042103
+	religion = ibadi
+	culture = bedouin_arabic
+	
+	964.1.1 = {
+			birth = yes
+			}
+			
+	1032.1.1 = {
+			death = yes
+			}
+}
+130000038 = {
+	name = "Herman"
+	dynasty = 101554
+	religion = "chalcedonian"
+	culture = "german"
+	father = 161525
+	870.1.1 = {
+		birth=yes
+	}
+	924.4.11 = {
+		death=yes
+	}
+}
+130000039 = {
+	name = "Milo"
+	dynasty = 100000057
+	religion = "chalcedonian"
+	culture = "visigothic"
+	725.1.1 = {
+		birth=yes
+	}
+	783.1.1 = {
+		death=yes
+	}
+}
+130000040 = {
+	name = "Alberic"
+	dynasty = 100000057
+	religion = "chalcedonian"
+	culture = "visigothic"
+	father = 130000039
+	760.1.1 = {
+		birth=yes
+	}
+	819.1.1 = {
+		death=yes
+	}
+}
+130000041 = {
+	name = "Liutad"
+	dynasty = 100000057
+	religion = "chalcedonian"
+	culture = "visigothic"
+	father = 130000040
+	781.1.1 = {
+		birth=yes
+	}
+	845.1.1 = {
+		death=yes
+	}
+}
+130000042 = {
+	name = "Lindoi"
+	dynasty = 100000057
+	religion = "chalcedonian"
+	culture = "occitan"
+	father = 130000041
+	810.1.1 = {
+		birth=yes
+	}
+	878.1.1 = {
+		death=yes
+	}
+}
+130000043 = {
+	name = "Maiol"
+	dynasty = 100000057
+	religion = "chalcedonian"
+	culture = "occitan"
+	father = 130000042
+	845.1.1 = {
+		birth=yes
+	}
+	911.1.1 = {
+		death=yes
+	}
+}
+130000044 = {
+	name = "Aubry"
+	dynasty = 100000057
+	religion = "chalcedonian"
+	culture = "occitan"
+	father = 130000043
+	881.1.1 = {
+		birth=yes
+	}
+	943.1.1 = {
+		death=yes
+	}
+}
+130000045 = {
+	name = "Lietald"
+	dynasty = 100000057
+	religion = "chalcedonian"
+	culture = "occitan"
+	father = 130000044
+	904.1.1 = {
+		birth=yes
+	}
+	965.1.1 = {
+		death=yes
+	}
+}
+130000046 = {
+	name = "Aubry"
+	dynasty = 100000057
+	religion = "chalcedonian"
+	culture = "occitan"
+	father = 130000045
+	925.1.1 = {
+		birth=yes
+	}
+	982.1.1 = {
+		death=yes
+	}
+}
+130000047 = {
+	name = "Bernard"
+	dynasty = 100217
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 73784
+	841.1.1 = {
+		birth=yes
+	}
+	885.1.1 = {
+		death=yes
+	}
+}
+130000048 = {
+	name = "Lietald"
+	dynasty = 100217
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 73784
+	846.1.1 = {
+		birth=yes
+	}
+	900.1.1 = {
+		death=yes
+	}
+}
+130000049 = {
+	name = "Ranoux"
+	dynasty = 100217
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 130000047
+	858.1.1 = {
+		birth=yes
+	}
+	915.1.1 = {
+		death=yes
+	}
+}
+130000050 = {
+	name = "Gelou"
+	dynasty = 8636
+	religion = "tengri_pagan"
+	culture = "bulgarian"
+	father = 168069
+	858.1.1 = {
+		birth=yes
+	}
+	895.1.1 = {
+		death= {
+			death_reason = death_battle
+		}
+	}
+}
+130000051 = {
+	name = "Presian"
+	dynasty = 8636
+	religion = "tengri_pagan"
+	culture = "bulgarian"
+	father = 168070
+	861.1.1 = {
+		birth=yes
+	}
+	895.1.1 = {
+		death = {
+			death_reason = death_battle
+		}
+	}
+}
+130000052 = {
+	name = "Menumorut"
+	dynasty = 9570
+	religion = "tengri_pagan"
+	culture = "avar"
+	father = 168072
+	858.1.1 = {
+		birth=yes
+	}
+	895.1.1 = {
+		death= {
+			death_reason = death_battle
+		}
+	}
+}
+130000053 = {
+	name = "Laborec"
+	dynasty = 12284
+	religion = "slavic_pagan"
+	culture = "croatian"
+	father = 74045
+	849.1.1 = {
+		birth=yes
+	}
+	861.1.1={
+		religion="chalcedonian"
+	}
+	895.1.1 = {
+		death= {
+			death_reason = death_battle
+		}
+	}
+}
+130000054 = {
+	name = "Berthold"
+	dynasty = 1054
+	religion = "chalcedonian"
+	culture = "german"
+	father = 163058
+	855.1.1 = {
+		birth=yes
+	}
+	911.1.1 = {
+		death=yes
+	}
+}
+130000055 = {
+	name = "Bruno"
+	religion = "chalcedonian"
+	culture = "german"
+	863.1.1 = {
+		birth=yes
+	}
+	932.1.1 = {
+		death=yes
+	}
+}
+130000056 = {
+	name = "Eudes"
+	dynasty = 667
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 168082
+	850.1.1 = {
+		birth=yes
+	}
+	910.1.2 = {
+		death=yes
+	}
+}
+130000057 = {
+	name = "Hilgaud"
+	dynasty = 9574
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 168171
+	862.1.1 = {
+		birth=yes
+	}
+	913.1.1 = {
+		death=yes
+	}
+}
+130000058 = {
+	name = "Renaud"
+	dynasty = 9569
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 168039
+	860.1.1 = {
+		birth=yes
+	}
+	911.1.1 = {
+		death=yes
+	}
+}
+130000059 = {
+	name = "Guillaume"
+	dynasty = 100000058
+	religion = "chalcedonian"
+	culture = "frankish"
+	764.1.1 = {
+		birth=yes
+	}
+	821.1.1 = {
+		death=yes
+	}
+}
+130000060 = {
+	name = "Bernard"
+	dynasty = 100000058
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 130000059
+	783.1.1 = {
+		birth=yes
+	}
+	844.1.1 = {
+		death=yes
+	}
+}
+130000061 = {
+	name = "Turpio"
+	dynasty = 100000058
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 130000059
+	803.1.1 = {
+		birth=yes
+	}
+	863.1.1 = {
+		death = {
+				 death_reason = death_battle
+				}
+	}
+}
+130000062 = {
+	name = "Emenon"
+	dynasty = 100000058
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 130000059
+	810.1.1 = {
+		birth=yes
+	}
+	860.1.1 = {
+		add_spouse = 130000066
+	}
+	866.1.1 = {
+		death=yes
+	}
+}
+
+130000063 = {
+	name = "Eudes"
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 91005
+	816.1.1 = {
+		birth=yes
+	}
+	871.1.1 = {
+		death=yes
+	}
+}
+130000064 = {
+	name = "Eudes"
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 130000063
+	838.1.1 = {
+		birth=yes
+	}
+	876.1.1 = {
+		death=yes
+	}
+}
+130000065 = {
+	name = "Robert"
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 130000063
+	845.1.1 = {
+		birth=yes
+	}
+	886.1.1 = {
+		death = {
+				 death_reason = death_battle
+				}
+	}
+}
+130000066 = {
+	name = "Gerberga"
+	female = yes
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 130000063
+	840.1.1 = {
+		birth=yes
+	}
+	860.1.1 = {
+		add_spouse = 130000062
+	}
+	886.1.1 = {
+		death=yes
+	}
+}
+130000067 = {
+	name = "Adalelm"
+	dynasty = 100000058
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 130000062
+	mother = 130000066
+	862.1.1 = {
+		birth=yes
+	}
+	894.1.1 = {
+		death=yes
+	}
+}
+130000068 = {
+	name = "Adhemar"
+	dynasty = 100000058
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 130000062
+	mother = 130000066
+	864.1.1 = {
+		birth=yes
+	}
+	926.1.1 = {
+		death=yes
+	}
+}
+130000069 = {
+	name = "Guillaume"
+	dynasty = 100217
+	religion = "chalcedonian"
+	culture = "old_frankish"
+	father = 168129
+	790.1.1 = {
+		birth=yes
+	}
+	834.1.1 = {
+		death=yes
+	}
+}
+130000070 = {
+	name = "Warnegald"
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 163065
+	846.1.1 = {
+		birth=yes
+	}
+	906.1.1 = {
+		death=yes
+	}
+}
+130000071 = {
+	name = "Gello"
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 130000070
+	870.1.1 = {
+		birth=yes
+	}
+	928.1.1 = {
+		death=yes
+	}
+}
+130000072 = {
+	name = "Radwan"
+	dynasty = 100000059
+	religion = "sunni"
+	culture = "turkish"
+	838.1.1 = {
+		birth = yes
+	}
+	897.1.1 = {
+		death = yes
+	}
+}
+130000073 = {
+	name = "Abdullah"
+	dynasty = 100000059
+	religion = "sunni"
+	culture = "egyptian_arabic"
+	father = 130000072
+	872.1.1 = {
+		birth = yes
+	}
+	923.1.1 = {
+		death = yes
+	}
+}
+130000074 = {
+	name = "Rutbil"
+	dynasty = 100000082
+	religion = "sunni"
+	culture = "afghan"
+	844.1.1 = {
+		birth = yes
+	}
+	907.1.1 = {
+		death = yes
+	}
+}
+130000075 = {
+	name = "Ilyas"
+	dynasty = 100000060
+	religion = "sunni"
+	culture = "turkish"
+	857.1.1 = {
+		birth = yes
+	}
+	901.1.1 = {
+		death = yes
+	}
+}
+130000076 = {
+	name = "Muhammad"
+	dynasty = 100000061
+	religion = "sunni"
+	culture = "persian"
+	847.1.1 = {
+		birth = yes
+	}
+	896.1.1 = {
+		death = yes
+	}
+}
+130000077 = {
+	name = "Konstantinos"
+	dynasty = 1022275
+	religion = "chalcedonian"
+	culture = "greek"
+	father = 145930
+	839.1.1 = {
+		birth = yes
+	}
+	897.1.1 = {
+		death = yes
+	}
+}
+130000078 = {
+	name = "Ioannes"
+	dynasty = 100000062
+	religion = "chalcedonian"
+	culture = "greek"
+	854.1.1 = {
+		birth = yes
+	}
+	903.1.1 = {
+		death = yes
+	}
+}
+130000079 = {
+	name = "Abbas"
+	dynasty = 100000065
+	religion = "sunni"
+	culture = "levantine_arabic"
+	857.1.1 = {
+		birth = yes
+	}
+	916.1.1 = {
+		death = yes
+	}
+}
+130000080 = {
+	name = "Keraja"
+	dynasty = 842
+	religion = "sunni"
+	culture = "atlasian"
+	858.1.1 = {
+		birth = yes
+	}
+	913.1.1 = {
+		death = yes
+	}
+}
+130000081 = {
+	name = Nasr
+	dynasty = 841
+	religion = "sunni"
+	culture = "maghreb_arabic"
+	father = 6882
+	851.1.1 = {
+		birth=yes
+	}
+	902.1.1 = {
+		death=yes
+	}
+}
+130000082 = {
+	name = "Adrianos"
+	dynasty = 100000068
+	religion = chalcedonian
+	culture = greek
+	839.1.1 = {
+		birth=yes
+	}
+	900.1.1 = {
+		death=yes
+	}
+}
+130000083 = {
+	name = "Hunoald"
+	dynasty = 1044111
+	religion = chalcedonian
+	culture = occitan
+	father = 190480
+	737.1.1 = {
+		birth=yes
+	}
+	769.1.1 = {
+		effect = {
+			liege = {
+				reverse_opinion = {
+					who = PREV
+					modifier = opinion_hate
+					months = 120
+				}
+			}
+			k_lotharingia = {
+				holder_scope = {
+					reverse_opinion = {
+						who = PREVPREV
+						modifier = opinion_hate
+						months = 120
+					}
+				}
+			}
+		}
+	}
+	771.1.1 = {
+		death = {
+				 death_reason = death_dungeon
+				 killer = 6392
+				}
+	}
+}
+
+130000084 = {
+	name = "Ebbo"
+	religion = chalcedonian
+	culture = old_frankish
+	775.1.1 = {
+		birth=yes
+	}
+	851.1.1 = {
+		death=yes
+	}
+}
+
+130000085 = {
+	name = "Hincmar"
+	religion = chalcedonian
+	culture = frankish
+	806.1.1 = {
+		birth=yes
+	}
+	882.1.1 = {
+		death=yes
+	}
+}
+
+130000086 = {
+	name = "Hervaeus"
+	religion = chalcedonian
+	culture = frankish
+	858.1.1 = {
+		birth=yes
+	}
+	922.1.1 = {
+		death=yes
+	}
+}
+
+130000087 = {
+	name = "Seulf"
+	religion = chalcedonian
+	culture = frankish
+	871.1.1 = {
+		birth=yes
+	}
+	925.1.1 = {
+		death=yes
+	}
+}
+
+130000088 = {
+	name = "Pirard"
+	religion = chalcedonian
+	culture = frankish
+	771.1.1 = {
+		birth = yes
+	}
+	838.1.1 = {
+		death = yes
+	}
+}
+130000089 = {
+	name = "Hartgard"
+	religion = chalcedonian
+	culture = frankish
+	796.1.1 = {
+		birth = yes
+	}
+	855.1.1 = {
+		death = yes
+	}
+}
+130000090 = {
+	name = "Stephen"
+	religion = chalcedonian
+	culture = german
+	849.1.1 = {
+		birth = yes
+	}
+	920.1.1 = {
+		death = yes
+	}
+}
+130000091 = {
+	name = "Theodard"
+	religion = chalcedonian
+	culture = old_frankish
+	724.1.1 = {
+		birth = yes
+	}
+	790.1.1 = {
+		death = yes
+	}
+}
+130000092 = {
+	name = "Hamacarus"
+	religion = chalcedonian
+	culture = old_frankish
+	730.1.1 = {
+		birth = yes
+	}
+	806.1.1 = {
+		death = yes
+	}
+}
+130000093 = {
+	name = "Ricfrid"
+	religion = chalcedonian
+	culture = old_frankish
+	758.1.1 = {
+		birth = yes
+	}
+	816.1.1 = {
+		death = yes
+	}
+}
+130000094 = {
+	name = "Frederik"
+	religion = chalcedonian
+	culture = frisian
+	dynasty = 246
+	father = 168620
+	775.1.1 = {
+		birth = yes
+	}
+	834.1.1 = {
+		death = { death_reason = death_murder }
+	}
+}
+130000095 = {
+	name = "Alberik"
+	religion = chalcedonian
+	culture = frisian
+	dynasty = 246
+	father = 168620
+	777.1.1 = {
+		birth = yes
+	}
+	844.1.1 = {
+		death = { death_reason = death_murder }
+	}
+}
+130000096 = {
+	name = "Eginhard"
+	religion = chalcedonian
+	culture = german
+	789.1.1 = {
+		birth = yes
+	}
+	848.1.1 = {
+		death = yes
+	}
+}
+130000097 = {
+	name = "Luidger"
+	religion = chalcedonian
+	culture = frisian
+	dynasty = 246
+	father = 130000095
+	791.1.1 = {
+		birth = yes
+	}
+	854.1.1 = {
+		death = yes
+	}
+}
+130000098 = {
+	name = "Hunger"
+	religion = chalcedonian
+	culture = frankish
+	793.1.1 = {
+		birth = yes
+	}
+	866.1.1 = {
+		death = yes
+	}
+}
+130000099 = {
+	name = "Radboud"
+	religion = chalcedonian
+	culture = frisian
+	dynasty = 246
+	father = 130000095
+	840.1.1 = {
+		birth = yes
+	}
+	917.1.1 = {
+		death = yes
+	}
+}
+
+130000100 = {
+	name = "Arnulf"
+	religion = chalcedonian
+	culture = german
+	757.1.1 = {
+		birth = yes
+	}
+	816.1.1 = {
+		death = yes
+	}
+}
+
+130000101 = {
+	name = "Hetto"
+	religion = chalcedonian
+	culture = german
+	father = 130000100
+	786.1.1 = {
+		birth = yes
+	}
+	847.1.1 = {
+		death = yes
+	}
+}
+
+130000102 = {
+	name = "Udo"
+	religion = chalcedonian
+	culture = german
+	father = 130000100
+	790.1.1 = {
+		birth = yes
+	}
+	855.1.1 = {
+		death = yes
+	}
+}
+
+130000103 = {
+	name = "Dietgold"
+	religion = chalcedonian
+	culture = german
+	father = 130000102
+	815.1.1 = {
+		birth = yes
+	}
+	863.6.15 = {
+		trait = excommunicated
+	}
+	867.12.14 = {
+		remove_trait = excommunicated
+	}
+	868.1.1 = {
+		death = yes
+	}
+}
+
+130000104 = {
+	name = "Ratbod"
+	religion = chalcedonian
+	culture = german
+	852.1.1 = {
+		birth = yes
+	}
+	915.1.1 = {
+		death = yes
+	}
+}
+
+130000105 = {
+	name = "Rudgar"
+	religion = chalcedonian
+	culture = german
+	866.1.1 = {
+		birth = yes
+	}
+	931.1.27 = {
+		death = yes
+	}
+}
+		
+130000106  = {
+		name = "Demir"
+		dynasty = 100000083
+		religion = tengri_pagan
+		culture = turkish
+		
+		813.1.1 = {
+			birth=yes
+			}
+		877.1.1 = {
+			death = yes
+			}
+		}
+		
+130000107  = {
+		name = "Kemal"
+		dynasty = 100000083
+		religion = tengri_pagan
+		culture = turkish
+		trait = brave
+		trait = skilled_tactician
+		trait = strong
+		father = 130000106
+		
+		845.1.1 = {
+			birth=yes
+			}
+		865.1.1 = {
+			employer = 163099
+			religion = sunni
+		}
+		907.1.1 = {
+			death = yes
+			}
+		}
+		
+130000108  = {
+		name = "Ali"
+		dynasty = 100000083
+		religion = sunni
+		culture = turkish
+		father = 130000107
+		
+		884.1.1 = {
+			birth=yes
+			}
+		938.1.1 = {
+			death = yes
+			}
+		}
+		
+130000109  = {
+		name = "Ya'qub"
+		dynasty = 810
+		religion = sunni
+		culture = persian
+		father = 163154
+		
+		840.1.1 = {
+			birth=yes
+			}
+		890.1.1 = {
+			death = yes
+			}
+		}
+		
+130000110  = {
+		name = "Mus'ab"
+		dynasty = 811
+		religion = zoroastrian
+		culture = persian
+		father = 188688
+		
+		720.1.1 = {
+			birth=yes
+			}
+		745.1.1={
+			religion="sunni"
+			}
+		782.1.1 = {
+			death = yes
+			}
+		}
+		
+130000111  = {
+		name = "Ibrahim"
+		dynasty = 811
+		religion = sunni
+		culture = persian
+		father = 130000110
+		
+		761.1.1 = {
+			birth=yes
+			}
+		821.1.1 = {
+			death = yes
+			}
+		}
+		
+130000112  = {
+		name = "Ishaq"
+		dynasty = 811
+		religion = sunni
+		culture = persian
+		father = 130000111
+		
+		793.1.1 = {
+			birth=yes
+			}
+		850.7.8 = {
+			death = {
+					death_reason = death_poor_health
+				}
+			}
+		}
+		
+130000113  = {
+		name = "Muhammed"
+		dynasty = 811
+		religion = sunni
+		culture = persian
+		father = 130000112
+		
+		812.1.1 = {
+			birth=yes
+			}
+		851.1.6 = {
+			death = yes
+			}
+		}
+		
+130000114  = {
+		name = "Abdullah"
+		dynasty = 811
+		religion = sunni
+		culture = persian
+		father = 130000112
+		
+		831.1.1 = {
+			birth=yes
+			}
+		890.1.1 = {
+			death = yes
+			}
+		}
+		
+130000115  = {
+		name = "Shibl"
+		dynasty = 100000084
+		religion = zoroastrian
+		culture = persian
+		
+		730.1.1 = {
+			birth=yes
+			}
+		766.1.1 = {
+			religion = sunni
+		}
+		783.1.1 = {
+			death = yes
+			}
+		}
+		
+130000116  = {
+		name = "Quraysh"
+		dynasty = 100000084
+		religion = sunni
+		culture = persian
+		father = 130000115
+		
+		766.1.1 = {
+			birth=yes
+			}
+		837.1.1 = {
+			death = yes
+			}
+		}
+		
+130000117  = {
+		name = "al-Husayn"
+		dynasty = 100000084
+		religion = sunni
+		culture = persian
+		father = 130000116
+		
+		800.1.1 = {
+			birth=yes
+			}
+		862.1.1 = {
+			death = yes
+			}
+		}
+		
+130000118  = {
+		name = "Ali"
+		dynasty = 100000084
+		religion = sunni
+		culture = persian
+		father = 130000117
+		trait = skilled_tactician
+		
+		828.1.1 = {
+			birth=yes
+			}
+		870.1.1 = {
+			trait = lunatic
+		}
+		874.1.1 = {
+			death = {
+				death_reason = death_dungeon
+				killer = 163101
+				}
+			}
+		}
+		
+130000119  = {
+		name = "Banijur"
+		dynasty = 1059103
+		religion = sunni
+		culture = persian
+		
+		764.1.1 = {
+			birth=yes
+			}
+		822.1.1 = {
+			death = yes
+			}
+		}
+		
+130000120  = {
+		name = "Hasim"
+		dynasty = 1059103
+		religion = sunni
+		culture = persian
+		father = 130000119
+		
+		799.1.1 = {
+			birth=yes
+			}
+		857.1.1 = {
+			death = yes
+			}
+		}
+		
+130000121  = {
+		name = "al-Abbas"
+		dynasty = 1059103
+		religion = sunni
+		culture = persian
+		father = 130000120
+		
+		819.1.1 = {
+			birth=yes
+			}
+		856.1.1 = {
+			death = yes
+			}
+		}
+		
+130000122  = {
+		name = "Dawud"
+		dynasty = 1059103
+		religion = sunni
+		culture = persian
+		father = 130000121
+		
+		845.1.1 = {
+			birth=yes
+			}
+		873.1.1 = {
+			death = yes
+			}
+		}
+		
+130000123  = {
+		name = "Ahmad"
+		dynasty = 1059103
+		religion = sunni
+		culture = persian
+		father = 130000119
+		
+		802.1.1 = {
+			birth=yes
+			}
+		869.1.1 = {
+			death = yes
+			}
+		}
+		
+130000124  = {
+		name = "Muhammed"
+		dynasty = 1059103
+		religion = sunni
+		culture = persian
+		father = 130000123
+		
+		838.1.1 = {
+			birth=yes
+			}
+		899.1.1 = {
+			death = yes
+			}
+		}
+		
+130000125  = {
+		name = "Ahmad"
+		dynasty = 1059103
+		religion = sunni
+		culture = persian
+		father = 130000124
+		
+		859.1.1 = {
+			birth=yes
+			}
+		908.1.1 = {
+			death = yes
+			}
+		}
+		
+130000126  = {
+		name = "Harthama"
+		dynasty = 100000085
+		religion = sunni
+		culture = persian
+		
+		818.1.1 = {
+			birth=yes
+			}
+		872.1.1 = {
+			death = yes
+			}
+		}
+		
+130000127  = {
+		name = "Rafi"
+		dynasty = 100000085
+		religion = sunni
+		culture = persian
+		father = 130000126
+		trait = skilled_tactician
+		trait = ambitious
+		
+		850.1.1 = {
+			birth = yes
+			employer = 163159
+			}
+		882.1.1 = {
+			trait = adventurer
+			effect = { 
+					  set_character_flag = "duchy_adventurer" 
+					  spawn_unit = {
+								owner = ROOT
+								province = 634 #Nishapur
+								troops = {
+									light_infantry = { 700 700 }
+									heavy_infantry = { 520 520 }
+									archers = { 300 300 }
+									light_cavalry = { 450 450 }
+								}
+						}
+					 }
+		}
+		896.1.1 = {
+			death = {
+				  death_reason = death_battle
+				  killer = 163164
+				}
+			}
+		}
+		
+130000128  = {
+		name = "Isa"
+		dynasty = 100000086
+		religion = sunni
+		culture = levantine_arabic
+		father = 130000129
+		trait = brilliant_strategist
+		
+		842.1.1 = {
+			birth=yes
+			}
+		910.1.1 = {
+			death = yes
+			}
+		}
+		
+130000129  = {
+		name = "Muhammed"
+		dynasty = 100000086
+		religion = sunni
+		culture = levantine_arabic
+		
+		818.1.1 = {
+			birth=yes
+			}
+		872.1.1 = {
+			death = yes
+			}
+		}

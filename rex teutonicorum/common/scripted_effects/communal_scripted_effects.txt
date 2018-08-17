@@ -1,0 +1,979 @@
+communal_modifier_effect = {
+							if = {
+								  
+								  limit = {
+										   NOT = {
+												  check_variable = {
+																	which = peasant_discontent
+																	value = 21
+																   }
+												 }
+										  }
+								  add_character_modifier = {
+															name = peasants_happy
+															duration = -1
+														   }
+								  remove_character_modifier = peasants_content
+								  remove_character_modifier = peasants_unhappy
+								  remove_character_modifier = peasants_angry
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  add_province_modifier = {
+																				   name = peasants_happy_province
+																				   duration = -1
+																				   hidden = yes
+																				  }
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_angry_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+							if = {
+								  
+								  limit = {
+										   check_variable = {
+															 which = peasant_discontent
+															 value = 21
+															}
+										   NOT = {
+												  check_variable = {
+																	which = peasant_discontent
+																	value = 41
+																   }
+												 }
+										  }
+								  remove_character_modifier = peasants_happy
+								  add_character_modifier = {
+															name = peasants_content
+															duration = -1
+														   }
+								  remove_character_modifier = peasants_unhappy
+								  remove_character_modifier = peasants_angry
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_angry_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+							if = {
+								  
+								  limit = {
+										   check_variable = {
+															 which = peasant_discontent
+															 value = 41
+															}
+										   NOT = {
+												  check_variable = {
+																	which = peasant_discontent
+																	value = 61
+																   }
+												 }
+										  }
+								  remove_character_modifier = peasants_happy
+								  remove_character_modifier = peasants_content
+								  add_character_modifier = {
+															name = peasants_unhappy
+															duration = -1
+														   }
+								  remove_character_modifier = peasants_angry
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  add_province_modifier = {
+																				   name = peasants_unhappy_province
+																				   duration = -1
+																				   hidden = yes
+																				  }
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_angry_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+							if = {
+								  limit = {
+										   check_variable = {
+															 which = peasant_discontent
+															 value = 61
+															}
+										   NOT = {
+												  check_variable = {
+																	which = peasant_discontent
+																	value = 81
+																   }
+												 }
+										  }
+								  remove_character_modifier = peasants_happy
+								  remove_character_modifier = peasants_content
+								  remove_character_modifier = peasants_unhappy
+								  add_character_modifier = {
+															name = peasants_angry
+															duration = -1
+														   }
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  add_province_modifier = {
+																				   name = peasants_angry_province
+																				   duration = -1
+																				   hidden = yes
+																				  }
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+							if = {
+								  limit = {
+										   check_variable = {
+															 which = peasant_discontent
+															 value = 81
+														    }
+										  }
+								  remove_character_modifier = peasants_happy
+								  remove_character_modifier = peasants_content
+								  remove_character_modifier = peasants_unhappy
+								  remove_character_modifier = peasants_angry
+								  add_character_modifier = {
+															name = peasants_rebellious
+															duration = -1
+														   }
+								  any_demesne_province = {
+														  add_province_modifier = {
+																				   name = peasants_rebellious_province
+																				   duration = -1
+																				   hidden = yes
+																				  }
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_angry_province
+														 }
+								 }
+							if = {
+								  limit = {
+										   check_variable = {
+															 which = peasant_discontent
+															 value = 101
+															}
+										  }
+								  set_variable = {
+												  which = peasant_discontent
+												  value = 100
+								 
+												 }
+								 }							
+							if = {
+								  limit = {
+										   NOT = {
+												  check_variable = {
+																	which = peasant_discontent
+																	value = 0
+																   }
+												 }
+										  }
+								  set_variable = {
+												  which = peasant_discontent
+												  value = 0
+								 
+												 }
+								 }
+							if = {
+								  limit = { NOT = { government = communal_government } }
+								  set_variable = {
+												  which = peasant_discontent
+												  value = 0
+												 }
+								  remove_character_modifier = peasants_happy
+								  remove_character_modifier = peasants_content
+								  remove_character_modifier = peasants_unhappy
+								  remove_character_modifier = peasants_angry
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_angry_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+						    if = {
+								  limit = { lower_tier_than = COUNT }
+								  remove_character_modifier = peasants_happy
+								  remove_character_modifier = peasants_content
+								  remove_character_modifier = peasants_unhappy
+								  remove_character_modifier = peasants_angry
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_angry_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+						    character_event = { id = cmnl.1002 }
+						   }
+						   
+communal_modifier_effect_na = { #No alert to prevent trickle notifications getting annoying
+							if = {
+								  
+								  limit = {
+										   NOT = {
+												  check_variable = {
+																	which = peasant_discontent
+																	value = 21
+																   }
+												 }
+										  }
+								  add_character_modifier = {
+															name = peasants_happy
+															duration = -1
+														   }
+								  remove_character_modifier = peasants_content
+								  remove_character_modifier = peasants_unhappy
+								  remove_character_modifier = peasants_angry
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  add_province_modifier = {
+																				   name = peasants_happy_province
+																				   duration = -1
+																				   hidden = yes
+																				  }
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_angry_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+							if = {
+								  
+								  limit = {
+										   check_variable = {
+															 which = peasant_discontent
+															 value = 21
+															}
+										   NOT = {
+												  check_variable = {
+																	which = peasant_discontent
+																	value = 41
+																   }
+												 }
+										  }
+								  remove_character_modifier = peasants_happy
+								  add_character_modifier = {
+															name = peasants_content
+															duration = -1
+														   }
+								  remove_character_modifier = peasants_unhappy
+								  remove_character_modifier = peasants_angry
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_angry_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+							if = {
+								  
+								  limit = {
+										   check_variable = {
+															 which = peasant_discontent
+															 value = 41
+															}
+										   NOT = {
+												  check_variable = {
+																	which = peasant_discontent
+																	value = 61
+																   }
+												 }
+										  }
+								  remove_character_modifier = peasants_happy
+								  remove_character_modifier = peasants_content
+								  add_character_modifier = {
+															name = peasants_unhappy
+															duration = -1
+														   }
+								  remove_character_modifier = peasants_angry
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  add_province_modifier = {
+																				   name = peasants_unhappy_province
+																				   duration = -1
+																				   hidden = yes
+																				  }
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_angry_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+							if = {
+								  limit = {
+										   check_variable = {
+															 which = peasant_discontent
+															 value = 61
+															}
+										   NOT = {
+												  check_variable = {
+																	which = peasant_discontent
+																	value = 81
+																   }
+												 }
+										  }
+								  remove_character_modifier = peasants_happy
+								  remove_character_modifier = peasants_content
+								  remove_character_modifier = peasants_unhappy
+								  add_character_modifier = {
+															name = peasants_angry
+															duration = -1
+														   }
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  add_province_modifier = {
+																				   name = peasants_angry_province
+																				   duration = -1
+																				   hidden = yes
+																				  }
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+							if = {
+								  limit = {
+										   check_variable = {
+															 which = peasant_discontent
+															 value = 81
+														    }
+										  }
+								  remove_character_modifier = peasants_happy
+								  remove_character_modifier = peasants_content
+								  remove_character_modifier = peasants_unhappy
+								  remove_character_modifier = peasants_angry
+								  add_character_modifier = {
+															name = peasants_rebellious
+															duration = -1
+														   }
+								  any_demesne_province = {
+														  add_province_modifier = {
+																				   name = peasants_rebellious_province
+																				   duration = -1
+																				   hidden = yes
+																				  }
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_angry_province
+														 }
+								 }
+							if = {
+								  limit = {
+										   check_variable = {
+															 which = peasant_discontent
+															 value = 101
+															}
+										  }
+								  set_variable = {
+												  which = peasant_discontent
+												  value = 100
+								 
+												 }
+								 }							
+							if = {
+								  limit = {
+										   NOT = {
+												  check_variable = {
+																	which = peasant_discontent
+																	value = 0
+																   }
+												 }
+										  }
+								  set_variable = {
+												  which = peasant_discontent
+												  value = 0
+								 
+												 }
+								 }
+							if = {
+								  limit = { NOT = { government = communal_government } }
+								  set_variable = {
+												  which = peasant_discontent
+												  value = 0
+												 }
+								  remove_character_modifier = peasants_happy
+								  remove_character_modifier = peasants_content
+								  remove_character_modifier = peasants_unhappy
+								  remove_character_modifier = peasants_angry
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_angry_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+						    if = {
+								  limit = { lower_tier_than = COUNT }
+								  remove_character_modifier = peasants_happy
+								  remove_character_modifier = peasants_content
+								  remove_character_modifier = peasants_unhappy
+								  remove_character_modifier = peasants_angry
+								  remove_character_modifier = peasants_rebellious
+								  any_demesne_province = {
+														  remove_province_modifier = peasants_happy_province
+														  remove_province_modifier = peasants_unhappy_province
+														  remove_province_modifier = peasants_angry_province
+														  remove_province_modifier = peasants_rebellious_province
+														 }
+								 }
+						   }
+
+####################################################################################
+new_peasant_ruler_effect = {
+						    any_demesne_province = {
+												    remove_province_modifier = peasants_protected
+												    remove_province_modifier = inspired_peasantry
+												    remove_province_modifier = diplomacy_advice
+												    remove_province_modifier = just_steward
+												    remove_province_modifier = peasants_upset
+												    remove_province_modifier = peasant_unrest
+												    remove_province_modifier = arbitrary_steward
+												    remove_province_modifier = peasants_forbidden_sale
+												    remove_province_modifier = peasants_scorned
+												    remove_province_modifier = disloyal_peasantry
+												    remove_province_modifier = peasant_obstructionism
+												   }
+						   }
+
+####################################################################################
+communal_succession_effect = {
+				 if = {
+					   limit = { capital_holding = { is_tribal = no } }
+					   set_government_type = communal_government
+					  }
+					  
+#If new holder is landed#
+				 if = { 
+					   limit = {
+								government = communal_government
+								communal_modifier_trigger = yes
+								NOT = { has_character_flag = "new_peasant_leader" }
+								NOT = { has_character_flag = "comm_succ_blocker" }
+								primary_title = { title = FROM }
+							   }
+					   any_demesne_title = {
+											limit = { higher_tier_than = BARON }
+										    revoke_law = feudal_administration
+											add_law = communal_administration
+										   }
+					   set_variable = {
+									   which = peasant_discontent
+									   which = FROMFROM
+									  }
+					   FROMFROM = { communal_modifier_effect_na = yes }
+					   set_character_flag = "comm_succ_blocker"
+					   communal_pd_inheritance_effect = yes
+					   communal_modifier_effect = yes
+					   any_vassal = {
+									 limit = { 
+											  communal_modifier_trigger = yes
+											  NOT = { has_character_flag = "non_communal" }
+											 }
+									 set_government_type = communal_government
+									}
+					   letter_event = { id = cmnl.00099 days = 1 }
+					  }
+					  
+#If new holder is unlanded#
+				 if = { 
+					   limit = {
+								government = communal_government
+								communal_modifier_trigger = no
+								NOT = { has_character_flag = "new_peasant_leader" }
+								NOT = { has_character_flag = "comm_succ_blocker" }
+							   }
+					   any_demesne_title = {
+											limit = { higher_tier_than = BARON }
+										    revoke_law = feudal_administration
+											add_law = communal_administration
+										   }
+					   set_variable = {
+									   which = peasant_discontent
+									   which = FROMFROM
+									  }
+					   FROMFROM = { communal_modifier_effect_na = yes }
+					   if = {
+							 limit = {
+									  FROMFROM = { has_character_flag = "dying_ruler" }
+									  check_variable = {
+													    which = peasant_discontent
+														value = 41
+													   }
+									 }
+							 change_variable = {
+											    which = peasant_discontent
+												value = -10
+											   }
+						    }
+					   if = {
+							 limit = {
+									  FROMFROM = { has_character_flag = "dying_ruler" }
+									  NOT = {
+											 check_variable = {
+															   which = peasant_discontent
+															   value = 21
+															  }
+											}
+									 }
+							 change_variable = {
+											    which = peasant_discontent
+												value = 10
+											   }
+						    }
+					   set_character_flag = "comm_succ_blocker"
+					   communal_modifier_effect = yes
+					   any_vassal = {
+									 limit = { 
+											  communal_modifier_trigger = yes
+											  NOT = { has_character_flag = "non_communal" }
+											 }
+									 set_government_type = communal_government
+									}
+					   letter_event = { id = cmnl.00099 days = 1 }
+					  }
+					  
+#If new holder is a character set to always start at 30 Peasant Discontent#
+				 if = { 
+					   limit = {
+								OR = {
+									  has_character_flag = "new_peasant_leader"
+									  has_character_flag = "communal_failsafe"
+									 }
+								communal_modifier_trigger = no
+								NOT = { has_character_flag = "comm_succ_blocker" }
+							   }
+					   any_demesne_title = {
+											limit = { higher_tier_than = BARON }
+										    revoke_law = feudal_administration
+											add_law = communal_administration
+										   }
+					   set_variable = {
+									   which = peasant_discontent
+									   value = 30
+									  }
+					   communal_modifier_effect = yes
+					   any_vassal = {
+									 limit = { 
+											  communal_modifier_trigger = yes
+											  NOT = { has_character_flag = "non_communal" }
+											 }
+									 set_government_type = communal_government
+									}
+					   clr_character_flag = "new_peasant_leader"
+					   letter_event = { id = cmnl.00099 days = 1 }
+					  }
+				
+
+
+							 }
+							 
+####################################################################################
+communal_pd_inheritance_effect = {
+								  ###NEW HOLDER HAS HAPPY PEASANTS###
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_happy
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 21
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 41
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -5
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_happy
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 41
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 61
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -10
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_happy
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 61
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 81
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -20
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_happy
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 81
+																  }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -40
+														  }
+										break = yes
+									   }
+									   
+								  ###NEW HOLDER HAS CONTENT PEASANTS###
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_content
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 21
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = 5
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_content
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 41
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 61
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -5
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_content
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 61
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 81
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -10
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_content
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 81
+																  }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -20
+														  }
+										break = yes
+									   }
+								  
+								  ###NEW HOLDER HAS UNHAPPY PEASANTS###
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_unhappy
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 21
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = 10
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_unhappy
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 21
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 41
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = 5
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_unhappy
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 61
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 81
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -5
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_unhappy
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 81
+																  }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -10
+														  }
+										break = yes
+									   }
+								  
+								  ###NEW HOLDER HAS ANGRY PEASANTS###
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_angry
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 21
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = 20
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_angry
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 21
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 41
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = 10
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_angry
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 41
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 61
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = 5
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_angry
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 81
+																  }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -5
+														  }
+										break = yes
+									   }
+								  
+								  ###NEW HOLDER HAS REBELLIOUS PEASANTS###
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_rebellious
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 21
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -40
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_rebellious
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 21
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 41
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -20
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_rebellious
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 41
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 61
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -10
+														  }
+										break = yes
+									   }
+								  if = {
+										limit = {
+												 has_character_modifier = peasants_rebellious
+												 check_variable = {
+																   which = peasant_discontent
+																   value = 61
+																  }
+												 NOT = {
+														check_variable = {
+																		  which = peasant_discontent
+																		  value = 81
+																		 }
+													   }
+												}
+										change_variable = {
+														   which = peasant_discontent
+														   value = -5
+														  }
+										break = yes
+									   }
+								 }
+								 
+####################################################################################
+switch_from_communal_effect = {
+				 if = {
+					   limit = { 
+								OR = {
+									  capital_holding = { holding_type = castle } 
+									  AND = {
+											 capital_holding = { holding_type = temple }
+											 religion_group = muslim
+											}
+									 }
+							   }
+					   switch_to_feudal_effect = yes
+					  }
+				 if = {
+					   limit = { capital_holding = { holding_type = city } }
+					   set_government_type = republic_government
+					  }
+				 if = {
+					   limit = {
+								capital_holding = { holding_type = temple }
+								NOT = { religion_group = muslim }
+							   }
+					   set_government_type = theocracy_government
+					  }
+				 if = {
+					   limit = { capital_holding = { holding_type = tribal } }
+					   set_government_type = tribal_government
+					  }
+							  }
+
+####################################################################################

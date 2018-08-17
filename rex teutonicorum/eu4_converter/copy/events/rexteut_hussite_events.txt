@@ -1,0 +1,431 @@
+namespace = rexteut
+
+###Hussite War setup###
+
+
+country_event = {
+
+		id = rexteut.2001
+		title = OK
+		desc = OK
+		is_triggered_only = yes
+
+		fire_only_once = yes
+
+		hidden = yes
+		
+		trigger = {
+			   NOT = { has_global_flag = hussite_startup }
+			   any_owned_province = {
+					   	 religion = war_hussite
+					  	}
+			  }
+
+		immediate = {
+			     set_country_flag = hussite_wars_on
+			     set_global_flag = hussite_startup
+			     country_event = {
+					      id = rexteut.2010
+					      days = 3
+					     }
+			    }
+
+		option = {
+			  name = OK
+			 }
+
+
+
+		}
+
+country_event = {
+
+		id = rexteut.2010
+		title = EVTNAME_REXTEUT_2001
+		desc = EVTDESC_REXTEUT_2001
+		picture = RELIGIOUS_TURMOIL_eventPicture
+
+		is_triggered_only = yes
+
+		trigger = {
+			   any_owned_province = { religion = war_hussite }
+			  }
+
+		option = {
+			  name = EVTOPTA_REXTEUT_2001
+			  add_stability = -1
+			  add_disaster_progress = {
+ 						   disaster = hussite_war
+ 						   value = 100
+						  }
+			 }
+
+		}
+
+country_event = {
+	id = rexteut.2011
+	title = OK
+	desc = OK
+	
+	is_triggered_only = yes
+
+	hidden = yes
+
+	trigger = {
+		   any_owned_province = { religion = war_hussite }
+		  }
+
+	immediate = {
+		     every_province = {
+				       limit = { religion = war_hussite }
+				       change_religion = hussite
+				      }
+		     random_owned_province = {
+					      limit = { religion = hussite }
+					      spawn_rebels = {
+							      type = hussite_rebels
+							      size = 1
+							     }
+					     }
+		    }
+
+	option = {
+		  name = OK
+		 }
+
+		}
+
+###Hussite nation has chance to convert to Protestant during Reformation###
+
+country_event = {
+
+		id = rexteut.2002
+		title = EVTNAME_REXTEUT_2002
+		desc = EVTDESC_REXTEUT_2002
+		picture = RELIGIOUS_CONVERSION_eventPicture
+
+		fire_only_once = yes
+
+		trigger = {
+			   religion = hussite
+			   is_religion_enabled = protestant
+			  }
+
+		mean_time_to_happen = { months = 65 }
+	
+		option = {
+			  name = EVTOPTA_REXTEUT_2002
+			  ai_chance = { factor = 1 }
+			  every_owned_province = {
+					  limit = { religion = hussite }
+					  change_religion = protestant
+					 	 }
+			  set_country_flag = hussite_reformation
+			 }
+	
+		option = {
+			  name = EVTOPTB_REXTEUT_2002
+			  ai_chance = { factor = 2 }
+			  set_country_flag = hussite_reformation_rejection
+			 }
+
+		
+
+		}
+
+###King of Bohemia given chance to negotiate with Hussites###
+
+country_event = {
+	
+		 id = rexteut.2003
+		 title = EVTNAME_REXTEUT_2003
+		 desc = EVTDESC_REXTEUT_2003
+		 picture = RELIGIOUS_TURMOIL_eventPicture
+
+		 trigger = {
+			    had_country_flag = {
+					        flag = hussite_wars_on
+					        days = 2920
+					       }
+			    has_disaster = hussite_war
+			    any_province = { religion = hussite }
+			    NOT = { has_ruler_flag = rejected_hussite_peace }
+			   }
+
+		mean_time_to_happen = { days = 1000 }
+
+		option = {
+			  name = EVTOPTA_REXTEUT_2003
+			  add_prestige = -5
+			  if = {
+					limit = { NOT = { stability = 0 } }
+					add_stability = 1
+				   }
+			  end_disaster = hussite_war
+			  hidden_effect = {
+			        clr_country_flag = hussite_wars_on
+			        disband_rebels = hussite_rebels
+				    set_global_flag = hussite_compromise
+					add_country_modifier = {
+											name = "religious_sect_tolerance"
+											duration = -1
+										   }
+				    add_reform_desire = 5
+			            every_country = {
+					           limit = { religion = catholic }
+					           country_event = {
+						      	            id = rexteut.2004
+							           }
+					          }
+					   }
+			 }
+
+		option = {
+			  name = EVTOPTB_REXTEUT_2003
+			  set_ruler_flag = rejected_hussite_peace
+			  random_owned_province = {
+					  	limit = { religion = hussite }
+					  	spawn_rebels = {
+							  	type = hussite_rebels
+							  	size = 1
+							       }
+					          }
+			 }
+
+		}
+
+###Catholic rulers hear of end of Hussite war###
+
+country_event = {
+		 id = rexteut.2004
+		 title = EVTNAME_REXTEUT_2004
+		 desc = {
+			 trigger = { has_global_flag = hussite_compromise }
+			 desc = EVTDESCA_REXTEUT_2004
+			}
+		 desc = {
+			 trigger = { has_global_flag = hussite_win }
+			 desc = EVTDESCB_REXTEUT_2004
+			}
+		 desc = {
+			 trigger = { has_global_flag = hussite_lose }
+			 desc = EVTDESCC_REXTEUT_2004
+			}
+		 picture = CONQUEST_eventPicture
+
+		 is_triggered_only = yes
+
+		 trigger = {
+			    religion = catholic
+			   }
+		 
+		 option = {
+			   trigger = { has_global_flag = hussite_compromise }
+			   name = EVTOPTA_REXTEUT_2004
+			   custom_tooltip = reform_desire
+			  }
+		 
+		 option = {
+			   trigger = { has_global_flag = hussite_win }
+			   name = EVTOPTB_REXTEUT_2004
+			   custom_tooltip = reform_desire
+			  }
+		 
+		 option = {
+			   trigger = { has_global_flag = hussite_lose }
+			   name = EVTOPTC_REXTEUT_2004
+			   custom_tooltip = unreform_desire
+			  }
+
+	        }
+
+###Catholic province has chance to flip Hussite###
+
+country_event = {
+		 id = rexteut.2005
+		 title = EVTNAME_REXTEUT_2005
+		 desc = EVTDESC_REXTEUT_2005
+		 picture = RELIGIOUS_TURMOIL_eventPicture
+
+		 is_triggered_only = yes
+
+		 trigger = {
+			    has_disaster = hussite_war
+			    any_province = { religion = catholic }
+			   }
+
+		 immediate = {
+			      random_owned_province = {
+					      limit = { religion = catholic }
+					      change_religion = hussite
+					               }
+			     }
+
+		 option = {
+			   name = EVTOPTB_REXTEUT_2004
+			  }
+
+		}
+
+
+###Hussite province has chance to flip Catholic###
+
+country_event = {
+		 id = rexteut.2006
+		 title = EVTNAME_REXTEUT_2005
+		 desc = EVTDESC_REXTEUT_2006
+		 picture = RELIGIOUS_TURMOIL_eventPicture
+
+		 is_triggered_only = yes
+
+		 trigger = {
+			    has_disaster = hussite_war
+			    any_province = { religion = hussite }
+			   }
+
+		 immediate = {
+			      random_owned_province = {
+					         limit = { religion = hussite }
+					         change_religion = catholic
+					              }
+			     }
+
+		 option = {
+			   name = EVTOPTC_REXTEUT_2004
+			  }
+
+		}
+
+###King of Bohemia, losing the war, has chance to convert to Hussite###
+
+country_event = {
+		 id = rexteut.2007
+		 title = EVTNAME_REXTEUT_2007
+		 desc = EVTDESC_REXTEUT_2007
+		 picture = RELIGIOUS_TURMOIL_eventPicture
+
+		 trigger = {
+			    has_disaster = hussite_war
+			    religion = catholic
+			    dominant_religion = hussite
+			    NOT = { has_ruler_flag = rejected_hussite_peace }
+			   }
+
+		 mean_time_to_happen = { 
+					days = 365
+				        modifier = {
+						    factor = 0.1
+						    NOT = {
+							   any_province = { 
+									   religion = catholic
+									  }
+							  }
+						   }
+				       }
+
+		option = { 
+			  name = EVTOPTA_REXTEUT_2007
+			  add_prestige = -5
+			  add_stability = 1
+			  end_disaster = hussite_war
+			  disband_rebels = hussite_rebels
+			  change_religion = hussite
+			  hidden_effect = {
+			            clr_country_flag = hussite_wars_on
+				    set_global_flag = hussite_win
+				    add_reform_desire = 15
+			            every_country = {
+					           limit = { religion = catholic }
+					           country_event = {
+						      	            id = rexteut.2004
+							           }
+					            }
+					   }
+			 }
+
+		option = { 
+			  name = EVTOPTB_REXTEUT_2007
+			  set_ruler_flag = rejected_hussite_peace
+			  random_owned_province = {
+					  	limit = { religion = hussite }
+					  	spawn_rebels = {
+							  	type = hussite_rebels
+							  	size = 1
+							       }
+					    	  }
+			 }
+
+		}
+
+###No more Hussite provinces means victory for Catholicism in Hussite Wars###
+
+country_event = {
+		 id = rexteut.2008
+		 title = EVTNAME_REXTEUT_2008
+		 desc = EVTDESC_REXTEUT_2008
+		 picture = RELIGIOUS_TURMOIL_eventPicture
+
+		 trigger = {
+			    has_disaster = hussite_war
+			    religion = catholic
+			    NOT = {
+				   any_province = { 
+						   religion = hussite
+						  }
+				  }
+			   }
+
+		 mean_time_to_happen = { days = 14 }
+
+		 option = { 
+			  name = EVTOPTA_REXTEUT_2008
+			  add_prestige = 10
+			  add_stability = 1
+			  end_disaster = hussite_war
+			  disband_rebels = hussite_rebels
+			  change_religion = hussite
+			  hidden_effect = {
+			            clr_country_flag = hussite_wars_on
+				    set_global_flag = hussite_lose
+				    add_reform_desire = -10
+			            every_country = {
+					           limit = { religion = catholic }
+					           country_event = {
+						      	            id = rexteut.2004
+							           }
+					            }
+					   }
+			  }
+	        }
+
+###Hussite provinces flip to Protestant for non-Hussite ruler###
+
+country_event = {
+		 id = rexteut.2009
+		 title = EVTNAME_REXTEUT_2009
+		 desc = EVTDESC_REXTEUT_2009
+		 picture = RELIGIOUS_CONVERSION_eventPicture
+
+		 trigger = {
+			    NOT = { religion = hussite }
+			    any_province = { religion = hussite }
+			    is_religion_enabled = protestant
+			   }
+
+		mean_time_to_happen = { months = 120 }
+
+		immediate = {
+			     random_owned_province = {
+					     	limit = { religion = hussite }
+					     	change_religion = protestant
+					       	     }
+			    }
+
+		option = {
+			  name = OK
+			 }
+
+		}
+
+
+###

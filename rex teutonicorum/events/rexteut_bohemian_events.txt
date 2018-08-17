@@ -1,0 +1,2062 @@
+namespace = rexteut
+
+
+###HREmperor considers adding tributary Bohemia to Empire###
+character_event = {
+     
+          id = rexteut.3001
+          desc = EVTDESC_rexteut_3001
+          picture = GFX_evt_holy_emperor
+
+		  only_playable = yes
+		  prisoner = no
+		  min_age = 16
+		  capable_only = yes
+		  
+		  is_triggered_only = yes
+		  
+          trigger = {
+             rex_teutonicorum_trigger = yes
+		     war = no
+		     NOR = {
+			    has_global_flag = "investiture_papal"
+			    has_global_flag = "concordat_of_worms"
+			    has_character_modifier = stat_fav_prin 
+                has_character_flag = "adding_bohemia"
+				   }
+                OR = {
+					  AND = {
+							 k_bohemia = { has_holder = no }
+							 d_bohemia = { 
+										  holder_scope = { 
+														  pays_tribute_to = ROOT
+														  NOR = {
+																 has_truce = ROOT
+																 has_non_aggression_pact_with = ROOT
+																}
+														  borders_character_realm_trigger = yes
+														 }
+										 }
+							}
+                      k_bohemia = { 
+								   has_holder = yes
+                                   holder_scope = { 
+												   pays_tribute_to = ROOT  
+												   NOR = {
+														  has_truce = ROOT
+														  has_non_aggression_pact_with = ROOT
+														 }
+												   borders_character_realm_trigger = yes
+												  }
+                                  }
+                      }
+                   }
+
+          option = {
+                    name = EVTOPTA_rexteut_3001  
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = ambitious
+					     	   trait = proud
+					     	   trait = greedy
+					     	   trait = envious
+						  }
+					    }
+				}
+                    set_character_flag = "adding_bohemia"                  
+                    custom_tooltip = { text = "bohemia_1" }
+                    hidden_tooltip = {
+                                      any_independent_ruler = {
+															   limit = {
+																		OR = {
+																			  has_landed_title = k_bohemia
+																			  AND = {
+																					 has_landed_title = d_bohemia
+																					 k_bohemia = { has_holder = no }
+																					}
+																			 }
+																	   }
+                                                               narrative_event = { id =  rexteut.3002 }
+         						      }
+                                     }
+                   }
+
+          option = {
+                    name = EVTOPTB_rexteut_3001
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = content
+					     	   trait = humble
+					     	   trait = slothful
+					      	   trait = craven
+					     	   trait = kind
+						  }
+					    }
+				}
+                   }
+
+                  }
+
+
+###The ruler of Bohemia receives the proposal###
+narrative_event = {
+
+          id = rexteut.3002
+          title = EVTNAME_rexteut_3002
+          desc = EVTDESC_rexteut_3002
+          picture = GFX_evt_holy_emperor
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     OR = {
+						   AND = {
+								  has_landed_title = d_bohemia
+								  k_bohemia = { has_holder = no }
+								 }
+                           has_landed_title = k_bohemia
+                          }
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_3002
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = craven
+					     	   trait = content
+					     	   trait = humble
+					     	   trait = charitable
+					    	   NOT = { completely_controls = k_bohemia }
+					     	   opinion = {
+							      who = FROM
+						              value = 35
+						             }
+						  }
+					    }
+				}
+                    custom_tooltip = { text = "bohemia_2" }
+                    hidden_tooltip = {
+                                      any_independent_ruler = {
+															   limit = { rex_teutonicorum_trigger = yes }
+                                                               narrative_event = { 
+										  id = rexteut.3003
+							                          days = 14
+										 }
+							      }
+                                     }
+                   }
+
+          option = {
+                    name = EVTOPTB_rexteut_3002
+                    ai_chance = { 
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = proud
+					     	   trait = ambitious
+					     	   trait = stubborn
+					     	   NOT = { 
+						    	  opinion = {
+							             who = FROM
+							             value = -20
+						                    }
+						         }
+						  }
+					    }
+				}
+                    suzerain = { remove_tributary = PREV }
+                    custom_tooltip = { text = "bohemia_3" }
+                    hidden_tooltip = {
+				      opinion = {
+						 who = FROM
+						 modifier = opinion_tributary_vassal
+						 years = 50
+						}
+                                      any_independent_ruler = {
+															   limit = { rex_teutonicorum_trigger = yes }
+                                                               narrative_event = { 
+										  id =  rexteut.3004 
+										  days = 14
+										 }
+							      }
+                                     }
+                   }
+
+                  }
+
+
+###Bohemia agrees to become a part of the HRE###
+narrative_event = {
+
+          id = rexteut.3003
+          title = EVTNAME_rexteut_3003
+          desc = EVTDESC_rexteut_3003
+          picture = GFX_evt_emissary
+          is_triggered_only = yes
+ 
+          trigger = { rex_teutonicorum_trigger = yes }
+
+          option = {
+                    name = EVTOPTA_rexteut_3003
+                    prestige = 250
+                    FROM = { set_defacto_liege = PREV }
+                    k_bohemia = { de_jure_liege = e_hre }
+                    clr_character_flag = "adding_bohemia"
+					log = "[Root.GetTitledName] agreed to become a vassal of the Holy Roman Empire"
+                   }
+
+                  }
+
+
+###Bohemia refuses to become a part of the HRE###
+narrative_event = {
+          
+          id = rexteut.3004
+          title = EVTNAME_rexteut_3004
+          desc = EVTDESC_rexteut_3004
+          picture = GFX_evt_emissary
+		  
+          is_triggered_only = yes
+
+          trigger = { rex_teutonicorum_trigger = yes }
+
+	  immediate = {
+		       opinion = {
+				  who = FROM
+				  modifier = opinion_tributary_refused
+				  years = 25
+				 }
+		      }
+
+          option = {
+                    name = EVTOPTA_rexteut_3004
+                    ai_chance = { 
+			         factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = ambitious
+					     	   trait = stubborn
+					     	   trait = arbitrary
+					     	   trait = cruel
+					     	   trait = greedy
+					     	   trait = envious
+					     	   trait = proud
+					     	   trait = wroth
+					     	   NOT = { 
+						    	  opinion = {
+							             who = FROM
+							             value = -20
+						                    }
+						         }
+						  }
+					    }
+				}
+                    custom_tooltip = { text = "bohemia_4" }
+		    set_character_flag = "invading_tributary"
+			FROM = { set_character_flag = "former_tribute_target" }
+
+                   }
+
+          option = {
+                    name = EVTOPTB_rexteut_3004
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = craven
+					     	   trait = content
+					    	   trait = humble
+					     	   trait = kind
+					     	   trait = just
+					     	   opinion = {
+							      who = FROM
+							      value = 30
+						             }
+					     	   war = yes
+						  }
+					    }
+				}
+                    prestige = -150
+                    clr_character_flag = "adding_bohemia"
+                   }
+
+                  }
+
+###Duchy of Bohemia considers asking to be raised to kingdom###
+character_event = {
+
+          id = rexteut.3005
+          desc = EVTDESC_rexteut_3005
+          picture = GFX_evt_coronation
+		  
+		  only_playable = yes
+		  prisoner = no
+		  min_age = 16
+		  capable_only = yes
+
+          trigger = {
+                     year = 1170
+                     has_regent = no
+                     prisoner = no
+                     primary_title = { title = d_bohemia }
+                     liege = { rex_teutonicorum_trigger = yes }
+                     k_bohemia = { has_holder = no }
+                     NOT = { has_character_flag = "no_bohemia_kingdom" }
+                    }
+
+          mean_time_to_happen = { years = 20 }
+
+          option = {
+                    name = EVTOPTA_rexteut_3005
+                    ai_chance = { 
+				 factor = 2 
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = ambitious
+					     	   trait = proud
+						   trait = greedy
+						  }
+					    }
+				 modifier = {
+					     factor = 50
+					     has_ambition = obj_become_king
+					    }
+				}
+                    set_character_flag = "no_bohemia_kingdom"
+                    custom_tooltip = { text = "bohemia_5" }
+                    hidden_tooltip = {
+                                      liege = { 
+                                               narrative_event = {
+						                  id = rexteut.3006
+					                         }
+                                              }
+                                     }
+                   }
+          option = {
+                    name = EVTOPTB_rexteut_3005
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = content
+					     	   trait = slothful
+						   trait = humble
+						  }
+					    }
+				}
+                    set_character_flag = "no_bohemia_kingdom"
+                   }
+
+                  }
+
+###HREmperor receives the Duke of Bohemia's request###
+narrative_event = {
+
+          id = rexteut.3006
+          title = EVTNAME_rexteut_3006
+          desc = EVTDESC_rexteut_3006
+          picture = GFX_evt_emissary
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     year = 1170
+                     rex_teutonicorum_trigger = yes
+                     k_bohemia = { has_holder = no }
+                     any_vassal = { has_landed_title = d_bohemia }
+                    }    
+
+          option = {
+                    name = EVTOPTA_rexteut_3006
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = kind
+					     	   trait = charitable
+					     	   opinion = {
+							      who = FROM
+							      value = 30
+						             }
+						  }
+					    }
+				}
+                    custom_tooltip = { text = "bohemia_6" }
+                    hidden_tooltip = {
+                                   FROM = { 
+                                           narrative_event = {
+															  id = rexteut.3007
+															  days = 14
+                                                             }
+                                          }
+                                   ROOT = { 
+                                           narrative_event = {
+                                                              id = rexteut.3009
+															  days = 14
+                                                             }
+										   any_realm_lord = { 
+															 narrative_event = {
+																			    id = rexteut.3009
+																			    days = 14
+																			   }
+															}
+                                          }
+                                      }
+                   }
+ 
+          option = {
+                    name = EVTOPTB_rexteut_3006 
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = proud
+					     	   trait = stubborn
+					    	   NOT = {
+						          opinion = {
+							             who = FROM
+							             value = -20
+						                    }
+						         }
+						  }
+					    }
+				}             
+                    custom_tooltip = { text = "bohemia_7" }
+                    hidden_tooltip = {
+                                      FROM = { 
+                                              character_event = {
+                                                                 id = rexteut.3008
+ 					                         days = 14
+                                                                }
+                                             }
+                                     }
+                   }   
+ 
+                  }
+
+###Duke of Bohemia receives positive response###
+narrative_event = {
+
+          id = rexteut.3007
+          title = EVTNAME_rexteut_3007
+          desc = EVTDESC_rexteut_3007
+          picture = GFX_evt_coronation
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     year = 1170
+                     primary_title = { title = d_bohemia }
+                     liege = { rex_teutonicorum_trigger = yes }
+                     k_bohemia = { has_holder = no }
+                    }
+
+          immediate = {
+                       k_bohemia = { gain_title = PREV }
+                       if = {
+							 limit = { e_hre = { has_holder = yes } }
+							 set_defacto_liege = e_hre
+							}
+                       if = {
+							 limit = { e_karling = { has_holder = yes } }
+							 set_defacto_liege = e_karling
+							}
+		       FROM = {
+			       any_vassal = {
+					     limit = { 
+						      de_jure_liege = k_bohemia
+						     }
+					     set_defacto_liege = ROOT
+					    }
+			      }
+                      }
+
+          option = {
+                    name = EVTOPTA_rexteut_3007
+                    prestige = 100
+                    add_trait = crowned
+                    hidden_tooltip = {
+                                      opinion = {
+			                         who = FROM
+					         modifier = opinion_raised_to_kingdom
+                                                 years = 100
+												 origin_description = raised_in_rank
+                                                }
+
+                                     }
+                   }
+
+                  }
+
+###Duke of Bohemia receieves negative response###
+character_event = {
+
+          id = rexteut.3008
+          desc = EVTDESC_rexteut_3008
+          picture = GFX_evt_emissary
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     year = 1170
+                     primary_title = { title = d_bohemia }
+                     liege = { rex_teutonicorum_trigger = yes }
+                     k_bohemia = { has_holder = no }
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_3008
+                    opinion = {
+                               who = FROM
+                               modifier = denied_kingdom_bohemia
+                               years = 25
+                              }
+                   }
+
+
+                  }
+
+###HREmperor and vassals informed of King of Bohemia's crowning###
+narrative_event = {
+
+          id = rexteut.3009
+          title = EVTNAME_rexteut_3009
+          desc = EVTDESC_rexteut_3009
+          picture = GFX_evt_coronation
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     year = 1170
+                     NOT = { has_landed_title = d_bohemia }
+					 OR = {
+						   rex_teutonicorum_trigger = yes
+						   liege = { rex_teutonicorum_trigger = yes }
+						  }
+                    }
+
+          option = {
+                    name = OK
+                   }
+
+                  }
+
+###Lost territory makes Duke of Bohemia consider HRE vassalization###
+character_event = {
+
+      id = rexteut.3010
+	  desc = EVTDESC_rexteut_3010
+	  picture = GFX_evt_holy_emperor
+	  
+	  only_playable = yes
+	  min_age = 16
+	  capable_only = yes
+	  prisoner = no
+
+	  trigger = {
+		     primary_title = { 
+				      title = d_bohemia 
+				      has_title_flag = "all_bohemia_owned"	
+				     }
+		     independent = yes
+		     NOT = { completely_controls = k_bohemia }
+		     OR = {
+				   e_hre = { has_holder = yes }
+				   AND = {
+						  e_karling = { has_holder = yes }
+						  has_global_flag = "verdun_failed"
+						 }
+				  }
+		     NOT = { has_global_flag = "hre_rejects_bohemia" }
+		     NOR = { 
+			    has_global_flag = "investiture_papal"
+			    has_global_flag = "concordat_of_worms"
+			    has_global_flag = "statutum_in_favorem_principum"
+			   }
+		    }
+
+	  mean_time_to_happen = { months = 1 }
+
+	  option = {
+		    name = EVTOPTA_rexteut_3002
+		    ai_chance = {
+				 factor = 1.5
+				 modifier = {
+					     factor = 0
+					     num_of_count_titles_in_realm = 20
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = humble
+					     	   trait = craven
+						  }
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   e_hre = {
+						            holder_scope = {
+								      reverse_opinion = {
+											 who = ROOT
+											 value = 25
+											}
+								           }
+						           }
+					     	   e_karling = {
+						            holder_scope = {
+								      reverse_opinion = {
+											 who = ROOT
+											 value = 25
+											}
+								           }
+						           }
+						  }
+					    }
+				}
+		    custom_tooltip = { text = bohemia_5 }
+		    hidden_tooltip = {
+		    any_independent_ruler = {
+						 limit = { rex_teutonicorum_trigger = yes }
+					     narrative_event = { 
+              							id = rexteut.3011 
+     							        days = 14
+							       }
+					    }
+				     }
+		   }
+	  option = {
+		    name = EVTOPTB_rexteut_3002
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = proud
+					     	   trait = stubborn
+					     	   e_hre = {
+						      	    holder_scope = {
+								      NOT = {
+									     reverse_opinion = {
+												who = ROOT
+												value = -20
+											       }
+									    }
+								           }
+						           }
+					     	   e_karling = {
+						      	    holder_scope = {
+								      NOT = {
+									     reverse_opinion = {
+												who = ROOT
+												value = -20
+											       }
+									    }
+								           }
+						           }
+						  }
+					    }
+				}
+		    set_global_flag = "hre_rejects_bohemia"
+		   }
+
+		  }
+
+###HREmperor receives the Duke of Bohemia's request###
+narrative_event = {
+
+	  id = rexteut.3011
+	  title = EVTNAME_rexteut_3011
+	  desc = EVTDESC_rexteut_3011
+	  picture = GFX_evt_emissary
+	  
+	  is_triggered_only = yes
+
+	  trigger = { rex_teutonicorum_trigger = yes }
+
+	  option = {
+		    name = EVTOPTA_rexteut_3011
+		    ai_chance = { factor = 80 }
+		    custom_tooltip = { text = bohemia_6 }
+		    hidden_tooltip = {
+		    FROM = {
+			    narrative_event = { 
+					       id = rexteut.3012 
+					      }
+			   }
+				     }
+		   }
+	  option = {
+		    name = EVTOPTB_rexteut_3011
+		    ai_chance = { factor = 20 }
+		    set_global_flag = "hre_rejects_bohemia"
+		    custom_tooltip = { text = bohemia_7 }
+		    hidden_tooltip = {
+		    FROM = {
+			    narrative_event = { 
+					       id = rexteut.3013 
+					      }
+			   }
+				     }
+		   }
+
+		  }
+
+###Duke of Bohemia receives Emperor's positive response###
+narrative_event = {
+
+      id = rexteut.3012
+	  title = EVTNAME_rexteut_3012
+	  desc = EVTDESC_rexteut_3012
+	  picture = GFX_evt_holy_emperor
+	  
+	  is_triggered_only = yes
+
+	  trigger = { primary_title = { title = d_bohemia } }
+
+	  immediate = {
+		       set_defacto_liege = FROM
+		       k_bohemia = { de_jure_liege = e_hre }
+		      }
+
+	  option = {
+		    name = EVTOPTA_rexteut_3012
+		    prestige = -50
+			log = "[Root.GetTitledName] became a vassal of the Holy Roman Empire"
+		   }
+
+		  }
+
+###Duke of Bohemia receives Emperor's negative response###
+narrative_event = {
+
+      id = rexteut.3013
+	  title = EVTNAME_rexteut_3013
+	  desc = EVTDESC_rexteut_3013
+	  picture = GFX_evt_emissary
+	  
+	  is_triggered_only = yes
+
+	  trigger = {
+		     primary_title = { title = d_bohemia }
+		    }
+
+	  option = {
+		    name = EVTOPTA_rexteut_3013
+		   }
+
+		  }
+
+###Jan Hus###
+narrative_event = {
+	id = rexteut.3014
+	title = EVTNAME_rexteut_3014
+	desc = EVTDESC_rexteut_3014
+	picture = GFX_evt_heretic
+	
+	only_playable = yes
+	religion = catholic
+
+	trigger = {
+		   e_placeholder = { had_title_flag = { flag = startup days = 730 } }
+		   OR = {
+			 has_game_rule = {
+					  name = rexteut_hus
+					  value = random
+					 }
+			 AND = {
+				has_game_rule = {
+						 name = rexteut_hus
+						 value = historical
+						}
+				year = 1385
+			       }
+			}
+		   NOT = { has_global_flag = "jan_hus" }
+		   has_landed_title = k_bohemia
+		   religion = catholic
+		  }
+
+	mean_time_to_happen = {
+			       years = 10
+			       modifier = {
+					   factor = 20
+					   has_game_rule = {
+							    name = rexteut_hus
+							    value = random
+							   }
+					  }
+			       modifier = {
+					   factor = 0.7
+					   NOT = { culture = bohemian }
+					  }
+			       modifier = {
+					   factor = 0.5
+					   has_global_flag = "wycliff"
+					  }
+			      }
+
+	immediate = {
+		     set_global_flag = "jan_hus"
+		     random_realm_province = {
+					      limit = {
+						       NOT = { religion = hussite }
+						       OR = {
+							     kingdom = { title = k_bohemia }
+							     duchy = { title = d_silesia }
+							     culture = bohemian
+							    }
+						      }
+					      set_province_flag = "hussite_centre"
+					      religion = hussite
+					     }
+		    }
+
+	option = {
+		  name = EVTOPTA_rexteut_3014
+		  set_global_flag = "hussites_suppressed"
+		  custom_tooltip = { text = hussite_1 }
+		  hidden_tooltip = {
+					set_character_flag = "suppressed_hussites"
+				    if = {
+					  limit = { ai = no }
+		    		    	  chronicle = {
+				 		       entry = CHRON_REXTEUT_HUS
+				 		       portrait = [Root.GetID]
+				 		       picture = GFX_evt_heretic
+						      }
+					 }
+				    any_playable_ruler = {
+							  limit = { 
+								   religion = catholic
+								   NOT = { has_landed_title = k_bohemia }
+								  }
+							  narrative_event = {
+									     id = rexteut.3015
+									    }
+							 }
+				   }
+			log = "Jan Hus began preaching in Bohemia, and [Root.GetTitledName] chose to suppress him"
+		 }
+	option = {
+		  name = EVTOPTB_rexteut_3014
+		  set_global_flag = "hussites_tolerated"
+		  custom_tooltip = { text = hussite_2 }
+		  hidden_tooltip = {
+					set_character_flag = "tolerated_hussites"
+				    if = {
+					  limit = { ai = no }
+		    		    	  chronicle = {
+				 		       entry = CHRON_REXTEUT_HUS
+				 		       portrait = [Root.GetID]
+				 		       picture = GFX_evt_heretic
+						      }
+					 }
+				    any_playable_ruler = {
+							  limit = { 
+								   religion = catholic
+								   NOT = { has_landed_title = k_bohemia }
+								  }
+							  narrative_event = {
+									     id = rexteut.3015
+									    }
+							 }
+				   }
+			log = "Jan Hus began preaching in Bohemia, and [Root.GetTitledName] chose to leave him be"
+		  
+		 }
+
+		  }
+
+###Others told what the King of Bohemia opted to do about Hus###
+narrative_event = {
+	id = rexteut.3015
+	title = EVTNAME_rexteut_3014
+	desc = {
+		trigger = { has_global_flag = "hussites_suppressed" }
+		text = EVTDESCA_rexteut_3015
+	       }
+	desc = {
+		trigger = { has_global_flag = "hussites_tolerated" }
+		text = EVTDESCB_rexteut_3015
+	       }
+	picture = GFX_evt_heretic
+
+	is_triggered_only = yes
+	
+	only_playable = yes
+	religion = catholic
+
+	trigger = { NOT = { has_landed_title = k_bohemia } }
+
+	option = {
+		  trigger = { has_global_flag = "hussites_suppressed" }
+		  name = EVTOPTA_rexteut_3015
+		 }
+	option = {
+		  trigger = { 
+			     has_global_flag = "hussites_tolerated" 
+			     NOT = { trait = zealous }
+			    }
+		  name = EVTOPTB_rexteut_3015
+		 }
+	option = {
+		  trigger = { 
+			     has_global_flag = "hussites_tolerated" 
+			     trait = zealous
+			    }
+		  name = EVTOPTB_rexteut_3015
+		 }
+
+		  }
+
+###Jan Hus executed###
+narrative_event = {
+	id = rexteut.3016
+	title = EVTNAME_rexteut_3016
+	desc = EVTDESC_rexteut_3016
+	sound = burning_male_04
+	picture = GFX_evt_beheading
+
+	major = yes
+	religion = catholic
+	only_playable = yes
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   has_global_flag = "hussites_suppressed"
+                   NOT = { 
+                          had_global_flag = {
+				             flag = "jan_hus"
+				             days = 14600
+				            }
+			 }
+		   NOT = { has_global_flag = "hus_executed" }
+		  }
+		  
+	major_trigger = {
+					 OR = {
+						   religion = catholic
+						   religion = hussite
+						   top_liege = { has_landed_title = k_bohemia }
+						  }
+					}
+
+	mean_time_to_happen = {
+			       years = 10
+			       modifier = {
+					   factor = 0.5
+					   NOT = {
+						  any_realm_province = { religion = hussite }
+						 }
+					  }
+			      }
+
+	immediate = {
+		     set_global_flag = "hus_executed"
+			 set_character_flag = "executed_hus"
+		     clr_global_flag = "hussites_suppressed"
+		    }
+
+	option = {
+		  name = EVTOPTA_rexteut_3016
+		  hidden_tooltip = {
+		  		    if = {
+					  limit = { has_landed_title = k_bohemia }
+					  random_list = {
+							 75 = {
+							       narrative_event = {
+										  id = rexteut.3018
+										  days = 14
+										 }
+							      }
+							 25 = {
+							       narrative_event = {
+										  id = rexteut.3017
+										  days = 14
+										 }
+							      }
+				 		        }
+		       		  	 }
+		    		    chronicle = {
+				 		 entry = CHRON_REXTEUT_HUS_EXECUTED
+				 		 portrait = [Root.GetID]
+				 		 picture = GFX_evt_beheading
+						}
+				    
+				   }
+		 }
+
+		  }
+
+###Hussites disband###
+narrative_event = {
+	id = rexteut.3017
+	title = EVTNAME_rexteut_3017
+	desc = {
+		trigger = {
+			   NOT = {
+				  had_global_flag = {
+						     flag = "jan_hus"
+						     days = 14600
+						    }
+				 }
+			  }
+		text = EVTDESCA_rexteut_3017
+	       }
+	desc = {
+		trigger = {
+			   had_global_flag = {
+					      flag = "jan_hus"
+					      days = 14600
+					     }
+			  }
+		text = EVTDESCB_rexteut_3017
+	       }
+	picture = GFX_evt_peasants
+
+	is_triggered_only = yes
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   religion = catholic
+		  }
+
+	immediate = {
+			 set_character_flag = "hussites_disbanded"
+		     any_realm_province = {
+					   if = {
+						 limit = { religion = hussite }
+						 religion = catholic
+						}
+					   clr_province_flag = "hussite_centre"
+					  }
+		    }
+
+	option = {
+		  name = EVTOPTA_rexteut_3017
+		  prestige = 100
+		  piety = 50
+		  log = "In response to Jan Hus' execution, the Hussites disbanded"
+		 }
+
+		  }
+
+###Hussites enraged###
+narrative_event = {
+	id = rexteut.3018
+	title = EVTNAME_rexteut_3018
+	desc = {
+		trigger = {
+			   NOT = {
+				  had_global_flag = {
+						     flag = "jan_hus"
+						     days = 14600
+						    }
+				 }
+			  }
+		text = EVTDESCA_rexteut_3018
+	       }
+	desc = {
+		trigger = {
+			   had_global_flag = {
+					      flag = "jan_hus"
+					      days = 14600
+					     }
+			  }
+		text = EVTDESCB_rexteut_3018
+	       }
+	picture = GFX_evt_peasants
+
+	is_triggered_only = yes
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   religion = catholic
+		  }
+
+	immediate = {
+			 set_character_flag = "hussites_enraged"
+		     random_realm_province = {
+					      limit = {
+						       NOT = { religion = hussite }
+						       OR = {
+						    	     kingdom = { title = k_bohemia }
+							     duchy = { title = d_silesia }
+							     culture = bohemian
+							    }
+						       any_neighbor_province = { has_province_flag = "hussite_centre" }
+						      }
+					      religion = hussite
+					      set_province_flag = "hussite_centre"
+					     }
+		     if = {
+			   limit = { 
+				    NOT = { any_realm_province = { religion = hussite } }
+				   }
+		     	   random_realm_province = {
+					      	    limit = {
+						       	     NOT = { religion = hussite }
+						       	     OR = {
+						    	     	   kingdom = { title = k_bohemia }
+								   duchy = { title = d_silesia }
+							     	   culture = bohemian
+							    	  }
+						       	     has_province_flag = "hussite_centre"
+						      	    }
+						    religion = hussite
+						   }
+			  }
+		    }
+
+	option = {
+		  name = EVTOPTA_rexteut_3018
+		  set_global_flag = "hussite_uprising"
+		  log = "In response to Jan Hus' execution, the Hussites were invigorated"
+		 }
+
+		  }
+
+###More provinces go Hussite###
+character_event = {
+	id = rexteut.3019
+	desc = {
+		trigger = { has_global_flag = "hus_executed" }
+		text = EVTDESCA_rexteut_3019
+	       }
+	desc = {
+		trigger = { NOT = { has_global_flag = "hus_executed" } }
+		text = EVTDESCB_rexteut_3019
+	       }
+	picture = GFX_evt_heretic
+	
+	only_playable = yes
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   OR = {
+			 has_global_flag = "hussites_suppressed"
+			 has_global_flag = "hussite_uprising"
+			}
+		   any_realm_province = {
+					 religion = catholic
+					}
+		   NOT = { has_global_flag = "hussite_wars" }
+		   has_global_flag = "jan_hus"
+		   NOT = { has_global_flag = "hussite_peace" }
+		  }
+
+	mean_time_to_happen = {
+			       years = 3
+			       modifier = {
+					   factor = 0.5
+					   has_global_flag = "hussite_uprising"
+					  }
+			       modifier = {
+					   factor = 2
+					   NOT = {
+						  any_realm_province = { 
+									religion = catholic
+						  			count = 3
+								       }
+						 }
+					  }
+			      }
+
+	immediate = {
+		     random_realm_province = {
+					   limit = {
+						    OR = {
+							  culture = bohemian
+						   	  kingdom = { title = k_bohemia }
+							  duchy = { title = d_silesia }
+							 }
+						    NOT = { religion = hussite }
+						    any_neighbor_province = { has_province_flag = "hussite_centre" }
+						   }
+					   religion = hussite
+					   set_province_flag = "hussite_centre"
+					     }
+		    }
+
+
+	option = {
+		  name = EVTOPTA_rexteut_3019
+		 }
+
+
+		  }
+
+###The Defenestration of Prague (the less well-known one)###
+narrative_event = {
+	id = rexteut.3020
+	title = EVTNAME_rexteut_3020
+	desc = EVTDESC_rexteut_3020
+	picture = GFX_evt_castle_construction
+	border = GFX_event_narrative_frame_war
+	sound = falling_male_03
+
+	major = yes
+	religion = catholic
+	only_playable = yes
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   religion = catholic
+		   has_global_flag = "hussite_uprising"
+		  }
+		  
+	major_trigger = {
+					 OR = {
+						   religion = catholic
+						   religion = hussite
+						   top_liege = { has_landed_title = k_bohemia }
+						  }
+					}
+
+	mean_time_to_happen = {
+			       years = 5
+			       modifier = {
+					   factor = 0.75
+					   437 = { religion = hussite }
+					  }
+			      }
+
+	immediate = {
+		     clr_global_flag = "hussite_uprising"
+		     set_global_flag = "hussite_wars"
+		     437 = {
+			    religion = hussite
+			    add_province_modifier = { 
+						     name = hussite_war
+						     duration = 5475
+						    }
+			    province_event = { id = rexteut.3021 }
+			   }
+		    }
+
+	option = {
+		  trigger = { has_landed_title = k_bohemia }
+		  name = EVTOPTA_rexteut_3020
+		  hidden_tooltip = {
+				    any_realm_province = {
+							  limit = { religion = hussite }
+							  add_province_modifier = {
+										   name = hussite_war
+										   duration = 5475
+										  }
+							 }
+				   }
+			log = "The Defenestration of Prague began the Hussite Wars"
+		 }
+	option = {
+		  trigger = { NOT = { has_landed_title = k_bohemia } }
+		  name = EVTOPTB_rexteut_3020
+		 }
+
+		  }
+
+###Hussites rise up in a province###
+province_event = {
+	id = rexteut.3021
+	desc = {
+		trigger = {
+			   owner = {
+				    any_war = {
+				  	       NOT = { any_attacker = { has_character_flag = "hussite_leader" } } 
+					      }
+				   }
+			  }
+		text = EVTDESCA_rexteut_3021
+	       }
+	desc = {
+		trigger = {
+			   owner = {
+				    any_war = {
+				  	       any_attacker = { has_character_flag = "hussite_leader" } 
+					      }
+				   } 
+			  }
+		text = EVTDESCB_rexteut_3021
+	       }
+	picture = GFX_evt_peasants
+	border = GFX_event_normal_frame_war
+	
+
+	trigger = {
+		   religion = hussite
+		   has_global_flag = "hussite_wars"
+		   has_province_modifier = hussite_war
+		  }
+
+	mean_time_to_happen = { years = 6 }
+
+	immediate = { 
+		     hussite_war_effect = yes
+		     owner = { 
+			      any_liege = { character_event = { id = rexteut.3035 } }
+			     }
+		    }
+
+	option = {
+		  name = EVTOPTA_rexteut_3021
+		 }
+
+		  }
+
+#Any lieges of province-owner are informed#
+character_event = {
+	id = rexteut.3035
+	desc = {
+		trigger = {
+			   any_war = {
+				      NOT = { any_attacker = { has_character_flag = "hussite_leader" } } 
+				     }
+			  }
+		text = EVTDESCA_rexteut_3021
+	       }
+	desc = {
+		trigger = {
+			   any_war = {
+				      any_attacker = { has_character_flag = "hussite_leader" } 
+				     }
+			  }
+		text = EVTDESCB_rexteut_3021
+	       }
+	picture = GFX_evt_peasants
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes
+
+	option = {
+		  name = EVTOPTA_rexteut_3021
+		 }
+
+		  }
+
+###Defeat of Hussite army means province potentially flips to Catholic (TEMPORARILY REMOVED)###
+#letter_event = {
+#	id = rexteut.3022
+#
+#	hide_window = yes
+#
+#	is_triggered_only = yes
+#
+#	trigger = {
+#		   has_landed_title = k_bohemia
+#		   religion = catholic
+#		   has_global_flag = "hussite_wars"
+#		   any_realm_province = {
+#					 religion = hussite
+#					 has_province_flag = "hussite_uprising" 
+#					 has_siege = no
+#					}
+#		   NOT = {
+#			  any_war = {
+#						 any_attacker = { has_character_flag = "hussite_leader" }
+#					    }
+#			 }
+#		  }
+#
+#	immediate = {
+#		     random = {
+#			       chance = 30
+#			       character_event = { id = rexteut.3023 }
+#			      }
+#		    }
+#
+#	       }
+#
+#character_event = {
+#	id = rexteut.3023
+#	desc = EVTDESC_rexteut_3023
+#	picture = GFX_evt_bishop
+#
+#	is_triggered_only = yes
+#
+#	trigger = {
+#		   has_landed_title = k_bohemia
+#		   has_global_flag = "hussite_wars"
+#		   religion = catholic
+#		   any_realm_province = {
+#					 religion = hussite
+#					 has_province_flag = "hussite_uprising"
+#					}
+#		  }
+#
+#	immediate = {
+#		     random_realm_province = {
+#					      limit = {
+#						       religion = hussite
+#						       has_province_flag = "hussite_uprising"
+#						      }
+#					      religion = catholic
+#					      remove_province_modifier = hussite_war
+#					      clr_province_flag = "hussite_centre"
+#					     }
+#		    }
+#
+#	option = {
+#		  name = EVTOPTA_rexteut_3023
+#		 }
+#
+#		  }
+
+###Province flips to Hussite during the war###
+province_event = {
+	id = rexteut.3024
+	desc = EVTDESC_rexteut_3024
+	picture = GFX_evt_heretic
+
+	trigger = {
+		   has_global_flag = "hussite_wars"
+		   has_province_modifier = hussite_war
+		   religion = catholic
+		  }
+
+	mean_time_to_happen = { years = 6 }
+
+	immediate = {
+		     religion = hussite
+		     add_province_modifier = {
+					      name = hussite_war
+					      duration = 1825
+					     }
+		    }
+
+	option = {
+		  name = EVTOPTA_rexteut_3024
+		  custom_tooltip = { text = hussite_6 }
+		  hidden_tooltip = { hussite_war_effect = yes }
+		 }
+	option = {
+		  name = EVTOPTB_rexteut_3024
+		 }
+
+		  }
+
+###No more Hussites means the war is over###
+narrative_event = {
+	id = rexteut.3025
+	title = EVTNAME_rexteut_3025
+	desc = EVTDESC_rexteut_3025
+	picture = GFX_evt_bishop
+	
+	only_playable = yes
+	religion = catholic
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   has_global_flag = "hussite_wars"
+		   NOT = { any_realm_province = { religion = hussite } }
+		  }
+
+	mean_time_to_happen = { days = 10 }
+
+	immediate = {
+		     any_realm_province = { clr_province_flag = "hussite_centre" }
+		    }
+
+	option = {
+		  name = EVTOPTA_rexteut_3025
+		  clr_global_flag = "hussite_wars"
+		  set_global_flag = "hussite_lose"
+		  hidden_tooltip = {
+				    any_playable_ruler = {
+							  limit = { religion = catholic }
+							  narrative_event = { 
+									     id = rexteut.3028
+									     days = 7
+									    }
+							 }
+				   }
+		  log = "The Hussites were defeated in the Hussite Wars"
+		 }
+
+		  }
+
+###No more Catholics gives King of Bohemia chance to surrender###
+narrative_event = {
+	id = rexteut.3026
+	title = EVTNAME_rexteut_3026
+	desc = EVTDESC_rexteut_3026
+	picture = GFX_evt_heretic
+	
+	only_playable = yes
+	religion = catholic
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   has_global_flag = "hussite_wars"
+		   NOT = { any_realm_province = { religion = catholic } }
+		  }
+
+	mean_time_to_happen = { days = 10 }
+
+	option = {
+		  name = EVTOPTA_rexteut_3026
+		  religion_authority = { modifier = ruler_converted_from }
+		  religion = hussite
+		  hidden_tooltip = { any_realm_province = { remove_province_modifier = hussite_war } }
+		  log = "The Hussites were victorious in the Hussite Wars"
+		 }
+	option = {
+		  name = EVTOPTB_rexteut_3026
+		  set_global_flag = "no_hussite_negotiation"
+		  custom_tooltip = { text = hussite_4 }
+		  any_realm_province = {
+					limit = { religion = hussite }
+					add_province_modifier = {
+								 name = hussite_war
+								 duration = -1
+								}
+				       }
+		  hidden_tooltip = {
+				    random_realm_province = {
+							     limit = { has_province_modifier = hussite_war }
+							     province_event = { id = rexteut.3021 }
+							    }
+				   }
+		  log = "[Root.GetTitledName] chose not to negotiate with the Hussites"
+		 }
+
+		  }
+
+###The Hussites call for peace through compromise###
+narrative_event = {
+	id = rexteut.3027
+	title = EVTNAME_rexteut_3027
+	desc = EVTDESC_rexteut_3027
+	picture = GFX_evt_peasants
+	
+	only_playable = yes
+	religion = catholic
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   NOT = { has_global_flag = "no_hussite_negotiation" }
+		   has_global_flag = "hussite_wars"
+		   OR = {
+		   	 had_global_flag = {
+					    flag = "hussite_wars"
+					    days = 5475
+					   }
+			 NOT = { 
+			        any_realm_province = { has_province_modifier = hussite_war }
+			       }
+			}
+		  }
+
+	mean_time_to_happen = { months = 6 }
+
+	option = {
+		  name = EVTOPTA_rexteut_3027
+		  clr_global_flag = "hussite_wars"
+		  set_global_flag = "hussite_compromise"
+		  set_character_flag = "compromised_hussites"
+		  custom_tooltip = { text = hussite_3 }
+		  hidden_tooltip = {
+				    any_playable_ruler = {
+							  limit = {
+								   OR = {
+									 religion = catholic	
+									 religion = hussite
+									}
+								  }
+							  narrative_event = {
+									     id = rexteut.3028
+									     days = 7
+									    }
+							 }
+				   }
+		  log = "The Hussite Wars ended with a compromise"
+		 }
+	option = {
+		  name = EVTOPTB_rexteut_3027
+		  set_global_flag = "no_hussite_negotiation"
+		  set_character_flag = "uncompromised_hussites"
+		  custom_tooltip = { text = hussite_4 }
+		  any_realm_province = {
+					limit = { religion = hussite }
+					add_province_modifier = {
+								 name = hussite_war
+								 duration = -1
+								}
+				       }
+		  log = "[Root.GetTitledName] chose not to negotiated with the Hussites"
+		 }
+
+		  }
+
+###The Hussite Wars end###
+narrative_event = {
+	id = rexteut.3028
+	title = EVTNAME_rexteut_3028
+	desc = {
+		trigger = { has_global_flag = "hussite_compromise" }
+		text = EVTDESCA_rexteut_3028
+	       }
+	desc = {
+		trigger = { has_global_flag = "hussite_win" }
+		text = EVTDESCB_rexteut_3028
+	       }
+	desc = {
+		trigger = { has_global_flag = "hussite_lose" }
+		text = EVTDESCC_rexteut_3028
+	       }
+	picture = GFX_evt_church_council
+	
+	is_triggered_only = yes
+
+	trigger = {
+		   OR = {
+			 religion = catholic
+			 religion = hussite
+			}
+		   OR = {
+			 has_global_flag = "hussite_compromise"
+			 has_global_flag = "hussite_win"
+			 has_global_flag = "hussite_lose"
+			}
+		  }
+
+	immediate = { 
+				 set_character_flag = "hussite_end"
+				 set_global_flag = "hussite_peace" 
+				}
+
+	option = {
+		  trigger = {
+			     has_global_flag = "hussite_compromise"
+			     religion = catholic
+			    }
+		  name = EVTOPTA_rexteut_3028
+		  
+		 }
+	option = {
+		  trigger = {
+			     has_global_flag = "hussite_compromise"
+			     religion = hussite
+			    }
+		  name = EVTOPTB_rexteut_3028
+		  
+		 }
+	option = {
+		  trigger = {
+			     has_global_flag = "hussite_win"
+			     religion = catholic
+			    }
+		  name = EVTOPTC_rexteut_3028
+		  
+		 }
+	option = {
+		  trigger = {
+			     has_global_flag = "hussite_win"
+			     religion = hussite
+			    }
+		  name = EVTOPTD_rexteut_3028
+		  
+		 }
+	option = {
+		  trigger = {
+			     has_global_flag = "hussite_lose"
+			     religion = catholic
+			    }
+		  name = EVTOPTE_rexteut_3028
+		  
+		 }
+	option = {
+		  trigger = {
+			     has_global_flag = "hussite_lose"
+			     religion = hussite
+			    }
+		  name = EVTOPTF_rexteut_3028
+		  
+		 }
+
+		  }
+
+###Tolerance causes more provinces to go Hussite###
+character_event = {
+	id = rexteut.3029
+	desc = {
+		trigger = { religion = catholic }
+		text = EVTDESCA_rexteut_3029
+	       }
+	desc = {
+		trigger = { religion = hussite }
+		text = EVTDESCB_rexteut_3029
+	       }
+	picture = GFX_evt_heretic
+	
+	only_playable = yes
+	religion = catholic
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   has_global_flag = "hussites_tolerated"
+		  }
+
+	mean_time_to_happen = { years = 2 }
+
+	immediate = {
+		     random_realm_province = {
+					   limit = {
+						    NOT = { religion = hussite }
+						    OR = {
+							  kingdom = { title = k_bohemia }
+							  duchy = { title = d_silesia }
+							  culture = bohemian
+							 }
+						    any_neighbor_province = { has_province_flag = "hussite_centre" }
+						   }
+					   religion = hussite
+					   set_province_flag = "hussite_centre"
+					    }
+		    }
+
+	option = {
+		  trigger = { religion = catholic }
+		  name = EVTOPTA_rexteut_3029
+		  clr_global_flag = "hussites_tolerated"
+		  set_global_flag = "hussites_suppressed"
+		  custom_tooltip = { text = hussite_1 }
+		  log = "[Root.GetTitledName] decided to suppress the Hussites after all"
+		 }
+	option = {
+		  trigger = { religion = catholic }
+		  name = EVTOPTB_rexteut_3029
+		  custom_tooltip = { text = hussite_5 }
+		  if = {
+		  	limit = { has_global_flag = "hussites_more_tolerated" }
+			set_global_flag = "hussites_even_more_tolerated"
+			break = yes 
+		       }
+		  set_global_flag = "hussites_more_tolerated"
+		 }
+	option = {
+		  trigger = { religion = hussite }
+		  name = EVTOPTC_rexteut_3029
+		 }
+
+		  }
+
+###The Pope demands something be done about the Hussites###
+character_event = {
+	id = rexteut.3030
+	desc = EVTDESC_rexteut_3030
+	picture = GFX_evt_pope
+	
+	only_playable = yes
+	religion = catholic
+	min_age = 16
+	prisoner = no
+	capable_only = yes
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   religion = catholic
+		   has_global_flag = "hussites_tolerated"
+		   any_realm_province = { religion = hussite }
+		   NOT = { trait = excommunicated }
+		  }
+
+	mean_time_to_happen = {
+			       years = 5
+			       modifier = {
+					   factor = 0.4
+					   has_global_flag = "hussites_more_tolerated"
+					  }
+			      }
+
+	option = {
+		  name = EVTOPTA_rexteut_3030
+		  clr_global_flag = "hussites_tolerated"
+		  clr_global_flag = "hussites_more_tolerated"
+		  set_global_flag = "hussites_suppressed"
+		  custom_tooltip = { text = hussite_1 }
+		  log = "[Root.GetTitledName], at the behest of the Pope, decided to suppress the Hussites after all"
+		 }
+	option = {
+		  name = EVTOPTB_rexteut_3030
+		  custom_tooltip = { text = hussite_5 }
+		  excommunicate = yes
+		  religion_authority = { modifier = ruler_defied_pope }
+		  piety = -50
+		  if = {
+			limit = { has_global_flag = "hussites_more_tolerated" }
+			set_global_flag = "hussites_even_more_tolerated"
+			break = yes
+		       }
+		  set_global_flag = "hussites_more_tolerated"
+		 }
+
+		  }
+
+###Tolerant King of Bohemia given chance to convert to Hussite###
+character_event = {
+	id = rexteut.3031
+	desc = EVTDESC_rexteut_3031
+	picture = GFX_evt_heretic
+	
+	only_playable = yes
+	religion = catholic
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   any_realm_province = { religion = hussite }
+		   has_global_flag = "hussites_even_more_tolerated"
+		   had_global_flag = {
+				      flag = "hussites_tolerated"
+				      days = 1000
+				     }
+		  }
+
+	mean_time_to_happen = { months = 30 }
+
+	option = {
+		  name = EVTOPTA_rexteut_3031
+		  religion_authority = { modifier = ruler_converted_from }
+		  religion = hussite
+		  hidden_tooltip = {
+				    remove_trait = excommunicated
+				   }
+		 }
+	option = {
+		  name = EVTOPTB_rexteut_3031
+		  clr_global_flag = "hussites_even_more_tolerated"
+		  clr_global_flag = "hussites_more_tolerated"
+		 }
+	option = {
+			  name = EVTOPTC_rexteut_3031
+			  set_secret_religion = hussite
+			  #join_society = secret_religious_society_hussite
+		      log = "[Root.GetTitledName] secretly converted to Hussite"
+			 }
+
+		  }
+
+###Eligible land not ruled by King of Bohemia goes Hussite###
+province_event = {
+	id = rexteut.3032
+	desc = EVTDESC_rexteut_3032
+	picture = GFX_evt_heretic
+
+	trigger = {
+		   religion = catholic
+		   owner = { 
+			    NOR = { 
+				   has_landed_title = k_bohemia 
+			    	   any_liege = { has_landed_title = k_bohemia }
+				  }
+			   }
+		   OR = {
+			 kingdom = { title = k_bohemia }
+			 duchy = { title = d_silesia }
+			 culture = bohemian
+			}
+		   any_neighbor_province = { religion = hussite }
+		  }
+
+	mean_time_to_happen = {
+			       years = 5
+			       modifier = {
+					   factor = 0.75
+					   OR = {
+						 has_global_flag = "hussite_uprising"
+						 has_global_flag = "hussite_wars"
+						}
+					  }
+			      }
+
+	immediate = { 
+		     religion = hussite 
+		     set_province_flag = heresy_in_province
+		     add_province_modifier = {
+		 			      name = religious_unrest
+					      duration = 730
+					     }
+		     owner = {
+			      if = {
+				    limit = { ai = no }
+				     chronicle = {
+					          entry = CHRONICLE_HERESY_SPREAD
+						  picture = GFX_evt_heretic
+						 }
+				   }
+			     }
+		     owner = {
+			      any_liege = {
+					   if = {
+						 limit = { ai = no }
+						 chronicle = {
+							      entry = CHRONICLE_HERESY_SPREAD
+							      picture = GFX_evt_heretic
+							     }
+					        }
+					  }
+			    }
+		    }
+
+	option = {
+		  name = {
+			  text = "EVTOPTA39000"
+			  trigger = { owner = { NOT = { religion = ROOT } } }
+			 }
+		  name = {
+			  text = "EVTOPTB39000"
+			  trigger = { owner = { religion = ROOT } }
+			 }
+		  if = {
+			limit = { 
+				 ruler = { is_parent_religion = ROOT }
+				}
+			ruler = { piety = -10 }
+		       }
+		  if = {
+			limit = {
+				 owner = {
+					  top_liege = {
+						       NOT = {
+							      any_realm_province = {
+								religion = ROOT
+								has_province_modifier = heretic_stronghold
+										   }
+						             }
+						      }
+					 }
+				}
+			add_province_modifier = {
+						 name = heretic_stronghold
+						 duration = 3650
+						}
+		       }
+		# News spread
+		  hidden_tooltip = {
+				    owner = {
+					     top_liege = {
+							  if = {
+								limit = {
+									 NOT = { character = PREV }
+									}
+								character_event = { id = 39400 days = 2 }
+							       }
+					     		  any_vassal = {
+							   		limit = {
+								    		 OR = {
+									  	       is_parent_religion = ROOT
+									  	       religion = ROOT
+								         	      }
+								       		}
+							  	        character_event = { id = 39400 days = 2 }
+							  	       }
+					    		 }
+				    	   }
+				  }
+	         }
+
+		  }
+
+###Hussite King of Bohemia ends Hussite wars###
+character_event = {
+	id = rexteut.3033
+	desc = EVTDESC_rexteut_3033
+	picture = GFX_evt_heretic
+	
+	only_playable = yes
+	religion = hussite
+
+	trigger = {
+		   has_landed_title = k_bohemia
+		   has_global_flag = "hussite_wars"
+		  }
+
+	mean_time_to_happen = { days = 3 }
+
+	immediate = {
+		     any_realm_province = {
+					   limit = { religion = hussite }
+					   remove_province_modifier = hussite_war
+					   clr_province_flag = "hussite_centre"
+					   clr_province_flag = "hussite_uprising"
+					  }
+		     clr_global_flag = "hussite_wars"
+		    }
+
+	option = {
+		  name = EVTOPTA_rexteut_3033
+		  hidden_tooltip = {
+				    any_playable_ruler = {
+							  limit = {
+								   OR = {
+									 religion = catholic
+									 religion = hussite
+									}
+								  }
+							  narrative_event = {
+									     id = rexteut.3028
+									     days = 7
+									    }
+							 }
+				   }
+		  log = "[Root.GetTitledName] converted to Hussite, ending the Hussite Wars"
+		 }
+		  }
+
+###Event for launching Hussite suppression after Jan Hus died of old age###
+letter_event = {
+	id = rexteut.3034
+	
+	hide_window = yes
+
+	only_playable = yes
+	religion = catholic
+	
+	trigger = {
+		   has_landed_title = k_bohemia
+		   has_global_flag = "hussites_suppressed"
+                   had_global_flag = {
+				      flag = "jan_hus"
+				      days = 14600
+				     }
+		   NOT = { has_global_flag = "hus_executed" }
+		  }
+
+	mean_time_to_happen = { years = 1 }
+
+	immediate = {
+		     set_global_flag = "hus_executed"
+		     random_list = {
+				    85 = {
+					  narrative_event = {
+							     id = rexteut.3018
+							     days = 14
+							    }
+							      }
+				    15 = {
+					  narrative_event = {
+							     id = rexteut.3017
+							     days = 14
+							    }
+					 }
+				   }
+		    }
+	       }
+
+###

@@ -1,0 +1,1722 @@
+hussite_war_effect = {
+	      if = {
+		    limit = {
+			     NOT = { any_character = { has_character_flag = "hussite_leader" } }
+			    }
+	      	    set_province_flag = "hussite_uprising"
+	      	    create_character = {
+				  	religion = hussite
+				  	culture = ROOT
+				  	female = no
+				  	random_traits = yes
+				  	trait = heresiarch
+				  	trait = zealous
+				  	trait = skilled_tactician
+				  	dynasty = none
+				       }
+	      	    new_character = {
+			       	     set_character_flag = "hussite_leader"
+				     wealth = 100
+			       	     create_title = {
+					       	     tier = DUKE
+					       	     landless = yes
+					       	     temporary = yes
+								 rebel = yes
+					       	     culture = ROOT
+					       	     name = "HUSSITE_REVOLT"
+					       	     holder = THIS
+						     ruler = "HERESIARCH"
+					      	    }
+	      		       	     spawn_unit = {
+			    	      	     	   province = ROOT
+					     	   home = ROOT
+			    	      	     	   owner = THIS
+						   leader = THIS
+			    	      	     	   disband_on_peace = yes
+					     	   scaled_by_biggest_garrison = 5.0 
+						   troops = {
+							     archers = { 6 6 }
+							     light_cavalry = { 4 4 }
+						             heavy_infantry = { 4 4 }
+							     pikemen = { 5 5 }
+							     light_infantry = { 10 10 }
+							    }
+						   attrition = 1.0
+			   	     	    	  }
+			      	     ROOT = {
+				       	     owner = {
+						      top_liege = {
+			       		              		reverse_war = {
+				      			       	     	       target = PREVPREVPREV 
+				      			       	      	       casus_belli = convert_bohemia
+				     	     		      	    	      }
+								  }
+						      reverse_opinion = {
+									 who = PREVPREV
+									 modifier = opinion_evil_tyrant
+									}
+					       	     }
+				      	    }
+			     }
+		    break = yes
+		   }
+	      if = {
+		    limit = {
+			     any_character = { has_character_flag = "hussite_leader" }
+			    }
+	      	    set_province_flag = "hussite_uprising"
+		    any_character = {
+				     limit = { has_character_flag = "hussite_leader" }
+				     save_event_target_as = hussite_leader
+				    }
+	      	    create_character = {
+				  	religion = hussite
+				  	culture = ROOT
+				  	female = no
+				  	random_traits = yes
+				  	trait = heresiarch
+				  	trait = zealous
+				  	trait = skilled_tactician
+				  	dynasty = none
+				       }
+	      	    new_character = {
+				     move_character = event_target:hussite_leader
+				     save_event_target_as = hussite_commander
+				     wealth = 100
+	      		       	     spawn_unit = {
+			    	      	     	   province = ROOT
+					     	   home = ROOT
+			    	      	     	   owner = event_target:hussite_leader
+						   leader = event_target:hussite_commander
+			    	      	     	   disband_on_peace = yes
+					     	   scaled_by_biggest_garrison = 5.0 
+						   troops = {
+							     archers = { 6 6 }
+							     light_cavalry = { 4 4 }
+						             heavy_infantry = { 4 4 }
+							     pikemen = { 5 5 }
+							     light_infantry = { 10 10 }
+							    }
+						   attrition = 1.0
+			   	     	    	  }
+			      	     ROOT = {
+				       	     owner = {
+						      reverse_opinion = {
+									 who = PREVPREV
+									 modifier = opinion_evil_tyrant
+									}
+					       	     }
+				      	    }
+			     }
+		   }
+		     }
+
+
+
+####################################################################################
+hre_culture_effect = {
+		if = {
+		      limit = { french_cultures_trigger = yes }
+		      change_variable = {
+					 which = "french_vassal"
+					 value = 2
+					}
+		     }
+		if = {
+		      limit = { german_cultures_trigger = yes }
+		      change_variable = {
+					 which = "german_vassal"
+					 value = 2
+					}
+		     }
+		if = {
+		      limit = { italian_cultures_trigger = yes }
+		      change_variable = {
+					 which = "italian_vassal"
+					 value = 2
+					}
+		     }
+		any_realm_lord = {
+			      limit = {
+				       OR = {
+					     culture = frankish
+					     culture = old_frankish
+					     culture = occitan
+					     culture = norman
+					    }
+				      }
+			      liege = {
+				       change_variable = {
+						          which = "french_vassal"
+						          value = 1
+						         }
+				      }
+			         }
+		any_realm_lord = {
+			      limit = { culture_group = central_germanic }
+			      liege = {
+				       change_variable = {
+						          which = "german_vassal"
+						          value = 1
+						         }
+				      }
+			         }
+		any_realm_lord = {
+			      limit = {
+				       OR = {
+					     is_italian_trigger = yes
+					     culture = sicilian
+					     culture = roman
+					     culture = longobard
+					    }
+				      }
+			      liege = {
+				       change_variable = {
+						          which = "italian_vassal"
+						          value = 1
+						         }
+				      }
+			         }
+		any_realm_province = {
+			      	      limit = {
+				       	       OR = {
+					      	     culture = frankish
+					     	     culture = old_frankish
+					     	     culture = occitan
+					     	     culture = norman
+					    	    }
+					      }
+				       owner = {
+						top_liege = {
+							     change_variable = {
+										which = "french_vassal"
+										value = 1
+									       }
+							    }
+					       }
+				      }
+		any_realm_province = {
+			      	      limit = { culture_group = central_germanic }
+				       owner = {
+						top_liege = {
+							     change_variable = {
+										which = "german_vassal"
+										value = 1
+									       }
+							    }
+					       }
+				      }
+		any_realm_province = {
+			      	      limit = {
+				       	       OR = {
+					      	     is_italian_trigger = yes
+					     	     culture = sicilian
+					     	     culture = roman
+						     culture = longobard
+					    	    }
+					      }
+				       owner = {
+						top_liege = {
+							     change_variable = {
+										which = "italian_vassal"
+										value = 1
+									       }
+							    }
+					       }
+				     }
+		if = {
+		      limit = { 
+			       OR = {
+			             primary_title = { title = k_france } 
+			             primary_title = { title = k_burgundy }
+			             primary_title = { title = k_aquitaine }
+						 primary_title = { title = e_france }
+				    }
+			      }
+		      change_variable = {
+					 which = "french_vassal"
+					 value = 5
+					}
+		     }
+		if = {
+		      limit = { 
+			       OR = {
+			             primary_title = { title = k_germany } 
+			             primary_title = { title = k_lotharingia }
+						 primary_title = { title = e_germany }
+				    }
+			      }
+		      change_variable = {
+					 which = "german_vassal"
+					 value = 5
+					}
+		     }
+		if = {
+		      limit = { 
+				   OR = {
+						 primary_title = { title = k_italy }
+						 primary_title = { title = k_sicily }
+						 primary_title = { title = k_sardinia }
+						 primary_title = { title = e_italy }
+					}
+			      }
+		      change_variable = {
+					 which = "italian_vassal"
+					 value = 5
+					}
+		     }
+		if = {
+		      limit = { 
+			       capital_scope = {
+						OR = {
+						      kingdom = { title = k_france }
+						      kingdom = { title = k_burgundy }
+						      kingdom = { title = k_aquitaine }
+						      kingdom = { title = k_brittany }
+						     }
+					       }
+			      }
+		      change_variable = {
+					 which = "french_vassal"
+					 value = 2
+					}
+		     }
+		if = {
+		      limit = { 
+			       capital_scope = {
+						OR = {
+						      kingdom = { title = k_germany }
+						      kingdom = { title = k_lotharingia }
+						      kingdom = { title = k_frisia }
+						     }
+					       }
+			      }
+		      change_variable = {
+					 which = "german_vassal"
+					 value = 2
+					}
+		     }
+		if = {
+		      limit = { 
+			       capital_scope = {
+						OR = {
+						      kingdom = { title = k_italy }
+						      kingdom = { title = k_sicily }
+							  kingdom = { title = k_sardinia }
+						     }
+					       }
+			      }
+		      change_variable = {
+					 which = "italian_vassal"
+					 value = 2
+					}
+		     }
+
+
+		}
+
+####################################################################################
+germany_stem_breakup_effect = {
+			if = { # Austria Owner Check
+				limit = { k_austria = { has_holder = no } }
+				activate_title = { title = k_arch_austria status = yes }
+				k_austria = {
+					any_direct_de_jure_vassal_title = {
+						de_jure_liege = k_arch_austria
+					}
+				}
+				k_arch_austria = {
+					copy_title_history = k_austria
+				}
+				any_realm_character = {
+					limit = { has_claim = k_austria }
+					k_arch_austria = { add_pressed_claim = PREV }
+					remove_claim = k_austria
+				}
+				any_playable_ruler = {
+					any_realm_character = {
+						limit = { has_claim = k_austria }
+						k_arch_austria = { add_pressed_claim = PREV }
+						remove_claim = k_austria
+					}
+				}
+				activate_title = { title = k_austria status = no }
+			}
+			if = { # Bavaria Owner Check
+				limit = {
+					k_bavaria = { has_holder = no }
+				}
+				activate_title = { title = k_grand_bavaria status = yes }
+				k_bavaria = {
+					any_direct_de_jure_vassal_title = {
+						de_jure_liege = k_grand_bavaria
+					}
+				}
+				k_grand_bavaria = {
+					copy_title_history = k_bavaria
+				}
+				any_realm_character = {
+					limit = { has_claim = k_bavaria }
+					k_grand_bavaria = { add_pressed_claim = PREV }
+					remove_claim = k_bavaria
+				}
+				any_playable_ruler = {
+					any_realm_character = {
+						limit = { has_claim = k_bavaria }
+						k_grand_bavaria = { add_pressed_claim = PREV }
+						remove_claim = k_bavaria
+					}
+				}
+				activate_title = { title = k_bavaria status = no }
+			}
+			if = { # Franconia Owner Check
+				limit = {
+					k_franconia = { has_holder = no }
+				}
+				activate_title = { title = k_grand_franconia status = yes }
+				k_franconia = {
+					any_direct_de_jure_vassal_title = {
+						de_jure_liege = k_grand_franconia
+					}
+				}
+				k_grand_franconia = {
+					copy_title_history = k_franconia
+				}
+				any_realm_character = {
+					limit = { has_claim = k_franconia }
+					k_grand_franconia = { add_pressed_claim = PREV }
+					remove_claim = k_franconia
+				}
+				any_playable_ruler = {
+					any_realm_character = {
+						limit = { has_claim = k_franconia }
+						k_grand_franconia = { add_pressed_claim = PREV }
+						remove_claim = k_franconia
+					}
+				}
+				activate_title = { title = k_franconia status = no }
+			}
+			if = { # Luxembourg Owner Check
+				limit = {
+					k_luxembourg = { has_holder = no }
+				}
+				activate_title = { title = k_grand_luxembourg status = yes }
+				k_luxembourg = {
+					any_direct_de_jure_vassal_title = {
+						de_jure_liege = k_grand_luxembourg
+					}
+				}
+				k_grand_luxembourg = {
+					copy_title_history = k_luxembourg
+				}
+				any_realm_character = {
+					limit = { has_claim = k_luxembourg }
+					k_grand_luxembourg = { add_pressed_claim = PREV }
+					remove_claim = k_luxembourg
+				}
+				any_playable_ruler = {
+					any_realm_character = {
+						limit = { has_claim = k_luxembourg }
+						k_grand_luxembourg = { add_pressed_claim = PREV }
+						remove_claim = k_luxembourg
+					}
+				}
+				activate_title = { title = k_luxembourg status = no }
+			}
+			if = { # Saxony Owner Check
+				limit = {
+					k_saxony = { has_holder = no }
+				}
+				activate_title = { title = k_grand_saxony status = yes }
+				k_saxony = {
+					any_direct_de_jure_vassal_title = {
+						de_jure_liege = k_grand_saxony
+					}
+				}
+				k_grand_saxony = {
+					copy_title_history = k_saxony
+				}
+				any_realm_character = {
+					limit = { has_claim = k_saxony }
+					k_grand_saxony = { add_pressed_claim = PREV }
+					remove_claim = k_saxony
+				}		
+				any_playable_ruler = {
+				  any_realm_character = {
+						limit = { has_claim = k_saxony }
+						k_grand_saxony = { add_pressed_claim = PREV }
+						remove_claim = k_saxony
+					}
+				}
+				activate_title = { title = k_saxony status = no }
+			}
+			if = { # Swabia Owner Check
+				limit = {
+					k_swabia = { has_holder = no }
+				}
+				activate_title = { title = k_grand_swabia status = yes }
+				k_swabia = {
+					any_direct_de_jure_vassal_title = {
+						de_jure_liege = k_grand_swabia
+					}
+				}
+				k_grand_swabia = {
+					copy_title_history = k_swabia
+				}
+				any_realm_character = {
+					limit = { has_claim = k_swabia }
+					k_grand_swabia = { add_pressed_claim = PREV }
+					remove_claim = k_swabia
+				}
+				any_playable_ruler = {
+					any_realm_character = {
+						limit = { has_claim = k_swabia }
+						k_grand_swabia = { add_pressed_claim = PREV }
+						remove_claim = k_swabia
+					}
+				}
+				activate_title = { title = k_swabia status = no }
+			}
+			if = { # Tuscany Owner Check
+				limit = {
+					k_tuscany = { has_holder = no }
+				}
+				activate_title = { title = k_grand_tuscany status = yes }
+				k_tuscany = {
+					any_direct_de_jure_vassal_title = {
+						de_jure_liege = k_grand_tuscany
+					}
+				}
+				k_grand_tuscany = {
+					copy_title_history = k_tuscany
+				}
+				any_realm_character = {
+					limit = { has_claim = k_tuscany }
+					k_grand_tuscany = { add_pressed_claim = PREV }
+					remove_claim = k_tuscany
+				}
+				any_playable_ruler = {
+					any_realm_character = {
+						limit = { has_claim = k_tuscany }
+						k_grand_tuscany = { add_pressed_claim = PREV }
+						remove_claim = k_tuscany
+					}
+				}
+				activate_title = { title = k_tuscany status = no }
+			}
+			if = { # Brandenburg check
+				limit = {
+					completely_controls = d_brandenburg
+					completely_controls = d_meissen
+				}
+				activate_title = { title = k_brandenburg status = yes }
+				d_brandenburg = { de_jure_liege = k_brandenburg }
+				d_meissen = { de_jure_liege = k_brandenburg }
+			}
+			
+			# deal with k_germany
+			if = {
+				limit = { NOT = { is_title_active = k_germany } }
+				activate_title = { title = k_germany status = yes }
+				if = {
+					limit = { k_germany = { is_titular = yes } }
+					k_lotharingia = {
+						any_direct_de_jure_vassal_title = {
+							limit = { capital_scope = { region = custom_france } }
+							de_jure_liege = k_france
+						}
+						any_direct_de_jure_vassal_title = {
+							limit = { capital_scope = { region = custom_aquitaine } }
+							if = { 
+								limit = { has_global_flag = west_francia_united }
+								de_jure_liege = k_france
+							}
+							if = { 
+								limit = { NOT = { has_global_flag = west_francia_united } }
+								de_jure_liege = k_aquitaine
+							}
+						}
+						any_direct_de_jure_vassal_title = {
+							limit = { capital_scope = { region = custom_frisia } }
+							de_jure_liege = k_frisia
+						}
+						any_direct_de_jure_vassal_title = {
+							limit = { capital_scope = { region = custom_bohemia } }
+							de_jure_liege = k_bohemia
+						}
+						any_direct_de_jure_vassal_title = {
+							limit = { capital_scope = { region = custom_pomerania } }
+							de_jure_liege = k_pomerania
+						}
+						any_direct_de_jure_vassal_title = {
+							limit = { capital_scope = { region = custom_burgundy } }
+							de_jure_liege = k_burgundy
+						}
+						any_direct_de_jure_vassal_title = {
+							limit = { capital_scope = { region = custom_italy } }
+							de_jure_liege = k_italy
+						}
+						any_direct_de_jure_vassal_title = {
+							limit = { capital_scope = { region = custom_poland } }
+							de_jure_liege = k_poland
+						}
+					}
+				}
+				# put whatever portion of k_germany that the emperor has conquered into the kingdom so it can be distributed between stem duchies
+				any_realm_province = {
+					limit = {
+						duchy = {
+							capital_scope = { region = custom_germany }
+							OR = {
+								has_holder = no
+								holder_scope = { same_realm = ROOT }
+							}
+						}
+					}
+					duchy = { de_jure_liege = k_germany }
+				}
+			}
+
+			# break up germany into stem duchies
+			k_germany = {
+				any_direct_de_jure_vassal_title = { # Austria
+					limit = {
+						OR = {
+							title = d_carinthia
+							title = d_osterreich
+						}
+					}
+					if = {
+						limit = { is_title_active = k_austria }
+						de_jure_liege = k_austria
+					}
+					if = {
+						limit = { is_title_active = k_arch_austria }
+						de_jure_liege = k_arch_austria
+					}
+				}
+				any_direct_de_jure_vassal_title = { # Bavaria
+					limit = {
+						OR = {
+							title = d_tyrol
+							title = d_bavaria
+						}
+					}
+					if = {
+						limit = { is_title_active = k_bavaria }
+						de_jure_liege = k_bavaria
+					}
+					if = {
+						limit = { is_title_active = k_grand_bavaria }
+						de_jure_liege = k_grand_bavaria
+					}
+				}
+				any_direct_de_jure_vassal_title = { # Franconia
+					limit = {
+						OR = {
+							title = d_thuringia
+							title = d_franconia
+						}
+					}
+					if = {
+						limit = { is_title_active = k_franconia }
+						de_jure_liege = k_franconia
+					}
+					if = {
+						limit = { is_title_active = k_grand_franconia }
+						de_jure_liege = k_grand_franconia
+					}
+				}
+				any_direct_de_jure_vassal_title = { # Saxony
+					limit = {
+						OR = {
+							title = d_westphalia
+							title = d_eastphalia
+							title = d_engern
+							title = d_nordalbingia
+						}
+					}
+					if = {
+						limit = { is_title_active = k_saxony }
+						de_jure_liege = k_saxony
+					}
+					if = {
+						limit = { is_title_active = k_grand_saxony }
+						de_jure_liege = k_grand_saxony
+					}
+				}
+				any_direct_de_jure_vassal_title = { # Swabia
+					limit = {
+						OR = {
+							title = d_swiss
+							title = d_baden
+							title = d_swabia
+						}
+					}
+					if = {
+						limit = { is_title_active = k_swabia }
+						de_jure_liege = k_swabia
+					}
+					if = {
+						limit = { is_title_active = k_grand_swabia }
+						de_jure_liege = k_grand_swabia
+					}
+				}
+				any_direct_de_jure_vassal_title = {
+					limit = { capital_scope = { region = custom_france } }
+					de_jure_liege = k_france
+				}
+				any_direct_de_jure_vassal_title = {
+					limit = { capital_scope = { region = custom_aquitaine } }
+					if = { 
+						limit = { has_global_flag = west_francia_united }
+						de_jure_liege = k_france
+					}
+					if = { 
+						limit = { NOT = { has_global_flag = west_francia_united } }
+						de_jure_liege = k_aquitaine
+					}
+				}
+				any_direct_de_jure_vassal_title = {
+					limit = { capital_scope = { region = custom_lotharingia } }
+					de_jure_liege = k_lotharingia
+				}
+				any_direct_de_jure_vassal_title = {
+					limit = { capital_scope = { region = custom_frisia } }
+					de_jure_liege = k_frisia
+				}
+				any_direct_de_jure_vassal_title = {
+					limit = { capital_scope = { region = custom_bohemia } }
+					de_jure_liege = k_bohemia
+				}
+				any_direct_de_jure_vassal_title = {
+					limit = { capital_scope = { region = custom_pomerania } }
+					de_jure_liege = k_pomerania
+				}
+				any_direct_de_jure_vassal_title = {
+					limit = { capital_scope = { region = custom_burgundy } }
+					de_jure_liege = k_burgundy
+				}
+				any_direct_de_jure_vassal_title = {
+					limit = { capital_scope = { region = custom_italy } }
+					de_jure_liege = k_italy
+				}
+				any_direct_de_jure_vassal_title = {
+					limit = { capital_scope = { region = custom_poland } }
+					de_jure_liege = k_poland
+				}
+				destroy_landed_title = THIS
+			}
+			
+			activate_title = { title = k_germany status = no }
+			k_arch_austria = { de_jure_liege = e_hre }
+			k_grand_bavaria = { de_jure_liege = e_hre }
+			k_grand_franconia = { de_jure_liege = e_hre }
+			k_grand_saxony = { de_jure_liege = e_hre }
+			k_grand_swabia = { de_jure_liege = e_hre }
+			k_grand_luxembourg = { de_jure_liege = e_hre }
+			k_grand_tuscany = { de_jure_liege = e_hre }
+			if = {
+				limit = { is_title_active = k_brandenburg }
+				k_brandenburg = { de_jure_liege = e_hre }
+			}
+			
+		set_global_flag = "germany_broken"
+
+}
+
+####################################################################################
+restore_germany_de_jure_effect = {
+		k_austria = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		k_bavaria = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		k_brandenburg = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		k_franconia = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		k_saxony = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		k_swabia = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		k_arch_austria = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		k_grand_bavaria = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		k_grand_franconia = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		k_grand_saxony = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		k_grand_swabia = {
+			any_direct_de_jure_vassal_title = {
+				de_jure_liege = k_germany
+											  }
+					}
+		any_demesne_title = {
+							 limit = { 
+									  OR = {
+											title = k_austria
+											title = k_bavaria
+											title = k_brandenburg
+											title = k_franconia
+											title = k_saxony
+											title = k_swabia
+											title = k_arch_austria
+											title = k_grand_bavaria
+											title = k_grand_franconia
+											title = k_grand_saxony
+											title = k_grand_swabia
+										   }
+									 }
+							  destroy_landed_title = THIS
+							}
+								 }
+
+####################################################################################
+replace_hre_title_effect = {
+		if = {
+			  limit = { has_landed_title = e_hre }
+			  if = { #WHEN APPROPRIATE TITLES ARE ALREADY HELD#
+					limit = {
+							 NOT = { num_of_emperor_titles = 2 }
+							 OR = {
+								   AND = {
+										  e_hre = { 
+												   NOR = {
+														  has_title_flag = "french_hre" 
+														  has_title_flag = "italian_hre" 
+														 }
+												  }
+										  e_germany = { has_holder = yes }
+										 }
+								   AND = {
+										  e_hre = { has_title_flag = "french_hre" }
+										  e_france = { has_holder = yes }
+										 }
+								   AND = {
+										  e_hre = { has_title_flag = "italian_hre" }
+										  e_italy = { has_holder = yes }
+										 }
+								  }
+							}
+					capital_scope = {
+							kingdom = {
+									   if = {
+											 limit = { NOT = { has_title_flag = emergency_empire_title } }
+											 set_title_flag = emergency_empire_title
+											 create_title = {
+															 tier = EMPEROR
+															 landless = no
+															 temporary = no
+															 custom_created = yes
+															 culture = ROOT
+															 holder = ROOT
+															 base_title = THIS
+															}
+											 new_title = {
+														  set_title_flag = custom_created_title
+														  copy_title_laws = e_hre
+														  copy_title_history = e_hre
+														  revoke_law = kingdom_lockout_2
+														  revoke_law = kingdom_lockout_1
+														  revoke_law = kingdom_lockout_0
+														  add_law = kingdom_lockout_0
+														  make_primary_title = yes
+														  set_title_flag = "former_hre_empire"
+														  if = {
+																limit = { 
+																		 e_roman_empire = { has_holder = yes } 
+																		}
+																any_title = {
+																			 limit = {
+																					  tier = KING
+																					  de_jure_liege = e_hre
+																					 }
+																			 de_jure_liege = PREV
+																			}
+															   }
+														 }
+											}
+									  }
+									}
+				   }
+			  if = { #FOR GERMANY EMPIRE#
+					limit = {
+							 e_hre = {
+									  NOR = {
+											 has_title_flag = "french_hre"
+											 has_title_flag = "italian_hre"
+											}
+									 }
+							 e_germany = { has_holder = no }
+							}
+					if = {
+						  limit = { NOT = { is_title_active = e_germany } }
+						  activate_title = { title = e_germany status = yes }
+						 }
+				    set_character_flag = "centralize_without_penalties"
+					e_germany = {
+								 hidden_tooltip = { 
+												   copy_title_laws = e_hre 
+												   copy_title_history = e_hre
+												  }
+								 gain_title = ROOT
+								 make_primary_title = yes
+								 set_title_flag = "former_hre_empire"
+								}
+					hidden_tooltip = {
+							any_title = {
+									if = {
+										 limit = {
+												  rebel = no
+												  has_holder = yes
+												  is_primary_holder_title = yes
+												  holder_scope = { top_liege = { character = PREV } }
+												 }
+										 holder_scope = {
+														 if = {
+															   limit = { has_weak_claim = e_hre }
+															   add_weak_pressed_claim = e_germany
+															   remove_claim = e_hre
+															  }
+														 if = {
+															   limit = { has_strong_claim = e_hre }
+															   add_pressed_claim = e_germany
+															   remove_claim = e_hre
+															  }
+										 any_realm_character = {
+																if = {
+																	  limit = { has_weak_claim = e_hre }
+																	  add_weak_pressed_claim = e_germany
+																	  remove_claim = e_hre
+																	 }
+																if = {
+																	  limit = { has_strong_claim = e_hre }
+																	  add_pressed_claim = e_germany
+																	  remove_claim = e_hre
+																	 }
+															   }
+														}
+										 }
+									 }
+					if = {
+						  limit = { e_roman_empire = { has_holder = yes } }
+						  any_title = {
+									   limit = {
+												tier = KING
+												de_jure_liege = e_hre
+											   }
+									   de_jure_liege = e_germany
+									  }
+						 }
+									 }
+					clr_character_flag = centralize_without_penalties
+				   }
+			  if = { #FOR FRENCH EMPIRE#
+					limit = {
+							 e_hre = { has_title_flag = "french_hre" }
+							 e_france = { has_holder = no }
+							}
+					if = {
+						  limit = { NOT = { is_title_active = e_france } }
+						  activate_title = { title = e_france status = yes }
+						 }
+				    set_character_flag = "centralize_without_penalties"
+					e_france = {
+								hidden_tooltip = { 
+												   copy_title_laws = e_hre 
+												   copy_title_history = e_hre
+												  }
+								gain_title = ROOT
+								make_primary_title = yes
+								set_title_flag = "former_hre_empire"
+							   }
+					hidden_tooltip = {
+							any_title = {
+										 limit = {
+												  rebel = no
+												  has_holder = yes
+												  is_primary_holder_title = yes
+												  holder_scope = { top_liege = { character = PREV } }
+												 }
+										 holder_scope = {
+														 if = {
+															   limit = { has_weak_claim = e_hre }
+															   add_weak_pressed_claim = e_france
+															   remove_claim = e_hre
+															  }
+														 if = {
+															   limit = { has_strong_claim = e_hre }
+															   add_pressed_claim = e_france
+															   remove_claim = e_hre
+															  }
+										 any_realm_character = {
+																if = {
+																	  limit = { has_weak_claim = e_hre }
+																	  add_weak_pressed_claim = e_france
+																	  remove_claim = e_hre
+																	 }
+																if = {
+																	  limit = { has_strong_claim = e_hre }
+																	  add_pressed_claim = e_france
+																	  remove_claim = e_hre
+																	 }
+															   }
+														}
+										}
+					if = {
+						  limit = { e_roman_empire = { has_holder = yes } }
+						  any_title = {
+									   limit = {
+												tier = KING
+												de_jure_liege = e_hre
+											   }
+									   de_jure_liege = e_france
+									  }
+						 }
+									 }
+					clr_character_flag = centralize_without_penalties
+				   }
+			  if = { #FOR ITALIAN EMPIRE#
+					limit = {
+							 e_hre = { has_title_flag = "italian_hre" }
+							 e_italy = { has_holder = no }
+							}
+					if = {
+						  limit = { NOT = { is_title_active = e_italy } }
+						  activate_title = { title = e_italy status = yes }
+						 }
+				    set_character_flag = "centralize_without_penalties"
+					e_italy = {
+							   hidden_tooltip = { 
+												   copy_title_laws = e_hre 
+												   copy_title_history = e_hre
+												  }
+							   gain_title = ROOT
+							   make_primary_title = yes
+							   set_title_flag = "former_hre_empire"
+							  }
+					hidden_tooltip = {
+							any_title = {
+										 limit = {
+												  rebel = no
+												  has_holder = yes
+												  is_primary_holder_title = yes
+												  holder_scope = { top_liege = { character = PREV } }
+												 }
+										 holder_scope = {
+														 if = {
+															   limit = { has_weak_claim = e_hre }
+															   add_weak_pressed_claim = e_italy
+															   remove_claim = e_hre
+															  }
+														 if = {
+															   limit = { has_strong_claim = e_hre }
+															   add_pressed_claim = e_italy
+															   remove_claim = e_hre
+															  }
+										 any_realm_character = {
+																if = {
+																	  limit = { has_weak_claim = e_hre }
+																	  add_weak_pressed_claim = e_italy
+																	  remove_claim = e_hre
+																	 }
+																if = {
+																	  limit = { has_strong_claim = e_hre }
+																	  add_pressed_claim = e_italy
+																	  remove_claim = e_hre
+																	 }
+															   }
+														}
+										}
+					if = {
+						  limit = { e_roman_empire = { has_holder = yes } }
+						  any_title = {
+									   limit = {
+												tier = KING
+												de_jure_liege = e_hre
+											   }
+									   de_jure_liege = e_italy
+									  }
+						 }
+									 }
+					clr_character_flag = centralize_without_penalties
+				   }
+			  e_hre = { destroy_landed_title = yes }
+			 }
+		if = {
+			  limit = { has_landed_title = e_karling }
+			  if = { #WHEN THE APPROPRIATE TITLES ARE ALREADY HELD#
+					limit = {
+							 NOT = { num_of_emperor_titles = 2 }
+							 e_germany = { has_holder = yes }
+							 e_france = { has_holder = yes }
+							 e_italy = { has_holder = yes }
+							}
+					capital_scope = {
+							kingdom = {
+									   if = {
+											 limit = { NOT = { has_title_flag = emergency_empire_title } }
+											 set_title_flag = emergency_empire_title
+											 create_title = {
+															 tier = EMPEROR
+															 landless = no
+															 temporary = no
+															 custom_created = yes
+															 culture = ROOT
+															 holder = ROOT
+															 base_title = THIS
+															}
+											 new_title = {
+														  set_title_flag = custom_created_title
+														  copy_title_laws = e_karling
+														  copy_title_history = e_karling
+														  revoke_law = kingdom_lockout_1
+														  revoke_law = kingdom_lockout_0
+														  make_primary_title = yes
+														  set_title_flag = "former_karling_empire"
+														  if = {
+																limit = { 
+																		 e_roman_empire = { has_holder = yes } 
+																		}
+																any_title = {
+																			 limit = {
+																					  tier = KING
+																					  de_jure_liege = e_karling
+																					 }
+																			 de_jure_liege = PREV
+																			}
+															   }
+														 }
+											}
+									  }
+									}
+				   }
+			  if = { #DEFAULT TO FRANKISH EMPIRE#
+					limit = {
+							 e_france = { has_holder = no }
+							}
+					if = {
+						  limit = { NOT = { is_title_active = e_france } }
+						  activate_title = { title = e_france status = yes }
+						 }
+				    set_character_flag = "centralize_without_penalties"
+					e_france = {
+								 hidden_tooltip = { 
+												   copy_title_laws = e_karling
+												   copy_title_history = e_karling
+												  }
+								gain_title = ROOT
+								make_primary_title = yes
+							    set_title_flag = "former_karling_empire"
+							   }
+					hidden_tooltip = {
+							any_title = {
+										 limit = {
+												  rebel = no
+												  has_holder = yes
+												  is_primary_holder_title = yes
+												  holder_scope = { top_liege = { character = PREV } }
+												 }
+										 holder_scope = {
+														 if = {
+															   limit = { has_weak_claim = e_karling }
+															   add_weak_pressed_claim = e_france
+															   remove_claim = e_karling
+															  }
+														 if = {
+															   limit = { has_strong_claim = e_karling }
+															   add_pressed_claim = e_france
+															   remove_claim = e_karling
+															  }
+										 any_realm_character = {
+																if = {
+																	  limit = { has_weak_claim = e_karling }
+																	  add_weak_pressed_claim = e_france
+																	  remove_claim = e_karling
+																	 }
+																if = {
+																	  limit = { has_strong_claim = e_karling }
+																	  add_pressed_claim = e_france
+																	  remove_claim = e_karling
+																	 }
+															   }
+														}
+										}
+					if = {
+						  limit = { e_roman_empire = { has_holder = yes } }
+						  any_title = {
+									   limit = {
+												tier = KING
+												de_jure_liege = e_karling
+											   }
+									   de_jure_liege = e_france
+									  }
+						 }
+									 }
+					clr_character_flag = centralize_without_penalties
+				   }
+			  if = { #FAILING THAT, GO FOR GERMAN#
+					limit = {
+							 e_france = { 
+										 has_holder = yes 
+										 NOT = { holder_scope = { character = ROOT } }
+										}
+							 e_germany = { has_holder = no }
+							}
+					if = {
+						  limit = { NOT = { is_title_active = e_germany } }
+						  activate_title = { title = e_germany status = yes }
+						 }
+				    set_character_flag = "centralize_without_penalties"
+					e_germany = {
+								 hidden_tooltip = { 
+												   copy_title_laws = e_karling
+												   copy_title_history = e_karling
+												  }
+								 gain_title = ROOT
+								 make_primary_title = yes
+							     set_title_flag = "former_karling_empire"
+								}
+					hidden_tooltip = {
+							any_title = {
+										 limit = {
+												  rebel = no
+												  has_holder = yes
+												  is_primary_holder_title = yes
+												  holder_scope = { top_liege = { character = PREV } }
+												 }
+										 holder_scope = {
+														 if = {
+															   limit = { has_weak_claim = e_karling }
+															   add_weak_pressed_claim = e_germany
+															   remove_claim = e_karling
+															  }
+														 if = {
+															   limit = { has_strong_claim = e_karling }
+															   add_pressed_claim = e_germany
+															   remove_claim = e_karling
+															  }
+										 any_realm_character = {
+																if = {
+																	  limit = { has_weak_claim = e_karling }
+																	  add_weak_pressed_claim = e_germany
+																	  remove_claim = e_karling
+																	 }
+																if = {
+																	  limit = { has_strong_claim = e_karling }
+																	  add_pressed_claim = e_germany
+																	  remove_claim = e_karling
+																	 }
+															   }
+														}
+										}
+					if = {
+						  limit = { e_roman_empire = { has_holder = yes } }
+						  any_title = {
+									   limit = {
+												tier = KING
+												de_jure_liege = e_karling
+											   }
+									   de_jure_liege = e_germany
+									  }
+						 }
+									 }
+					clr_character_flag = centralize_without_penalties
+				   }
+			  if = { #IF FRANCE AND GERMANY BOTH HELD, GO FOR ITALY#
+					limit = {
+							 e_france = { 
+										 has_holder = yes 
+										 NOT = { holder_scope = { character = ROOT } }
+										}
+							 e_germany = { 
+										  has_holder = yes 
+										  NOT = { holder_scope = { character = ROOT } }
+										 }
+							 e_italy = { has_holder = no }
+							}
+					if = {
+						  limit = { NOT = { is_title_active = e_italy } }
+						  activate_title = { title = e_italy status = yes }
+						 }
+				    set_character_flag = "centralize_without_penalties"
+					e_italy = {
+								 hidden_tooltip = { 
+												   copy_title_laws = e_karling
+												   copy_title_history = e_karling
+												  }
+							   gain_title = ROOT
+							   make_primary_title = yes
+							   set_title_flag = "former_karling_empire"
+							  }
+					hidden_tooltip = {
+							any_title = {
+										 limit = {
+												  rebel = no
+												  has_holder = yes
+												  is_primary_holder_title = yes
+												  holder_scope = { top_liege = { character = PREV } }
+												 }
+										 holder_scope = {
+														 if = {
+															   limit = { has_weak_claim = e_karling }
+															   add_weak_pressed_claim = e_italy
+															   remove_claim = e_karling
+															  }
+														 if = {
+															   limit = { has_strong_claim = e_karling }
+															   add_pressed_claim = e_italy
+															   remove_claim = e_karling
+															  }
+										 any_realm_character = {
+																if = {
+																	  limit = { has_weak_claim = e_karling }
+																	  add_weak_pressed_claim = e_italy
+																	  remove_claim = e_karling
+																	 }
+																if = {
+																	  limit = { has_strong_claim = e_karling }
+																	  add_pressed_claim = e_italy
+																	  remove_claim = e_karling
+																	 }
+															   }
+														}
+										}
+					if = {
+						  limit = { e_roman_empire = { has_holder = yes } }
+						  any_title = {
+									   limit = {
+												tier = KING
+												de_jure_liege = e_karling
+											   }
+									   de_jure_liege = e_italy
+									  }
+						 }
+									 }
+					clr_character_flag = centralize_without_penalties
+				   }
+			  
+			  e_karling = { 
+						   destroy_landed_title = yes 
+						   set_title_flag = "carolingian_empire_fallen"
+						  }
+			 }
+		if = {
+			  limit = { trait = crowned_by_pope }
+			  remove_trait = crowned_by_pope
+			  add_trait = crowned
+			 }
+		hidden_tooltip = {
+						  any_vassal = {
+										limit = { NOT = { has_character_flag = considered_for_independence } }
+									    character_event = { id = Plus.430 days = 3 }
+									   }
+						 }
+
+						   }
+
+####################################################################################
+lorraine_cultural_renaming_effect = {
+		########################
+		#Kingdom of Lotharingia#
+		########################
+		if = {
+			  limit = {
+					   has_landed_title = k_lotharingia
+					   german_cultures_trigger = yes
+					  }
+			  k_lotharingia = {
+							   set_name = LOTHRINGEN
+							   adjective = LOTHRINGEN_ADJ
+							  }
+			 }
+		if = {
+			  limit = {
+					   has_landed_title = k_lotharingia
+					   german_cultures_trigger = no
+					  }
+			  k_lotharingia = {
+							   set_name = ""
+							   adjective = ""
+							  }
+			 }
+			 
+		#########################
+		#Duchy of Upper Lorraine#
+		#########################
+		if = {
+			  limit = {
+					   has_landed_title = d_upper_lorraine
+					   NOT = { has_landed_title = d_lower_lorraine }
+					   german_cultures_trigger = yes
+					  }
+			  d_upper_lorraine = {
+								  set_name = U_LOTHRINGEN
+								  adjective = U_LOTHRINGEN_ADJ
+								 }
+			 }
+		if = {
+			  limit = {
+					   has_landed_title = d_upper_lorraine
+					   has_landed_title = d_lower_lorraine
+					   german_cultures_trigger = yes
+					  }
+			  d_upper_lorraine = {
+								  set_name = LOTHRINGEN
+								  adjective = LOTHRINGEN_ADJ
+								 }
+			 }
+		if = {
+			  limit = {
+					   has_landed_title = d_upper_lorraine
+					   NOT = { has_landed_title = d_lower_lorraine }
+					   german_cultures_trigger = no
+					  }
+			  d_upper_lorraine = {
+								  set_name = ""
+								  adjective = ""
+								 }
+			 }
+		if = {
+			  limit = {
+					   has_landed_title = d_upper_lorraine
+					   has_landed_title = d_lower_lorraine
+					   german_cultures_trigger = no
+					  }
+			  d_upper_lorraine = {
+								  set_name = LOTHARINGIA
+								  adjective = LOTHARINGIA_ADJ
+								 }
+			 }
+			 
+		#########################
+		#Duchy of Lower Lorraine#
+		#########################
+		if = {
+			  limit = {
+					   has_landed_title = d_lower_lorraine
+					   NOT = { has_landed_title = d_upper_lorraine }
+					   german_cultures_trigger = yes
+					  }
+			  d_lower_lorraine = {
+								  set_name = L_LOTHRINGEN
+								  adjective = L_LOTHRINGEN_ADJ
+								 }
+			 }
+		if = {
+			  limit = {
+					   has_landed_title = d_lower_lorraine
+					   has_landed_title = d_upper_lorraine
+					   german_cultures_trigger = yes
+					  }
+			  d_lower_lorraine = {
+								  set_name = LOTHRINGEN
+								  adjective = LOTHRINGEN_ADJ
+								 }
+			 }
+		if = {
+			  limit = {
+					   has_landed_title = d_lower_lorraine
+					   NOT = { has_landed_title = d_upper_lorraine }
+					   german_cultures_trigger = no
+					  }
+			  d_lower_lorraine = {
+								  set_name = ""
+								  adjective = ""
+								 }
+			 }
+		if = {
+			  limit = {
+					   has_landed_title = d_lower_lorraine
+					   has_landed_title = d_upper_lorraine
+					   german_cultures_trigger = no
+					  }
+			  d_lower_lorraine = {
+								  set_name = LOTHARINGIA
+								  adjective = LOTHARINGIA_ADJ
+								 }
+			 }
+
+		####################
+		#County of Lorraine#
+		####################
+		if = {
+			  limit = {
+					   has_landed_title = c_lorraine
+					   german_cultures_trigger = yes
+					  }
+			  c_lorraine = {
+							set_name = LOTHRINGEN
+							adjective = LOTHRINGEN_ADJ
+						   }
+			  127 = { set_name = "Lothringen" }
+			 }
+		if = {
+			  limit = {
+					   has_landed_title = c_lorraine
+					   german_cultures_trigger = no
+					  }
+			  c_lorraine = {
+							set_name = ""
+							adjective = ""
+						   }
+			  127 = { set_name = "Lorraine" }
+			 }
+}
+
+####################################################################################
+co_crowning_inheritance_effect = {
+		  any_realm_character = {
+								 limit = { 
+										  NOR = { 
+												 trait = co_crowned 
+												 trait = abdicated
+												} 
+										 }
+								 set_character_flag = "temp_succession_block"
+								 add_trait = abdicated
+								}
+		  recalc_succession = yes
+
+}
+
+####################################################################################
+convert_to_guelph_effect = {
+		add_trait = guelph
+		hidden_tooltip = {
+						  remove_trait = ghibelline
+						  any_independent_ruler = {
+									   limit = { rex_teutonicorum_trigger = yes }
+									   reverse_opinion = {
+														  modifier = opinion_guelph_negative
+														  who = ROOT
+														  years = 100
+														 }
+									   reverse_remove_opinion = {
+																 who = ROOT
+																 modifier = opinion_ghibelline_positive
+																}
+									   opinion = {
+												  modifier = opinion_guelph_negative
+												  who = ROOT
+												  years = 100
+												 }
+									   remove_opinion = {
+														 who = ROOT
+														 modifier = opinion_ghibelline_positive
+														}
+									  }
+						  religion_head = {
+										   reverse_opinion = {
+															  modifier = opinion_guelph_positive
+															  who = ROOT
+															  years = 100
+															 }
+										   reverse_remove_opinion = {
+																	 who = ROOT
+																	 modifier = opinion_ghibelline_negative
+																	}
+										  opinion = {
+													 modifier = opinion_guelph_positive
+													 who = ROOT
+													 years = 100
+													}
+										  remove_opinion = {
+															who = ROOT
+															modifier = opinion_ghibelline_negative
+														   }
+										  }
+						 }
+
+}
+
+####################################################################################
+convert_to_ghibelline_effect = {
+		add_trait = ghibelline
+		hidden_tooltip = {
+						  remove_trait = guelph
+						  any_independent_ruler = {
+									   limit = { rex_teutonicorum_trigger = yes }
+									   reverse_opinion = {
+														  modifier = opinion_ghibelline_positive
+														  who = ROOT
+														  years = 100
+														 }
+									   reverse_remove_opinion = {
+																 who = ROOT
+																 modifier = opinion_guelph_negative
+																}
+									   opinion = {
+												  modifier = opinion_ghibelline_positive
+												  who = ROOT
+												  years = 100
+												 }
+									   remove_opinion = {
+														 who = ROOT
+														 modifier = opinion_guelph_negative
+														}
+									  }
+						  religion_head = {
+										   reverse_opinion = {
+															  modifier = opinion_ghibelline_negative
+															  who = ROOT
+															  years = 100
+															 }
+										   reverse_remove_opinion = {
+																	 who = ROOT
+																	 modifier = opinion_guelph_positive
+																	}
+										  opinion = {
+													 modifier = opinion_ghibelline_negative
+													 who = ROOT
+													 years = 100
+													}
+										  remove_opinion = {
+															who = ROOT
+															modifier = opinion_guelph_positive
+														   }
+										  }
+						 }
+
+}
+
+####################################################################################
+meerssen_germany_effect = {
+	any_character = {
+			  limit = { has_landed_title = k_germany }
+			  FROM = {
+					  any_demesne_title = {
+										   limit = {
+													OR = {
+														  duchy = { title = d_koln }
+														  duchy = { title = d_holland }
+														  duchy = { title = d_gelre }
+														  duchy = { title = d_lower_lorraine }
+														  duchy = { title = d_upper_lorraine }
+														  duchy = { title = d_upper_burgundy }
+														  duchy = { title = d_alsace }
+														 }
+												   }
+										   grant_title = PREVPREV
+										  }
+					  any_vassal = {
+									limit = { 
+											 in_revolt = no
+											 lower_tier_than = KING
+											 capital_scope = {
+															  OR = {
+																	duchy = { title = d_koln }
+																	duchy = { title = d_holland }
+																	duchy = { title = d_gelre }
+																	duchy = { title = d_lower_lorraine }
+																	duchy = { title = d_upper_lorraine }
+																	duchy = { title = d_upper_burgundy }
+																	duchy = { title = d_alsace }
+																   }
+															 }
+											}
+									set_defacto_liege = PREVPREV
+								   }
+							 }
+			 any_character = {
+							  limit = { 
+									   character = 90102
+									   is_alive = yes
+									  }
+							  d_alsace = { grant_title = PREV }
+							  c_lorraine = { grant_title = PREV }
+							  any_character = {
+									  limit = { has_landed_title = k_germany }
+									  any_demesne_title = {
+														   limit = { duchy = { title = d_alsace } }
+														   grant_title = PREVPREV
+														  }
+									  any_vassal = {
+													limit = {
+															 capital_scope = { duchy = { title = d_alsace } }
+															}
+													set_defacto_liege = PREVPREV
+												   }
+											  }
+							  set_defacto_liege = PREV
+							 }
+				}
+			k_burgundy = { destroy_landed_title = THIS }
+			 }
+			 
+####################################################################################
+meerssen_france_effect = {
+	any_character = {
+			  limit = { has_landed_title = k_france }
+			  c_verdun = { grant_title = PREV }
+			  c_bar = { grant_title = PREV }
+			  FROM = {
+					  any_demesne_title = {
+										   limit = {
+													OR = {
+														  duchy = { title = d_bar }
+														  duchy = { title = d_liege }
+														  duchy = { title = d_flanders }
+														  duchy = { title = d_brabant }
+														  duchy = { title = d_burgundy }
+														  duchy = { title = d_dauphine }
+														  duchy = { title = d_luxembourg }
+														 }
+												   }
+										   grant_title = PREVPREV
+										  }
+					  any_vassal = {
+									limit = { 
+											 in_revolt = no
+											 lower_tier_than = KING
+											 capital_scope = {
+															  OR = {
+																	duchy = { title = d_bar }
+																	duchy = { title = d_liege }
+																	duchy = { title = d_flanders }
+																	duchy = { title = d_brabant }
+																	duchy = { title = d_burgundy }
+																	duchy = { title = d_dauphine }
+																	duchy = { title = d_luxembourg }
+																   }
+															 }
+											}
+									set_defacto_liege = PREVPREV
+								   }
+					 }
+			k_lotharingia = { destroy_landed_title = THIS }
+					}
+							}
+
+####################################################################################

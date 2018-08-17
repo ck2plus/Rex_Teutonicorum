@@ -1,0 +1,179 @@
+
+on_startup = {
+			events = {
+					  cmnl.0001
+					  cmnl.00099
+					  cmnl.0014
+					  cmnl.0020
+					  cmnl.0024
+                     }
+             }
+			 
+on_chronicle_start = {
+			events = {
+					  #cmnl.0001
+					  cmnl.0019
+					  cmnl.0025
+					 }
+					 }
+
+on_create_title = {
+			events = {
+					  cmnl.0002
+					  cmnl.0004
+                     }                 
+                  }
+on_new_holder = {
+			events = {
+					  cmnl.0003
+					  cmnl.0004
+					  cmnl.0008
+					  cmnl.0009
+					  cmnl.0010
+					  cmnl.0011
+					  cmnl.0015
+					  cmnl.0017
+					  cmnl.00098
+					  cmnl.0023
+					  cmnl.1055
+                     }
+                }
+
+on_new_holder_inheritance = {
+			events = {
+					  cmnl.0003
+					  cmnl.0004
+					  cmnl.0008
+					  cmnl.0010
+					  cmnl.0011
+					  cmnl.0015
+					  cmnl.0017
+					  cmnl.00098
+					  cmnl.0023
+					  cmnl.1055
+                     }
+                            }
+ 
+on_new_holder_usurpation = {
+			events = {
+					  cmnl.0003
+					  cmnl.0004
+					  cmnl.0008
+					  cmnl.0009
+					  cmnl.0010
+					  cmnl.0011
+					  cmnl.0015
+					  cmnl.0017
+					  cmnl.00098
+					  cmnl.0023
+					  cmnl.1055
+                     }
+                           }
+						   
+on_war_started = {
+			events = {
+					  cmnl.00081
+					  cmnl.00111
+					  cmnl.0012
+					  cmnl.0018
+					 }
+				 }
+on_war_ended_victory = {
+			events = {
+					  #cmnl.0002
+					  cmnl.0004
+					  cmnl.00182
+					  cmnl.00042
+					  cmnl.0021
+					  cmnl.10383
+                     }
+                       } 
+on_war_ended_whitepeace = {
+			events = {
+					  #cmnl.0002
+					  cmnl.0004
+					  cmnl.00042
+					  cmnl.00182
+					  cmnl.0021
+					  cmnl.10383
+                     }
+                          } 
+on_war_ended_defeat = {
+			events = {
+					  #cmnl.0002
+					  cmnl.0004
+					  cmnl.00042
+					  cmnl.00181
+					  cmnl.0021
+					  cmnl.10381
+                     }
+                      } 
+on_exiled = {
+			events = {
+					  cmnl.0002
+					  cmnl.0014
+					 }
+			}
+				
+on_death = {
+			events = {
+					  cmnl.00031
+					  cmnl.00032
+					 }
+		   }
+
+on_yearly_pulse = {
+			events = {
+					  cmnl.0002
+					  cmnl.0007
+					  cmnl.00071
+					  cmnl.00072
+					  cmnl.0014
+					  #cmnl.0021
+					  cmnl.0022
+					 }
+			random_events = {
+							 50 = cmnl.1010
+							 50 = cmnl.1011
+							 50 = cmnl.1015
+							 50 = cmnl.1016
+							 50 = cmnl.1017
+							 50 = cmnl.1018
+							 50 = cmnl.1019
+							 50 = cmnl.1020
+							 50 = cmnl.1021
+							 50 = cmnl.1022
+							 50 = cmnl.1023
+							 50 = cmnl.1024
+							 50 = cmnl.1025
+							 50 = cmnl.1039
+							 50 = cmnl.1044
+							 50 = cmnl.1049
+							 50 = cmnl.1050
+							}
+				  }
+				  
+on_executed = {
+		events = {
+				  cmnl.0013
+				 }
+			  }
+			  
+on_birth = {
+		events = {
+				  cmnl.0014
+				 }
+		   }
+		   
+on_county_religion_change = {
+		events = {
+				  cmnl.0016
+				 }
+							}
+							
+on_character_convert_religion = {
+		events = {
+				  cmnl.1056
+				 }
+								}
+				

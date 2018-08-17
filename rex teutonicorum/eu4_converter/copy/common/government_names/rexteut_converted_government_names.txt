@@ -1,0 +1,38 @@
+communal_republic = {
+	rank = {
+		1 = REPUBLIC
+		2 = COMMONWEALTH
+		3 = GRAND_COMMONWEALTH
+	}
+	
+	trigger = {
+		government = peasants_republic
+		NOT = { religion_group = muslim }
+	}
+}
+
+muslim_communal_republic = {
+
+	rank = {
+		1 = HAKIMATE
+		2 = MALIKATE
+		3 = GREAT_MALIKATE
+	}
+	
+	ruler_male = {
+		1 = HAKIM
+		2 = MALIK
+		3 = GREAT_MALIK
+	}
+	
+	ruler_female = {
+		1 = HAKIM
+		2 = MALIK
+		3 = GREAT_MALIK
+	}
+	
+	trigger = {
+		government = peasants_republic
+		religion_group = muslim
+	}
+}

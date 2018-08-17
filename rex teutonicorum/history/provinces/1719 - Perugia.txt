@@ -1,0 +1,24 @@
+# 1711 - Perugia
+
+# County Title
+title = c_perugia
+
+# Settlements
+max_settlements = 3
+b_torgiano = castle
+b_perugia = city
+b_todi = temple
+#b_magione = temple
+#b_marsciano = castle
+#b_deruta = city
+#b_fontignano = castle
+
+# Misc
+culture = longobard
+religion = chalcedonian
+
+# History
+849.1.1 = { culture = umbrian }
+1054.1.1 = {
+	religion = catholic
+}

@@ -1,0 +1,51 @@
+rexteut_story = {
+	name = RULE_REXTEUT_STORY
+	group = RULE_GROUP_REX
+	option = {
+		  name = on
+		  text = RULE_OPTION_ON
+		  desc = RULE_REXTEUT_STORY_ON_DESC
+		 }
+	option = {
+		  name = off
+		  text = RULE_OPTION_OFF
+		  desc = RULE_REXTEUT_STORY_OFF_DESC
+		 }
+
+}
+
+rexteut_hus = {
+	name = RULE_REXTEUT_HUS
+	group = RULE_GROUP_REX
+	option = {
+		  name = historical
+		  text = RULE_OPTION_HISTORICAL
+		  desc = RULE_REXTEUT_HUS_HISTORICAL_DESC
+		 }
+	option = {
+		  name = random
+		  text = RULE_OPTION_RANDOM
+		  desc = RULE_REXTEUT_HUS_RANDOM_DESC
+		 }
+	option = {
+		  name = off
+		  text = RULE_OPTION_OFF
+		  desc = RULE_REXTEUT_HUS_OFF_DESC
+		 }
+}
+
+rexteut_italy = {
+	name = RULE_REXTEUT_ITALY
+	group = RULE_GROUP_REX
+	option = {
+		  name = on
+		  text = RULE_OPTION_ON
+		  desc = RULE_REXTEUT_ITALY_ON_DESC
+		 }
+	option = {
+		  name = off
+		  text = RULE_OPTION_OFF
+		  desc = RULE_REXTEUT_ITALY_OFF_DESC
+		 }
+
+}

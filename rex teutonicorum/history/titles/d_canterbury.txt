@@ -1,0 +1,28 @@
+927.7.12 = {
+	liege = "k_england"
+}
+940.1.1 = {
+	holder = 120000008
+}
+946.1.1 = {
+	holder = 120000016
+}
+956.1.1 = {
+	holder = 120000019
+}
+991.1.1 = {
+	holder = 0
+}
+1066.1.1 = {
+	liege = "k_england"
+}
+1066.1.1 = {
+	holder = 130 #Leofwine Godwinsson
+	law = agnatic_succession
+	law = succ_feudal_elective
+}  
+1066.10.14 = {
+	holder = 0
+	de_jure_liege = k_england
+	effect = { set_coa = d_canterbury_norman }
+}

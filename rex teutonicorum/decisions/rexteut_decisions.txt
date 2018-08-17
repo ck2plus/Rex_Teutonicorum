@@ -1,0 +1,3595 @@
+targeted_decisions = {
+
+crown_co_ruler = {
+
+		filter = realm
+		ai_target_filter = realm 
+		only_rulers = yes
+
+		from_potential = {
+						  has_regent = no
+						  is_adult = yes
+						  prisoner = no
+						  trait = crowned_by_pope
+						  rex_teutonicorum_trigger = yes
+						  primary_title = { has_law = succ_feudal_elective }
+						  is_close_relative = ROOT
+						  NOT = { 
+								 is_incapable = yes
+								 has_character_flag = "co_crowned_heir"
+								 any_demesne_title = { has_title_flag = "ended_co_crownings" }
+							     any_realm_character = { trait = co_crowned }
+							     any_realm_character = { has_character_flag = "potential_co_crown" }
+								}
+						 }
+		
+		potential = {
+					 prisoner = no
+					 NOT = { 
+							is_incapable = yes 
+							trait = disinherited
+							trait = abdicated
+							trait = bastard
+						   }
+					 independent = no
+					 top_liege = { character = FROM }
+					 religion = FROM
+					 is_feudal = yes
+					 NOT = { government = communal_government }
+					 NAND = {
+							 FROM = { primary_title = { has_law = agnatic_succession } }
+							 is_female = yes
+						    }
+					 NOT = { has_global_flag = "investiture_papal" }
+					}
+		allow = { 
+				 FROM = {
+						 war = no
+						 prestige = 2000
+						 scaled_wealth = 1.0
+						 piety = 300
+						}
+				 piety = 0
+				}
+		
+		effect = {
+				  set_character_flag = "potential_co_crown"
+				  hidden_tooltip = { 
+									FROM = { 
+											set_character_flag = "co_crowned_heir"
+											character_event = { id = rexteut.5033 } 
+										   } 
+								   }
+				 }
+				 
+		ai_will_do = {
+					  factor = 0.5
+					  modifier = {
+								  factor = 0.5
+								  is_landed = yes
+								 }
+					  modifier = {
+								  factor = 0
+								  NOT = { dynasty = FROM }
+								 }
+					  modifier = {
+								  factor = 0.5
+								  age = 30
+								 }
+					  modifier = {
+								  factor = 0
+								  age = 40
+								 }
+					  modifier = {
+								  factor = 10
+								  FROM = { current_heir = { character = ROOT } }
+								 }
+					  modifier = {
+								  factor = 0
+								  NOT = {
+										 reverse_opinion = {
+														    who = FROM
+															value = 0
+														   }
+										}
+								 }
+					  modifier = {
+								  factor = 0
+								  NOR = {
+										 father = { character = FROM }
+										 mother = { character = FROM }
+									    }
+								 }
+					 }
+
+				 }
+
+}
+
+plot_decisions = {
+
+faction_sifp_prepare = {
+
+		is_high_prio = yes
+		potential = {
+					 ai = no
+					 independent = no
+					 leads_faction = faction_sifp
+					 NOT = {
+							has_character_flag = "civil_war_leader"
+							has_character_flag = "civil_war_member"
+						   }
+					}
+		allow = {
+				 war = no
+				 has_regent = no
+				 NOT = { is_incapable = yes }
+				 is_adult = yes
+				 faction_power = {
+								  faction = faction_sifp
+								  power = 0.5
+								 }
+				 liege = {
+						  NOT = { war_with = ROOT }
+						  NOT = { reverse_has_truce = ROOT }
+						  custom_tooltip = {
+											text = HAS_NO_CIVIL_WAR
+											hidden_tooltip = { pf_war_flag_trigger = no }
+										   }
+						 }
+				 liege = {
+						  will_liege_enforce_peace = no
+						  has_liege_enforced_peace = no
+						 }
+				 liege_before_war = {
+									 custom_tooltip = {
+													   text = emf_faction_ctt_no_liege_in_revolt
+													   hidden_tooltip = {
+																		 in_revolt = no
+																		 liege_before_war = {
+																							 in_revolt = no
+																							 liege_before_war = { in_revolt = no }
+																							}
+																		}
+													 }
+									}
+				 custom_tooltip = {
+								   text = NO_PENDING_CIVIL_WAR
+								   hidden_tooltip = { pf_pending_civil_war_trigger = no }
+								  }
+				 capital_holding = { controller = { character = ROOT } }
+				}
+				
+		effect = {
+				  set_character_flag = "preparing_sifp_war"
+				  custom_tooltip = {
+								    text = MAY_TAKE_ULTIMATUM_DECISION
+									hidden_tooltip = {
+													  set_character_flag = "civil_war_faction_leader"
+													  add_character_modifier = {
+																				name = declare_civil_war_timer
+																				duration = 30
+																				hidden = yes
+																			   }
+													 }
+								   }
+				  liege = {
+						   custom_tooltip = { text = INVITE_TO_JOIN_CIVIL_WAR }
+						   hidden_tooltip = {
+										     any_vassal = {
+														   limit = { NOT = { in_faction = faction_sifp } }
+														   letter_event = { id = rexteut.50052 }
+														  }
+											}
+						  }
+				 hidden_tooltip = {
+								   any_faction_backer = {
+														 faction = faction_sifp
+														 set_character_flag = "civil_war_faction_member"
+														}
+								  }
+				 }
+	
+					   }
+
+faction_sifp_ultimatum = {
+
+		is_high_prio = yes
+		ai_check_interval = 12
+		potential = {
+					 independent = no
+					 leads_faction = faction_sifp
+					 has_character_flag = "civil_war_faction_leader"
+					 has_character_flag = "preparing_sifp_war"
+					 OR = {
+						   NOT = { has_character_flag = "faction_sifp_ultimatum_taken" }
+						   had_character_flag = { 
+												 flag = "faction_sifp_ultimatum_taken" 
+												 days = 7 
+												}
+						  }
+					}
+
+		allow = {
+				 war = no
+				 prisoner = no
+				 has_regent = no
+				 NOT = { is_incapable = yes }
+				 liege = {
+						  NOT = { war_with = ROOT }
+						  NOT = { reverse_has_truce = ROOT}
+						  will_liege_enforce_peace = no
+						  has_liege_enforced_peace = no
+						  rex_teutonicorum_trigger = yes
+						 }
+				 liege_before_war = {
+									 custom_tooltip = {
+													   text = emf_faction_ctt_no_liege_in_revolt
+													   hidden_tooltip = {
+																		 in_revolt = no
+																		 liege_before_war = {
+																							 in_revolt = no
+																							 liege_before_war = { in_revolt = no }
+																							}
+																		}
+													 }
+									}
+		        }
+
+		effect = {
+				  pf_punish_deceitful_player_effect = yes
+				  clr_character_flag = "preparing_sifp_war"
+				  liege = {
+						   letter_event = {
+										   id = rexteut.5005
+										   days = 3
+										  }
+						  }
+				  set_character_flag = "faction_sifp_ultimatum_taken"
+			 }
+
+		revoke_allowed = {
+				  always = no
+				 }
+
+		ai_will_do = {
+			      factor = 1
+			      
+			      modifier = {
+					  factor = 0
+					  NOT = {
+						 faction_power = {
+								  faction = faction_sifp
+								  power = 0.75
+								 }
+						}
+					 }
+			      
+			      modifier = {
+					  factor = 5
+					  NOT = {
+						 faction_power = {
+								  faction = faction_sifp
+								  power = 1
+								 }
+						}
+					 }
+			      
+			      modifier = {
+					  factor = 25
+					  NOT = {
+						 faction_power = {
+								  faction = faction_sifp
+								  power = 1.5
+								 }
+						}
+					 }
+			      
+			      modifier = {
+					  factor = 50
+					  NOT = {
+						 faction_power = {
+								  faction = faction_sifp
+								  power = 2
+								 }
+						}
+					 }
+					  modifier = {
+								  factor = 0
+								  ai_not_busy_trigger = no
+								 }
+					  modifier = {
+								  factor = 0.5
+								  always = yes
+								 }
+					  modifier = {
+								  factor = 0
+								  liege = {
+										   any_war = {
+													  OR = {
+															AND = {
+																   defender = { character = PREVPREV }
+																   NOT = { using_cb = depose_liege }
+																   NOT = { using_cb = overthrow_ruler }
+																   NOT = { using_cb = overthrow_ruler_no_calls }
+																   NOT = { using_cb = claim_on_liege_plot }
+																   NOT = { using_cb = other_claim_on_liege_plot }
+																   NOT = { using_cb = cb_faction_overthrow_ruler }
+																  }
+															AND = {
+																   attacker = { character = PREVPREV }
+																   OR = {
+																		 using_cb = invasion
+																		 using_cb = holy_war
+																	     using_cb = tribal_invasion
+																		 using_cb = manifest_destiny_invasion
+																		 using_cb = viking_invasion
+																		}
+																  }
+														   }
+												   }
+									    }
+								 }
+			     }
+
+			 }
+
+
+faction_treaty_verdun_ultimatum = {
+
+		is_high_prio = yes
+		ai_check_interval = 12
+		potential = {
+			     leads_faction = faction_treaty_verdun
+                 NOT = { has_character_flag = "faction_treaty_verdun_ultimatum_taken" }
+			    }
+
+		allow = {
+			 war = no
+			 prisoner = no
+			 liege = {
+				  NOT = { war_with = ROOT }
+				  NOT = { reverse_has_truce = ROOT}
+ 				  has_landed_title = e_karling
+				 }
+			}
+
+		effect = {
+  		          liege = { 
+                                   letter_event = { 
+                                                   id = rexteut.6006
+						   days = 7
+						  } 
+                                  }
+                          hidden_tooltip = {
+					    set_character_flag = "faction_treaty_verdun_ultimatum_taken"
+					   }
+			 }
+
+		revoke_allowed = { always = no }
+
+		ai_will_do = {
+			      factor = 1
+
+			      modifier = {
+				          factor = 0
+				          NOT = { 
+					         faction_power = {
+						                  faction = faction_treaty_verdun
+						                  power = 0.75
+					                         }
+						}
+					 }
+			      modifier = {
+					  factor = 50
+					  faction_power = {
+							   faction = faction_treaty_verdun
+							   power = 1
+							  }
+					 }
+			     }
+
+                                  }
+
+}
+
+decisions = {
+
+repudiate_papal = {
+ 
+		is_high_prio = yes
+		ai_check_interval = 5
+                potential = {
+                             has_landed_title = e_hre
+                             has_global_flag = "investiture_papal"
+			     NOT = { has_character_flag = "chosen_by_pope" }
+			     NOT = { has_global_flag = "permanent_investiture_papal" }
+                            }
+
+                allow = {
+                         war = no
+                         has_regent = no
+			 piety = 100
+                        }
+
+                effect = {
+                          piety = -100
+                          custom_tooltip = { text = "investiture_c_6"}
+                          hidden_tooltip = {
+                                            clr_global_flag = "investiture_papal"
+                                            set_global_flag = "investiture_controversy"
+                                            set_character_flag = "no_invest_end"
+                                            set_global_flag = "emperor_angry"
+                                            primary_title = {
+			                                     revoke_law = investiture_law_0
+			                                     add_law = investiture_law_1
+						             change_variable = {
+						                                which = imperial_decadence
+							                        value = -5
+							                       }
+		                                            }
+		                            character_event = { id = Plus.1852 }
+                                            religion_authority = { modifier = investiture_controversy_1 }
+                                           }
+                         }
+                 
+               ai_will_do = { 
+                             factor = 1 
+                             modifier = {
+                                         factor = 2
+                                         trait = cynical
+                                        }
+                             modifier = {
+                                         factor = 2
+					 trait = ambitious
+                                        }
+                             modifier = {
+                                         factor = 2
+					 NOT = {
+					 	religion_head = {
+							  	 reverse_opinion = {
+						    	  		     	    who = ROOT
+						    			     	    value = -25
+						   			    	   }
+							 	}
+					       }
+                                        }
+                             modifier = {
+                                         factor = 1.5
+                                         trait = proud
+                                        }
+                             modifier = {
+                                         factor = 0.5
+					 trait = humble
+                                        }
+                             modifier = {
+                                         factor = 0
+                                         OR = {
+											   trait = zealous
+											   has_character_flag = "pope_supported_king"
+											  }
+                                        }
+                             modifier = {
+                                         factor = 0
+					 religion_head = {
+							  reverse_opinion = {
+						    	  		     who = ROOT
+						    			     value = 30
+						   			    }
+							 }
+                                        }
+                             modifier = {
+                                         factor = 0
+					 trait = craven
+                                        }
+                             modifier = {
+                                         factor = 0
+					 trait = content
+                                        }
+                            }
+
+                  }
+
+revoke_sifp = {
+
+	       is_high_prio = yes
+		   ai_check_interval = 12
+	       potential = {
+			    OR = {
+				  has_landed_title = e_hre
+				  has_landed_title = e_karling
+				  primary_title = { has_title_flag = "former_hre_empire" }
+				 }
+			    has_global_flag = "statutum_in_favorem_principum"
+			    NOT = { has_character_flag = "voting_for_revoke" }
+			    NOT = { has_character_flag = "revoke_failed" }
+			   }
+
+	       allow = {
+		    OR = {
+				  trait = crowned
+				  trait = crowned_by_pope
+				 }
+			war = no
+			has_regent = no
+			prestige = 1000
+		       }
+
+	       effect = {
+			 set_character_flag = "voting_for_revoke"
+			 ROOT = { character_event = { id = rexteut.5013 } }
+			 any_vassal = {
+				       character_event = { id = rexteut.5009 }
+				      }
+			}
+
+	       ai_will_do = {
+			     factor = 0.01
+		             modifier = {
+					 factor = 0
+					 NOT = { trait = ambitious }
+					}
+			    }
+		
+
+	      }
+
+
+break_verdun = {
+
+        is_high_prio = yes
+		potential = {
+				 OR = {
+					   has_landed_title = e_karling
+					   primary_title = { has_title_flag = "former_karling_empire" }
+					  }
+			     has_global_flag = "treaty_of_verdun"
+			     has_global_flag = "first_verdun"
+			     NOT = { has_character_flag = "verdun_emperor" }
+			    }
+
+		allow = {
+			 war = no
+			 has_regent = no
+			 is_adult = yes
+			 is_incapable = no
+			 prestige >= 1000
+			 trait = crowned_by_pope
+			 NOT = { primary_title = { has_law = crown_authority_0 } }
+			}
+
+		effect = {
+			  prestige = -1000
+			  any_tributary = {
+							   limit = { is_tributary = { type = carolingian_king } }
+							   set_defacto_liege = ROOT
+							  }
+			  clr_global_flag = "treaty_of_verdun"
+			  set_global_flag = "verdun_broken"
+			  set_character_flag = "verdun_emperor"
+			  any_realm_lord = {
+					    narrative_event = { id = rexteut.6009 }
+					   }
+			 }
+
+		ai_will_do = {
+			      factor = 0
+			     }
+
+	       }
+
+###Grand duchy decisions###
+
+raise_franconia = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_franconia
+							 completely_controls_region = custom_hre_franconia
+							}
+				      any_vassal = { 
+									has_landed_title = d_franconia 
+									completely_controls_region = custom_hre_franconia
+								   }
+				     }
+			    is_title_active = k_grand_franconia
+				k_grand_franconia = { has_holder = no }
+				k_franconia = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_franconia }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_franconia = {
+					  holder_scope = {
+							  prestige = 200
+							  k_grand_franconia = { 
+									       grant_title = PREV
+									       copy_title_laws = PREVPREV
+									       make_primary_title = yes 
+									      }
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_g_duchy
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "franconia_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_grand_franconia = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.5 
+				 modifier = {
+					     factor = 0
+					     d_franconia = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+							   }
+					    }
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_franconia = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_franconia = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_franconia = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+raise_swabia = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_swabia
+							 completely_controls_region = custom_hre_swabia
+							}
+				      any_vassal = { 
+									has_landed_title = d_swabia
+									completely_controls_region = custom_hre_swabia
+								   }
+				     }
+			    is_title_active = k_grand_swabia
+				k_grand_swabia = { has_holder = no }
+				k_swabia = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_swabia }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_swabia = {
+					  holder_scope = {
+							  prestige = 200
+							  k_grand_swabia = { 
+									    grant_title = PREV
+									    copy_title_laws = PREVPREV
+									    make_primary_title = yes 
+									   }
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_g_duchy
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "swabia_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_grand_swabia = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.5 
+				 modifier = {
+					     factor = 0
+					     d_swabia = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+							}
+					    }
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_swabia = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_swabia = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_swabia = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+raise_bavaria = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_bavaria
+							 completely_controls_region = custom_hre_bavaria
+							}
+				      any_vassal = { 
+									has_landed_title = d_bavaria
+									num_of_count_titles_in_realm = 5
+									completely_controls_region = custom_hre_bavaria
+								   }
+				     }
+			    is_title_active = k_grand_bavaria
+				k_grand_bavaria = { has_holder = no }
+				k_bavaria = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_bavaria }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_bavaria = {
+					  holder_scope = {
+							  prestige = 200
+							  k_grand_bavaria = { 
+									     grant_title = PREV
+									     copy_title_laws = PREVPREV
+									     make_primary_title = yes 
+									    }
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } } 
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_g_duchy
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "bavaria_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_grand_bavaria = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.5 
+				 modifier = {
+					     factor = 0
+					     d_bavaria = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_bavaria = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_bavaria = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_bavaria = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+raise_austria = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_osterreich
+							 completely_controls_region = custom_hre_austria
+							}
+				      any_vassal = { 
+									has_landed_title = d_osterreich
+									completely_controls_region = custom_hre_austria
+								   }
+				     }
+			    is_title_active = k_arch_austria
+				k_arch_austria = { has_holder = no }
+				k_austria = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_osterreich }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_osterreich = {
+					  holder_scope = {
+							  prestige = 200
+							  k_arch_austria = { 
+									    grant_title = PREV
+									    copy_title_laws = PREVPREV
+									    make_primary_title = yes 
+									   }
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_a_duchy
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "austria_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_arch_austria = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.5 
+				 modifier = {
+					     factor = 0
+					     d_osterreich = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+							    }
+					    }
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_osterreich = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_osterreich = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_osterreich = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+raise_luxembourg = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_luxembourg
+							 completely_controls = d_luxembourg
+							}
+				      any_vassal = { 
+									has_landed_title = d_luxembourg
+									completely_controls = d_luxembourg
+									num_of_count_titles_in_realm = 5
+								   }
+				     }
+			    is_title_active = k_grand_luxembourg
+				k_grand_luxembourg = { has_holder = no }
+				k_luxembourg = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_luxembourg }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_luxembourg = {
+					  holder_scope = {
+							  prestige = 200
+							  k_grand_luxembourg = { 
+									        grant_title = PREV
+									        copy_title_laws = PREVPREV
+										make_primary_title = yes 
+									       }
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_g_duchy
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "luxembourg_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_grand_luxembourg = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.5 
+				 modifier = {
+					     factor = 0
+					     d_luxembourg = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+							    }
+					    }
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_luxembourg = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_luxembourg = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_luxembourg = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+raise_tuscany = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_toscana
+							 completely_controls_region = custom_hre_tuscany
+							}
+				      any_vassal = { 
+									has_landed_title = d_toscana
+									completely_controls_region = custom_hre_tuscany
+								   }
+				     }
+			    is_title_active = k_grand_tuscany
+				k_grand_tuscany = { has_holder = no }
+				k_tuscany = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_toscana }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_toscana = {
+					  holder_scope = {
+							  prestige = 200
+							  k_grand_tuscany = { 
+									     grant_title = PREV
+									     copy_title_laws = PREVPREV
+									     make_primary_title = yes 
+									    }
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_g_duchy
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "tuscany_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_grand_tuscany = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.5 
+				 modifier = {
+					     factor = 0
+					     d_toscana = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_toscana = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_toscana = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_toscana = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+raise_saxony = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+				      grand_saxony_trigger = yes
+				      any_vassal = { 
+									grand_saxony_trigger = yes
+									completely_controls_region = custom_hre_saxony
+								   }
+				     }
+			    is_title_active = k_grand_saxony
+				k_grand_saxony = { has_holder = no }
+				k_saxony = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  grand_saxony_trigger = no
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_saxony = {
+					  if = { 
+						limit = { has_holder = yes }
+					  	holder_scope = {
+							  	prestige = 200
+							  	k_grand_saxony = { 
+									          grant_title = PREV
+									          copy_title_laws = PREVPREV
+										  make_primary_title = yes 
+									         }
+							  	hidden_tooltip = { set_defacto_liege = ROOT }
+							  	if = {
+								      limit = { NOT = { character = ROOT } }
+								      set_character_flag = "raised_vassal"
+								      narrative_event = { id = rexteut.5020 }
+								      opinion = {
+									   	 modifier = opinion_raised_to_g_duchy
+									   	 who = ROOT
+									   	 years = 100
+									   origin_description = raised_in_rank
+									  	}
+								break = yes
+							       	     }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "saxony_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 	}
+					       break = yes
+					      }
+					  if = { 
+						limit = { has_holder = no }
+					        any_character = {
+								 limit = {
+									  has_landed_title = d_eastphalia
+									  has_landed_title = d_westphalia
+									 }
+							  	 prestige = 200
+							  	 k_grand_saxony = { 
+									       	   grant_title = PREV
+									       	   copy_title_laws = d_eastphalia
+										   make_primary_title = yes
+									      	  }
+							  	 hidden_tooltip = { set_defacto_liege = ROOT }
+							  	 if = {
+								       limit = { NOT = { character = ROOT } }
+								       set_character_flag = "raised_vassal"
+								       narrative_event = { id = rexteut.5020 }
+								       opinion = {
+									   	  modifier = opinion_raised_to_g_duchy
+									   	  who = ROOT
+									   	  years = 100
+									      origin_description = raised_in_rank
+									  	 }
+							       	      }
+							 	}
+					      }
+					 }
+				 hidden_tooltip = {
+								   k_grand_saxony = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.5
+				 modifier = {
+							 factor = 0
+							 d_saxony = {
+										 has_holder = yes
+										 holder_scope = { tier = KING }
+										}
+							}
+				 modifier = {
+							 factor = 0
+							 d_saxony = { has_holder = no }
+							 d_westphalia = {
+											 holder_scope = {
+															 tier = KING
+															}
+											}
+							}
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_saxony = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_saxony = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_saxony = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 2
+					     d_saxony = { has_holder = no }
+					     any_vassal = {
+							   has_landed_title = d_eastphalia
+							   has_landed_title = d_westphalia
+							   opinion = {
+								      who = ROOT
+								      value = 50
+								     }
+							  }
+					    }
+				 modifier = {
+					     factor = 2
+					     d_saxony = { has_holder = no }
+					     any_vassal = {
+							   has_landed_title = d_eastphalia
+							   has_landed_title = d_westphalia
+							   NOT = {
+								  opinion = {
+								             who = ROOT
+								             value = -50
+								            }
+								 }
+							  }
+					    }
+				 modifier = {
+					     factor = 0
+					     d_saxony = { has_holder = no }
+					     any_vassal = {
+							   has_landed_title = d_eastphalia
+							   has_landed_title = d_westphalia
+							   NOT = {
+								  reverse_opinion = {
+								      		     who = ROOT
+								      		     value = 0
+								     		    }
+								 }
+							  }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+raise_milan = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_lombardia
+							 has_landed_title = d_modena
+							 completely_controls = d_lombardia
+							 completely_controls = d_modena
+							}
+				      any_vassal = { 
+							 has_landed_title = d_lombardia
+							 has_landed_title = d_modena
+							 completely_controls = d_lombardia
+							 completely_controls = d_modena
+								   }
+				     }
+			    is_title_active = k_grand_milan
+				k_grand_milan = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  grand_milan_trigger = no
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_lombardia = {
+					  	holder_scope = {
+							  	prestige = 200
+							  	k_grand_milan = { 
+									          grant_title = PREV
+									          copy_title_laws = PREVPREV
+											  make_primary_title = yes 
+									         }
+							  	hidden_tooltip = { set_defacto_liege = ROOT }
+							  	if = {
+								      limit = { NOT = { character = ROOT } }
+								      set_character_flag = "raised_vassal"
+								      narrative_event = { id = rexteut.5020 }
+								      opinion = {
+									   	 modifier = opinion_raised_to_g_duchy
+									   	 who = ROOT
+									   	 years = 100
+									     origin_description = raised_in_rank
+									  	}
+								break = yes
+							       	     }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "milan_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+									  }
+									}
+				 hidden_tooltip = {
+								   k_grand_milan = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.5
+				 modifier = {
+							 factor = 0
+							 d_lombardia = {
+										 holder_scope = { tier = KING }
+										}
+							}
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_lombardia = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_lombardia = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+raise_naples = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  grand_naples_trigger = yes
+				      any_vassal = { 
+									grand_naples_trigger = yes
+								   }
+				     }
+			    is_title_active = k_grand_naples
+				k_grand_naples = { has_holder = no }
+				k_naples = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  grand_naples_trigger = no
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_capua = {
+					  	holder_scope = {
+							  	prestige = 200
+							  	k_grand_naples = { 
+									          grant_title = PREV
+									          copy_title_laws = PREVPREV
+											  make_primary_title = yes 
+									         }
+							  	hidden_tooltip = { set_defacto_liege = ROOT }
+							  	if = {
+								      limit = { NOT = { character = ROOT } }
+								      set_character_flag = "raised_vassal"
+								      narrative_event = { id = rexteut.5020 }
+								      opinion = {
+									   	 modifier = opinion_raised_to_g_duchy
+									   	 who = ROOT
+									   	 years = 100
+									     origin_description = raised_in_rank
+									  	}
+								break = yes
+							       	     }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "naples_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+									  }
+									}
+				 hidden_tooltip = {
+								   k_grand_naples = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.5
+				 modifier = {
+							 factor = 0
+							 d_capua = {
+										 holder_scope = { tier = KING }
+										}
+							}
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_capua = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_capua = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+raise_lorraine = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 grand_lorraine_trigger = yes
+							 completely_controls = d_upper_lorraine
+							 completely_controls = d_lower_lorraine
+							}
+				      any_vassal = { 
+									grand_lorraine_trigger = yes 
+									completely_controls = d_upper_lorraine
+									completely_controls = d_lower_lorraine
+								   }
+				     }
+			    is_title_active = k_grand_lorraine
+				k_grand_lorraine = { has_holder = no }
+				k_lotharingia = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  grand_lorraine_trigger = no
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+				 activate_title = {
+								   title = k_grand_lorraine
+								   status = yes
+								  }
+			     d_upper_lorraine = {
+					  	holder_scope = {
+							  	prestige = 200
+							  	k_grand_lorraine = { 
+									          grant_title = PREV
+									          copy_title_laws = PREVPREV
+										  make_primary_title = yes 
+									         }
+							  	hidden_tooltip = { set_defacto_liege = ROOT }
+							  	if = {
+								      limit = { NOT = { character = ROOT } }
+								      set_character_flag = "raised_vassal"
+								      narrative_event = { id = rexteut.5020 }
+								      opinion = {
+									   	 modifier = opinion_raised_to_g_duchy
+									   	 who = ROOT
+									   	 years = 100
+									     origin_description = raised_in_rank
+									  	}
+								break = yes
+							       	     }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "lorraine_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+									  }
+									}
+				 hidden_tooltip = {
+								   k_grand_lorraine = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.5
+				 modifier = {
+							 factor = 0
+							 d_upper_lorraine = { holder_scope = { tier = KING } }
+						    } 
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_upper_lorraine = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_upper_lorraine = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_upper_lorraine = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+		
+raise_holland = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_holland
+							 completely_controls_region = custom_frisia
+							}
+				      any_vassal = { 
+									has_landed_title = d_holland
+									completely_controls_region = custom_frisia
+								   }
+				     }
+			    is_title_active = k_grand_holland
+				k_grand_holland = { has_holder = no }
+				k_frisia = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_holland }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+				 activate_title = {
+								   title = k_grand_holland
+								   status = yes
+								  }
+			     d_holland = {
+					  holder_scope = {
+							  prestige = 200
+							  k_grand_holland = { 
+												 grant_title = PREV
+												 copy_title_laws = PREVPREV
+												 make_primary_title = yes 
+												}
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_g_duchy
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "holland_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_grand_holland = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.8 
+				 modifier = {
+						 factor = 0
+						 d_holland = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+						 
+									 }
+						}
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_holland = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_holland = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_holland = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+
+raise_bohemia = {
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_bohemia
+							 completely_controls_region = custom_bohemia
+							}
+				      any_vassal = { 
+									has_landed_title = d_bohemia
+									completely_controls_region = custom_bohemia
+								   }
+				     }
+			    is_title_active = k_bohemia
+				k_bohemia = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_bohemia }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_bohemia = {
+					  holder_scope = {
+							  prestige = 200
+							  k_bohemia = { 
+								       grant_title = PREV
+								       copy_title_laws = PREVPREV
+								       make_primary_title = yes 
+								      }
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_kingdom
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "bohemia_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_bohemia = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.8 
+				 modifier = {
+						 factor = 0
+						 d_bohemia = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+						 
+									 }
+						}
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_bohemia = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_bohemia = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_bohemia = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+
+raise_sicily = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_sicily
+							 completely_controls_region = custom_sicily
+							}
+				      any_vassal = { 
+									has_landed_title = d_sicily
+									completely_controls_region = custom_sicily
+								   }
+				     }
+			    is_title_active = k_sicily
+				k_sicily = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_sicily }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+			     d_sicily = {
+					  holder_scope = {
+							  prestige = 200
+							  k_sicily = { 
+								       grant_title = PREV
+								       copy_title_laws = PREVPREV
+								       make_primary_title = yes 
+								      }
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_kingdom
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "sicily_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_sicily = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.8 
+				 modifier = {
+						 factor = 0
+						 d_sicily = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+						 
+									 }
+						}
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_sicily = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_sicily = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_sicily = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+		
+raise_aquitaine = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_aquitaine
+							 completely_controls = d_aquitaine
+							 completely_controls = d_gascogne
+							}
+				      any_vassal = { 
+									has_landed_title = d_aquitaine
+									completely_controls = d_aquitaine
+									completely_controls = d_gascogne
+								   }
+				     }
+			    is_title_active = k_grand_aquitaine
+				k_grand_aquitaine = { has_holder = no }
+				k_aquitaine = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_aquitaine }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+				 activate_title = {
+								   title = k_grand_aquitaine
+								   status = yes
+								  }
+			     d_aquitaine = {
+					  holder_scope = {
+							  prestige = 200
+							  k_grand_aquitaine = { 
+												 grant_title = PREV
+												 copy_title_laws = PREVPREV
+												 make_primary_title = yes 
+												}
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_g_duchy
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "aquitaine_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_grand_aquitaine = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.8 
+				 modifier = {
+						 factor = 0
+						 d_aquitaine = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+						 
+									 }
+						}
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_aquitaine = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_aquitaine = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_aquitaine = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+		
+raise_burgundy = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_burgundy
+							 completely_controls = d_burgundy
+							}
+				      any_vassal = { 
+									has_landed_title = d_burgundy
+									completely_controls = d_burgundy
+									num_of_count_titles_in_realm = 10
+								   }
+				     }
+			    is_title_active = k_grand_burgundy
+				k_grand_burgundy = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_burgundy }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+				 activate_title = {
+								   title = k_grand_burgundy
+								   status = yes
+								  }
+			     d_burgundy = {
+					  holder_scope = {
+							  prestige = 200
+							  k_grand_burgundy = { 
+												 grant_title = PREV
+												 copy_title_laws = PREVPREV
+												 make_primary_title = yes 
+												}
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_g_duchy
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "burgundy_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_grand_burgundy = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.8 
+				 modifier = {
+						 factor = 0
+						 d_burgundy = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+						 
+									 }
+						}
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_burgundy = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_burgundy = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_burgundy = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+		
+raise_normandy = {
+		
+		   ai_check_interval = 6
+
+		   potential = {
+				has_landed_title = e_hre
+				OR = {
+					  AND = {
+							 has_landed_title = d_normandy
+							 completely_controls = d_normandy
+							}
+				      any_vassal = { 
+									has_landed_title = d_normandy
+									completely_controls = d_normandy
+									num_of_count_titles_in_realm = 10
+								   }
+				     }
+			    is_title_active = k_grand_normandy
+				k_grand_normandy = { has_holder = no }
+				k_normandy = { has_holder = no }
+				primary_title = { has_law = kingdom_lockout_0 }
+				has_global_flag = "neustria_renamed"
+				OR = {
+					  trait = crowned_by_pope
+					  AND = {
+							 has_global_flag = "investiture_imperial"
+							 trait = crowned
+							}
+					 }
+			       }
+
+		   allow = {
+			    war = no
+			    has_regent = no
+			    piety = 0
+			    scaled_wealth = 2.5
+			    OR = {
+				  NOT = { has_landed_title = d_normandy }
+				  ruled_years = 5
+				 }
+			   }
+
+		   effect = {
+			     scaled_wealth = -2.5
+				 activate_title = {
+								   title = k_grand_normandy
+								   status = yes
+								  }
+			     d_normandy = {
+					  holder_scope = {
+							  prestige = 200
+							  k_grand_normandy = { 
+												 grant_title = PREV
+												 copy_title_laws = PREVPREV
+												 make_primary_title = yes 
+												}
+							  hidden_tooltip = { set_defacto_liege = ROOT }
+							  if = {
+								limit = { NOT = { character = ROOT } }
+								set_character_flag = "raised_vassal"
+								narrative_event = { id = rexteut.5020 }
+								opinion = {
+									   modifier = opinion_raised_to_g_duchy
+									   who = ROOT
+									   years = 100
+									   origin_description = raised_in_rank
+									  }
+								break = yes
+							       }
+							  if = {
+									limit = { character = ROOT }
+									set_character_flag = "normandy_raised"
+									narrative_event = { id = rexteut.5023 }
+									any_playable_ruler = {
+														  limit = { liege = { rex_teutonicorum_trigger = yes } }
+														  narrative_event = { id = rexteut.5023 }
+														 }
+								   }
+							 }
+					 }
+				 hidden_tooltip = {
+								   k_grand_normandy = { remove_claim = ROOT }
+								  }
+			    }	
+
+		   ai_will_do = { 
+				 factor = 0.8 
+				 modifier = {
+						 factor = 0
+						 d_normandy = {
+							    holder_scope = { 
+												NOT = { character = ROOT }
+												higher_tier_than = DUKE 
+											   }
+						 
+									 }
+						}
+				 modifier = {
+					     factor = 2
+					     trait = charitable
+					    }
+				 modifier = {
+					     factor = 2
+					     d_normandy = {
+							  holder_scope = {
+									  opinion = {
+										     who = ROOT
+										     value = 50
+										    }
+									 }
+							 }
+					    }
+				 modifier = {
+					     factor = 2
+					     NOT = {
+						    d_normandy = {
+							  	 holder_scope = {
+									  	 opinion = {
+										     	    who = ROOT
+										     	    value = -50
+										    	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = {
+						    d_normandy = {
+							  	 holder_scope = {
+									  	 reverse_opinion = {
+										     	    	    who = ROOT
+										     	    	    value = 0
+										    	   	   }
+									 	}
+							 	}
+						   }
+					    }
+				 modifier = {
+					     factor = 0
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0
+					     NOT = { scaled_wealth = 3.75 }
+					    }
+				}	
+
+		  
+		}
+
+restore_germany = {
+
+		is_high_prio = yes
+		
+		potential = {
+					 k_germany = { 
+								  has_holder = no 
+								  is_titular = yes
+								 }
+					 e_hre = { has_holder = no }
+					 e_karling = { has_holder = no }
+					 e_germany = { has_holder = no }
+					 german_cultures_trigger = yes
+					 independent = yes
+					 NOT = { primary_title = { has_title_flag = "former_hre_empire" } }
+					}
+					
+		allow = {
+				 war = no
+				 has_regent = no
+				 prestige = 1000
+				 custom_tooltip = {
+						text = CONTROLS_6_GERMAN_DUCHIES
+						hidden_tooltip = {
+							any_realm_title = {
+								count = 6
+								tier = DUKE
+								dejure_liege_title = { is_former_k_germany_trigger = yes }
+						OR = {
+							holder_scope = { same_realm = ROOT }
+							any_direct_de_jure_vassal_title = {
+								count = 3
+								holder_scope = { same_realm = ROOT }
+							}
+							any_direct_de_jure_vassal_title = {
+								OR = {
+									dejure_liege_title = { title = d_thuringia }
+									dejure_liege_title = { title = d_baden }
+									dejure_liege_title = { title = d_osterreich }
+									dejure_liege_title = { title = d_tyrol }
+								}
+								count = 2
+								holder_scope = { same_realm = ROOT }
+							}
+						}
+					}
+				}
+			}				 
+				}
+				
+		effect = {
+				  narrative_event = { id = rexteut.7026 }
+				 }
+				 
+		ai_will_do = { factor = 1 }
+					
+				  }
+				  
+				  
+build_cairo = {
+
+	is_high_prio = yes
+
+	potential = {
+				 independent = yes
+				 has_landed_title = k_egypt
+				 religion_group = muslim
+				 dynasty = 589
+				 NOT = { has_global_flag = "fatimid_egypt" }
+				}
+				
+	allow = {
+			 war = no
+			}
+			
+	effect = {
+			  narrative_event = { id = rexteut.7001 }
+			  set_global_flag = "fatimid_egypt"
+			 }
+			 
+	ai_will_do = { factor = 100 }
+
+			  }
+			  
+end_papal_crownings = {
+
+	is_high_prio = yes
+	
+	potential = {
+				 primary_title = {
+								   NOT = { has_title_flag = "ended_papal_crownings" }
+								  }
+				 OR = {
+					   AND = {
+							  has_landed_title = e_roman_empire
+							  OR = {
+									has_global_flag = "rome_restored_by_hre"
+									has_global_flag = "rome_restored_by_karling"
+								   }
+							 }
+					   AND = {
+							  OR = {
+									has_landed_title = e_hre
+									has_landed_title = e_karling
+								   }
+							  has_global_flag = "investiture_imperial"
+							 }
+					  }
+				}
+				
+	allow = {
+			 prestige = 1000
+			 piety = 500
+			 trait = crowned_by_pope
+			 ruled_years = 5
+			 war = no
+			 has_regent = no
+			 NOT = { is_incapable = yes }
+			 is_adult = yes
+			 primary_title = {
+							  OR = {
+									has_law = crown_authority_2
+									has_law = crown_authority_3
+									has_law = crown_authority_4
+								   }
+							  }
+			}
+			
+	effect = {
+			  primary_title = { set_title_flag = "ended_papal_crownings" }
+			  piety = -500
+			  narrative_event = { id = rexteut.5029 }
+			 }
+			 
+	ai_will_do = {
+				  factor = 0
+				 }
+
+						   }
+
+##########################################						   
+#ALTERNATE RESTORE ROMAN EMPIRE DECISIONS#
+##########################################
+
+restore_roman_empire_latin = {
+		is_high_prio = yes
+		
+		only_independent = yes
+		potential = {
+			is_playable = yes
+			has_dlc = "Legacy of Rome"
+			has_landed_title = e_latin_empire
+			independent = yes
+			has_regent = no
+			NOT = { has_global_flag = rome_restored }
+			OR = {
+				religion_group = christian
+				religion_group = hellenic_pagan_grpup
+			}
+		}
+		allow = {
+			prestige = 3000
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_latium } }
+				completely_controls = d_latium
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_venice } }
+				completely_controls = d_venice
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_sicily } }
+				completely_controls = d_sicily
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_genoa } }
+				completely_controls = d_genoa
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_capua } }
+				completely_controls = d_capua
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_apulia } }
+				completely_controls = d_apulia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_thrace } }
+				completely_controls = d_thrace
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_karvuna } }
+				completely_controls = d_karvuna
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_thessalonika } }
+				completely_controls = d_thessalonika
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_turnovo } }
+				completely_controls = d_turnovo
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_antioch } }
+				completely_controls = d_antioch
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_jerusalem } }
+				completely_controls = d_jerusalem
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_alexandria } }
+				completely_controls = d_alexandria
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_athens } }
+				completely_controls = d_athens
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_tunis } }
+				completely_controls = d_tunis
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_croatia } }
+				completely_controls = d_croatia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_dalmatia } }
+				completely_controls = d_dalmatia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_dioclea } }
+				completely_controls = d_dioclea
+			}
+		}
+		effect = {
+			set_character_flag = "latin_restored_rome"
+			if = {
+				limit = { NOT = { is_title_active = e_roman_empire } }
+				hidden_tooltip = {
+					activate_title = { title = e_roman_empire status = yes }
+				}
+			}	
+			narrative_event = { id = LoR.20 tooltip = EVTTOOLTIPLoR.20 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+restore_roman_empire_italy = {
+		is_high_prio = yes
+		
+		only_independent = yes
+		potential = {
+			is_playable = yes
+			has_dlc = "Legacy of Rome"
+			has_landed_title = e_italy
+			independent = yes
+			has_regent = no
+			NOT = { has_global_flag = rome_restored }
+			OR = {
+				religion_group = christian
+				religion_group = hellenic_pagan_group
+			}
+		}
+		allow = {
+			prestige = 3000
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_latium } }
+				completely_controls = d_latium
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_venice } }
+				completely_controls = d_venice
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_sicily } }
+				completely_controls = d_sicily
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_genoa } }
+				completely_controls = d_genoa
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_capua } }
+				completely_controls = d_capua
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_apulia } }
+				completely_controls = d_apulia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_thrace } }
+				completely_controls = d_thrace
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_karvuna } }
+				completely_controls = d_karvuna
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_thessalonika } }
+				completely_controls = d_thessalonika
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_turnovo } }
+				completely_controls = d_turnovo
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_antioch } }
+				completely_controls = d_antioch
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_jerusalem } }
+				completely_controls = d_jerusalem
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_alexandria } }
+				completely_controls = d_alexandria
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_athens } }
+				completely_controls = d_athens
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_tunis } }
+				completely_controls = d_tunis
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_croatia } }
+				completely_controls = d_croatia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_dalmatia } }
+				completely_controls = d_dalmatia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_dioclea } }
+				completely_controls = d_dioclea
+			}
+		}
+		effect = {
+			set_character_flag = "italy_restored_rome"
+			if = {
+				limit = { NOT = { is_title_active = e_roman_empire } }
+				hidden_tooltip = {
+					activate_title = { title = e_roman_empire status = yes }
+				}
+			}	
+			narrative_event = { id = LoR.20 tooltip = EVTTOOLTIPLoR.20 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+restore_roman_empire_hre = {
+		is_high_prio = yes
+		
+		only_independent = yes
+		potential = {
+			is_playable = yes
+			has_dlc = "Legacy of Rome"
+			has_landed_title = e_hre
+			independent = yes
+			has_regent = no
+			NOT = { has_global_flag = rome_restored }
+			OR = {
+				religion_group = christian
+				religion_group = hellenic_pagan_group
+			}
+		}
+		allow = {
+			prestige = 3000
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_latium } }
+				completely_controls = d_latium
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_venice } }
+				completely_controls = d_venice
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_sicily } }
+				completely_controls = d_sicily
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_genoa } }
+				completely_controls = d_genoa
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_capua } }
+				completely_controls = d_capua
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_apulia } }
+				completely_controls = d_apulia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_thrace } }
+				completely_controls = d_thrace
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_karvuna } }
+				completely_controls = d_karvuna
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_thessalonika } }
+				completely_controls = d_thessalonika
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_turnovo } }
+				completely_controls = d_turnovo
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_antioch } }
+				completely_controls = d_antioch
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_jerusalem } }
+				completely_controls = d_jerusalem
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_alexandria } }
+				completely_controls = d_alexandria
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_athens } }
+				completely_controls = d_athens
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_tunis } }
+				completely_controls = d_tunis
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_croatia } }
+				completely_controls = d_croatia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_dalmatia } }
+				completely_controls = d_dalmatia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_dioclea } }
+				completely_controls = d_dioclea
+			}
+		}
+		effect = {
+			set_character_flag = "hre_restored_rome"
+			if = {
+				limit = { NOT = { is_title_active = e_roman_empire } }
+				hidden_tooltip = {
+					activate_title = { title = e_roman_empire status = yes }
+				}
+			}	
+			narrative_event = { id = LoR.20 tooltip = EVTTOOLTIPLoR.20 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+restore_roman_empire_karling = {
+		is_high_prio = yes
+		
+		only_independent = yes
+		potential = {
+			is_playable = yes
+			has_dlc = "Legacy of Rome"
+			has_landed_title = e_karling
+			NOT = { has_global_flag = "treaty_of_verdun" }
+			independent = yes
+			has_regent = no
+			NOT = { has_global_flag = rome_restored }
+			OR = {
+				religion_group = christian
+				religion_group = hellenic_pagan_group
+			}
+		}
+		allow = {
+			prestige = 3000
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_latium } }
+				completely_controls = d_latium
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_venice } }
+				completely_controls = d_venice
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_sicily } }
+				completely_controls = d_sicily
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_genoa } }
+				completely_controls = d_genoa
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_capua } }
+				completely_controls = d_capua
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_apulia } }
+				completely_controls = d_apulia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_thrace } }
+				completely_controls = d_thrace
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_karvuna } }
+				completely_controls = d_karvuna
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_thessalonika } }
+				completely_controls = d_thessalonika
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_turnovo } }
+				completely_controls = d_turnovo
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_antioch } }
+				completely_controls = d_antioch
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_jerusalem } }
+				completely_controls = d_jerusalem
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_alexandria } }
+				completely_controls = d_alexandria
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_athens } }
+				completely_controls = d_athens
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_tunis } }
+				completely_controls = d_tunis
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_croatia } }
+				completely_controls = d_croatia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_dalmatia } }
+				completely_controls = d_dalmatia
+			}
+			conditional_tooltip = {
+				trigger = { NOT = { completely_controls = d_dioclea } }
+				completely_controls = d_dioclea
+			}
+		}
+		effect = {
+			set_character_flag = "karling_restored_rome"
+			if = {
+				limit = { NOT = { is_title_active = e_roman_empire } }
+				hidden_tooltip = {
+					activate_title = { title = e_roman_empire status = yes }
+				}
+			}	
+			narrative_event = { id = LoR.20 tooltip = EVTTOOLTIPLoR.20 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+form_marca_hispanica = {
+	is_high_prio = yes
+	
+	only_independent = yes
+	
+	potential = {
+			is_playable = yes
+			any_realm_title = { title = c_barcelona }
+			OR = {
+				  religion = chalcedonian
+				  religion = catholic
+				 }
+			OR = {
+				  has_landed_title = e_karling
+				  has_landed_title = k_france
+				  has_landed_title = k_aquitaine
+				 }
+			d_barcelona = {
+						   dejure_liege_title = {
+												 holder_scope = { 
+																 NOT = { character = ROOT }
+																 NOT = { religion_group = christian } 
+																}
+												}
+						   NOT = { has_title_flag = "marca_hispanica" }
+						  }
+				}
+				
+	allow = {
+			war = no
+			has_regent = no
+			NOT = { is_incapable = yes }
+			is_adult = yes
+			scaled_wealth = 1
+			independent = yes
+			}
+			
+	effect = {
+			  prestige = 100
+			  d_pyrenees = {
+						dejure_liege_title = {
+									d_barcelona = { 
+												   de_jure_liege = PREV 
+												   if = {
+														 limit = {
+																  OR = {
+																		has_holder = no
+																		holder_scope = {
+																						NOT = {
+																							   liege = { 
+																									    character = ROOT 
+																									   }
+																							  }
+																					   }
+																	   }
+																 }
+														 grant_title = ROOT
+														}
+												   set_title_flag = "marca_hispanica"
+												  }
+											 }
+						   }
+			 }
+			 
+	ai_will_do = { 
+				  factor = 1 
+				 }
+
+					   }
+				  
+}

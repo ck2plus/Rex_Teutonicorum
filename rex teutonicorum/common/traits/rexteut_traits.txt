@@ -1,0 +1,30 @@
+guelph = {
+		customizer = no
+		random = no				
+		opposites = { ghibelline }
+		opposite_opinion = -50
+		same_opinion = 20
+		monthly_character_piety = 0.2		
+		 }
+		 
+ghibelline = {
+		customizer = no
+		random = no				
+		opposites = { guelph }
+		opposite_opinion = -50
+		same_opinion = 20
+		monthly_character_prestige = 0.2
+			 }
+			 
+co_crowned = {
+		customizer = no
+		random = no
+		opposites = {
+					 uncrowned
+					 crowned
+					 crowned_by_pope
+					 strong_basileus
+					 weak_basileus
+					}
+		monthly_character_prestige = 0.1
+			 }

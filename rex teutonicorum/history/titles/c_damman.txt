@@ -1,0 +1,96 @@
+661.2.28={
+	liege=d_amman
+}
+
+764.1.1={
+	holder=188626 # Sulayman b Hakim
+}
+
+860.1.1 = {
+holder = 74038
+liege = e_arabia
+}
+#Qarmatians
+899.5.1 = {
+	holder = 100000043 #Abu Sa'id
+	liege = d_amman
+}
+923.1.1 = {
+	holder = 100000044 #Abu Tahir
+}
+944.1.1 = {
+	holder = 100000045 #Ahmad
+}
+970.1.1 = {
+	holder = 100000046 #Sa'id
+}
+972.1.1 = {
+	holder = 100000047 #Yusuf
+}
+977.1.1 = {
+	holder = 100000048 #Sa'id (fictional)
+}
+1000.1.1 = {
+	holder = 1000250570 #al-Hasan
+}
+1025.1.1 = {
+	holder = 100000166 #Abu Tahir (fictional)
+}
+1049.1.1 = {
+	holder = 100000167 #Abdullah (fictional)
+}
+1067.1.1 = {
+	holder = 100000168 #Abu Tahir (fictional)
+}
+
+1078.1.1 = {
+	holder=20900
+}
+1126.1.1={
+	holder = 144146
+}
+1139.1.1={
+	holder = 144147
+}
+1149.1.1={
+	holder = 144148
+}
+1151.1.1={
+	holder = 144149
+}
+1152.1.1={
+	holder = 144150
+}
+1161.1.1={
+	holder = 144152
+}
+1180.1.1={
+	holder = 144154
+}
+1209.1.1={
+	holder = 34471
+}
+1219.1.1={
+	holder = 34473
+}
+1220.1.1={
+	holder = 34474
+}
+1229.1.1={
+	holder = 34476
+}
+1236.1.1={
+	holder = 34477
+}
+1253.1.1={
+	holder = 34479
+}
+1270.1.1={
+	holder = 34481
+}
+1292.1.1={
+	holder = 34482
+}
+1310.1.1={
+	holder = 34483
+}

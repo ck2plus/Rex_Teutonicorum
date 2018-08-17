@@ -1,0 +1,68 @@
+# c_bahrein
+665.1.1={
+	liege=d_oman
+}
+
+768.1.1={
+	holder=188766
+}
+860.1.1 = {
+	liege = d_amman
+	holder = 74038
+}
+899.5.1 = {
+	liege = d_amman
+	holder = 100000043
+}
+923.1.1 = {
+	holder = 100000044
+}
+944.1.1 = {
+	holder = 100000045
+}
+970.1.1 = {
+	holder = 100000046
+}
+972.1.1 = {
+	holder = 100000047
+}
+977.1.1 = {
+	holder = 100000048
+}
+1000.1.1 = {
+	holder = 1000250570
+}
+1025.1.1 = {
+	holder = 100000166 #Abu Tahir (fictional)
+}
+1049.1.1 = {
+	holder = 100000167 #Abdullah (fictional)
+}
+1067.1.1 = {
+	holder = 100000168 #Abu Tahir (fictional)
+}
+1078.1.1 = {
+	liege = d_oman
+	holder = 1000250584
+}
+1109.1.1 = {
+	holder = 1000250585
+}
+1154.1.1 = {	
+	holder = 144145
+}
+1161.1.1 = {
+	holder = 144560
+}
+1210.1.1 = {
+	holder = 144561
+}
+1250.1.1 = {
+	holder = 144562
+}
+1278.1.1 = {
+	holder = 144563
+}
+1285.1.1 = {
+	holder = 144564
+}

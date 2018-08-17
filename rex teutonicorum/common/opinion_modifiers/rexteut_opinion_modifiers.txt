@@ -1,0 +1,184 @@
+opinion_grateful_pope = {
+                         opinion = 50
+                        }
+opinion_tolerated_hussites = {
+                              opinion = -25
+                             }
+denied_kingdom_bohemia = {
+                          opinion = -50
+                         }
+opinion_raised_to_kingdom  = {
+			      opinion = 50
+			      non_aggression_pact = yes
+			     }
+opinion_raised_to_g_duchy  = {
+			      opinion = 50
+			      non_aggression_pact = yes
+			     }
+opinion_raised_to_a_duchy  = {
+			      opinion = 50
+			      non_aggression_pact = yes
+			     }
+pope_praised = {
+		opinion = 25
+	       }
+pope_condemned = {
+		  opinion = -25
+		 }
+gave_land_to_pope = {
+		     opinion = -25
+		    }
+opinion_supported_liege = {
+			   opinion = 20
+			  }
+opinion_unsupported_liege = {
+			   opinion = -20
+			  }
+opinion_supported_the_pope = {
+			   opinion = 20
+}
+opinion_unsupported_the_pope = {
+			   opinion = -20
+}
+opinion_supported_emperor = {
+			     opinion = 30
+			    }
+opinion_unsupported_emperor = {
+			       opinion = -30
+			      }
+opinion_pope_demand = {
+		       opinion = -20
+		      }
+opinion_pope_demand_refused = {
+			       opinion = -20
+			      }
+opinion_pope_offered_crown = {
+			      opinion = 25
+			     }
+opinion_pope_submission = {
+			   opinion = 15
+			  }
+opinion_emperor_demands_refused = {
+				   opinion = -20
+				  }
+opinion_refused_repentance = {
+			      opinion = -20
+			     }
+opinion_refusal_to_compromise = {
+				 opinion = -20
+				}
+opinion_papal_deposition = {
+		            opinion = -25
+			   }
+opinion_pope_deposed = {
+			opinion = -30
+		       }
+opinion_tributary_vassal = {
+			   opinion = -15
+			  }
+opinion_tributary_refused = {
+			   opinion = -15
+			  }
+opinion_demand_autonomy = {
+			   opinion = -20
+			  }
+opinion_denied_autonomy = {
+			   opinion = -20
+		          }
+opinion_revoked_autonomy = {
+			    opinion = -30
+			   }
+opinion_gave_italy = {
+		      opinion = 15
+		     }
+opinion_gave_away_italy = {
+			   opinion = -25
+			  }
+opinion_claim_italy = {
+		       opinion = -20
+		      }
+opinion_defied_princes = {
+			  opinion = -35
+			 }
+opinion_former_roman = {
+			opinion = -45
+		       }
+opinion_helped_adelaide = {
+			   opinion = 50
+			  }
+opinion_betrayed_me = {
+		       opinion = -100
+		       prison_reason = yes
+		      }
+opinion_coerced_marriage = {
+			    opinion = -100
+			   }
+opinion_end_papal_crowning = {
+			   opinion = -80
+			   disable_non_aggression_pacts = yes
+			  }
+opinion_forced_succession_deal = {
+			opinion = -15
+			}
+opinion_named_as_heir = {
+			opinion = 20
+			non_aggression_pact = yes
+			}
+opinion_stole_succession = {
+			opinion = -30
+			}
+opinion_succession_deal_cancelled = {
+			opinion = -20
+			}
+opinion_rejected_succession_deal = {
+			opinion = -20
+			}
+opinion_cancelled_succession_deal = {
+			opinion = 15
+			}
+opinion_signed_succession_deal = {
+			opinion = -15
+			}
+opinion_co_crowned = {
+			opinion = 50
+			non_aggression_pact = yes
+		   }
+opinion_nominated_co_crown = {
+			opinion = 20
+		   }
+opinion_for_co_crown = {
+			opinion = 15
+		   }
+opinion_against_co_crown = {
+			opinion = -15
+		   }
+opinion_supported_co_crown = {
+			opinion = 20
+		   }
+opinion_opposed_co_crown = {
+			opinion = -20
+		   }
+opinion_usurped_co_crown = {
+			opinion = -50
+		   }
+opinion_guelph_positive = {
+		    opinion = 20
+		   }
+opinion_guelph_negative = {
+		    opinion = -20
+		   }
+opinion_ghibelline_positive = {
+		    opinion = 20
+		   }
+opinion_ghibelline_negative = {
+		    opinion = -20
+		   }
+opinion_refused_change_allegiance = {
+			opinion = -20
+		   }
+opinion_changed_allegiance = {
+			opinion = 20
+		   }
+opinion_tried_change_allegiance = {
+			opinion = -20
+		   }

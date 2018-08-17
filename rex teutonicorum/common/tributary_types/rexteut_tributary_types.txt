@@ -1,0 +1,96 @@
+
+
+hre_vassal = {
+	tributary_name = TRIBUTARY_HRE_VASSAL_NAME
+	tributary_plural = TRIBUTARY_HRE_VASSAL_PLURAL
+	suzerain_name = SUZERAIN_HRE_VASSAL_NAME
+	tribute_name = TRIBUTARY_HRE_VASSAL_TRIBUTE
+	breaks_at_suzerain_death = no
+	breaks_at_tributary_death = no
+	suzerain_can_be_called = yes
+	suzerain_must_defend = no
+	tributary_can_be_summoned = yes
+	tributary_must_defend = no
+	tributaries_can_infight = yes
+	suzerain_can_join_infighting = yes
+	tributaries_can_unite = no
+	breaks_on_realm_change = yes
+	icon = 10
+	
+	cbs_against_suzerain = {
+		free_tributary_cb
+	}
+	
+	income_tribute_percentage = {
+		value = 0
+	}
+	reinforce_tribute_percentage = {
+		value = 0
+	}
+	prestige_to_suzerain = {
+		value = 0.1
+	}
+	piety_to_suzerain = {
+		value = 0
+	}
+	piety_to_tributary = {
+		value = 0
+	}
+
+}
+
+carolingian_king = {
+	tributary_name = TRIBUTARY_CAROLINGIAN_KING_NAME
+	tributary_plural = TRIBUTARY_CAROLINGIAN_KING_PLURAL
+	suzerain_name = SUZERAIN_CAROLINGIAN_KING_NAME
+	tribute_name = TRIBUTARY_CAROLINGIAN_KING_TRIBUTE
+	breaks_at_suzerain_death = no
+	breaks_at_tributary_death = no
+	suzerain_can_be_called = no
+	suzerain_must_defend = no
+	tributary_can_be_summoned = yes
+	tributary_must_defend = no
+	tributaries_can_infight = yes
+	suzerain_can_join_infighting = yes
+	tributaries_can_unite = no
+	breaks_on_realm_change = yes
+	icon = 10
+	
+	cbs_against_suzerain = {
+		claim_all
+		claim
+		other_claim
+		liberate_religion
+		excommunicated_ruler
+		muslim_county_conquest
+		dejure_county_claim
+		ducal_country_conquest
+		dejure_barony_claim
+		other_dejure_county_claim
+		depose_antipope
+		rivalry_cb
+		hostages_cb
+		unjust_conquest
+		dejure_duchy_claim
+	}
+	
+	income_tribute_percentage = {
+		value = 0
+	}
+	reinforce_tribute_percentage = {
+		value = 0
+	}
+	prestige_to_suzerain = {
+		value = 0.1
+	}
+	prestige_to_tributary = {
+		value = 0
+	}
+	piety_to_suzerain = {
+		value = 0
+	}
+	piety_to_tributary = {
+		value = 0
+	}
+
+}

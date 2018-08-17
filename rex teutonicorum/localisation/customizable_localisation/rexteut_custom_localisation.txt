@@ -1,0 +1,338 @@
+defined_text = {
+		name = GetTitleRank
+
+		text = {
+			trigger = {
+				   OR = {
+					 title = k_grand_franconia
+					 title = k_grand_swabia
+					 title = k_grand_bavaria
+					 title = k_grand_saxony
+					 title = k_grand_tuscany
+					 title = k_grand_milan
+					 title = k_grand_naples
+					 title = k_grand_luxembourg
+					 title = k_grand_lorraine
+					 title = k_grand_holland
+					 title = k_grand_aquitaine
+					 title = k_grand_burgundy
+					 title = k_grand_normandy
+					}
+				  }
+			localisation_key = cust_loc_grand_duchy
+		       }
+		text = {
+			trigger = {
+					OR = {
+					 title = k_bohemia
+					 title = k_sicily
+						 }
+				  }
+			localisation_key = cust_loc_kingdom
+		       }
+		text = {
+			trigger = {
+				   title = k_arch_austria
+				  }
+			localisation_key = cust_loc_arch_duchy
+		       }
+	       }
+
+defined_text = {
+		name = GetRaisedDuchy
+				
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "franconia_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "franconia_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_franconia
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "swabia_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "swabia_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_swabia
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "bavaria_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "bavaria_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_bavaria
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "austria_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "austria_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_arch_austria
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "luxembourg_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "luxembourg_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_luxembourg
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "tuscany_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "tuscany_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_tuscany
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "saxony_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "saxony_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_saxony
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "milan_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "milan_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_milan
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "naples_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "naples_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_naples
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "lorraine_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "lorraine_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_lorraine
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "holland_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "holland_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_holland
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "bohemia_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "bohemia_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_king_bohemia
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "sicily_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "sicily_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_king_sicily
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "aquitaine_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "aquitaine_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_aquitaine
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "burgundy_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "burgundy_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_burgundy
+			   }
+		text = {
+				trigger = {
+						   OR = {
+								 AND = {
+										rex_teutonicorum_trigger = yes
+										has_character_flag = "normandy_raised"
+									   }
+								 liege = {
+										  rex_teutonicorum_trigger = yes
+										  has_character_flag = "normandy_raised"
+										 }
+								}
+						  }
+				localisation_key = cust_loc_grand_normandy
+			   }
+		}
+		
+defined_text = {
+		name = GetEmperorName
+				
+		text = {
+				trigger = { has_landed_title = e_karling }
+				localisation_key = cust_loc_karling_emperor
+			   }
+		text = {
+				trigger = { has_landed_title = e_hre }
+				localisation_key = cust_loc_hre_emperor
+			   }
+		}
+		
+defined_text = {
+		name = get_imperial_diet_name
+		
+		text = {
+				trigger = {
+						   e_hre = {
+								    NOR = {
+										   has_title_flag = "french_formed_hre"
+										   has_title_flag = "italian_formed_hre"
+										  }
+								   }
+						  }
+				localisation_key = cust_loc_hoftag
+			   }
+		
+		text = {
+				trigger = { e_hre = { has_title_flag = "french_formed_hre" } }
+				localisation_key = cust_loc_jourdelacour
+			   }
+		
+		text = {
+				trigger = { e_hre = { has_title_flag = "italian_formed_hre" } }
+				localisation_key = cust_loc_giornocorte
+			   }
+
+			   }
+		
+defined_text = {
+		name = GetBurgundyName
+				
+		text = {
+				trigger = { NOT = { has_global_flag = "arles_formed" } }
+				localisation_key = cust_loc_burgundy
+			   }
+		text = {
+				trigger = { has_global_flag = "arles_formed" }
+				localisation_key = cust_loc_arles
+			   }
+		}
+		

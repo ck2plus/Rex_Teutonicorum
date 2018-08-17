@@ -1,0 +1,119 @@
+330.1.1={
+	liege="d_thrace"
+}
+745.1.1={
+	holder=145795
+}
+790.1.1={
+	holder=145796
+}
+842.1.20={
+	holder=70490
+}
+866.9.24={
+	holder=1700
+}
+886.8.29 = {
+	holder = 1702 # Léon VI
+}
+904.1.1 = {
+	liege = k_bulgaria
+	holder = 712
+}
+927.5.27 = {
+	holder = 714
+}
+969.1.30 = {
+	holder = 716
+}
+971.1.1 = {
+	liege = d_thrace
+	holder = 1714 # Jean Ier
+}
+976.1.10 = {
+	holder = 1716
+}
+1025.12.15 = {
+	holder = 1718 # Constantin VIII
+}
+1028.11.15 = {
+	holder = 1720 # Romain III
+}
+1034.4.11 = {
+	holder = 1722 # Michel IV
+}
+1041.12.10 = {
+	holder = 1724 # Michel V
+}
+1042.4.20 = {
+	holder = 1717 # Impératrice Zoé
+}
+1042.6.11 = {
+	holder = 1726 # Constantin IX
+}
+1055.1.11 = {
+	holder = 1719 # Impératrice Théodora
+}
+1056.8.31 = {
+	holder = 70432 # Michel VI
+}
+1057.8.31 = {
+	holder = 1730 # Isaac Ier
+}
+1059.11.22 = {
+	holder = 1732 # Constantin X
+}
+1064.1.1 = {
+	liege = "d_thrace"
+	holder = 1736
+}
+1071.8.26 = {
+	holder = 9810
+}
+1082.1.1 = {
+	holder = 34586
+}
+1113.1.1 = {
+	holder = 34587
+}
+1168.1.1 = {
+	holder = 34273
+}
+1185.9.12 = {
+	holder = 215060
+}
+1186.1.1 = {
+	holder = 34273
+}
+1202.1.1 = {
+	holder = 34590
+}
+1204.5.16 = {
+	liege = "e_latin_empire"
+}
+1204.5.16 = {
+	holder = 34592
+}
+1220.12.17 = {
+	holder = 34593
+}
+1230.1.1 = {
+	liege = "k_bulgaria"
+}
+1230.1.1 = {
+	holder = 31160 #Ivan II
+}
+1241.6.24 = {
+	holder = 31165 #Koloman I
+}
+1246.8.1 = {
+	liege = "d_thrace"
+	holder = 465527
+}
+1272.1.1 = {
+	holder = 465521
+}
+1332.2.13 = {
+	holder = 465530
+}
+

@@ -1,0 +1,107 @@
+646.1.1={
+	liege="d_armenia"
+}
+646.1.1={
+	holder=159570
+}
+650.8.29={
+	holder=159571
+}
+693.8.29={
+	holder=159572
+}
+710.1.1={
+	holder=159573
+}
+750.1.1={
+	holder=145998
+} # Duke of Armenia and "Lord of Taron"
+761.1.1={
+	holder=159574
+}
+780.1.1={
+	holder=159575
+}
+820.1.1={
+	holder=159576
+}
+850.1.1={
+	holder=159577
+}
+880.1.1 = {
+	liege = d_mesopotamia
+	holder = 159722
+}
+900.1.1 = {
+	holder = 100000059
+}
+903.1.1 = {
+	holder = 100000060
+}
+915.1.1 = {
+	holder = 100000061
+}
+921.1.1 = {
+	holder = 100000063
+}
+937.1.1 = {
+	holder = 100000024
+}
+949.9.1 = {
+	liege = "d_mesopotamia"
+	holder = 100000023
+}
+968.1.1={
+	liege="d_mesopotamia"
+}
+987.1.1 = {
+	liege = d_jazira
+	holder = 159143
+}
+1061.1.1 = {
+	liege = e_byzantium
+	holder = 20738
+}
+1066.1.1 = {
+	holder = 85001
+	liege = "d_mesopotamia"
+}
+1067.1.1={
+	holder=724
+}
+1071.8.26 = {
+	holder = 144065
+}
+1091.1.1 = {
+	holder = 144067
+}
+1103.1.1 = {
+	holder = 144070
+}
+1144.1.1 = {
+	holder = 144071
+}
+1166.1.1 = {
+	holder = 144072
+}
+1183.1.1 = {
+	liege = "d_edessa"
+}
+1183.1.1 = {
+	holder = 226052
+}
+1196.1.1 = {
+	holder = 32918
+}
+1216.10.8 = {
+	holder = 32920
+}
+1250.1.1 = {
+	holder = 93422
+}
+1283.1.1 = {
+	holder = 93423
+}
+1320.1.1 = {
+	holder = 93424
+}

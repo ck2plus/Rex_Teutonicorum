@@ -1,0 +1,97 @@
+742.1.1={
+	liege="d_jazira"
+	holder=146132
+}
+773.1.1={
+	holder=146133
+}
+803.1.1={
+	holder=146134
+}
+807.1.1={
+	holder=146135
+}
+822.1.1={
+	holder=146136
+}
+866.1.1 = {
+	liege = "d_jazira"
+}
+866.1.1 = {
+	holder = 163133
+}
+874.1.1 = {
+	holder = 130000015
+}
+950.1.1 = {
+	liege = d_mosul
+}
+#Marwanids
+983.1.1 = {
+	liege = d_jazira
+	holder = 159143 #Badh
+}
+990.1.1 = {
+	holder = 159145 #Al-Hasan
+}
+997.1.1 = {
+	holder = 159146 #Sa'id
+}
+1010.1.1 = {
+	holder = 100000191 #Sharwin
+}
+1011.1.1 = {
+	holder = 159147 #Ahmed
+}
+1058.1.1 = {
+	liege = k_persia
+}
+1061.1.1 = {
+	holder = 20738 #Nasr
+}
+1079.1.1 = {
+	holder = 93419 #Mansur
+}
+1086.1.1 = {
+	holder = 93117
+}
+1092.1.1 =  
+{
+	holder = 232564
+}
+1098.1.1 = {
+	holder = 10073 #Baudouin I de Boulogne
+}
+1100.4.2 = {
+	holder = 232007 #Baudouin II de Rethel
+}
+1118.4.2 = {
+	holder = 231012 #Joscelin I de Courtenay
+}
+1131.10.1 = {
+	holder = 231013 #Joscelin II de Courtenay
+}
+1144.1.1 = {
+	liege = "d_mosul"
+}
+1144.1.1 = {
+	holder = 93489
+}
+1176.1.1 = {
+	liege = "d_edessa"
+}
+1180.1.1 = {
+	holder = 93490
+}
+1220.1.1 = {
+	holder = 93491
+}
+1260.1.1 = {
+	holder = 93492
+}
+1300.1.1 = {
+	holder = 93493
+}
+1330.1.1 = {
+	holder = 93494
+}

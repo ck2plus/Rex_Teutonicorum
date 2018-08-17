@@ -1,0 +1,599 @@
+decisions = {			  
+			  
+reduce_peasant_discontent = {
+
+		potential = {
+					 government = communal_government
+					 communal_modifier_trigger = yes
+					 NOT = { has_character_flag = "reduced_peasant_discontent" }
+					 ai = no
+					}
+					
+		allow = {
+				 war = no
+				 OR = {
+					   AND = {
+					          lower_tier_than = DUKE
+							  prestige = 100
+							 }
+					   AND = {
+						      lower_tier_than = KING
+						      higher_tier_than = COUNT
+							  prestige = 250
+							 }
+					   AND = {
+						      lower_tier_than = EMPEROR
+						      higher_tier_than = DUKE
+							  prestige = 500
+							 }
+					   AND = {
+					          higher_tier_than = KING
+							  prestige = 750
+							 }
+					  }
+				 scaled_wealth = 1
+				 custom_tooltip = {
+								   text = "peasant_contentment"
+								   hidden_tooltip = {
+													 NOR = {
+															has_character_modifier = peasants_content
+															has_character_modifier = peasants_happy
+														   }
+													}
+								  }
+				}
+				
+		effect = {
+				  scaled_wealth = -1
+				  if = {
+						limit = { lower_tier_than = DUKE }
+						prestige = -100
+					   }
+				  if = {
+						limit = {
+								 lower_tier_than = KING
+								 higher_tier_than = COUNT
+								}
+						prestige = -250
+					   }
+				  if = {
+						limit = {
+								 lower_tier_than = EMPEROR
+								 higher_tier_than = DUKE
+								}
+						prestige = -500
+					   }
+				  if = {
+						limit = { higher_tier_than = KING }
+						prestige = -750
+					   }
+				  set_character_flag = "reduced_peasant_discontent"
+				  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  random_list = {
+												  10 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = -2
+																		  }
+													   }
+												  25 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = -4
+																		  }
+													   }
+												  30 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = -6
+																		  }
+													   }
+												  25 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = -8
+																		  }
+													   }
+												  10 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = -10
+																		  }
+													   }
+																}
+												  communal_modifier_effect = yes
+												 }
+							   }
+				 }
+		ai_will_do = {
+					  factor = 1
+					  modifier = {
+								  factor = 2
+								  has_character_modifier = peasants_rebellious
+								 }
+					 }
+
+
+							}
+							
+reduce_peasant_discontent_ai = {
+
+		potential = {
+					 government = communal_government
+					 communal_modifier_trigger = yes
+					 NOT = { has_character_flag = "reduced_peasant_discontent" }
+					 ai = yes
+					}
+					
+		allow = {
+				 war = no
+				 OR = {
+					   AND = {
+					          lower_tier_than = DUKE
+							  prestige = 100
+							 }
+					   AND = {
+						      lower_tier_than = KING
+						      higher_tier_than = COUNT
+							  prestige = 250
+							 }
+					   AND = {
+						      lower_tier_than = EMPEROR
+						      higher_tier_than = DUKE
+							  prestige = 500
+							 }
+					   AND = {
+					          higher_tier_than = KING
+							  prestige = 750
+							 }
+					  }
+				 scaled_wealth = 1
+				 custom_tooltip = {
+								   text = "peasant_contentment"
+								   hidden_tooltip = {
+													 NOR = {
+															has_character_modifier = peasants_content
+															has_character_modifier = peasants_happy
+														   }
+													}
+								  }
+				}
+				
+		effect = {
+				  scaled_wealth = -1
+				  if = {
+						limit = { lower_tier_than = DUKE }
+						prestige = -100
+					   }
+				  if = {
+						limit = {
+								 lower_tier_than = KING
+								 higher_tier_than = COUNT
+								}
+						prestige = -250
+					   }
+				  if = {
+						limit = {
+								 lower_tier_than = EMPEROR
+								 higher_tier_than = DUKE
+								}
+						prestige = -500
+					   }
+				  if = {
+						limit = { higher_tier_than = KING }
+						prestige = -750
+					   }
+				  set_character_flag = "reduced_peasant_discontent"
+				  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -10
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+				 }
+		ai_will_do = {
+					  factor = 1
+					  modifier = {
+								  factor = 2
+								  has_character_modifier = peasants_rebellious
+								 }
+					 }
+
+
+							}
+							
+convert_to_communal_ind = {
+
+		is_high_prio = yes
+		only_rulers = yes
+		
+		potential = {
+					 is_tribal = yes
+					 is_playable = yes
+					 is_ruler = yes
+					 independent = yes
+					 OR = {
+						   can_communal_trigger = yes
+						   has_game_rule = {
+											name = communal_admn_rule
+											value = unrestricted
+										   }
+						  }
+					 NOT = {
+							has_game_rule = {
+											 name = communal_admn_rule
+											 value = off
+											}
+						   }
+					}
+					
+		allow = {
+				 war = no
+				 OR = {
+					   primary_title = { has_law = tribal_organization_4 }
+					   AND = {
+							  primary_title = { has_law = tribal_organization_2 }
+							  TECH_POPULAR_CUSTOMS = 3
+							 }
+					  }
+				capital_holding = {
+								   OR = {
+										 NOT = { holding_type = tribal }
+										 AND = {
+												holding_type = tribal
+												OR = {
+													  has_building = tb_market_town_4
+													  has_building = tb_hillfort_4
+													 }
+											   }
+										}
+								  }				 
+				}
+				
+	effect = {
+			  #Notify of buildings that will not upgrade
+			  any_demesne_province = {
+									  limit = {
+											   culture = ROOT
+											   any_province_holding = {
+																		holding_type = tribal
+																		NOR = { 
+																			   has_building = tb_market_town_4
+																			   has_building = tb_hillfort_4 
+																			  }
+																	  }
+											  }
+									  random_province_holding = {
+																 if = {
+																	   limit = {
+																				holding_type = tribal
+																			   }
+																	   custom_tooltip = { text = TRIBAL_NOT_UPGRADE }
+																	  }
+																}
+									 }
+			  #Notify of holdings that will cause an issue
+			  any_demesne_province = {
+									  limit = {
+											   NOT = { culture = ROOT }
+											   any_province_holding = {
+																	   holding_type = tribal
+																	   NOR = { 
+																			  has_building = tb_market_town_4
+																			  has_building = tb_hillfort_4 
+																			 }
+																	  }
+											  }
+									 random_province_holding = {
+																if = {
+																	  limit = {
+																			   holding_type = tribal
+																			  }
+																	  custom_tooltip = { text = TRIBAL_PROVINCE_NOT_CULTURE_WARNING }
+																	 }
+																}
+									 }
+			  #Notify of vassals that will cause an issue
+			  any_vassal = {
+						    limit = {
+									 higher_tier_than = BARON
+									 is_tribal = yes
+									 NOT = { culture = ROOT }
+									}
+							custom_tooltip = { text = TRIBAL_VASSAL_NOT_CULTURE_WARNING }
+						   }
+			  #Upgrade tribal holdings that have market towns and hillforts
+			  any_demesne_province = {
+									  limit = {
+											   any_province_holding = {
+																	   holding_type = tribal
+																	   OR = {
+																			 has_building = tb_market_town_4
+																			 has_building = tb_hillfort_4
+																			}
+																	  }
+											  }
+									  any_province_holding = {
+															  if = {
+																	limit = {
+																			 holding_type = tribal
+																	         has_building = tb_hillfort_4
+																			}
+																	set_title_flag = refill_levy
+																	convert_to = CASTLE
+																	hidden_tooltip = { refill_holding_levy = yes }
+																   }
+															  if = {
+																	limit = {
+																			 holding_type = tribal
+																			 has_building = tb_market_town_4
+																	         NOT = { has_building = tb_hillfort_4 }
+																			}
+																	set_title_flag = refill_levy
+																	convert_to = CITY
+																	hidden_tooltip = { refill_holding_levy = yes }
+																   }
+															 }
+									  hidden_tooltip = {
+													    add_province_modifier = {
+																				 name = new_buildings_timer
+																				 duration = 36500
+																				 hidden = yes
+																				}
+													   }
+									 }
+			  any_demesne_title = {
+							       limit = { higher_tier_than = BARON }
+								   revoke_law = feudal_administration
+								   add_law = communal_administration
+								  }
+			  hidden_tooltip = { narrative_event = { id = cmnl.1026 } }
+			 }
+			 
+		ai_will_do = {
+					  factor = 1
+					  modifier = {
+								  factor = 2
+								  OR = {
+										religion = qarmatian
+										religion = mazdaki
+									   }
+								 }
+					  modifier = {
+								  factor = 100
+								  religion = tondrakian
+								 }
+					  modifier = {
+								  factor = 0.5
+								  religion = qarmatian
+								  NOT = { trait = heresiarch }
+								 }
+					  modifier = {
+								  factor = 0.5
+								  NOR = {
+										 religion = qarmatian
+										 religion = tondrakian
+										 religion = mazdaki
+										}
+								  NOR = {
+										 trait = charitable
+										 trait = kind
+										 trait = humble
+										 trait = content
+										}
+								 }
+					  modifier = {
+								  factor = 0
+								  NOR = {
+										 religion = qarmatian
+										 religion = tondrakian
+										 religion = mazdaki
+										}
+								  OR = {
+										trait = proud
+										trait = ambitious
+										trait = greedy
+										trait = cruel
+										trait = envious
+									   }
+								 }
+					 }
+		
+						  }
+						  
+convert_to_communal_vassal = {
+		
+		is_high_prio = yes
+		only_rulers = yes
+		
+		potential = {
+					 is_tribal = yes
+					 independent = no
+					 is_ruler = yes
+					 any_demesne_title = {
+										  tier = BARON
+										  holding_type = tribal
+										 }
+					 liege = { government = communal_government }
+					}
+					
+		allow = {
+				 war = no
+				 liege = { government = communal_government }
+				 capital_holding = {
+									OR = {
+										  OR = {
+												holding_type = CITY
+												holding_type = CASTLE
+												holding_type = temple
+											   }
+										  AND = {
+												 holding_type = tribal
+												 OR = {
+													   has_building = tb_market_town_4
+													   has_building = tb_hillfort_4
+													  }
+												}
+										 }
+								   }
+				}
+				
+		effect = {
+			  #Notify of buildings that will not upgrade
+			  any_demesne_province = {
+									  limit = {
+											   culture = ROOT
+											   any_province_holding = {
+																		holding_type = tribal
+																		NOR = { 
+																			   has_building = tb_market_town_4
+																			   has_building = tb_hillfort_4 
+																			  }
+																	  }
+											  }
+									  random_province_holding = {
+																 if = {
+																	   limit = {
+																				holding_type = tribal
+																			   }
+																	   custom_tooltip = { text = TRIBAL_NOT_UPGRADE }
+																	  }
+																}
+									 }
+			  #Notify of holdings that will cause an issue
+			  any_demesne_province = {
+									  limit = {
+											   NOT = { culture = ROOT }
+											   any_province_holding = {
+																	   holding_type = tribal
+																	   NOR = { 
+																			  has_building = tb_market_town_4
+																			  has_building = tb_hillfort_4 
+																			 }
+																	  }
+											  }
+									 random_province_holding = {
+																if = {
+																	  limit = {
+																			   holding_type = tribal
+																			  }
+																	  custom_tooltip = { text = TRIBAL_PROVINCE_NOT_CULTURE_WARNING }
+																	 }
+																}
+									 }
+			  #Notify of vassals that will cause an issue
+			  any_vassal = {
+						    limit = {
+									 higher_tier_than = BARON
+									 is_tribal = yes
+									 NOT = { culture = ROOT }
+									}
+							custom_tooltip = { text = TRIBAL_VASSAL_NOT_CULTURE_WARNING }
+						   }
+			  #Upgrade tribal holdings that have market towns and hillforts
+			  any_demesne_province = {
+									  limit = {
+											   any_province_holding = {
+																	   holding_type = tribal
+																	   OR = {
+																			 has_building = tb_market_town_4
+																			 has_building = tb_hillfort_4
+																			}
+																	  }
+											  }
+									  any_province_holding = {
+															  if = {
+																	limit = {
+																			 holding_type = tribal
+																	         has_building = tb_hillfort_4
+																			}
+																	set_title_flag = refill_levy
+																	convert_to = CASTLE
+																	hidden_tooltip = { refill_holding_levy = yes }
+																   }
+															  if = {
+																	limit = {
+																			 holding_type = tribal
+																			 has_building = tb_market_town_4
+																	         NOT = { has_building = tb_hillfort_4 }
+																			}
+																	set_title_flag = refill_levy
+																	convert_to = CITY
+																	hidden_tooltip = { refill_holding_levy = yes }
+																   }
+															 }
+									  hidden_tooltip = {
+													    add_province_modifier = {
+																				 name = new_buildings_timer
+																				 duration = 36500
+																				 hidden = yes
+																				}
+													   }
+									 }
+			  any_demesne_title = {
+								   limit = { higher_tier_than = BARON }
+								   revoke_law = feudal_administration
+								   add_law = communal_administration
+								  }
+			  hidden_tooltip = { narrative_event = { id = cmnl.1026 } }
+			 }
+			 
+	ai_will_do = {
+					  factor = 1
+					  modifier = {
+								  factor = 100
+								  OR = {
+										religion = tondrakian
+										religion = mazdaki
+									   }
+								 }
+					  modifier = {
+								  factor = 2
+								  religion = qarmatian
+								 }
+					  modifier = {
+								  factor = 0.5
+								  religion = qarmatian
+								  NOT = { trait = heresiarch }
+								 }
+					  modifier = {
+								  factor = 0.5
+								  NOR = {
+										 religion = qarmatian
+										 religion = tondrakian	
+										 religion = mazdaki
+										}
+								  NOR = {
+										 trait = charitable
+										 trait = kind
+										 trait = humble
+										 trait = content
+										}
+								 }
+					  modifier = {
+								  factor = 0.1
+								  NOR = {
+										 religion = qarmatian
+										 religion = tondrakian
+										 religion = mazdaki
+										}
+								  OR = {
+										trait = proud
+										trait = ambitious
+										trait = greedy
+										trait = cruel
+										trait = envious
+									   }
+								 }
+					 }
+						     }
+							 
+							
+}
+

@@ -1,0 +1,4498 @@
+namespace = cmnl
+
+###Rebellious peasants rise up to overthrow a communal ruler###
+character_event = {
+	id = cmnl.1001
+	desc = EVTDESC_cmnl_1001
+	picture = GFX_evt_peasants
+	border = GFX_event_normal_frame_war
+	
+	only_playable = yes
+	only_independent = yes
+	
+	trigger = {
+		communal_government_trigger = yes
+		has_character_modifier = peasants_rebellious
+		NOT = { has_character_flag = "peasants_rose_up" }
+		NOT = {
+			any_war = {
+				defender = { character = ROOT }
+				using_cb = peasant_uprising
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+						   years = 10
+						   modifier = {
+									   factor = 0.75
+									   check_variable = {
+														 which = peasant_discontent
+														 value = 85
+														}
+									  }
+						   modifier = {
+									   factor = 0.5
+									   check_variable = {
+														 which = peasant_discontent
+														 value = 90
+														}
+									  }
+						   modifier = {
+									   factor = 0.25
+									   check_variable = {
+														 which = peasant_discontent
+														 value = 95
+														}
+									  }
+						   modifier = {
+									   factor = 0.1
+									   check_variable = {
+														 which = peasant_discontent
+														 value = 100
+														}
+									  }
+						  }
+	
+	immediate = {
+		random_demesne_province = {
+				create_character = {
+					random_traits = yes
+					dynasty = random
+					religion = ROOT
+					culture = ROOT
+					female = no
+					age = 38
+					attributes = {
+						martial = 7
+					}
+					trait = skilled_tactician
+					trait = peasant_leader
+				}
+				
+				new_character = {
+					create_title = {
+						tier = DUKE
+						landless = yes
+						temporary = yes
+						culture = ROOT
+						name = "PEASANT_REVOLT"
+						holder = THIS
+					}
+					
+					if = {
+						limit = { ROOT = { tier = count } }
+						wealth = 250
+					}					
+					if = {
+						limit = { ROOT = { tier = duke } }
+						wealth = 500
+					}
+					if = {
+						limit = { ROOT = { tier = king } }
+						wealth = 1000
+					}
+					if = {
+						limit = { ROOT = { tier = emperor } }
+						wealth = 2000
+					}
+					
+					spawn_unit = {
+						province = PREV
+						home = PREV
+						owner = THIS
+						leader = THIS
+						match_character = ROOT
+						match_mult = 0.2
+						disband_on_peace = yes
+						reinforces = yes
+						reinforce_rate_multiplier = 0.25
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = THIS
+						religion = ROOT
+						culture = ROOT
+						female = no
+						age = 18
+						attributes = {
+							martial = 7
+						}
+						trait = skilled_tactician
+					}
+					new_character = {
+						spawn_unit = {
+							province = PREVPREV
+							home = PREVPREV
+							owner = PREV
+							#leader = THIS
+							match_character = ROOT
+							match_mult = 0.2
+							disband_on_peace = yes
+							reinforces = yes
+							reinforce_rate_multiplier = 0.25
+						}
+					}
+					
+					create_character = {
+						random_traits = yes
+						dynasty = THIS
+						religion = ROOT
+						culture = ROOT
+						female = no
+						age = 20
+						attributes = {
+							martial = 7
+						}
+						trait = skilled_tactician
+					}
+					new_character = {
+						spawn_unit = {
+							province = PREVPREV
+							home = PREVPREV
+							owner = PREV
+							#leader = THIS
+							match_character = ROOT
+							match_mult = 0.2
+							disband_on_peace = yes
+							reinforces = yes
+							reinforce_rate_multiplier = 0.25
+						}
+					}
+					
+					create_character = {
+						random_traits = yes
+						dynasty = NONE
+						religion = ROOT
+						culture = ROOT
+						female = no
+						age = 20
+						attributes = {
+							martial = 7
+						}
+						trait = skilled_tactician
+					}
+					new_character = {
+						spawn_unit = {
+							province = PREVPREV
+							home = PREVPREV
+							owner = PREV
+							#leader = THIS
+							match_character = ROOT
+							match_mult = 0.2
+							disband_on_peace = yes
+							reinforces = yes
+							reinforce_rate_multiplier = 0.25
+						}
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = NONE
+						religion = ROOT
+						culture = ROOT
+						female = no
+						age = 22
+						attributes = {
+							martial = 7
+						}
+						trait = skilled_tactician
+					}
+					new_character = {
+						spawn_unit = {
+							province = PREVPREV
+							home = PREVPREV
+							owner = PREV
+							#leader = THIS
+							match_character = ROOT
+							match_mult = 0.2
+							disband_on_peace = yes
+							reinforces = yes
+							reinforce_rate_multiplier = 0.25
+						}
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = NONE
+						religion = ROOT
+						culture = ROOT
+						female = no
+						age = 22
+						attributes = {
+							martial = 7
+						}
+						trait = skilled_tactician
+					}
+					new_character = {
+						spawn_unit = {
+							province = PREVPREV
+							home = PREVPREV
+							owner = PREV
+							#leader = THIS
+							match_character = ROOT
+							match_mult = 0.2
+							disband_on_peace = yes
+							reinforces = yes
+							reinforce_rate_multiplier = 0.25
+						}
+					}
+					
+					set_character_flag = "new_peasant_leader"
+					set_character_flag = "communal_failsafe"
+					set_character_flag = "peasant_upriser"
+					set_government_type = communal_government
+					war = {
+						target = ROOT
+						casus_belli = peasant_uprising
+					}
+				}
+		}
+	}
+	
+	option = {
+		name = EVTOPTA_cmnl_1001
+		set_character_flag = "peasants_rose_up"
+		log = "Peasant uprising in [Root.PrimaryTitle.GetName]"
+	}
+}
+
+
+###Notification of change in peasant discontent###
+character_event = {
+	id = cmnl.1002
+	desc = EVTDESC_cmnl_1002
+	picture = GFX_evt_peasants
+	
+	is_triggered_only = yes
+	notification = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			  }
+	
+	option = {
+			  name = OK
+			 }
+				  }
+				  
+###Peasants demand land from a Communal ruler with a large demesne###
+character_event = {
+	id = cmnl.1003
+	desc = EVTDESC_cmnl_1003
+	picture = GFX_evt_peasants
+	
+	only_playable = yes
+	prisoner = no
+	war = no
+		
+	trigger = {
+			   communal_government_trigger = yes
+			   demesne_size = 4
+			   higher_tier_than = COUNT
+			  }
+			  
+	mean_time_to_happen = { 
+						   years = 2
+						   modifier = {
+									   factor = 1.5
+									   demesne_size = 5
+									  }
+						   modifier = {
+									   factor = 2
+									   demesne_size = 6
+									  }
+						   modifier = {
+									   factor = 10
+									   demesne_size = 7
+									  }
+						  }
+			  
+	option = {
+			  name = EVTOPTA_cmnl_1003
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = kind
+											 trait = content
+											 demesne_size = 5
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   has_character_modifier = peasants_rebellious
+									  }
+						   modifier = {
+									   factor = 5
+									   trait = charitable
+									   trait = just
+									  }
+						   modifier = {
+									   factor = 1.5
+									   trait = craven
+									  }
+						   modifier = {
+									   factor = 0
+									   trait = greedy
+									   trait = stubborn
+									  }
+						   modifier = {
+									   factor = 0.5
+									   trait = ambitious
+									   trait = envious
+									  }
+						  }
+			  custom_tooltip = {
+								text = peasant_land_get
+								hidden_tooltip = {
+												  random_demesne_title = {
+																		  limit = {
+																				   lower_tier_than = DUKE
+																				   can_be_given_away = yes
+																				   NOT = {
+																						  AND = {
+																								 tier = COUNT
+																								 location = { is_capital = yes }
+																								}
+																						 }
+																				  }
+																		  create_character = {
+																							  random_traits = yes
+																							  trait = peasant_leader
+																							  religion = THIS
+																							  culture = THIS
+																							  dynasty = none
+																							 }
+																		  new_character = {
+																						   set_character_flag = "new_peasant_leader"
+																						   set_government_type = communal_government
+																						   set_variable = {
+																										   which = peasant_discontent
+																										   value = 30
+																										  }
+																						   grant_title = PREV
+																						   any_demesne_title = {
+																												limit = { higher_tier_than = BARON }
+																												revoke_law = feudal_administration
+																												add_law = communal_administration
+																											   }
+																						   new_peasant_ruler_effect = yes
+																						   set_defacto_liege = ROOT
+																						  }
+																		 }
+												 }
+							   }
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -10
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+	option = {
+			  name = EVTOPTB_cmnl_1003
+			  ai_chance = {
+						   factor = 0.9
+						   modifier = {
+									   factor = 0.5
+									   OR = {
+											 trait = kind
+											 trait = content
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   trait = ambitious
+									   trait = envious
+									   trait = arbitrary
+									  }
+						  }
+			  if = {
+				    limit = { independent = no }
+					liege = { character_event = { id = cmnl.1004 } }
+				   }
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 10
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+	
+				  }
+				  
+character_event = { #Liege hears that vassal is being stubborn
+	id = cmnl.1004
+	desc = EVTDESC_cmnl_1004
+	picture = GFX_evt_noble_haughty_talking_to_peasants
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			  }
+			  
+	option = {
+			  name = EVTOPTA_cmnl_1004
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = just
+											 has_character_modifier = peasants_angry
+											 has_character_modifier = peasants_rebellious
+											 NOT = {
+													opinion = {
+															   who = FROM
+															   value = 0
+															  }
+												   }
+											}
+									  }
+						   modifier = {
+									   factor = 0.5
+									   OR = {
+										     trait = content
+										     trait = craven
+											 trait = cruel
+											 opinion = {
+														who = FROM
+														value = 60
+													   }
+											}
+									  }
+						   modifier = {
+									   factor = 0
+									   relative_power = {
+														 who = FROM
+														 power = 1
+														}
+									  }
+						  }
+			  FROM = {
+					  character_event = { 
+										 id = cmnl.1005 
+										 days = 5
+										}
+					 }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_antagonised_peasants
+						 years = 5
+						}
+			 }
+	option = {
+			  name = EVTOPTB_cmnl_1004
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = slothful
+											 trait = arbitrary
+											}
+									  }
+						   modifier = {
+									   factor = 0.5
+									   OR = {
+											 trait = kind
+											 trait = charitable
+											}
+									  }
+						  }
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 8
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+			  
+	
+				  }
+				  
+character_event = { #Vassal hears liege's response
+	id = cmnl.1005
+	desc = EVTDESC_cmnl_1005
+	picture = GFX_evt_accused
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   independent = no
+			  }
+			  
+	option = {
+			  name = EVTOPTA_cmnl_1005
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 0
+									   trait = stubborn
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = kind
+											 trait = content
+											 trait = humble
+											 opinion = {
+														who = FROM
+														value = 45
+													   }
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   has_character_modifier = peasants_rebellious
+									  }
+						   modifier = {
+									   factor = 5
+									   trait = craven
+									  }
+						   modifier = {
+									   factor = 0.5 
+									   trait = arbitrary
+									   trait = proud
+									  }
+						  }
+			  custom_tooltip = {
+								text = peasant_land_get
+								hidden_tooltip = {
+												  random_demesne_title = {
+																		  limit = {
+																				   lower_tier_than = DUKE
+																				   is_capital = no
+																				  }
+																		  create_character = {
+																							  random_traits = yes
+																							  trait = peasant_leader
+																							  religion = THIS
+																							  culture = THIS
+																							  dynasty = none
+																							 }
+																		  new_character = {
+																						   set_character_flag = "new_peasant_leader"
+																						   set_government_type = communal_government
+																						   set_variable = {
+																										   which = peasant_discontent
+																										   value = 30
+																										  }
+																						   grant_title = PREV
+																						   any_demesne_title = {
+																												limit = { higher_tier_than = BARON }
+																												revoke_law = feudal_administration
+																												add_law = communal_administration
+																											   }
+																						   new_peasant_ruler_effect = yes
+																						  }
+																		 }
+												 }
+							   }
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -5
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_interfered_communal
+						 years = 5
+						}
+			  FROM = { letter_event = { id = cmnl.10091 } }			  
+			 }
+	option = {
+			  name = EVTOPTB_cmnl_1005
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 5
+									   trait = greedy
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = -15
+														}
+											 }
+									  }
+						  }
+			  war = {
+					 target = FROM
+					 casus_belli = overthrow_ruler
+					}
+			  FROM = { letter_event = { id = cmnl.1009 } }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_interfered_communal
+						 years = 5
+						}
+			 }
+				  }
+
+###1006-1008###
+				  
+###Generic vassal-response letter events###
+letter_event = {
+	id = cmnl.1009
+	desc = EVTDESCA_cmnl_1009
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	option = {
+			  name = EVTOPTA_cmnl_1009
+			 }
+			   }
+			   
+letter_event = {
+	id = cmnl.10091
+	desc = EVTDESCB_cmnl_1009
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	option = {
+			  name = EVTOPTB_cmnl_1009
+			 }
+
+			   }
+				  
+###General peasant contentment###
+character_event = {
+	id = cmnl.1010
+	desc = EVTDESC_cmnl_1010
+	picture = GFX_evt_jugglers
+	
+	only_playable = yes
+	
+	is_triggered_only = yes
+	
+	trigger = { communal_government_trigger = yes }
+	
+	option = {
+			  name = EXCELLENT			  
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  random_list = {
+												  10 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = -1
+																		  }
+													   }
+												  25 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = -2
+																		  }
+													   }
+												  30 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = -5
+																		  }
+													   }
+												  25 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = -7
+																		  }
+													   }
+												  10 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = -10
+																		  }
+													   }
+																}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+	
+				  }
+
+###General peasant discontent###
+character_event = {
+	id = cmnl.1011
+	desc = EVTDESC_cmnl_1011
+	picture = GFX_evt_peasants
+	
+	only_playable = yes
+	
+	is_triggered_only = yes
+	
+	trigger = { communal_government_trigger = yes }
+	
+	option = {
+			  name = CURSES			  
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  random_list = {
+												  10 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = 1
+																		  }
+													   }
+												  25 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = 2
+																		  }
+													   }
+												  30 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = 5
+																		  }
+													   }
+												  25 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = 7
+																		  }
+													   }
+												  10 = {
+														change_variable = {
+																	 which = peasant_discontent
+																	 value = 10
+																		  }
+													   }
+																}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+	
+				  }
+
+###Peasants want money from a wealthy ruler###
+character_event = {
+	id = cmnl.1012
+	desc = EVTDESC_cmnl_1012
+	picture = GFX_evt_peasants
+	
+	only_playable = yes
+	prisoner = no
+	
+	trigger = { 
+			   communal_government_trigger = yes 
+			   scaled_wealth = 2
+			  }
+	
+	mean_time_to_happen = {
+						   years = 30
+						   modifier = {
+									   factor = 0.9
+									   scaled_wealth = 3
+									  }
+						   modifier = {
+									   factor = 0.75
+									   scaled_wealth = 4
+									  }
+						   modifier = {
+									   factor = 0.5
+									   scaled_wealth = 5
+									  }
+						  }
+	option = {
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 0
+									   trait = greedy
+									  }
+						   modifier = {
+									   factor = 0.5
+									   trait = charitable
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = kind
+											 trait = content
+											 trait = just
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   has_character_modifier = peasants_rebellious
+									  }
+						  }
+			  name = EVTOPTA_cmnl_1012
+			  scaled_wealth = -1
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+	option = {
+			  trigger = { scaled_wealth = 2 }
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 0
+									   trait = greedy
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = kind
+											 trait = content
+											 trait = just
+											 trait = charitable
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   has_character_modifier = peasants_rebellious
+									  }
+						  }
+			  name = EVTOPTB_cmnl_1012
+			  scaled_wealth = -2
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -5
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+	option = {
+			  trigger = { scaled_wealth = 3 }
+			  ai_chance = {
+						   factor = 0.9
+						   modifier = {
+									   factor = 0
+									   trait = greedy
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = kind
+											 trait = content
+											 trait = just
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   has_character_modifier = peasants_rebellious
+									  }
+						   modifier = {
+									   factor = 3
+									   trait = charitable
+									  }
+						  }
+			  name = EVTOPTC_cmnl_1012
+			  scaled_wealth = -3
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -10
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+	option = {
+			  ai_chance = {
+						   factor = 0.9
+						   modifier = {
+									   factor = 0
+									   trait = charitable
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = ambitious
+											 trait = proud
+											 trait = stubborn
+											}
+									  }
+						  }
+			  name = EVTOPTD_cmnl_1012
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 12
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			  if = {
+					limit = { independent = no }
+					liege = { character_event = { id = cmnl.1013 } }
+				   }
+			 }
+
+				  }
+				  
+character_event = { #Liege hears vassal is stubborn
+	id = cmnl.1013
+	desc = EVTDESC_cmnl_1013
+	picture = GFX_evt_noble_haughty_talking_to_peasants
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			  }
+			  
+	option = {
+			  name = EVTOPTA_cmnl_1013
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = just
+											 has_character_modifier = peasants_angry
+											 has_character_modifier = peasants_rebellious
+											 NOT = {
+													opinion = {
+															   who = FROM
+															   value = 0
+															  }
+												   }
+											 FROM = { scaled_wealth = 5 }
+											}
+									  }
+						   modifier = {
+									   factor = 0.5
+									   OR = {
+										     trait = content
+										     trait = craven
+											 trait = cruel
+											 opinion = {
+														who = FROM
+														value = 60
+													   }
+											}
+									  }
+						   modifier = {
+									   factor = 0
+									   relative_power = {
+														 who = FROM
+														 power = 1
+														}
+									  }
+						  }
+			  FROM = {
+					  character_event = { 
+										 id = cmnl.1014 
+										 days = 5
+										}
+					 }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_antagonised_peasants
+						 years = 5
+						}
+			 }
+	option = {
+			  name = EVTOPTB_cmnl_1013
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = slothful
+											 trait = arbitrary
+											}
+									  }
+						   modifier = {
+									   factor = 0.5
+									   OR = {
+											 trait = kind
+											 trait = charitable
+											}
+									  }
+						  }
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 10
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	
+			
+	
+
+				  }
+				  
+character_event = { #vassal hears liege response
+	id = cmnl.1014
+	desc = EVTDESC_cmnl_1014
+	picture = GFX_evt_accused
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   independent = no
+			  }
+			  
+	option = {
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 0.2
+									   trait = greedy
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = content
+											 trait = kind
+											 trait = craven
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   has_character_modifier = peasants_rebellious
+									  }
+						  }
+			  name = EVTOPTA_cmnl_1012
+			  scaled_wealth = -1
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -1
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_interfered_communal
+						 years = 5
+						}
+			  FROM = { letter_event = { id = cmnl.10091 } }	
+			 }
+	option = {
+			  trigger = { scaled_wealth = 2 }
+			  ai_chance = {
+						   factor = 0.5
+						   modifier = {
+									   factor = 0
+									   trait = greedy
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = kind
+											 trait = craven
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   has_character_modifier = peasants_rebellious
+									  }
+						   modifier = {
+									   factor = 5
+									   opinion = {
+												  who = FROM
+												  value = 30
+												 }
+									  }
+						  }
+			  name = EVTOPTB_cmnl_1012
+			  scaled_wealth = -2
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_interfered_communal
+						 years = 5
+						}
+			  FROM = { letter_event = { id = cmnl.10091 } }	
+			 }
+	option = {
+			  trigger = { scaled_wealth = 3 }
+			  ai_chance = {
+						   factor = 0.2
+						   modifier = {
+									   factor = 0
+									   trait = greedy
+									  }
+						   modifier = {
+									   factor = 2
+									   has_character_modifier = peasants_rebellious
+									  }
+						  }
+			  name = EVTOPTC_cmnl_1012
+			  scaled_wealth = -3
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -5
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_interfered_communal
+						 years = 5
+						}
+			  FROM = { letter_event = { id = cmnl.10091 } }	
+			 }
+	option = {
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  opinion = {
+														 who = FROM
+														 value = -15
+														}
+											 }
+									  }
+						  }
+			  name = EVTOPTD_cmnl_1014
+			  war = {
+					 target = FROM
+					 casus_belli = overthrow_ruler
+					}
+			  FROM = { letter_event = { id = cmnl.1009 } }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_interfered_communal
+						 years = 5
+						}
+			 }
+
+				  }
+				  
+###Kind/cruel ruler lowers/raises peasant discontent###
+character_event = {
+	id = cmnl.1015
+	desc = {
+			trigger = { 
+					   trait = kind 
+					   NOR = {
+							  trait = cruel
+							  trait = impaler
+							 }
+					  }
+			text = EVTDESCA_cmnl_1015
+		   }
+	desc = {
+			trigger = { 
+					   NOT = { trait = kind }
+					   OR = {
+							 trait = cruel
+							 trait = impaler
+							}
+					  }
+			text = EVTDESCB_cmnl_1015
+		   }
+	picture = GFX_evt_peasants
+	
+	is_triggered_only = yes
+		   
+	only_playable = yes
+	min_age = 16
+		   
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = kind
+					 trait = cruel
+					 trait = impaler
+					}
+			  }
+						  
+	option = {
+			  trigger = {
+						 trait = kind
+						 NOR = {
+								trait = cruel
+								trait = impaler
+							   }
+						}
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	option = {
+			  trigger = {
+						 NOT = { trait = kind }
+						 OR = {
+							   trait = cruel
+							   trait = impaler
+							  }
+						}
+			  name = CURSES
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+
+				  }
+
+
+###diligent/slothful ruler lowers/raises peasant discontent###
+character_event = {
+	id = cmnl.1016
+	desc = {
+			trigger = { 
+					   trait = diligent 
+					   NOT = { trait = slothful }
+					  }
+			text = EVTDESCA_cmnl_1016
+		   }
+	desc = {
+			trigger = { 
+					   NOT = { trait = diligent }
+					   trait = slothful
+					  }
+			text = EVTDESCB_cmnl_1016
+		   }
+	picture = GFX_evt_relaxed_ruler
+	
+	is_triggered_only = yes
+		   
+	only_playable = yes
+	min_age = 16
+		   
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = diligent
+					 trait = slothful
+					}
+			  }
+						  
+	option = {
+			  trigger = {
+						 trait = diligent
+						 NOT = { trait = slothful }
+						}
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -5
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	option = {
+			  trigger = {
+						 trait = slothful
+						 NOT = { trait = diligent }
+						}
+			  name = CURSES
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 5
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+
+				  }
+
+
+
+###Charitable/greedy ruler lowers/raises peasant discontent###
+character_event = {
+	id = cmnl.1017
+	desc = {
+			trigger = { 
+					   trait = charitable
+					   NOT = { trait = greedy }
+					  }
+			text = EVTDESCA_cmnl_1017
+		   }
+	desc = {
+			trigger = { 
+					   NOT = { trait = charitable }
+					   trait = greedy
+					  }
+			text = EVTDESCB_cmnl_1017
+		   }
+	picture = GFX_evt_bribe_accepted
+	
+	is_triggered_only = yes
+		   
+	only_playable = yes
+	min_age = 16
+		   
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = charitable
+					 trait = greedy
+					}
+			  }
+						  
+	option = {
+			  trigger = {
+						 trait = charitable
+						 NOT = { trait = greedy }
+						}
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -8
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	option = {
+			  trigger = {
+						 trait = greedy
+						 NOT = { trait = charitable }
+						}
+			  name = CURSES
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 8
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+
+				  }
+
+
+
+###Just/abritrary ruler lowers/raises peasant discontent###
+character_event = {
+	id = cmnl.1018
+	desc = {
+			trigger = { 
+					   trait = just
+					   NOT = { trait = arbitrary }
+					  }
+			text = EVTDESCA_cmnl_1018
+		   }
+	desc = {
+			trigger = { 
+					   NOT = { trait = just }
+					   trait = arbitrary
+					  }
+			text = EVTDESCB_cmnl_1018
+		   }
+	picture = GFX_evt_judged_by_ruler
+	
+	is_triggered_only = yes
+		   
+	only_playable = yes
+	min_age = 16
+		   
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = just
+					 trait = arbitrary
+					}
+			  }
+						  
+	option = {
+			  trigger = {
+						 trait = just
+						 NOT = { trait = arbitrary }
+						}
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -8
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	option = {
+			  trigger = {
+						 trait = arbitrary
+						 NOT = { trait = just }
+						}
+			  name = CURSES
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 8
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+
+				  }
+
+
+
+###Gregarious/shy ruler lowers/raises peasant discontent###
+character_event = {
+	id = cmnl.1019
+	desc = {
+			trigger = { 
+					   OR = {
+							 trait = gregarious
+							 trait = socializer
+							}
+					   NOT = { trait = shy }
+					  }
+			text = EVTDESCA_cmnl_1019
+		   }
+	desc = {
+			trigger = { 
+					   NOR = { 
+							  trait = gregarious 
+							  trait = socializer
+							 }
+					   trait = shy
+					  }
+			text = EVTDESCB_cmnl_1019
+		   }
+	picture = GFX_evt_noble_haughty_talking_to_peasants
+	
+	is_triggered_only = yes
+		   
+	only_playable = yes
+	min_age = 16
+		   
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = gregarious
+					 trait = shy
+					}
+			  }
+						  
+	option = {
+			  trigger = {
+						 OR = {
+							   trait = gregarious
+							   trait = socializer
+							  }
+						 NOT = { trait = shy }
+						}
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -2
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	option = {
+			  trigger = {
+						 trait = shy
+						 NOR = { 
+								trait = gregarious 
+								trait = socializer
+							   }
+						}
+			  name = CURSES
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 2
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+
+				  }
+
+
+
+###Content/ambitious ruler lowers/raises peasant discontent###
+character_event = {
+	id = cmnl.1020
+	desc = {
+			trigger = { 
+					   trait = content
+					   NOT = { trait = ambitious }
+					  }
+			text = EVTDESCA_cmnl_1020
+		   }
+	desc = {
+			trigger = { 
+					   NOT = { trait = content }
+					   trait = ambitious
+					  }
+			text = EVTDESCB_cmnl_1020
+		   }
+	picture = GFX_evt_noble_in_castle
+	
+	is_triggered_only = yes
+		   
+	only_playable = yes
+	min_age = 16
+		   
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = content
+					 trait = ambitious
+					}
+			  }
+						  
+	option = {
+			  trigger = {
+						 trait = content
+						 NOT = { trait = ambitious }
+						}
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	option = {
+			  trigger = {
+						 trait = ambitious
+						 NOT = { trait = content }
+						}
+			  name = CURSES
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+
+				  }
+
+###Brave/craven ruler lowers/raises peasant discontent###
+character_event = {
+	id = cmnl.1021
+	desc = {
+			trigger = { 
+					   trait = brave
+					   NOT = { trait = craven }
+					  }
+			text = EVTDESCA_cmnl_1021
+		   }
+	desc = {
+			trigger = { 
+					   NOT = { trait = brave }
+					   trait = craven
+					  }
+			text = EVTDESCB_cmnl_1021
+		   }
+	picture = GFX_evt_melee
+	
+	is_triggered_only = yes
+		   
+	only_playable = yes
+	min_age = 16
+		   
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = brave
+					 trait = craven
+					}
+			  }
+						  
+	option = {
+			  trigger = {
+						 trait = brave
+						 NOT = { trait = craven }
+						}
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	option = {
+			  trigger = {
+						 trait = craven
+						 NOT = { trait = brave }
+						}
+			  name = CURSES
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+
+				  }
+				  
+###Insane ruler raises peasant discontent###				  
+character_event = {
+	id = cmnl.1022
+	desc = EVTDESC_cmnl_1022
+	picture = GFX_evt_lunatic
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	min_age = 16
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = possessed
+					 trait = lunatic
+				    }
+			  }
+						  
+	option = {
+			  name = EVTOPTA_cmnl_1022
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 7
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+
+				  }
+
+
+###Secluded ruler raises peasant discontent###
+character_event = {
+	id = cmnl.1023
+	desc = EVTDESC_cmnl_1023
+	picture = GFX_evt_lunatic
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = in_hiding
+					 has_character_modifier = in_seclusion
+					}
+			  }
+			  
+	option = {
+			  name = EVTOPTA_cmnl_1023
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 8
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+				  }
+				  
+###Deceitful/honest ruler lowers/raises peasant discontent###
+character_event = {
+	id = cmnl.1024
+	desc = {
+			trigger = { 
+					   trait = deceitful
+					   NOT = { trait = honest }
+					  }
+			text = EVTDESCA_cmnl_1024
+		   }
+	desc = {
+			trigger = { 
+					   NOT = { trait = deceitful }
+					   trait = honest
+					  }
+			text = EVTDESCB_cmnl_1024
+		   }
+	picture = GFX_evt_peasants
+	
+	is_triggered_only = yes
+		   
+	only_playable = yes
+	min_age = 16
+		   
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = deceitful
+					 trait = honest
+					}
+			  }
+						  
+	option = {
+			  trigger = {
+						 trait = deceitful
+						 NOT = { trait = honest }
+						}
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	option = {
+			  trigger = {
+						 trait = honest
+						 NOT = { trait = deceitful }
+						}
+			  name = CURSES
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+
+				  }
+
+###A young ruler raises peasant discontent###
+character_event = {
+	id = cmnl.1025
+	desc = EVTDESC_cmnl_1025
+	picture = GFX_evt_child_bully
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	max_age = 25
+	
+	trigger = {
+			   ai = no
+			   communal_government_trigger = yes
+			  }
+	
+	option = {
+			  name = EVTOPTA_cmnl_1025
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	
+
+				  }
+
+###Ruler adopts communal government type###
+narrative_event = {
+	id = cmnl.1026
+	title = EVTNAME_cmnl_1026
+	desc = EVTDESC_cmnl_1026
+	picture = GFX_evt_peasants
+
+	is_triggered_only = yes
+	
+	only_playable = yes
+
+	trigger = {
+		   NOT = { government = communal_government }
+		  }
+
+	immediate = {
+			 primary_title = {
+							  revoke_law = feudal_administration
+							  revoke_law = late_feudal_administration
+							 }
+			 clr_character_flag = "non_communal"
+		     set_government_type = communal_government
+			 any_demesne_province = {
+									 remove_province_modifier = peasants_defiant
+									 remove_province_modifier = peasants_cowed
+									}
+			 any_courtier = { 
+							 limit = { is_ruler = no }
+							 set_character_flag = "communal_character" 
+							}
+			 if = {
+				   limit = { any_realm_province = { has_province_modifier = tondrakian_stronghold } }
+				   letter_event = { id = cmnl.1055 }
+				  }
+			 any_vassal = {
+						   if = {
+								 limit = { lower_tier_than = COUNT }
+								 set_government_type = communal_government
+								}
+						   if = {
+								 limit = { 
+										  higher_tier_than = BARON 
+										  NOT = { government = communal_government }
+										 }
+								 narrative_event = { id = cmnl.1027 }
+								}
+						  }
+		    }
+
+	option = {
+		  name = EVTOPTA_cmnl_1026
+		  hidden_tooltip = {
+							if = {
+								  limit = { ai = no }
+								  chronicle = {
+											   entry = CHRON_CMNL_FOUNDED_COMMUNAL
+											   picture = GFX_evt_peasants
+											  }
+								 }
+							letter_event = { id = cmnl.0001 }
+						   }
+		 }
+
+		  }
+	
+###Vassals are informed that liege has adopted communal government and can follow if they want###
+narrative_event = {
+	id = cmnl.1027
+	title = EVTNAME_cmnl_1026
+	desc = EVTDESC_cmnl_1027
+	picture = GFX_evt_peasants
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   is_tribal = no
+			   is_nomadic = no
+			  }
+	
+	option = { #Convert to Communal
+			  name = EVTOPTA_cmnl_1026
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 0
+									   OR = {
+											 trait = ambitious
+											 trait = proud
+											 trait = envious
+											 trait = greedy
+											 trait = cruel
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = kind
+											 trait = charitable
+											 trait = content
+											 trait = humble
+											 religion = qarmatian
+											 trait = peasant_leader
+											}
+									  }
+						   modifier = {
+									   factor = 100
+									   OR = {
+											 religion = tondrakian
+											 religion = mazdaki
+											}
+									  }
+						  }
+			  set_government_type = communal_government
+			  hidden_tooltip = {
+								set_variable = {
+												which = peasant_discontent
+												value = 30
+											   }
+								communal_modifier_effect = yes
+								any_vassal = {
+											  if = {
+													limit = { lower_tier_than = COUNT }
+													set_character_flag = "communal_character"
+													set_government_type = communal_government
+												   }
+											  if = {
+													limit = { 
+															 higher_tier_than = BARON 
+															 NOT = { government = communal_government }
+															}
+													narrative_event = { id = cmnl.1026 }
+												   }
+											 }
+								any_demesne_title = {
+													 limit = { higher_tier_than = BARON }
+													 revoke_law = feudal_administration
+													 revoke_law = late_feudal_administration
+													 add_law = communal_administration
+													 revoke_law = crown_authority_4
+													 revoke_law = crown_authority_3
+													 revoke_law = crown_authority_2
+													 revoke_law = crown_authority_1
+													 add_law = crown_authority_0
+													}
+								any_demesne_province = {
+														remove_province_modifier = peasants_defiant
+														remove_province_modifier = peasants_cowed
+													   }
+							   }
+			 }
+	
+	option = { #Stay as feudal
+			  name = EVTOPTB_cmnl_1027
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 0
+									   can_communal_trigger = yes
+									  }
+						   modifier = {
+									   factor = 2
+									   is_theocracy = yes
+									  }
+						  }
+			  hidden_tooltip = {
+								FROM = { 
+										letter_event = { id = cmnl.1028 }
+										reverse_opinion = {
+														   who = ROOT
+														   modifier = opinion_created_communal
+														   years = 100
+														  }
+									   }
+							   }
+			 }	
+	
+				  }
+				  
+###Liege hears of vassal that has refused to follow the new order###
+letter_event = {
+	id = cmnl.1028
+	desc = EVTDESC_cmnl_1028
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	immediate = {
+				 opinion = {
+							who = FROM
+							modifier = opinion_resisted_communal
+							years = 100
+						   }
+				}
+	
+	option = {
+			  name = EVTOPTA_cmnl_1028
+			 }
+			   }
+
+###Communal ruler switches to feudal###
+character_event = {
+	id = cmnl.1029
+	desc = EVTDESC_cmnl_1029
+	picture = GFX_evt_powerful_ruler
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	immediate = {
+				 switch_from_communal_effect = yes
+				 clr_character_flag = "staying_communal"
+				 any_courtier = { clr_character_flag = "communal_character" }
+				 any_demesne_province = {
+									  random_list = {
+													 30 = {
+														   modifier = {
+																	   factor = 2
+																	   OR = {
+																			 culture = ROOT
+																			 religion = ROOT
+																			}
+																      }
+														   add_province_modifier = {
+																					name = peasants_cowed
+																					duration = 1825
+																				   }
+														  }
+													 70 = {
+														   add_province_modifier = {
+																					name = peasants_defiant
+																					duration = 1825
+																				   }
+														  }
+													}
+										}
+				 any_vassal = {
+							   limit = { government = communal_government }
+							   if = {
+									 limit = { lower_tier_than = COUNT }
+									 switch_from_communal_effect = yes
+									}
+							   if = {
+									 limit = { higher_tier_than = BARON }
+									 character_event = { id = cmnl.1030 }
+									}
+							  }
+				 if = {
+					   limit = { 
+								any_realm_province = { 
+													  religion = tondrakian 
+													  has_province_flag = "former_tondrakian_stronghold"
+													 } 
+							   }
+					   letter_event = { id = cmnl.1055 }
+					  }
+				}
+				
+	option = {
+			  name = EVTOPTA_cmnl_1029
+			  hidden_tooltip = {
+								switch_from_communal_effect = yes
+								if = {
+									  limit = { ai = no }
+									  chronicle = {
+												   entry = CHRON_CMNL_ADOPTED_FEUDALISM
+												   picture = GFX_evt_powerful_ruler
+												  }
+									 }
+								set_variable = {
+												which = peasant_discontent
+												value = 0
+											   }
+								communal_modifier_effect_na = yes
+							   }
+			 }
+				  }
+				  
+###Communal vassal hears of liege conversion to feudal###
+character_event = {
+	id = cmnl.1030
+	desc = EVTDESC_cmnl_1030
+	picture = GFX_evt_powerful_ruler
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   independent = no
+			   primary_title = { has_law = communal_administration }
+			  }
+			  
+	option = { #Switch to feudal
+			  name = EVTOPTA_cmnl_1029
+			  ai_chance = {
+						   factor = 2
+						   modifier = {
+									   factor = 0
+									   can_communal_trigger = yes
+									  }
+						   modifier = {
+									   factor = 0.5
+									   has_game_rule = {
+														name = communal_admn_rule
+														value = unrestricted
+													   }
+									  }
+						  }
+			  switch_from_communal_effect = yes
+			  any_courtier = { clr_character_flag = "communal_character" }
+			  any_demesne_province = {
+								   random_list = {
+												  30 = {
+														modifier = {
+																	factor = 2
+																	OR = {
+																		  culture = ROOT
+																		  religion = ROOT
+																		 }
+																   }
+														add_province_modifier = {
+																				 name = peasants_cowed
+																				 duration = 1825
+																				}
+													   }
+												  70 = {
+														add_province_modifier = {
+																				 name = peasants_defiant
+																				 duration = 1825
+																				}
+													   }
+												 }
+									 }
+			  hidden_tooltip = {
+								any_demesne_title = {
+													 limit = { higher_tier_than = BARON }
+													 revoke_law = communal_administration
+													 add_law = feudal_administration
+													}
+								if = {
+									  limit = { ai = no }
+									  chronicle = {
+												   entry = CHRON_CMNL_ADOPTED_FEUDALISM
+												   picture = GFX_evt_powerful_ruler
+												  }
+									 }
+								set_variable = {
+												which = peasant_discontent
+												value = 0
+											   }
+								communal_modifier_effect_na = yes
+							   }
+			  any_vassal = {
+							limit = { government = communal_government }
+							if = {
+								  limit = { lower_tier_than = COUNT }
+								  switch_from_communal_effect = yes
+							     }
+							if = {
+								  limit = { higher_tier_than = BARON }
+								  character_event = { id = cmnl.1030 }
+								 }
+						   }
+			 }
+	option = { #Stick with communal
+			  name = EVTOPTB_cmnl_1030
+			  ai_chance = {
+						   factor = 1
+						  }
+			  FROM = { letter_event = { id = cmnl.1031 } }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_betrayed_peasants
+						 years = 50
+						}
+			 }
+				  }
+
+###Liege hears vassal is still communal###
+letter_event = {
+	id = cmnl.1031
+	desc = EVTDESC_cmnl_1031
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	option = {
+			  name = EVTOPTA_cmnl_1031
+			 }
+			   }
+
+###Vassal with content/discontent peasants affects ruler###
+letter_event = {
+	id = cmnl.1032
+	hide_window = yes
+	
+	trigger = {
+			   independent = no
+			   communal_government_trigger = yes
+			   liege = { government = communal_government }
+			   OR = {
+					 has_character_modifier = peasants_happy
+					 has_character_modifier = peasants_rebellious
+					 has_character_modifier = peasants_angry
+					 has_character_modifier = peasants_unhappy
+					}
+			  }
+			  
+	mean_time_to_happen = { years = 3 }
+	
+	immediate = {
+				 if = {
+					   limit = {
+								OR = {
+									  has_character_modifier = peasants_rebellious
+									  has_character_modifier = peasants_angry
+									  has_character_modifier = peasants_unhappy
+									 }
+							   }
+					   liege = { character_event = { id = cmnl.1033 } }
+					  }
+				 if = {
+					   limit = {
+								has_character_modifier = peasants_happy
+								liege = { NOT = { has_character_modifier = peasants_happy } }
+							   }
+					   liege = { character_event = { id = cmnl.10331 } }
+					  }
+				}
+	
+			   }
+			   
+			   
+character_event = {
+	id = cmnl.1033
+	desc = EVTDESCA_cmnl_1033
+	picture = GFX_evt_peasants
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   FROM = {
+					   OR = {
+							 has_character_modifier = peasants_rebellious
+							 has_character_modifier = peasants_angry
+							 has_character_modifier = peasants_unhappy								   
+							}
+					  }
+			  }
+			  
+	option = {
+			  name = EVTOPTA_cmnl_1033
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  if = {
+														limit = {
+																 FROM = { has_character_modifier = peasants_unhappy }
+																}
+													    change_variable = {
+																		   which = peasant_discontent
+																		   value = 2
+																		  }
+													   }
+												  if = {
+														limit = {
+																 FROM = { has_character_modifier = peasants_angry }
+																}
+													    change_variable = {
+																		   which = peasant_discontent
+																		   value = 5
+																		  }
+													   }
+												  if = {
+														limit = {
+																 FROM = { has_character_modifier = peasants_rebellious }
+																}
+													    change_variable = {
+																		   which = peasant_discontent
+																		   value = 10
+																		  }
+													   }
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+				  }   
+character_event = {
+	id = cmnl.10331
+	desc = EVTDESCB_cmnl_1033
+	picture = GFX_evt_peasants
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   NOT = { has_character_modifier = peasants_happy }
+			   FROM = { has_character_modifier = peasants_happy }
+			  }
+			  
+	option = {
+			  name = EVTOPTB_cmnl_1033
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -2
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+				  }
+
+###Communal ruler given opportunity to remove vassal with rebellious peasants from position###
+letter_event = {
+	id = cmnl.1034
+	hide_window = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   independent = no
+			   liege = { government = communal_government }
+			   has_character_modifier = peasants_rebellious
+			   NOT = { has_character_flag = "communal_position_retained" }
+			  }
+			  
+	mean_time_to_happen = {
+						   years = 10
+						   modifier = {
+									   factor = 0.75
+									   check_variable = {
+														 which = peasant_discontent
+														 value = 85
+														}
+									  }
+						   modifier = {
+									   factor = 0.5
+									   check_variable = {
+														 which = peasant_discontent
+														 value = 90
+														}
+									  }
+						   modifier = {
+									   factor = 0.25
+									   check_variable = {
+														 which = peasant_discontent
+														 value = 95
+														}
+									  }
+						   modifier = {
+									   factor = 0.1
+									   check_variable = {
+														 which = peasant_discontent
+														 value = 100
+														}
+									  }
+						   modifier = {
+									   factor = 0.1
+									   liege = {
+												any_courtier = {
+																prisoner = yes
+																character = ROOT
+															   }
+											   }
+									  }
+						  }
+			  
+	immediate = {
+				 liege = {
+						  character_event = { id = cmnl.1035 }
+						 }
+				}
+			   }
+			   
+character_event = {
+	id = cmnl.1035
+	desc = EVTDESC_cmnl_1035
+	picture = GFX_evt_noble_haughty_talking_to_peasants
+	
+	is_triggered_only = yes
+	
+	only_independent = yes
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   any_vassal = {
+							 has_character_modifier = peasants_rebellious
+							}
+			  }
+			  
+	option = { #Try to remove the vassal
+			  name = EVTOPTA_cmnl_1035
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 has_character_modifier = peasants_unhappy
+											 has_character_modifier = peasants_angry
+											 has_character_modifier = peasants_rebellious
+											 NOT = {
+													opinion = {
+															   who = FROM
+															   value = 0
+															  }
+												   }
+											}
+									  }
+						  }
+			  FROM = {
+					  character_event = { 
+										 id = cmnl.1036 
+										 days = 5
+										}
+					 }
+			 }
+	option = { #Leave it
+			  name = EVTOPTB_cmnl_1035
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = slothful
+											 trait = craven
+											 trait = content
+											 opinion = {
+														who = FROM
+														value = 70
+													   }
+											 relative_power = {
+															   who = FROM
+															   power = 2
+															  }
+											}
+									  }
+						  }
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 20
+																	}
+												  communal_modifier_effect = yes
+												  FROM = { set_character_flag = "communal_position_retained" }
+												 }
+							   }			  
+			 }
+	
+				  }
+
+
+character_event = { #Vassal can step down or disobey#
+	id = cmnl.1036
+	desc = EVTDESC_cmnl_1036
+	picture = GFX_evt_accused
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   independent = no
+			  }
+			  
+	option = { #accept
+			  name = EVTOPTA_cmnl_1036
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = craven
+											 trait = content
+											 opinion = {
+														who = FROM
+														value = 60
+													   }
+											}
+									  }
+						   modifier = {
+									   factor = 0.1
+									   OR = {
+											 trait = ambitious
+											 trait = stubborn
+											}
+									  }
+						  }
+			  custom_tooltip = {
+								text = communal_step_down
+								hidden_tooltip = {
+												  create_character = {
+																	  random_traits = yes
+																	  dynasty = none
+																	  religion = ROOT
+																	  culture = ROOT
+																	  age = 30
+																	  trait = peasant_leader
+																	 }
+												  new_character = {
+																   set_government_type = communal_government
+																   set_character_flag = "new_peasant_leader"
+																   ROOT = {
+																		   any_demesne_title = { 
+																								limit = { higher_tier_than = BARON }
+																								grant_title = PREVPREV 
+																								revoke_law = feudal_administration
+																								add_law = communal_administration
+																							   }
+																		   any_vassal = { set_defacto_liege = PREVPREV }
+																		  }
+																   letter_event = { id = cmnl.1037 }
+																   set_variable = {
+																				   which = peasant_discontent
+																				   value = 30
+																				  }
+																   communal_modifier_effect = yes
+																   new_peasant_ruler_effect = yes
+																  }
+												  communal_modifier_effect_na = yes
+												 }
+							   }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_interfered_communal
+						 years = 5
+						}
+			 }
+	option = { #fight back
+			  name = EVTOPTB_cmnl_1036
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = proud
+											 trait = greedy
+											 NOT = {
+													opinion = {
+															   who = FROM
+															   value = -20
+															  }
+												   }
+											}
+									  }
+						   modifier = {
+									   factor = 0
+									   prisoner = yes
+									  }
+						  }
+			  set_character_flag = "communal_resisted_removal"
+			  war = {
+					 target = FROM
+					 casus_belli = overthrow_ruler
+					}
+			  FROM = { letter_event = { id = cmnl.1009 } }
+			  opinion = {
+						 who = FROM
+						 modifier = opinion_interfered_communal
+						 years = 5
+						}
+			 }
+	
+				  }
+
+				  
+letter_event = { #Event to ping to liege from new character
+	id = cmnl.1037
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+				 liege = { letter_event = { id = cmnl.1038 } }
+				 clr_character_flag = "new_peasant_leader"
+				}
+			   }
+			   
+letter_event = { #Liege hears vassal has stood down
+	id = cmnl.1038
+	desc = EVTDESC_cmnl_1038
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	option = {
+			  name = OK
+			 }
+				  }
+				  
+character_event = { #If vassal resists and loses, liege revokes their title
+	id = cmnl.10381
+	desc = EVTDESC_cmnl_10381
+	picture = GFX_evt_judged_by_ruler
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   FROM = { has_character_flag = "communal_resisted_removal" }
+			  }
+	
+	option = {
+			  name = EVTOPTA_cmnl_10381
+			  FROM = {
+					  clr_character_flag = "communal_resisted_removal"
+					  character_event = { id = cmnl.10382 }
+					 }
+			 }
+				  }
+				  
+character_event = { #Vassal hears they're out
+	id = cmnl.10382
+	desc = EVTDESC_cmnl_10382
+	picture = GFX_evt_judged_by_ruler
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	option = {
+			  name = EVTOPTA_cmnl_10382
+			  custom_tooltip = {
+								text = communal_step_down
+								hidden_tooltip = {
+												  create_character = {
+																	  random_traits = yes
+																	  dynasty = none
+																	  religion = ROOT
+																	  culture = ROOT
+																	  age = 30
+																	  trait = peasant_leader
+																	 }
+												  new_character = {
+																   set_government_type = communal_government
+																   set_character_flag = "new_peasant_leader"
+																   ROOT = {
+																		   any_demesne_title = { 
+																								limit = { higher_tier_than = BARON }
+																								grant_title = PREVPREV 
+																								revoke_law = feudal_administration
+																								add_law = communal_administration
+																							   }
+																		   any_vassal = { set_defacto_liege = PREVPREV }
+																		  }
+																   set_defacto_liege = FROM
+																   letter_event = { id = cmnl.1037 }
+																   set_variable = {
+																				   which = peasant_discontent
+																				   value = 30
+																				  }
+																   communal_modifier_effect = yes
+																   new_peasant_ruler_effect = yes
+																  }
+												  communal_modifier_effect_na = yes
+												 }
+							   }
+			 }
+	
+				  }
+				  
+letter_event = { #If vassal resists and wins, the character flag is removed
+	id = cmnl.10383
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   FROM = { has_character_flag = "communal_resisted_removal" }
+			  }
+			  
+	immediate = {
+				 FROM = { clr_character_flag = "communal_resisted_removal" }
+				}
+			   }
+
+###Temperate/gluttonous ruler lowers/raises peasant discontent###
+character_event = {
+	id = cmnl.1039
+	desc = {
+			trigger = { 
+					   trait = temperate 
+					   NOT = { trait = gluttonous }
+					  }
+			text = EVTDESCA_cmnl_1039
+		   }
+	desc = {
+			trigger = { 
+					   NOT = { trait = temperate }
+					   trait = gluttonous
+					  }
+			text = EVTDESCB_cmnl_1039
+		   }
+	picture = GFX_evt_peasants
+	
+	is_triggered_only = yes
+		   
+	only_playable = yes
+	min_age = 16
+		   
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 trait = temperate
+					 trait = gluttonous
+					}
+			  }
+						  
+	option = {
+			  trigger = {
+						 trait = temperate
+						 NOT = { trait = gluttonous }
+						}
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -2
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+	option = {
+			  trigger = {
+						 trait = gluttonous
+						 NOT = { trait = temperate }
+						}
+			  name = CURSES
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 2
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }			  
+			 }
+				  }
+
+###Steward improves peasant efficiency###
+character_event = {
+	id = cmnl.1040
+	title = EVTNAME_cmnl_1040
+	desc = EVTDESC_cmnl_1040
+	picture = GFX_evt_construction_site
+	border = GFX_event_normal_frame_economy
+
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+
+	trigger = {
+		has_job_action = action_organize_peasants
+		NOT = { has_character_modifier = in_seclusion }
+		location = {
+			county = {
+				is_occupied = no
+			}
+			owner = {
+				job_treasurer = {
+					character = ROOT
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 360
+
+		modifier = {
+			factor = 1.1
+			NOT = { opinion = { who = liege value = -100 } }
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { opinion = { who = liege value = -75 } }
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { opinion = { who = liege value = -50 } }
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { opinion = { who = liege value = -25 } }
+		}
+		modifier = {
+			factor = 0.95
+			opinion = { who = liege value = 25 }
+		}
+		modifier = {
+			factor = 0.95
+			opinion = { who = liege value = 50 }
+		}
+		modifier = {
+			factor = 0.95
+			opinion = { who = liege value = 75 }
+		}
+		modifier = {
+			factor = 0.95
+			opinion = { who = liege value = 100 }
+		}
+		modifier = {
+			factor = 1.05
+			NOT = { stewardship = 1 }
+		}
+		modifier = {
+			factor = 1.05
+			NOT = { stewardship = 2 }
+		}
+		modifier = {
+			factor = 1.05
+			NOT = { stewardship = 3 }
+		}
+		modifier = {
+			factor = 1.05
+			NOT = { stewardship = 4 }
+		}
+		modifier = {
+			factor = 1.05
+			NOT = { stewardship = 5 }
+		}
+		modifier = {
+			factor = 1.05
+			NOT = { stewardship = 6 }
+		}
+		modifier = {
+			factor = 1.05
+			NOT = { stewardship = 7 }
+		}
+		modifier = {
+			factor = 1.05
+			NOT = { stewardship = 8 }
+		}
+		modifier = {
+			factor = 1.05
+			NOT = { stewardship = 9 }
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 11
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 12
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 13
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 14
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 15
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 16
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 17
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 18
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 19
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 20
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 21
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 22
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 23
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 24
+		}
+		modifier = {
+			factor = 0.95
+			stewardship = 25
+		}
+	}
+
+	option = {
+		name = EVTOPTA_cmnl_1040
+		location = { 
+					add_province_modifier = {
+											 name = peasants_productive 
+											 duration = 1825
+											}
+					hidden_tooltip = { remove_province_modifier = peasants_unproductive }
+				   }
+		liege = { 
+				 character_event = { 
+									id = cmnl.1041 
+									tooltip = increased_peasant_wealth
+								   } 
+				}
+	}
+}
+
+
+character_event = { #Liege is informed
+	id = cmnl.1041
+	desc = EVTDESC_cmnl_1041
+	picture = GFX_evt_construction_site
+	border = GFX_event_normal_frame_economy
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = { communal_government_trigger = yes }
+
+	option = {
+			  name = EVTOPTA_cmnl_1041
+			  scaled_wealth = 0.5
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -5
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+		
+			 }
+				  }
+
+###Steward negatively affects peasant efficiency###
+character_event = {
+	id = cmnl.1042
+	title = EVTNAME_cmnl_1042
+	desc = EVTDESC_cmnl_1042
+	picture = GFX_evt_peasants
+
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+
+	trigger = {
+		has_job_action = action_organize_peasants
+		NOT = { has_character_modifier = in_seclusion }
+		location = {
+			owner = {
+				job_treasurer = {
+					character = ROOT
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 240
+
+		modifier = {
+			factor = 0.9
+			NOT = { opinion = { who = liege value = -100 } }
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { opinion = { who = liege value = -75 } }
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { opinion = { who = liege value = -50 } }
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { opinion = { who = liege value = -25 } }
+		}
+		modifier = {
+			factor = 1.05
+			opinion = { who = liege value = 25 }
+		}
+		modifier = {
+			factor = 1.05
+			opinion = { who = liege value = 50 }
+		}
+		modifier = {
+			factor = 1.05
+			opinion = { who = liege value = 75 }
+		}
+		modifier = {
+			factor = 1.05
+			opinion = { who = liege value = 100 }
+		}
+		modifier = {
+			factor = 0.95
+			NOT = { stewardship = 1 }
+		}
+		modifier = {
+			factor = 0.95
+			NOT = { stewardship = 2 }
+		}
+		modifier = {
+			factor = 0.95
+			NOT = { stewardship = 3 }
+		}
+		modifier = {
+			factor = 0.95
+			NOT = { stewardship = 4 }
+		}
+		modifier = {
+			factor = 0.95
+			NOT = { stewardship = 5 }
+		}
+		modifier = {
+			factor = 0.95
+			NOT = { stewardship = 6 }
+		}
+		modifier = {
+			factor = 0.95
+			NOT = { stewardship = 7 }
+		}
+		modifier = {
+			factor = 0.95
+			NOT = { stewardship = 8 }
+		}
+		modifier = {
+			factor = 0.95
+			NOT = { stewardship = 9 }
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 11
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 12
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 13
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 14
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 15
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 16
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 17
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 18
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 19
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 20
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 21
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 22
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 23
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 24
+		}
+		modifier = {
+			factor = 1.05
+			stewardship = 25
+		}
+		modifier = {
+			factor = 0.75
+			location = {
+				NOT = { culture = ROOT }
+			}
+		}
+	}
+
+	option = {
+			  name = EVTOPTA_cmnl_1042
+			  location = {
+						  add_province_modifier = {
+												   name = peasants_unproductive
+												   duration = 1825
+												  }
+						  hidden_tooltip = { remove_province_modifier = peasants_productive }
+						 }
+			  random_list = {
+							 25 = { 
+								   custom_tooltip = {
+													 text = pd_increase_some
+													 hidden_tooltip = {
+																	   liege = {
+																				change_variable = {
+																								   which = peasant_discontent
+																								   value = -3
+																								  }
+																				character_event = { id = cmnl.1043 }
+																			   }
+																	  }
+													}
+								  }
+							 50 = { 
+								   custom_tooltip = {
+													 text = pd_increase_more
+													 hidden_tooltip = {
+																	   liege = {
+																				change_variable = {
+																								   which = peasant_discontent
+																								   value = -5
+																								  }
+																				character_event = { id = cmnl.1043 }
+																			   }
+																	  }
+													}
+								  }
+							 25 = {
+								   custom_tooltip = {
+													 text = pd_increase_most
+													 hidden_tooltip = {
+																	   liege = {
+																				change_variable = {
+																								   which = peasant_discontent
+																								   value = -8
+																								  }
+																				character_event = { id = cmnl.1043 }
+																			   }
+																	  }
+													}
+								  }
+						    }
+			 }
+	}
+	
+character_event = { #Liege is informed
+	id = cmnl.1043
+	desc = EVTDESC_cmnl_1043
+	picture = GFX_evt_peasants
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = { communal_government_trigger = yes }
+	
+	option = {
+			  name = EVTOPTA_cmnl_1043
+			  scaled_wealth = -0.5
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = { communal_modifier_effect = yes }
+							   }
+			 }
+
+				  }
+
+###Comet sighted!###
+character_event = {
+	id = cmnl.1044
+	title = EVTNAME_cmnl_1044
+	desc = EVTDESC_cmnl_1044
+	picture = GFX_evt_comet
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			  }
+	
+	option = {
+			  name = EVTOPTA_cmnl_1044
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 5
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }				  
+			 }
+				  }
+				  
+###A communal ruler can write to another to create a non-aggression pact###
+letter_event = {
+	id = cmnl.1045
+	hide_window = yes
+	
+	only_playable = yes
+	only_independent = yes
+	min_age = 16
+	capable_only = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   NOT = { has_character_flag = "rejected_communal_nap" }
+			   any_independent_ruler = {
+										has_regent = no
+										communal_government_trigger = yes
+										is_within_diplo_range = ROOT
+										NOT = { 
+											   has_non_aggression_pact_with = ROOT 
+											   has_character_flag = "rejected_communal_nap"
+											  }
+									   }
+			  }
+			  
+	mean_time_to_happen = { years = 7 }
+			  
+	immediate = {
+				 any_independent_ruler = {
+										  limit = {
+												   has_regent = no
+												   communal_government_trigger = yes
+												   is_within_diplo_range = ROOT
+												   NOT = { 
+														  has_character_flag = "rejected_communal_nap"
+														  has_non_aggression_pact_with = ROOT 
+														 }
+												  }
+										  character_event = { id = cmnl.10451 }
+										 }
+				}
+	
+			   }
+
+character_event = {
+	id = cmnl.10451
+	desc = EVTDESC_cmnl_1045
+	picture = GFX_evt_emissary
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	only_independent = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   NOT = { has_character_flag = "rejected_communal_nap" }
+			   FROM = {
+					   communal_government_trigger = yes
+					   NOT = { 
+							  has_character_flag = "rejected_communal_nap"
+							  has_non_aggression_pact_with = ROOT 
+							 }
+					  }
+			  }
+			  
+	option = { #Do
+			  name = EVTOPTA_cmnl_1045
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = kind
+											 trait = trusting
+											 opinion = {
+														who = FROM
+														value = 30
+													   }
+											}
+									  }
+						   modifier = {
+									   factor = 1.2
+									   FROM = { religion = ROOT }
+									  }
+						  }
+			  FROM = { letter_event = { id = cmnl.1046 } }
+			 }
+	option = { #Do not
+			  name = EVTOPTB_cmnl_1045
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = envious
+											 trait = paranoid
+											 NOT = {
+													opinion = {
+															   who = FROM
+															   value = -10
+															  }
+												   }
+											}
+									  }
+						   modifier = {
+									   factor = 1.2
+									   NOT = { FROM = { religion = ROOT } }
+									  }
+						  }
+			  set_character_flag = "rejected_communal_nap"
+			 }
+
+				  }
+				  
+###Other communal ruler hears of outreach###
+letter_event = {
+	id = cmnl.1046
+	desc = EVTDESC_cmnl_1046
+	
+	is_triggered_only = yes
+	
+	option = { #Agree
+			  name = EVTOPTA_cmnl_1045
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = kind
+											 trait = trusting
+											 opinion = {
+														who = FROM
+														value = 30
+													   }
+											}
+									  }
+						   modifier = {
+									   factor = 1.2
+									   FROM = { religion = ROOT }
+									  }
+						  }
+			  FROM = { letter_event = { id = cmnl.1047 } }
+			 }
+	option = { #Disagree
+			  name = EVTOPTB_cmnl_1045
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 trait = envious
+											 trait = paranoid
+											 NOT = {
+													opinion = {
+															   who = FROM
+															   value = -10
+															  }
+												   }
+											}
+									  }
+						   modifier = {
+									   factor = 1.2
+									   NOT = { FROM = { religion = ROOT } }
+									  }
+						  }
+			  set_character_flag = "rejected_communal_nap"
+			  FROM = { letter_event = { id = cmnl.1047 } }
+			 }
+	
+	
+			   }
+
+###Original communal ruler hears of the other's response###
+letter_event = {
+	id = cmnl.1047
+	desc = {
+			trigger = { NOT = { FROM = { has_character_flag = "rejected_communal_nap" } } }
+			text = EVTDESCA_cmnl_1047
+		   }
+	desc = {
+			trigger = { FROM = { has_character_flag = "rejected_communal_nap" } }
+			text = EVTDESCB_cmnl_1047
+		   }
+		   
+	is_triggered_only = yes
+		   
+	option = {
+			  trigger = { NOT = { FROM = { has_character_flag = "rejected_communal_nap" } } }
+			  name = EVTOPTA_cmnl_1047
+			  opinion = {
+						 modifier = in_non_aggression_pact
+						 years = 10
+						 who = FROM
+					    }
+			  FROM = {
+					  opinion = {
+								 modifier = in_non_aggression_pact
+								 years = 10
+								 who = FROM
+								}
+					 }
+			 }
+	option = {
+			  trigger = { FROM = { has_character_flag = "rejected_communal_nap" } }
+			  name = EVTOPTB_cmnl_1047
+			  opinion = {
+						 modifier = opinion_very_disappointed
+						 who = FROM
+						 years = 5
+						}
+			 }
+			   }
+
+###War changes peasant discontent###
+letter_event = {
+	id = cmnl.1048
+	hide_window = yes
+	
+	only_playable = yes
+	war = yes
+	
+	trigger = { communal_government_trigger = yes }
+	
+	mean_time_to_happen = { years = 5 }
+	
+	immediate = {
+				 random_list = {
+								50 = {
+									  modifier = {
+												  factor = 2
+												  is_primary_war_defender = yes
+												 }
+									  modifier = {
+												  factor = 1.5
+												  NOT = { 
+														 any_realm_province = { 
+																			   any_province_holding = {
+																									   has_siege = yes 
+																									  }
+																			  }
+														}
+												 }
+									  character_event = { id = cmnl.10481 }
+									 }
+								50 = {
+									  modifier = {
+												  factor = 2
+												  is_primary_war_attacker = yes
+												 }
+									  modifier = {
+												  factor = 1.5
+												  any_realm_province = { 
+																		any_province_holding = {
+																								has_siege = yes 
+																							   }
+																	   }
+												 }
+									  character_event = { id = cmnl.10482 }
+									 }
+							   }
+				}
+			   }
+
+character_event = { #War lowers discontent
+	id = cmnl.10481
+	desc = EVTDESCA_cmnl_1048
+	picture = GFX_evt_large_army
+	
+	only_playable = yes
+	war = yes
+	
+	is_triggered_only = yes
+	
+	trigger = { communal_government_trigger = yes }
+	
+	option = {
+			  name = EVTOPTA_cmnl_1048
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = -3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+	
+				  }
+				  
+character_event = { #War raises discontent
+	id = cmnl.10482
+	desc = EVTDESCB_cmnl_1048
+	picture = GFX_evt_peasants
+	
+	only_playable = yes
+	war = yes
+	
+	is_triggered_only = yes
+	
+	trigger = { communal_government_trigger = yes }
+	
+	option = {
+			  name = EVTOPTB_cmnl_1048
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+	
+				  }
+
+###Peasant discontent rises due to disease in province###
+character_event = {
+	id = cmnl.1049
+	desc = EVTDESC_cmnl_1049
+	picture = GFX_evt_bring_out_your_dead
+	
+	only_playable = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   any_demesne_province = { has_disease = yes }
+			  }
+			  
+	option = {
+			  name = EVTOPTA_cmnl_1049
+			  custom_tooltip = {
+								text = peasant_discontent_increased
+								hidden_tooltip = {
+												  change_variable = {
+																	 which = peasant_discontent
+																	 value = 3
+																	}
+												  communal_modifier_effect = yes
+												 }
+							   }
+			 }
+
+				  }
+				  
+###Prosperity decreases peasant discontent###
+character_event = {
+	id = cmnl.1050
+	desc = EVTDESC_cmnl_1050
+	picture = GFX_evt_prospering_province
+	
+	only_playable = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   OR = {
+					 AND = {
+							has_dlc = "Reapers"
+							any_demesne_province = {
+													OR = {
+														  has_province_modifier = prosperity_modifier_2
+														  has_province_modifier = prosperity_modifier_3
+														 }
+												   }
+							NOT = {
+								   any_demesne_province = {
+														   OR = {
+																 has_province_modifier = depopulated_1
+																 has_province_modifier = depopulated_2
+																 has_province_modifier = depopulated_3
+															    }
+														  }
+								  }
+						   }
+					 AND = {
+							NOT = { has_dlc = "Reapers" }
+							any_demesne_province = {
+													OR = {
+														  has_province_modifier = province_prosperity_1
+														  has_province_modifier = province_prosperity_2
+														 }
+												   }
+							NOT = {
+								   any_demesne_province = {
+														   OR = {
+																 has_province_modifier = province_poverty_1
+																 has_province_modifier = province_poverty_2
+															    }
+														  }
+								  }
+						   }
+					}
+			  }
+			  
+	option = {
+			  name = EXCELLENT
+			  custom_tooltip = {
+								text = peasant_discontent_decreased
+								hidden_tooltip = {
+												  if = {
+													    limit = {
+																 any_demesne_province = {
+																						 OR = {
+																							   has_province_modifier = prosperity_modifier_3
+																							   has_province_modifier = province_prosperity_2
+																							  }
+																						}
+																}
+													    change_variable = {
+																		   which = peasant_discontent
+																		   value = -5
+																		  }
+													    communal_modifier_effect = yes
+													   }
+												  if = {
+													    limit = {
+																 any_demesne_province = {
+																						 OR = {
+																							   has_province_modifier = prosperity_modifier_2
+																							   has_province_modifier = province_prosperity_1
+																							  }
+																						}
+																 NOT = {
+																		any_demesne_province = {
+																								OR = {
+																									  has_province_modifier = prosperity_modifier_3
+																									  has_province_modifier = province_prosperity_2
+																									 }
+																							   }
+																	   }
+																}
+													    change_variable = {
+																		   which = peasant_discontent
+																		   value = -3
+																		  }
+													    communal_modifier_effect = yes
+													   }
+												 }
+							   }
+			 }
+	
+				  }
+				  
+###Qarmatian uprising###
+narrative_event = {
+		id = cmnl.1051
+		title = EVTNAME_cmnl_1051
+		desc = EVTDESC_cmnl_1051
+		picture = GFX_evt_peasants
+
+		only_playable = yes
+		major = yes
+		
+		trigger = {
+				   has_game_rule = {
+									name = communal_uprising_rule
+									value = on
+								   }
+				   NOT = { has_global_flag = "qarmatian_uprising" }
+				   year = 880
+				   NOT = { religion = qarmatian }
+				   capital_scope = {
+									OR = {
+										  region = custom_arabia
+										  region = custom_mesopotamia
+										  #region = custom_jerusalem
+										 }
+								   }
+				   higher_tier_than = COUNT
+				   OR = {
+						 ai = yes
+						 any_demesne_title = {
+											  count = 2
+											  tier = DUKE
+											 }
+						}
+				  }
+				  
+		major_trigger = {
+						 OR = {
+							   religion_group = muslim
+							   capital_scope = {
+												OR = {
+													  region = custom_arabia
+													  region = custom_jerusalem
+													  region = custom_mesopotamia
+													 }
+											   }
+							  }
+						}
+				  
+		mean_time_to_happen = {
+		days = 7
+							   #years = 20
+							   modifier = {
+										   factor = 0.5
+										   capital_scope = { region = custom_arabia }
+										  }
+							  }
+				  
+		immediate = {
+					 set_global_flag = "qarmatian_uprising"
+					 random_realm_province = {
+								limit = { 
+										 OR = {
+											   region = custom_arabia
+											   #region = custom_jerusalem
+											   region = custom_mesopotamia
+											  }
+										}
+								create_character = {
+													religion = qarmatian
+													culture = persian
+													random_traits = yes
+													female = no
+													age = 35
+													trait = heresiarch
+													trait = skilled_tactician
+													trait = zealous
+													trait = ambitious
+													trait = mystic
+													}
+								new_character = {
+												 set_character_flag = "qarmatian_leader"
+												 wealth = 500
+												 piety = 100
+												 create_title = {
+																 tier = DUKE
+																 temporary = yes
+																 holder = THIS
+																 culture = THIS
+																 name = QARMATIAN_UPRISING
+																 landless = yes
+																 rebel = yes
+																}
+												 spawn_unit = {
+															   owner = THIS
+															   province = PREV
+															   home = PREV
+															   leader = THIS
+															   troops = {
+																	     archers = { 1000 1000 }
+																		 light_infantry = { 3000 3000 } 
+																		 light_cavalry = { 400 400 }
+																		 camel_cavalry = { 400 400 }
+																		}
+													
+															  }
+												 create_character = {
+																	 religion = qarmatian
+																	 culture = persian
+																	 random_traits = yes
+																	 female = no
+																	 trait = skilled_tactician
+																    }
+												 new_character = {
+														spawn_unit = {
+																	  owner = PREV
+																	  province = PREVPREV
+																	  home = PREVPREV
+																	  leader = THIS
+																	  scaled_by_biggest_garrison = 4
+																	  troops = {
+																				archers = { 10 10 }
+																				light_infantry = { 30 30 } 
+																				light_cavalry = { 4 4 }
+																				camel_cavalry = { 4 4 }
+																			   }
+													
+																	 }
+																 }
+												 create_character = {
+																	 religion = qarmatian
+																	 culture = persian
+																	 random_traits = yes
+																	 female = no
+																	 trait = skilled_tactician
+																    }
+												 new_character = {
+														spawn_unit = {
+																	  owner = PREV
+																	  province = PREVPREV
+																	  home = PREVPREV
+																	  leader = THIS
+																	  scaled_by_biggest_garrison = 4
+																	  disband_on_peace = yes
+																	  troops = {
+																				archers = { 10 10 }
+																				light_infantry = { 30 30 } 
+																				light_cavalry = { 4 4 }
+																				camel_cavalry = { 4 4 }
+																			   }
+													
+																	 }
+																 }
+												if = {
+													  limit = {
+															   ROOT = { higher_tier_than = KING }
+															  }
+												 create_character = {
+																	 religion = qarmatian
+																	 culture = persian
+																	 random_traits = yes
+																	 female = no
+																	 trait = skilled_tactician
+																    }
+												 new_character = {
+														spawn_unit = {
+																	  owner = PREV
+																	  province = PREVPREV
+																	  home = PREVPREV
+																	  leader = THIS
+																	  scaled_by_biggest_garrison = 5.0
+																	  disband_on_peace = yes
+																	  troops = {
+																				archers = { 10 10 }
+																				light_infantry = { 30 30 } 
+																				light_cavalry = { 4 4 }
+																				camel_cavalry = { 4 4 }
+																			   }
+													
+																	 }
+																 }
+													 }
+															  
+												war = {
+													   target = ROOT
+													   casus_belli = qarmatian_uprising_cb
+													   thirdparty_title = PREV
+													   tier = DUKE
+													  }
+												}
+									}
+					}
+		option = {
+				  trigger = { 
+							 religion_group = muslim
+							 NOR = { 
+									religion = qarmatian 
+									government = communal_government
+								   } 
+							}
+				  name = EVTOPTA_cmnl_1051
+				 }
+		option = {
+				  trigger = { 
+							 NOT = { religion_group = muslim }
+							 NOR = { 
+									religion = qarmatian 
+									government = communal_government
+								   } 
+							}
+				  name = EVTOPTB_cmnl_1051
+				 }
+		option = {
+				  trigger = { 
+							 OR = { 
+								   religion = qarmatian 
+								   government = communal_government
+								  } 
+							}
+				  name = EXCELLENT
+				 }	
+
+				 }
+
+###Tondrakians appear in Armenia###
+province_event = {
+	id = cmnl.1052
+	hide_window = yes
+	
+	trigger = {
+			   has_game_rule = {
+								name = communal_uprising_rule
+								value = on
+							   }
+			   ROOT = { province = 672 }
+			   religion_group = christian
+			   year = 900
+			   NOT = { has_global_flag = "tondrakians_rising" }
+			   owner = {
+						NOR = { 
+							   government = communal_government
+							   can_communal_trigger = yes
+							   top_liege = { can_communal_trigger = yes }
+							  }
+					   }
+			  }
+			  
+	mean_time_to_happen = { 
+						   years = 50 
+						   modifier = {
+									   factor = 0.5
+									   year = 950
+									  }
+						  }
+			  
+	immediate = {
+				 set_global_flag = "tondrakians_rising"
+				 owner = {
+						  narrative_event = { id = cmnl.10521 }
+						  if = {
+								limit = { independent = no }
+								any_liege = { narrative_event = { id = cmnl.10521 } }
+							   }
+						 }
+				}
+	
+				 }
+
+narrative_event = {
+	id = cmnl.10521
+	title = EVTNAME_cmnl_1052
+	desc = EVTDESC_cmnl_1052
+	picture = GFX_evt_peasants
+	
+	only_playable = yes
+	major = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   any_realm_province = { province = 672 }
+			  }
+			  
+	major_trigger = {
+					 OR = {
+						   religion = tondrakian
+						   religion = paulician
+						   religion = apostolic
+						   any_realm_title = {
+											  OR = {
+													region = custom_armenia
+													region = custom_nikaea
+													region = custom_mesopotamia
+													region = custom_jerusalem
+													region = custom_azerbaijan
+													region = custom_georgia
+												   }
+											 }
+						  }
+					}
+			  
+	immediate = {
+			ROOT = {
+				 FROM = { religion = tondrakian
+						  add_province_modifier = {
+												   name = tondrakian_stronghold
+												   duration = -1
+												  } 
+						}
+				 any_realm_province = {
+									   limit = { 
+												religion = tondrakian
+												NOT = { has_province_modifier = tondrakian_stronghold }
+											   }
+									   add_province_modifier = {
+																name = tondrakian_stronghold
+																duration = -1
+															   }
+									  }
+				   }
+				}
+				
+	option = {
+			  trigger = { 
+						 NOT = { can_communal_trigger = yes } 
+						 religion_group = christian
+						}
+			  name = EVTOPTA_cmnl_1051
+			 }
+	option = {
+			  trigger = { 
+						 NOT = { 
+								 can_communal_trigger = yes 
+								 religion_group = christian
+							   }
+						}
+			  name = EVTOPTB_cmnl_1051
+			 }
+	option = {
+			  trigger = { can_communal_trigger = yes } 
+			  name = EXCELLENT
+			 }
+
+				  }
+
+###The Tondrakians spread their influence###
+province_event = {
+	id = cmnl.1053
+	hide_window = yes
+	
+	trigger = {
+			   religion_group = christian
+			   any_neighbor_province = {
+										religion = tondrakian
+										has_province_modifier = tondrakian_stronghold
+									   }
+			   NOT = {
+					  religion = tondrakian
+					  has_province_modifier = tondrakian_stronghold
+					 }
+			  }
+			  
+	mean_time_to_happen = { years = 50 }
+			  
+	immediate = {
+				 owner = {
+						  character_event = { id = cmnl.10531 }
+						  if = {
+								limit = { independent = no }
+								any_liege = { character_event = { id = cmnl.10531 } }
+							   }
+						 }
+				}
+	
+				 }
+
+character_event = {
+	id = cmnl.10531
+	desc = EVTDESC_cmnl_1053
+	picture = GFX_evt_peasants
+	
+	only_playable = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+				 FROM = {
+						 religion = tondrakian
+						 add_province_modifier = {
+												  name = tondrakian_stronghold
+												  duration = -1
+												 }
+						}
+				}
+	
+	option = {
+			  trigger = { NOT = { can_communal_trigger = yes } }
+			  name = EVTOPTA_cmnl_1051
+			 }
+	option = {
+			  trigger = { can_communal_trigger = yes } 
+			  name = EXCELLENT
+			 }
+
+				  }
+				  
+###No more Tondrakian provinces###
+letter_event = {
+	id = cmnl.1054
+	hide_window = yes
+	
+	only_playable = yes
+	only_independent = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   NOT = { any_realm_province = { religion = tondrakian } }
+			  }
+			  
+	immediate = {
+				 narrative_event = { id = cmnl.10541 }
+				 any_realm_lord = { narrative_event = { id = cmnl.10541 } }
+				 any_realm_province = { clr_province_flag = "former_tondrakian_stronghold" }
+				}
+
+			   }
+			   
+narrative_event = {
+	id = cmnl.10541
+	title = EVTNAME_cmnl_1054
+	desc = EVTDESC_cmnl_1054
+	picture = GFX_evt_bloody_man
+	
+	is_triggered_only = yes
+	
+	option = {
+			  trigger = { NOT = { can_communal_trigger = yes } }
+			  name = EVTOPTA_cmnl_1054
+			 }
+	option = {
+			  trigger = { can_communal_trigger = yes }
+			  name = EVTOPTB_cmnl_1054
+			 }
+
+				  }
+			   
+###Ruler converting to/from Tondrakian-friendly religion removes/re-adds Tondrakian stronghold modifiers###
+letter_event = { #For title inheritance
+	id = cmnl.1055
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   NOT = { has_character_flag = "multi_event_blocker" }
+			   OR = {
+					 AND = {
+							OR = {
+								  religion = tondrakian
+								  religion = mazdaki
+								  religion = qarmatian
+								  government = communal_government
+								 }
+						    any_demesne_province = { has_province_modifier = tondrakian_stronghold }
+						  }
+					AND = {
+						   NOR = {
+								  religion = tondrakian
+								  religion = mazdaki
+								  religion = qarmatian
+								  government = communal_government
+								 }
+						   any_demesne_province = {
+												 religion = tondrakian
+												 has_province_flag = "former_tondrakian_stronghold"
+											    }
+						  }
+					}
+			  }
+			  
+	immediate = {
+				 set_character_flag = "multi_event_blocker"
+				 if = {
+					   limit = { 
+								OR = {
+									  religion = tondrakian
+									  religion = qarmatian
+									  religion = mazdaki
+									  government = communal_government
+									 }
+								any_demesne_province = { has_province_modifier = tondrakian_stronghold }
+							   }
+						character_event = { id = cmnl.10551 days = 5 }
+						any_realm_lord = { character_event = { id = cmnl.10551 days = 5 } }
+						if = {
+							  limit = { independent = no }
+							  liege = {
+									   character_event = { id = cmnl.10551 days = 5 }
+									   any_vassal = {
+												     limit = { NOT = { character = ROOT } }
+												     character_event = { id = cmnl.10551 days = 5 }
+												    }
+								}
+							 }
+					  }
+				 if = {
+					   limit = {
+								NOR = {
+									   religion = tondrakian
+									   religion = qarmatian
+									   religion = mazdaki
+									   government = communal_government
+									  }
+								any_demesne_province = { has_province_flag = "former_tondrakian_stronghold" }
+							   }
+						character_event = { id = cmnl.10552 days = 5 }
+						any_realm_lord = { character_event = { id = cmnl.10552 days = 5 } }	
+						if = {
+							  limit = { independent = no }
+							  liege = {
+									   character_event = { id = cmnl.10552 days = 5 }
+									   any_vassal = {
+												     limit = { NOT = { character = ROOT } }
+												     character_event = { id = cmnl.10552 days = 5 }
+												    }
+								}
+							 }
+					  }
+				}
+	
+				}
+				
+letter_event = { #For conversion
+	id = cmnl.1056
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   OR = {
+					 AND = {
+							OR = {
+								  religion = tondrakian
+								  religion = mazdaki
+								  religion = qarmatian
+								  government = communal_government
+								 }
+						    any_demesne_province = { has_province_modifier = tondrakian_stronghold }
+						  }
+					AND = {
+						   NOR = {
+								  religion = tondrakian
+								  religion = mazdaki
+								  religion = qarmatian
+								  government = communal_government
+								 }
+						   any_demesne_province = {
+												 religion = tondrakian
+												 has_province_flag = "former_tondrakian_stronghold"
+											    }
+						  }
+					}
+			  }
+			  
+	immediate = {
+				 if = {
+					   limit = { 
+								OR = {
+									  religion = tondrakian
+									  religion = qarmatian
+									  religion = mazdaki
+									  government = communal_government
+									 }
+								any_demesne_province = { has_province_modifier = tondrakian_stronghold }
+							   }
+						character_event = { id = cmnl.10551 days = 5 }
+						any_realm_lord = { character_event = { id = cmnl.10551 days = 5 } }
+						if = {
+							  limit = { independent = no }
+							  liege = {
+									   character_event = { id = cmnl.10551 days = 5 }
+									   any_vassal = {
+												     limit = { NOT = { character = ROOT } }
+												     character_event = { id = cmnl.10551 days = 5 }
+												    }
+								}
+							 }
+					  }
+				 if = {
+					   limit = {
+								NOR = {
+									   religion = tondrakian
+									   religion = qarmatian
+									   religion = mazdaki
+									   government = communal_government
+									  }
+								any_demesne_province = { has_province_flag = "former_tondrakian_stronghold" }
+							   }
+						character_event = { id = cmnl.10552 days = 5 }
+						any_realm_lord = { character_event = { id = cmnl.10552 days = 5 } }	
+						if = {
+							  limit = { independent = no }
+							  liege = {
+									   character_event = { id = cmnl.10552 days = 5 }
+									   any_vassal = {
+												     limit = { NOT = { character = ROOT } }
+												     character_event = { id = cmnl.10552 days = 5 }
+												    }
+								}
+							 }
+					  }
+				}
+	
+				}
+	
+character_event = {
+	id = cmnl.10551
+	desc = {
+			trigger = { FROM = { religion = tondrakian } }
+			text = EVTDESCA_cmnl_1055
+		   }
+	desc = {
+			trigger = { FROM = { NOT = { religion = tondrakian } } }
+			text = EVTDESCB_cmnl_1055
+		   }
+	picture = GFX_evt_heretic
+	
+	is_triggered_only = yes
+	
+	immediate = {
+				 any_realm_province = {
+									   limit = { has_province_modifier = tondrakian_stronghold }
+									   remove_province_modifier = tondrakian_stronghold
+									   set_province_flag = "former_tondrakian_stronghold"
+									  }
+			    }
+	
+	option = {
+			  trigger = { can_communal_trigger = yes }
+			  name = EVTOPTA_cmnl_1055
+			  clr_character_flag = "multi_event_blocker"
+			 }
+	option = {
+			  trigger = { NOT = { can_communal_trigger = yes } }
+			  name = EVTOPTB_cmnl_1055
+			  clr_character_flag = "multi_event_blocker"
+			 }
+
+				  }
+	
+character_event = {
+	id = cmnl.10552
+	desc = EVTDESCC_cmnl_1055
+	picture = GFX_evt_peasants
+	
+	is_triggered_only = yes
+	
+	immediate = {
+				 any_realm_province = {
+									   limit = { 
+												religion = tondrakian
+												has_province_flag = "former_tondrakian_stronghold" 
+											   }
+									   add_province_modifier = {
+																name = tondrakian_stronghold
+																duration = -1
+															   }
+									  }
+			    }
+	
+	option = {
+			  trigger = { can_communal_trigger = yes }
+			  name = EVTOPTC_cmnl_1055
+			  clr_character_flag = "multi_event_blocker"
+			 }
+	option = {
+			  trigger = { NOT = { can_communal_trigger = yes } }
+			  name = EVTOPTD_cmnl_1055
+			  clr_character_flag = "multi_event_blocker"
+			 }
+
+				  }
+
+###

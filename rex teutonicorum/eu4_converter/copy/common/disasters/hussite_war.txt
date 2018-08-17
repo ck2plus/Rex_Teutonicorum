@@ -1,0 +1,46 @@
+hussite_war = {
+	       potential = {
+			    any_owned_province = { religion = war_hussite }
+			    NOT = { is_religion_enabled = protestant }
+			   }
+	
+	       can_start = {			    
+			    any_owned_province = { religion = war_hussite }
+			    has_any_disaster = no
+			   }
+
+	       can_end = {
+			  NOT = { 
+				 any_owned_province = { religion = hussite } 
+				}
+			 }
+	
+	       progress = {
+			   modifier = {
+				       factor = 1
+				       NOT = { stability = 0 }
+				      }
+			  }
+
+	       can_stop = {
+			   stability = 3
+			   has_any_disaster = yes
+			  }
+
+	       modifier = {
+			   global_unrest = 10
+			   stability_cost_modifier = 0.5
+			  }
+
+	       on_start = rexteut.2011
+
+	       on_monthly = {
+			     events = {
+				      }
+	                     random_events = {
+					      150 = 0
+					      1 = rexteut.2005
+					      1 = rexteut.2006
+					     }
+	       		    }
+	      }

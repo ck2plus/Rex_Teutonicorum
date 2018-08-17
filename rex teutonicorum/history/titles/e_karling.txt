@@ -1,0 +1,39 @@
+100.1.1 = {
+	active = no
+	pentarch = k_pentarch_rome
+}
+800.12.25 = {
+	active = yes
+	holder = 6392 #Charlemagne
+  	law = succ_gavelkind
+	law = agnatic_succession
+	effect = { 
+			  set_title_flag = "carolingian_empire_formed" 
+			  set_title_flag = "pre_set_gavelkind"
+			 }
+}
+814.1.28 = {
+	holder = 90095 #Louis I
+}
+840.1.21 = {
+	holder = 30227 #Lothaire I
+}
+843.8.1 = {
+	set_global_flag = "first_verdun"
+	set_global_flag = "treaty_of_verdun"
+}
+855.9.29 = {
+	holder = 30228 #Louis II
+	effect = { change_variable = { which = imperial_decadence value = 10 } }
+}
+875.8.12 = {
+	holder = 90104 #Charles II
+}
+876.8.28 = {
+	holder = 90105 #Charles III the Fat
+}
+888.1.13 = {
+	holder = 0
+	active = no
+	effect = { set_title_flag = carolingian_empire_fallen }
+}

@@ -1,0 +1,51 @@
+communal_modifier_trigger = {
+							 OR = {
+								   has_character_modifier = peasants_happy
+								   has_character_modifier = peasants_content
+								   has_character_modifier = peasants_unhappy
+								   has_character_modifier = peasants_angry
+								   has_character_modifier = peasants_rebellious
+								  }
+							}
+							
+can_communal_trigger = {
+						OR = {
+							  religion = qarmatian
+							  religion = tondrakian
+							  religion = mazdaki
+							  trait = peasant_leader
+							 }
+					   }
+					   
+peasant_content_trickle_trigger = {
+			   OR = {
+					 any_demesne_province = { has_province_modifier = peasants_protected }
+					 any_demesne_province = { has_province_modifier = inspired_peasantry }
+					 any_demesne_province = { has_province_modifier = diplomacy_advice }
+					 any_demesne_province = { has_province_modifier = appeased_religious }
+					 any_demesne_province = { has_province_modifier = just_steward }
+					}
+								  }
+								  
+peasant_discontent_trickle_trigger = {
+			   OR = {
+					 any_demesne_province = { has_province_modifier = peasants_upset }
+					 any_demesne_province = { has_province_modifier = peasant_unrest }
+					 any_demesne_province = { has_province_modifier = arbitrary_steward }
+					 any_demesne_province = { has_province_modifier = peasants_forbidden_sale }
+					 any_demesne_province = { has_province_modifier = religious_tension }
+					 any_demesne_province = { has_province_modifier = peasants_scorned }
+					 any_demesne_province = { has_province_modifier = religious_unrest }
+					 any_demesne_province = { has_province_modifier = cultural_unrest }
+					 any_demesne_province = { has_province_modifier = disloyal_peasantry }
+					 any_demesne_province = { has_province_modifier = peasant_obstructionism }
+					 has_character_modifier = commoners_abandoned
+					 NOT = { wealth = 0 }
+					}
+									 }
+									 
+communal_government_trigger = {
+							   government = communal_government
+							   primary_title = { temporary = no }
+							   mercenary = no
+							  }

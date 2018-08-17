@@ -1,0 +1,19 @@
+opinion_created_communal = {
+				opinion = -30
+				}
+opinion_resisted_communal = {
+				opinion = -50
+				prison_reason = yes
+				}
+opinion_antagonised_peasants = {
+				opinion = -20
+				}
+opinion_interfered_communal = {
+				 opinion = -15
+				}
+opinion_betrayed_peasants = {
+				 opinion = -30
+				}
+opinion_seized_land = {
+				 opinion = -75
+				}

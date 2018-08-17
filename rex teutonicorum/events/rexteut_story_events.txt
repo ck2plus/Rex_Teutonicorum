@@ -1,0 +1,1216 @@
+namespace = rexteut
+
+###Berengar considers marrying Adelaide to Adelbert###
+narrative_event = {
+  
+          id = rexteut.1001
+          title = EVTNAME_rexteut_1001
+          desc = EVTDESC_rexteut_1001
+          picture = GFX_evt_throne_room
+		  
+		  only_playable = yes
+		  only_men = yes
+		  min_age = 50
+		  prisoner = no
+		  capable_only = yes
+ 
+          trigger = {
+                     has_landed_title = k_italy
+                     has_character_flag = "is_berengar"
+                     current_heir = { is_married = no } 
+                     NOT = { has_global_flag = "rexteut_story" } 
+		     NOT = {
+			    has_game_rule = {
+				             name = rexteut_story
+				             value = off
+					    }
+			   }                   
+                    }
+
+          mean_time_to_happen = { days = 5 }
+
+          option = {
+                    name = EVTOPTA_rexteut_1001
+                    ai_chance = { factor = 10 }
+                    custom_tooltip = { text = "otto_1" }
+                    hidden_tooltip = {
+                                      any_courtier = {
+                                                      character_event = { 
+									 id = rexteut.1002 
+									 days = 3
+									}
+                                                     }
+                                      set_global_flag = "rexteut_story"
+				      any_child = { 
+						   set_character_flag = "berengheir" 
+				      		   any_child = { set_character_flag = "berengheir" }
+						  }
+                                     }
+                   }
+
+          option = {
+                    name = EVTOPTB_rexteut_1001
+		    ai_chance = { factor = 0 }
+                    set_global_flag = "rexteut_story"
+		    hidden_tooltip = {
+				      any_character = {
+						       limit = {
+							        OR = {
+								      has_character_flag = "is_otto"
+								      has_character_flag = "is_adelaide"
+								     }
+							       }
+						       remove_trait = cannot_marry
+						      }
+				     }
+                   }
+
+                  }
+
+###Adelaide receives Berengar's ultimatum###
+character_event = {
+  
+          id = rexteut.1002
+          desc = EVTDESC_rexteut_1002
+          picture = GFX_evt_emissary
+		  
+          is_triggered_only = yes
+ 
+          trigger = {
+                     has_character_flag = "is_adelaide"
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_1002
+                    ai_chance = { factor = 5 }
+                    FROM = { character_event = { id = rexteut.1003 } }
+                   }
+
+          option = {
+                    name = EVTOPTB_rexteut_1002
+		    ai_chance = { factor = 0.2 }
+		    hidden_tooltip = { remove_trait = cannot_marry }
+                    FROM = { 
+                            current_heir = { 
+					    add_spouse = ROOT
+					    reverse_opinion = {
+							       modifier = opinion_coerced_marriage
+							       who = ROOT
+							       years = 100 
+							      } 
+					   }
+                            character_event = { id = rexteut.1015 }
+                           }
+                   }
+
+                  }
+
+###Adelaide rejects Berengar's proposal###
+character_event = {
+
+          id = rexteut.1003
+          desc = EVTDESC_rexteut_1003
+          picture = GFX_evt_quarrel
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     has_landed_title = k_italy
+                     has_character_flag = "is_berengar"
+                     current_heir = { is_married = no }
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_1003
+                    ai_chance = { factor = 5 }
+                    FROM = { 
+			    imprison = yes 
+			    add_rival = ROOT
+			   }
+                    hidden_tooltip = { 
+                                      set_global_flag = "adelaide_imprisoned"
+                                     }
+                   }
+
+          option = {
+                    name = EVTOPTB_rexteut_1003
+		    ai_chance = { factor = 0 }
+                    prestige = -100
+		    hidden_tooltip = { FROM = { remove_trait = cannot_marry } }
+                   }
+
+                  }
+
+###Adelaide can petition an Italian vassal for aid###
+character_event = {
+	  id = rexteut.1021
+	  desc = EVTDESC_rexteut_1021
+	  picture = GFX_evt_into_the_dungeon
+	  
+	  only_women = yes
+	  prisoner = yes
+
+	  trigger = {
+		     has_character_flag = "is_adelaide"
+		     had_global_flag = {
+				        flag = "adelaide_imprisoned"
+					days = 100
+				       }
+		    }
+
+	  mean_time_to_happen = { months = 1 }
+
+	  immediate = { clr_global_flag = "adelaide_imprisoned" }
+
+	  option = {
+		    ai_chance = { factor = 1 }
+		    name = EVTOPTA_rexteut_1021
+		    liege = {
+			     random_vassal = {
+					      narrative_event = {
+								 id = rexteut.1004
+								 days = 3
+								}
+					     }
+			    }
+		   }
+
+	  option = {
+		    ai_chance = { factor = 0 }
+		    name = EVTOPTB_rexteut_1021
+		    hidden_tooltip = { remove_trait = cannot_marry }
+		   }
+
+		  }
+
+###An Italian vassal receives Adelaide's request###
+narrative_event = {
+	  id = rexteut.1004
+	  title = EVTNAME_rexteut_1001
+	  desc = EVTDESC_rexteut_1004
+	  picture = GFX_evt_emissary
+	  
+	  is_triggered_only = yes
+
+	  trigger = {
+		     liege = { 
+			      has_landed_title = k_italy
+			      has_character_flag = "is_berengar"
+			     }
+		    }
+
+	  option = {
+		    ai_chance = { factor = 1 }
+		    name = EVTOPTA_rexteut_1004
+		    FROM = {
+			    imprison = no
+			    move_character = ROOT
+			    opinion = {
+				       modifier = opinion_helped_adelaide
+				       who = ROOT
+				       years = 10
+				      }
+			    }
+		    liege = {
+			     character_event = { id = rexteut.1005 }
+			    }
+		   }
+	  option = {
+		    ai_chance = { factor = 0 }
+		    name = EVTOPTB_rexteut_1004
+		    FROM = {
+			    character_event = { id = rexteut.1019 }
+			   }
+		   }	  
+
+		  }
+
+###Berengar hears of Adelaide's escape###
+character_event = {
+	  id = rexteut.1005
+	  desc = EVTDESC_rexteut_1005
+	  picture = GFX_evt_quarrel
+
+	  is_triggered_only = yes
+
+	  trigger = {
+		     has_landed_title = k_italy
+		     has_character_flag = "is_berengar"
+		    }
+
+	  option = {
+		    name = EVTOPTA_rexteut_1005
+		    prestige = -100
+		    opinion = {
+			       modifier = opinion_betrayed_me
+			       who = FROM
+			       years = 100
+			      }
+		    hidden_tooltip = {
+				      any_independent_ruler = {
+								   limit = {
+										    has_landed_title = k_germany
+											has_character_flag = "is_otto"
+										   }
+							       narrative_event = {
+									id = rexteut.1006
+									days = 7
+										 }
+							      }
+				     }
+		   }
+
+		  }
+
+###Otto recieves Adelaide's request###
+narrative_event = {
+ 
+          id = rexteut.1006
+          title = EVTNAME_rexteut_1006
+          desc = EVTDESC_rexteut_1006
+          picture = GFX_evt_emissary
+		  
+		  is_triggered_only = yes
+
+          trigger = {
+                     has_landed_title = k_germany
+                     has_character_flag = "is_otto"
+					 k_italy = {
+								holder_scope = { has_character_flag = "is_berengar" }
+							   }
+		     is_married = no
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_1006
+                    ai_chance = { factor = 5 }                  
+                    custom_tooltip = { text = "otto_2" }
+                    hidden_tooltip = {
+									  set_character_flag = "temp_story_flag"
+                                      any_independent_ruler = {
+															   limit = {
+																	    has_landed_title = k_italy
+																		has_character_flag = "is_berengar"
+																	   }
+                                                               narrative_event = { id = rexteut.1007 }
+                                                              }
+                                     }
+                   }
+
+          option = {
+                    name = EVTOPTB_rexteut_1006
+		    ai_chance = { factor = 0 }
+		    hidden_tooltip = { remove_trait = cannot_marry }
+                   }
+
+                  }
+
+
+###Berengar is informed that Otto is coming to beat him up###
+narrative_event = {
+
+          id = rexteut.1007
+          title = EVTNAME_rexteut_1007
+          desc = EVTDESC_rexteut_1007
+          picture = GFX_evt_large_army
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     has_landed_title = k_italy
+                     has_character_flag = "is_berengar"
+                    }
+ 
+          option = {
+                    name = EVTOPTA_rexteut_1007
+                    reverse_war = {
+                                   target = FROM
+                                   casus_belli = rexteut_story_cb
+                                  }
+					FROM = { 
+							clr_character_flag = "temp_story_flag" 
+							add_rival = PREV
+						   }
+                   }
+
+                  }
+
+###Otto arrives in Italy###
+letter_event = {
+       id = rexteut.1008
+       hide_window = yes
+	   
+	   only_playable = yes
+	   only_men = yes
+	   has_character_flag = "is_otto"
+
+       trigger = {
+		  has_landed_title = k_germany
+		  has_character_flag = "is_otto"
+		  has_global_flag = "beating_berengar"
+		  NOT = { has_character_flag = "otto_marriage" }
+		  location = {
+					  kingdom = {
+						 title = k_italy
+					}
+			     }
+		 }
+
+       mean_time_to_happen = { days = 7 }
+
+       immediate = {
+		    set_character_flag = "otto_marriage"
+		    remove_trait = cannot_marry
+		    any_character = {
+				     limit = { has_character_flag = "is_adelaide" }
+				     character_event = { 
+							id = rexteut.1009 
+							days = 7
+						       }
+				    }
+		   }
+
+	       }
+
+###Adelaide meets with Otto###
+character_event = {
+
+          id = rexteut.1009
+          desc = EVTDESC_rexteut_1009
+          picture = GFX_evt_marriage
+		  
+	  is_triggered_only = yes
+
+          trigger = {
+		     has_character_flag = "is_adelaide"
+              has_global_flag = "beating_berengar"
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_1009
+                    custom_tooltip = { text = "otto_5" }
+                    hidden_tooltip = {
+				      set_character_flag = "adelaide_marriage"
+				      remove_trait = cannot_marry
+                                      FROM = {
+                                              narrative_event = { id = rexteut.1010 }
+                                             }
+                                     }
+                   }
+
+                  }
+
+
+###Otto marries Adelaide###
+narrative_event = {
+
+          id = rexteut.1010
+          title = EVTNAME_rexteut_1010
+          desc = {
+		  trigger = { NOT = { has_global_flag = "berengar_beaten" } }
+		  text = EVTDESCA_rexteut_1010
+		 }
+          desc = {
+		  trigger = { has_global_flag = "berengar_beaten" }
+		  text = EVTDESCB_rexteut_1010
+		 }
+          picture = GFX_evt_marriage
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     has_landed_title = k_germany
+                     has_character_flag = "is_otto"
+					 is_married = no
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_1010
+                    custom_tooltip = { text = "otto_3" }
+                    hidden_tooltip = {
+                                      add_spouse = FROM
+                                      FROM = { 
+                                              opinion = {
+ 					                 modifier = opinion_helped_adelaide
+                                                         who = PREV
+                                                         years = 20
+                                                        }
+                                             }
+                                     }
+                   }
+
+                  }
+
+
+
+###Berengar/his successor eyes the Papal State###
+character_event = {
+ 
+          id = rexteut.1011
+          desc = {
+		  trigger = { has_character_flag = "is_berengar" }
+		  text = EVTDESCA_rexteut_1011
+		 }
+	  desc = {
+		  trigger = { has_character_flag = "berengheir" }
+		  text = EVTDESCB_rexteut_1011
+		 }
+          picture = GFX_evt_throne_room
+
+	  min_age = 16
+	  prisoner = no
+	  only_playable = yes
+	  capable_only = yes
+          
+          trigger = {
+                     has_landed_title = k_italy
+                     OR = {
+			   has_character_flag = "is_berengar"
+			   has_character_flag = "berengheir"
+			  }
+                     has_global_flag = "berengar_beaten"    
+		     war = no 
+		     k_germany = {
+				  holder_scope = {
+						  has_character_flag = "is_otto"
+						  NOT = { has_truce = ROOT }
+						 }
+				 }   
+                    }
+ 
+          mean_time_to_happen = { 
+				 years = 6 
+				 modifier = {
+					     factor = 0.9
+					     trait = greedy
+					    }
+				 modifier = {
+					     factor = 0.9
+					     trait = ambitious
+					    }
+				 modifier = {
+					     factor = 0.9
+					     trait = proud
+					    }
+				 modifier = {
+					     factor = 0.07
+					     had_global_flag = {
+								flag = "berengar_beaten"
+								days = 3650
+							       }
+					    }
+				 modifier = {
+					     factor = 1.5
+					     trait = content
+					    }
+				 modifier = {
+					     factor = 2
+					     trait = zealous
+					    }
+				}
+
+          option = {
+                    name = EVTOPTA_rexteut_1011
+                    ai_chance = { 
+				 factor = 5 
+				 modifier = {
+					     factor = 10
+					     OR = {
+						   trait = proud
+						   trait = ambitious
+						   trait = greedy
+						   NOT = { prestige = 0 }
+						  }
+					    }
+				}
+                    clr_global_flag = "berengar_beaten"
+                    add_claim = c_roma
+                    suzerain = { remove_tributary = PREV }
+                    set_global_flag = "berengar_pope"
+		    any_independent_ruler = {
+					     narrative_event = {
+								id = rexteut.1012
+								days = 14
+							       }
+					    }
+                    c_roma = {
+				holder_scope = {
+						reverse_war = {
+							       target = ROOT
+							       casus_belli = claim
+							       thirdparty_title = PREV
+							      }
+					       }
+			       }
+                                     
+                   }
+
+          option = {
+                    name = EVTOPTB_rexteut_1011
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 10
+					     trait = content
+					    }
+				}
+                    clr_global_flag = "berengar_beaten"
+                    prestige = -20
+                   }
+
+                  }
+
+
+###The Pope appeals to Otto for help###
+narrative_event = {
+                  
+          id = rexteut.1012
+          title = EVTNAME_rexteut_1012
+          desc = {
+		  trigger = { FROM = { has_character_flag = "is_berengar" } }
+		  text = EVTDESCA_rexteut_1012
+		 }
+          desc = {
+		  trigger = { FROM = { has_character_flag = "berengheir" } }
+		  text = EVTDESCB_rexteut_1012
+		 }
+          picture = GFX_evt_emissary
+		  
+	  is_triggered_only = yes
+
+          trigger = {
+                     has_landed_title = k_germany
+                     has_character_flag = "is_otto"
+                     has_global_flag = "berengar_pope"
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_1012
+                    ai_chance = { factor = 5 }
+                    add_claim = k_italy
+		    piety = 50
+                    custom_tooltip = { text = "otto_2" }
+                    hidden_tooltip = {
+                                      set_global_flag = "beating_berengar_again"
+                                      clr_global_flag = "berengar_pope"
+                                      any_independent_ruler = {
+                                                               narrative_event = { id = rexteut.1013 }
+							       letter_event = { id = rexteut.1014 }
+                                                              }
+                                     }
+                   }
+ 
+          option = {
+                    name = EVTOPTB_rexteut_1012
+		    ai_chance = { factor = 0 }
+                    piety = -50
+                    clr_global_flag = "berengar_pope"
+                   }
+
+                  }
+
+###Berengar/his successor informed that he's done bad by Otto###
+narrative_event = {
+
+          id = rexteut.1013
+          title = EVTNAME_rexteut_1013
+          desc = EVTDESC_rexteut_1013
+          picture = GFX_evt_large_army
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     has_landed_title = k_italy
+                     OR = {
+			   has_character_flag = "is_berengar"
+			   has_character_flag = "berengheir"
+			  }
+                    }
+ 
+          option = {
+		    trigger = { has_character_flag = "is_berengar" }
+                    name = EVTOPTA_rexteut_1013
+                    reverse_war = {
+                                   target = FROM
+                                   casus_belli = claim
+                                   thirdparty_title = k_italy
+                                  }
+                   }
+ 
+          option = {
+		    trigger = { has_character_flag = "berengheir" }
+                    name = EVTOPTB_rexteut_1013
+                    reverse_war = {
+                                   target = FROM
+                                   casus_belli = claim
+                                   thirdparty_title = k_italy
+                                  }
+                   }
+
+                  }
+
+
+###Pope is grateful###
+letter_event = {
+
+          id = rexteut.1014
+          hide_window = yes
+		  
+	  is_triggered_only = yes
+
+          trigger = {
+		     is_pope_trigger = yes
+                    }
+
+          immediate = {
+                       opinion = {
+                                  modifier = "opinion_grateful_pope"
+                                  who = FROM
+                                  years = 100
+                                 }
+                      }
+                  }
+
+
+###Adelaide marries Adalbert###
+character_event = {
+    
+          id = rexteut.1015
+          desc = {
+		  trigger = { NOT = { has_global_flag = "adelaide_defeated" } }
+		  text = EVTDESCA_rexteut_1015
+		 }
+          desc = {
+		  trigger = { has_global_flag = "adelaide_defeated" }
+		  text = EVTDESCB_rexteut_1015
+		 }
+          picture = GFX_evt_marriage
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     has_landed_title = k_italy
+                     has_character_flag = "is_berengar"
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_1015
+                    prestige = 150
+		    remove_character_modifier = suspected_usurper
+                   }
+
+                  }
+
+###Being defeated ends Berengar/his heir's invasion of the Papacy###
+letter_event = {
+
+       id = rexteut.1016
+       is_triggered_only = yes
+       hide_window = yes
+
+       trigger = {
+		  OR = {
+			has_character_flag = "is_berengar"
+			has_character_flag = "berengheir"
+		       }
+		  NOT = { has_landed_title = k_italy }
+		 }
+
+       immediate = {
+		    remove_claim = c_roma
+		    any_war = {
+			       limit = {
+					any_defender = { has_landed_title = c_roma }
+				       }
+		    	       end_war = invalid
+			      }
+			if = {
+				  limit = {
+						   OR = {
+								 has_landed_title = c_roma
+								 any_realm_character = { has_landed_title = c_roma }
+								}
+						  }
+				  c_roma = {
+							any_character = { 
+											 limit = { is_pope_trigger = yes }
+											 grant_title = PREV
+											}
+						   }
+				 }
+		   }
+
+	       }
+
+###Berengar/his heir defeats Otto###
+character_event = {
+	  id = rexteut.1017
+	  desc = EVTDESC_rexteut_1017
+	  picture = GFX_evt_battle
+	  
+	  is_triggered_only = yes
+	 
+	  trigger = {
+		     OR = {
+		           has_character_flag = "is_berengar"
+			   has_character_flag = "berengheir"
+			  }
+		     has_landed_title = k_italy
+		     OR = {
+			   war = no
+			   NOT = {
+				  any_war = {
+					     any_attacker = {
+							     has_landed_title = k_germany
+							    }
+				     	    }
+				 }
+			  }
+		     NOT = { has_global_flag = "berengar_beaten" }
+		     OR = {
+			   has_global_flag = "beating_berengar"
+			   has_global_flag = "beating_berengar_again"
+			  }
+		    }
+
+	  immediate = { 
+		       set_global_flag = "berengar_victorious" 
+			   if = {
+					 limit = { has_character_modifier = suspected_usurper }
+					 custom_tooltip = {
+									   text = otto_6
+									   hidden_tooltip = { remove_character_modifier = suspected_usurper }
+									  }
+					}
+		       any_character = {
+					limit = {
+						 OR = {
+						       has_character_flag = "is_otto"
+						       has_character_flag = "is_adelaide"
+						      }
+						}
+					remove_trait = cannot_marry
+				       }
+		      }
+
+	  option = {
+		    trigger = { NOT = { has_global_flag = "beating_berengar_again" } }
+		    name = EVTOPTA_rexteut_1017
+		    prestige = 200
+		   }
+
+	  option = {
+		    trigger = { 
+			       has_global_flag = "beating_berengar_again" 
+			       NOT = { has_character_flag = "berengheir" }
+			      }
+		    name = EVTOPTB_rexteut_1017
+		    prestige = 200
+		   }
+
+	  option = {
+		    trigger = { 
+			       has_global_flag = "beating_berengar_again" 
+			       NOT = { has_character_flag = "is_berengar" }
+			      }
+		    name = EVTOPTC_rexteut_1017
+		    prestige = 200
+		   }
+
+		  }
+
+
+
+###Adelaide is free to meet with Otto (if he never set foot in Italy)###
+letter_event = {
+		id = rexteut.10181
+		hide_window = yes
+		
+		is_triggered_only = yes
+		
+		only_independent = yes
+		only_men = yes
+		has_character_flag = "is_otto"
+		
+		trigger = {
+				   NOT = { is_married = yes }	
+				  }
+				  
+		immediate = {
+					 any_character = {
+									  limit = {
+											   has_character_flag = "is_adelaide"
+											   NOT = { is_married = yes }
+											  }
+									  character_event = {
+														 id = rexteut.1018
+														 days = 14
+														}
+									 }
+					}
+		
+			   }
+
+character_event = {
+
+          id = rexteut.1018
+          desc = EVTDESC_rexteut_1018
+          picture = GFX_evt_marriage
+		  
+		  is_triggered_only = yes
+
+          trigger = {
+					 NOT = { has_character_flag = "adelaide_marriage" }
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_1009
+                    custom_tooltip = { text = "otto_5" }
+                    hidden_tooltip = {
+									  set_character_flag = "adelaide_marriage"
+									  remove_trait = cannot_marry
+									  FROM = { narrative_event = { id = rexteut.1010 } }
+                                     }
+                   }
+
+                  }
+
+###Her escape attempt failed, Adelaide is given 2nd chance to surrender###
+character_event = {
+	  id = rexteut.1019
+	  desc = EVTDESC_rexteut_1019
+	  picture = GFX_evt_quarrel
+
+	  is_triggered_only = yes
+
+          option = {
+                    name = EVTOPTA_rexteut_1019
+		    ai_chance = { factor = 1 }
+		    prestige = -50
+		    remove_trait = cannot_marry
+                    FROM = {
+			    liege = { 
+                            	     current_heir = { 
+					    	     add_spouse = ROOT 
+					    	     reverse_opinion = {
+							      	        modifier = opinion_coerced_marriage
+							       	        who = ROOT
+							       	        years = 100 
+							      	        }
+					   	    }
+                            	     character_event = { id = rexteut.1015 }
+				    }
+                           }
+                   }
+          option = {
+                    name = EVTOPTB_rexteut_1019
+		    ai_chance = { factor = 1 }
+		    remove_trait = cannot_marry
+                   }
+
+		  }
+
+###Event for setting up "berengar_beaten" flag###
+letter_event = {
+       id = rexteut.1020
+       hide_window = yes
+
+       is_triggered_only = yes
+	
+       trigger = {
+		  has_landed_title = k_italy
+		  OR = {
+			has_character_flag = "is_berengar"
+			has_character_flag = "berengheir"
+		       }
+		  has_global_flag = "beating_berengar"
+		  NOT = {
+			 any_war = {
+				    any_attacker = { has_landed_title = k_germany }
+				   }
+			}
+		 }
+
+	immediate = {
+		     clr_global_flag = "beating_berengar"
+		     set_global_flag = "berengar_beaten"
+			 k_germany = {
+						  holder_scope = {
+										  set_character_flag = "berengar_beaten"
+										  any_vassal = {
+													    limit = { has_landed_title = d_bavaria }
+														character_event = { id = rexteut.1024 }
+													   }
+										 }
+						 }
+		    }
+
+	       }
+
+
+###If Berengar or his heirs are overthrown before Otto does, the latter can invade Italy###
+character_event = {
+	id = rexteut.1022
+	desc = EVTDESC_rexteut_1022
+	picture = GFX_evt_rival_rulers
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = k_germany
+			   has_character_flag = "is_otto"
+			   FROM = { has_landed_title = k_italy }
+			  }
+			  
+	option = {
+			  name = EVTOPTA_rexteut_1022
+			  ai_chance = { factor = 1 }
+			  add_claim = k_italy
+			  FROM = {
+					  hidden_tooltip = { suzerain = { remove_tributary = PREV } }
+					  narrative_event = { id = rexteut.1023 }
+					 }
+			 }
+	option = {
+			  name = EVTOPTB_rexteut_1022
+			  ai_chance = { factor = 0 }
+			 }
+
+				  }
+				  
+###New ruler of Italy hears Otto is coming to sort out Italy's shit###
+narrative_event = {
+	id = rexteut.1023
+	title = EVTNAME_rexteut_1007 
+	desc = EVTDESC_rexteut_1023
+	picture = GFX_evt_large_army
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = k_italy
+			   NOR = {
+					  has_character_flag = "is_berengar"
+					  has_character_flag = "berengheir"
+					 }
+			  }
+			  
+	option = {
+			  name = EVTOPTA_rexteut_1023
+              reverse_war = {
+                             target = FROM
+                             casus_belli = claim
+                             thirdparty_title = k_italy
+                            }
+			 }
+
+				  }
+				  
+###Duke of Bavaria asks for the March of Verona###
+character_event = {
+		id = rexteut.1024
+		desc = EVTDESC_rexteut_1024
+		picture = GFX_evt_emissary
+		
+		is_triggered_only = yes
+		
+		trigger = {
+				   has_global_flag = "berengar_beaten"
+				   has_landed_title = d_bavaria
+				   liege = {
+							has_character_flag = "is_otto"
+							NOT = { has_character_flag = "bavarian_verona" }
+						   }
+				  }
+				  
+		option = {
+				  name = EVTOPTA_rexteut_1024
+				  ai_chance = { factor = 1 }
+				  liege = { character_event = { id = rexteut.1025 } }
+				 }
+				  
+		option = {
+				  name = EVTOPTB_rexteut_1024
+				  ai_chance = { factor = 0 }
+				  liege = { set_character_flag = "bavarian_verona" }
+				 }
+
+				  }
+				  
+###Otto hears the Duke of Bavaria's request###
+character_event = {
+	id = rexteut.1025
+	desc = EVTDESC_rexteut_1025
+	picture = GFX_evt_emissary
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_global_flag = "berengar_beaten"
+			   has_landed_title = k_germany
+			   has_character_flag = "is_otto"
+			   NOT = { has_character_flag = "bavarian_verona" }
+			  }
+			  
+	option = {
+			  name = EVTOPTA_rexteut_1025
+			  ai_chance = { factor = 1 }
+			  FROM = { letter_event = { id = rexteut.1026 days = 3 } }
+			 }
+	option = {
+			  name = EVTOPTA_rexteut_1025
+			  ai_chance = { factor = 0 }
+			  FROM = { letter_event = { id = rexteut.1027 days = 3 } }
+			 }
+				  }
+				  
+###Duke of Bavaria hears of Otto's response###
+letter_event = { #Positive
+	id = rexteut.1026
+	desc = EVTDESC_rexteut_1026
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = d_bavaria
+			   liege = { character = FROM }
+			  }
+			  
+	immediate = { FROM = { set_character_flag = "bavarian_verona" } }
+	
+	option = {
+			  name = EXCELLENT
+			  opinion = {
+						 modifier = opinion_very_grateful
+						 who = FROM
+						 years = 10
+						}
+			  custom_tooltip = {
+								text = otto_7
+								hidden_tooltip = {
+												  k_italy = {
+															 holder_scope = {
+																			 character_event = { id = rexteut.1028 }
+																			}
+														    }
+												 }
+							   }
+			 }
+			   }
+			   
+letter_event = { #Negative
+	id = rexteut.1027
+	desc = EVTDESC_rexteut_1027
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_landed_title = d_bavaria
+			   liege = { character = FROM }
+			  }
+			  
+	immediate = { FROM = { set_character_flag = "bavarian_verona" } }
+	
+	option = {
+			  name = CURSES
+			  opinion = {
+						 modifier = opinion_very_disappointed
+						 who = FROM
+						 years = 10
+						}
+			 }
+			   }
+				  
+###Berengar/his heirs hear of the loss of Verona###
+character_event = {
+	id = rexteut.1028
+	desc = EVTDESC_rexteut_1028
+	picture = GFX_evt_rival_rulers
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   OR = {
+					 has_character_flag = "is_berengar"
+					 has_character_flag = "berengheir"
+					}
+			  }
+			  
+	immediate = {
+				 any_demesne_title = {
+									  limit = {
+											   OR = {
+													 OR = {
+														   title = d_verona
+														   title = c_trent
+														  }
+													 OR = {
+														   de_jure_liege_or_above =  d_verona
+														   de_jure_liege_or_above = d_carinthia
+														  }
+													}
+											  }
+									  grant_title = FROM
+									 }
+				 any_vassal = {
+							   if = {
+									 limit = {
+											  primary_title = {
+															   OR = {
+																	 OR = {
+																		   title = d_verona
+																		   title = c_trent
+																		  }
+																	 OR = {
+																		   de_jure_liege_or_above = d_verona
+																		   de_jure_liege_or_above = d_carinthia
+																		  }
+																	}
+															  }
+											 }
+									 set_defacto_liege = FROM
+									}
+							   if = {
+									 limit = {
+											  primary_title = {
+															   NOR = {
+																	  OR = {
+																			title = d_verona
+																			title = c_trent
+																		   }
+																	  OR = {
+																			de_jure_liege_or_above = d_verona
+																			de_jure_liege_or_above = d_carinthia
+																		   }
+																	 }
+															  }
+											 }
+									 any_demesne_title = {
+														  limit = {
+																   OR = {
+																		 title = d_verona
+																		 title = c_trent
+																		}
+																   OR = {
+																		 de_jure_liege_or_above = d_verona
+																		 de_jure_liege_or_above = d_carinthia
+																		}
+																  }
+														  grant_title = FROM
+														 }
+									}
+							  }
+				}
+				
+	option = {
+			  name = EVTOPTA_rexteut_1028
+			  opinion = {
+						 modifier = opinion_hate
+						 who = FROM
+						 years = 20
+						}
+			 }
+
+				  }
+	
+###

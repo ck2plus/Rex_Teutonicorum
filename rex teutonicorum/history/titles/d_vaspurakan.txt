@@ -1,0 +1,25 @@
+
+908.1.1 = {
+	liege = k_armenia
+	law = succ_primogeniture
+	holder = 41563 #Gagik II
+}
+943.1.1 = {
+	holder = 41564 #Derenik-Ashot
+}
+953.1.1 = {
+	holder = 41570 #Abusahl-Hamazasp
+}
+972.1.1 = {
+	holder = 41571 #Ashot-Sahak
+}
+983.1.1 = {
+	holder = 41572 #Gurgen-Khachik
+}
+1003.1.1 = {
+	holder = 41576 #Hovhannes-Senek'erim
+}
+1021.1.1={
+	holder = 0
+	liege="e_byzantium"
+}

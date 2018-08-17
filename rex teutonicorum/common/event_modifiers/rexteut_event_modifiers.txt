@@ -1,0 +1,63 @@
+
+
+beat_the_pope = {
+                 monthly_character_prestige = 1
+                 icon = 8
+                }
+hussite_war = {
+               icon = 19
+               temple_tax_modifier = -0.5
+              }
+praised_by_pope = {
+		   icon = 17
+		   same_religion_opinion = 15
+		  }
+condemned_by_pope = {
+		     icon = 35
+		     same_religion_opinion = -15
+		    }
+stat_fav_prin = {
+		 icon = 27
+		 vassal_opinion = 5
+		 castle_vassal_tax_modifier = -0.5
+		 city_vassal_tax_modifier = -0.05
+		 temple_vassal_tax_modifier = -0.5
+		 castle_vassal_max_levy = -0.2
+		 city_vassal_max_levy = -0.2
+		 temple_vassal_max_levy = -0.2
+		}
+crowned_wicked_pope = {
+		       icon = 35
+		       same_religion_opinion = -20
+		       monthly_character_piety = -0.2
+		       monthly_character_prestige = -0.5
+		      }
+bowed_to_pope = {
+		 icon = 35
+		 monthly_character_prestige = -0.25
+		 monthly_character_piety = 0.1
+		 vassal_opinion = -5
+		}
+suspected_usurper = {
+		     icon = 27
+		     diplomacy = -2
+		     global_revolt_risk = 0.02
+		     short_reign_length = 2
+		     general_opinion = -10
+		    }
+secret_hussite_community = {
+	icon = 18
+	is_visible = {
+		society_member_of = secret_religious_society_hussite
+				 }
+						   }
+faction_sifp_ultimatum_timer = {
+	icon = 1
+							   }
+forced_papal_crowning = {
+	icon = 1
+	same_religion_opinion = -30
+						}
+burgundian_succession = {
+	icon = 27
+						}

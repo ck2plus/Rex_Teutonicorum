@@ -1,0 +1,3 @@
+op_emp_elect = {
+		opinion = 20
+	       }

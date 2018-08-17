@@ -1,0 +1,27 @@
+# 349 - Spoleto
+
+# County Title
+title = c_spoleto
+
+# Settlements
+max_settlements = 4
+b_spoleto = castle
+b_terni = city
+b_assisi = temple
+#b_foligno = castle
+#b_cascia = temple
+#b_rieti = castle
+#b_asiago_fic = city
+
+# Misc
+culture = longobard
+religion = chalcedonian
+
+# History
+849.1.1 = { culture = umbrian }
+1054.1.1 = {
+	religion = catholic
+}
+1198.1.8 = { capital = b_assisi }
+1205.1.1 = { capital = b_spoleto }
+1276.1.1 = { capital = b_assisi }

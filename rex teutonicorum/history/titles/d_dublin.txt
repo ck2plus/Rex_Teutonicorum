@@ -1,0 +1,90 @@
+855.1.1 = {
+	holder = 168330 #Olafr
+    law = agnatic_succession
+	liege = 0
+}
+857.1.1 = {
+	holder = 163111 #Ivar the Boneless
+}
+873.1.6 = {
+	holder = 6814 #Barid
+}
+881.1.1 ={
+	holder = 40609 #Sigfroþ
+}
+888.1.1 = {
+	holder = 40608 #Sigtrygg
+}
+902.1.1 = {
+	holder = 0 #Abandoned
+}
+917.1.1 = {
+	holder = 5789 #Sihtric
+        liege = 0
+}
+920.1.1 = {
+	holder = 130000026 #Gofraid
+}
+934.1.1 = {
+	holder = 130000027 #Olaf
+}
+939.1.1 = {
+	holder = 130000028 #Blacaire
+}
+945.1.1 = {
+	holder = 5790 #Olaf Cuaran
+}
+947.1.1 = {
+	holder = 130000028 #Blacaire
+}
+948.1.1 = {
+        holder = 100000014 #Gofraid mac Sihtirc
+}
+952.1.1 = {
+	holder = 5790 # Olaf Cuaran
+}
+980.1.1 = {
+	holder = 131521 # Glúniairn
+}
+989.1.1 = {
+	holder = 1025 #Sihtric
+}
+1052.7.1 = {
+	holder = 924
+}
+1070.7.1 = {
+	holder  = 83190 #Domnall son of Murchad of Leinster
+}
+1072.2.7 = {
+	holder = 906 #Toirrdelbach Ua Briain of Munster
+}
+1086.7.14 = {
+	holder = 920 #Donnchad son of Domnall Remar
+}
+1089.7.1 = {
+	holder = 923 #Énna son of Diarmait
+}
+1092.7.1 = {
+	holder = 5788 #Gofraid Meranach king of Mann
+}
+1094.7.1 = {
+	holder = 83250 #Domnall Ua Briain son of High King Muirchertach 
+}
+1118.7.1 = {
+	holder = 83192 #Énna son of Donnchad 
+}
+1126.7.1 = {
+	holder = 83240 #Thorkil
+}
+1141.7.1 = {
+	holder = 83247 #Ragnall son of Thorkil
+}
+1146.7.1 = {
+	holder = 83247 #Ottar son of Ottar
+}
+1148.7.1 = {
+	holder = 83242 #Bróðir son of Thorkil
+}
+1160.7.1 = {
+	holder = 83243 #Ascall son of Ragnall
+}

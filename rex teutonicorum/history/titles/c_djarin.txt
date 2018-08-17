@@ -1,0 +1,128 @@
+656.1.1={
+	liege = d_axum
+}
+# Solomonid
+706.1.1={
+	holder=145983 #Degna Mikael
+}
+727.1.1={
+	holder=145984 #Bahr Ikela
+}
+746.1.1={
+	holder=145985 #Gum
+}
+770.1.1={
+	holder=145986 #Asgwomgum
+}
+775.1.1={
+	holder=145987 #Letem
+}
+791.1.1={
+	holder=145988 #Talatem
+}
+812.1.1={
+	holder=145989 #Oda Gosh
+}
+825.1.1={
+	holder=145990 #Ayzur
+}
+825.1.2={
+	holder=145991 #Dedem
+}
+830.1.1={
+	holder=145992 #Wededem
+}
+840.1.1={
+	holder=145993 #Wedem Asfare
+}
+870.1.1={
+	holder=145994 #Rema Armah
+}
+875.1.1={
+	holder=167707 #Degna Djan
+}
+910.1.1 = {
+holder = 167708 #Anbasa Wedem
+}
+
+950.1.1 = {
+holder = 32225 #Dil Na'od
+}
+
+
+960.8.1 = {
+liege = d_alodia
+holder=166163
+}
+969.1.1=
+{
+holder=166165
+}
+1015.1.1=
+{
+holder=166166
+}
+1052.1.1=
+{
+holder=166167
+}
+1094.1.1=
+{
+holder=166168
+}
+1125.1.1=
+{
+holder=166169
+}
+1157.1.1=
+{
+holder=166170
+}
+1174.1.1=
+{
+holder=166171
+}
+1199.1.1=
+{
+holder=166172
+}
+1233.1.1=
+{
+holder=166173
+}
+1255.1.1=
+{
+holder=166174
+}
+1270.1.1=
+{
+holder=166175
+}
+1304.1.1=
+{
+holder=166176
+}
+1338.1.1=
+{
+holder=166177
+}
+1355.1.1=
+{
+holder=166178
+}
+1388.1.1=
+{
+holder=166179
+}
+1414.1.1=
+{
+holder=166180
+}
+1445.1.1=
+{
+holder=166181
+}
+1467.1.1=
+{
+holder=166182
+}

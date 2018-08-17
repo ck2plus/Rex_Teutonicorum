@@ -1,0 +1,19 @@
+
+peasant_emigration = {
+	global_colonial_growth = 10
+}
+
+peasants_motivated = {
+	global_tax_modifier = 0.1
+	production_efficiency = 0.1
+}
+
+peasant_tax_break = {
+	global_tax_modifier = -0.1
+}
+
+peasant_military_support = {
+	infantry_cost = -0.2
+	global_regiment_recruitment_speed = -0.2
+	manpower_recover_speed = -0.5
+}

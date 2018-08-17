@@ -1,0 +1,74 @@
+namespace = rexteut
+
+###Event for Papal crowning of Emperor###
+
+country_event = {
+		 id = rexteut.1001
+		 title = EVTNAME_REXTEUT_1001
+		 desc = EVTDESC_REXTEUT_1001
+		 picture = POPE_PREACHING_eventPicture
+
+		 is_triggered_only = yes
+
+		 trigger = {
+			    any_owned_province = { is_part_of_hre = yes }
+			   }
+
+		 option = {
+			   trigger = { is_emperor = yes  }
+			   name = EVTOPTA_REXTEUT_1001
+			  }
+		 option = {
+			   trigger = { is_emperor = no  }
+			   name = EVTOPTB_REXTEUT_1001
+			  }
+
+		}
+
+
+###Event for ending the policy of Papal crownings of Emperor###
+
+country_event = {
+		 id = rexteut.1002
+		 title = EVTNAME_REXTEUT_1002
+		 desc = EVTDESC_REXTEUT_1002
+		 picture = HRE_eventPicture
+
+		 is_triggered_only = yes
+
+		 trigger = {
+			    any_owned_province = { is_part_of_hre = yes }
+			   }
+
+		 option = {
+			   trigger = { is_emperor = yes  }
+			   name = EVTOPTA_REXTEUT_1002
+			   add_prestige = 10
+			   add_imperial_influence = 10
+			  }
+		 option = {
+			   trigger = { 
+						  is_emperor = no 
+						  is_elector = no
+						 }
+			   name = EVTOPTB_REXTEUT_1002
+			  }
+		 option = {
+			   trigger = { 
+						  is_emperor = no 
+						  is_elector = yes
+						 }
+			   name = EVTOPTB_REXTEUT_1002
+			   hidden_effect = {
+								add_opinion = {
+											   who = FROM
+											   modifier = "op_emp_elect"
+											   years = 10
+											  }
+							   }
+			  }
+
+		}
+
+
+### 

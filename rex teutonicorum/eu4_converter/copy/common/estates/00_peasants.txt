@@ -1,0 +1,357 @@
+estate_peasants = {
+	icon = 7
+	
+	color = { 220 35 0 }
+
+	keep_on_conquest = no
+	
+	min_territory = 10
+	min_provinces_to_want_territory = 5
+	
+	trigger = { government = peasants_republic }
+
+	province_trigger = { always = yes }
+	
+	min_autonomy = 25
+	
+	autonomy_does_not_affect = local_production_efficiency
+	
+	country_modifier_happy = {
+			global_tax_modifier = 0.2
+			stability_cost_modifier = -0.1
+			land_morale = 0.01
+							 }
+	country_modifier_neutral = {
+			global_tax_modifier = 0.1
+							   }
+	country_modifier_angry = {
+			global_tax_modifier = -0.2
+			stability_cost_modifier = 0.1
+			land_morale = -0.01
+							 }
+							 
+	province_modifier_happy = {
+			local_production_efficiency = 0.2
+			local_unrest = -2
+						      }
+	province_modifier_neutral = {
+			local_production_efficiency = 0.1
+								}
+	province_modifier_angry = {
+			local_production_efficiency = -0.2
+			local_unrest = 5
+							  }
+							  
+	base_influence = 20
+	influence_modifier = {
+			desc = EST_VAL_OTHER_ESTATE_IN_POWER_LOY
+			trigger = { has_disaster = estate_church_disaster }
+			influence = -40
+					     }
+	influence_modifier = {
+			desc = EST_VAL_RULER_BENEVOLENT
+			trigger = { personality = benevolent_personality }
+			influence = 5
+					     }
+	influence_modifier = {
+			desc = EST_VAL_RULER_CRUEL
+			trigger = { personality = cruel_personality }
+			influence = -5
+					     }
+	influence_modifier = {
+			desc = EST_VAL_FULL_HUMANIST
+			trigger = { full_idea_group = humanist_ideas }
+			influence = 5
+					     }
+	influence_modifier = {
+			desc = EST_VAL_POLICY_AGRICULTURE
+			trigger = { has_active_policy = agricultural_cultivations }
+			influence = 5
+					     }
+	
+	
+	loyalty_modifier = {
+			desc = EST_VAL_HIGH_REP_TRAD
+			trigger = { republican_tradition = 90 }
+			loyalty = 15
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_LOW_REP_TRAD
+			trigger = { NOT = { republican_tradition = 40 } }
+			loyalty = -15
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_FULL_HUMANIST
+			trigger = { full_idea_group = humanist_ideas }
+			loyalty = 10
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_OTHER_ESTATE_IN_POWER_LOY
+			trigger = { has_disaster = estate_church_disaster }
+			loyalty = -20
+					   }
+	loyalty_modifier = {
+			desc = EST_PEASANTS_WAR
+			trigger = { has_disaster = peasants_war }
+			loyalty = -20
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_BENEVOLENT
+			trigger = { personality = benevolent_personality }
+			loyalty = 5
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_JUST
+			trigger = { personality = just_personality }
+			loyalty = 5
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_RIGHTEOUS
+			trigger = { personality = righteous_personality }
+			loyalty = 2
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_KIND_HEARTED
+			trigger = { personality = kind_hearted_personality }
+			loyalty = 2
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_MIDAS_TOUCHED
+			trigger = { personality = midas_touched_personality }
+			loyalty = 2
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_SILVER_TONGUE
+			trigger = { personality = silver_tongue_personality }
+			loyalty = 2
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_INCORRUPTIBLE
+			trigger = { personality = incorruptible_personality }
+			loyalty = 2
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_SECRETIVE
+			trigger = { personality = secretive_personality }
+			loyalty = -2
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_BABBLING
+			trigger = { personality = babbling_buffoon_personality }
+			loyalty = -2
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_EMBEZZLER
+			trigger = { personality = embezzler_personality  }
+			loyalty = -5
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_SINNER
+			trigger = { personality = sinner_personality }
+			loyalty = -2
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_GREEDY
+			trigger = { personality = greedy_personality }
+			loyalty = -5
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_CRUEL
+			trigger = { personality = cruel_personality  }
+			loyalty = -2
+					   }
+	loyalty_modifier = {
+			desc = EST_VAL_MALEVOLENT
+			trigger = { personality = malevolent_personality }
+			loyalty = -5
+					   }
+				  
+	interaction = {
+			name = REDISTRIBUTE_WEALTH
+			icon = 7
+			
+			years_between_use = 20
+			
+			potential = { NOT = { has_disaster = estate_church_disaster } }
+						
+			trigger = { always = yes }
+					  
+			effect = {
+					  add_years_of_income = -0.25
+					  add_estate_loyalty = {
+											estate = estate_peasants
+											loyalty = 15
+										   }
+					 }
+					 
+			ai_will_do = { 
+						  factor = 1
+						  modifier = {
+									  factor = 0
+									  NOT = { years_of_income = 0.5 }				
+								     }
+						  modifier = {
+									  factor = 0
+								      estate_loyalty = {
+													    estate = estate_peasants
+													    loyalty = 40
+													   }
+									 }
+						 }
+	
+				  }
+				  
+	interaction = {
+			name = MOTIVATE_PEASANTS
+			icon = 17
+			
+			years_between_use = 20
+						
+			trigger = {
+					   estate_loyalty = {
+										 estate = estate_peasants
+										 loyalty = 40
+										}
+					  }
+					  
+			effect = {
+					  add_country_modifier = {
+											  name = peasants_motivated
+											  duration = 3650
+											 }
+					  add_estate_loyalty = {
+											estate = estate_peasants
+											loyalty = -15
+										   }			
+					 }
+					 
+			ai_will_do = { 
+						  factor = 1 
+						  modifier = {
+									  factor = 0
+									  NOT = {
+											 estate_loyalty = {
+															   estate = estate_peasants
+															   loyalty = 50
+															  }
+											}
+									 }
+						 }
+	
+				  }
+				  
+	interaction = {
+			name = PEASANT_MILITARY_SUPPORT
+			icon = 12
+			
+			years_between_use = 20
+			
+			potential = { NOT = { has_disaster = estate_church_disaster } }
+								
+			trigger = {
+					   estate_loyalty = {
+										 estate = estate_peasants
+										 loyalty = 40
+										}
+					   estate_influence = {
+										   estate = estate_peasants
+										   influence = 40
+										  }	
+					  }
+					  
+			effect = {
+					  add_country_modifier = {
+											  name = peasant_military_support
+											  duration = 3650
+											 }
+					  add_estate_loyalty = {
+											estate = estate_peasants
+											loyalty = -20
+										   }
+					  add_estate_influence_modifier = {
+													   estate = estate_peasants
+													   desc = EST_VAL_PEASANT_MILITARY
+													   influence = 15
+													   duration = 3650
+													  }
+					 }
+					 
+			ai_will_do = { factor = 0 }
+	
+				  }
+				  
+	interaction = {
+			name = PEASANT_TAX_BREAK
+			icon = 6
+			
+			years_between_use = 20
+			
+			potential = { NOT = { has_disaster = estate_church_disaster } }
+								
+			trigger = { always = yes }
+					  
+			effect = {
+					  add_country_modifier = {
+											  name = peasant_tax_break
+											  duration = 3650
+											 }
+					  add_estate_loyalty = {
+											estate = estate_peasants
+											loyalty = 25
+										   }
+					  add_estate_influence_modifier = {
+													   estate = estate_peasants
+													   desc = EST_VAL_PEASANT_TAX
+													   influence = 5
+													   duration = 3650
+													  }
+					 }
+					 
+			ai_will_do = { factor = 0 }
+	
+				  }
+				  
+	interaction = {
+			name = PEASANT_EMIGRATION
+			icon = 16
+			
+			years_between_use = 20
+			
+			potential = { NOT = { has_disaster = estate_church_disaster } }
+								
+			trigger = {
+					   estate_loyalty = {
+										 estate = estate_peasants
+										 loyalty = 35
+										}
+					   estate_influence = {
+										   estate = estate_peasants
+										   influence = 40
+										  }	
+					   any_owned_province = { is_colony = yes }
+					  }
+					  
+			effect = {
+					  add_country_modifier = {
+											  name = peasant_emigration
+											  duration = 3650
+											 }
+					  add_estate_loyalty = {
+											estate = estate_peasants
+											loyalty = -20
+										   }
+					  add_estate_influence_modifier = {
+													   estate = estate_peasants
+													   desc = EST_VAL_PEASANT_COLONY
+													   influence = 15
+													   duration = 3650
+													  }
+					 }
+					 
+			ai_will_do = { factor = 0 }
+	
+				  }
+				  
+	}
+	
+	

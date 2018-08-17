@@ -1,0 +1,60 @@
+# c_nazwa
+665.1.1={
+	liege="d_oman"
+}
+751.1.1={
+	holder = 188763 # al-Julanda bin Masood
+}
+851.1.1 = {
+	holder = 74037
+}
+886.1.1 = {
+	holder = 130000035 #Rashid bin Al-Nadhar
+}
+899.1.1 = {
+	holder = 130000036 #Abdullah bin Mohammed
+}
+939.1.1 = {
+	holder = 100000030 #Sa'id bin Abdullah Azdid
+}
+960.6.1 = {
+	holder = 100000161 #Rashid bin Waleed Azdid
+}
+973.1.1 = {
+	holder = 1000250581
+	liege = "d_oman"
+}
+1002.1.1 = {
+	holder = 130000037 #al-Khalil bin Shadhan
+}
+1032.1.1 = {
+	holder = 100000198 #Rashid bin Sa'id 
+}
+1053.1.1 = {
+	liege = "d_hormuz"
+	holder = 1000250584
+}
+1109.1.1 = {
+	holder = 1000250585
+}
+1154.1.1={
+	liege="d_oman"
+}
+1154.1.1 = {	
+	holder = 144145
+}
+1161.1.1 = {
+	holder = 144560
+}
+1210.1.1 = {
+	holder = 144561
+}
+1250.1.1 = {
+	holder = 144562
+}
+1278.1.1 = {
+	holder = 144563
+}
+1285.1.1 = {
+	holder = 144564
+}

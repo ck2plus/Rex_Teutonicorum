@@ -1,0 +1,40 @@
+communal_ideas = {
+	start = {
+		religious_unity = 0.30
+		num_accepted_cultures = 1
+	}
+
+	bonus = {
+		republican_tradition = 0.50
+	}
+	
+	trigger = {
+		government = peasants_republic
+	}
+	free = yes		#will be added at load.
+	
+	no_lords_masters = {
+		hostile_attrition = 1.0
+		defensiveness = 0.1
+	}
+	welfare_programs = {
+		global_unrest = -1
+	}
+	greater_good = {
+		yearly_corruption = -0.1
+	}
+	collectivism = {
+		production_efficiency = 0.1
+	}
+	shared_community = {
+		num_accepted_cultures = 1
+		tolerance_heretic = 1
+		tolerance_heathen = 1
+	}
+	international_communalism = {
+		rebel_support_efficiency = 0.2
+	}
+	peasant_liberation = {
+		years_of_nationalism = -5
+	}
+}

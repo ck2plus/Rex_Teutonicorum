@@ -1,0 +1,16 @@
+774.1.1 = {
+	de_jure_liege = k_italy
+}
+950.11.22 = {
+	liege = k_italy
+	holder = 1000094288
+}
+954.1.1 = {
+	holder = 7727
+}
+962.2.2 = {
+	liege = e_hre
+}
+991.1.1 = {
+	holder = 0
+}

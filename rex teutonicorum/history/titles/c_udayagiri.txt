@@ -1,0 +1,30 @@
+730.1.1={
+	liege = d_tondai_nadu
+	holder = 189073
+}
+796.1.1 = {
+	holder = 189072
+}
+846.1.1 = {
+	holder = 175070
+}
+869.1.1={
+	holder = 189071
+}
+897.1.1={
+	holder = 189032 #Chola conquest
+}
+1063.1.1=
+{
+	holder = 189104
+	liege = d_vengi
+}
+1230.1.1 = {
+	liege = "k_telingana"
+}
+1323.1.1 = {
+	liege = e_rajastan
+}
+1325.1.1 = {
+	liege = d_vengi
+}

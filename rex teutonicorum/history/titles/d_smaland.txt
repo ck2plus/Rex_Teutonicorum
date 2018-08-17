@@ -1,0 +1,13 @@
+# Duchy of Småland
+860.1.1 = {
+	holder = 41266 # Fictional local chief
+}
+875.1.1 = {
+	holder = 130000017
+}
+923.1.1 = {
+	holder = 110000034
+}
+966.1.1 = {
+	holder = 0
+}

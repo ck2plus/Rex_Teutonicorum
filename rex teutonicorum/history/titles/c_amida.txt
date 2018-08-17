@@ -1,0 +1,82 @@
+742.1.1={
+	liege="d_jazira"
+	holder=146132
+}
+759.1.1={
+	holder=146133
+}
+803.1.1={
+	holder=146135
+}
+817.1.1={
+	holder=146136
+}
+861.1.1 = {
+	liege = "d_azerbaijan"
+}
+861.1.1 = {
+	holder = 159733
+}
+950.1.1 = {
+	liege = d_mosul
+}
+#Marwanids
+983.1.1 = {
+	liege = d_jazira
+	holder = 159143 #Badh
+}
+990.1.1 = {
+	holder = 159145 #Al-Hasan
+}
+997.1.1 = {
+	holder = 159146 #Sa'id
+}
+1010.1.1 = {
+	holder = 100000191 #Sharwin
+}
+1011.1.1 = {
+	holder = 159147 #Ahmed
+}
+1058.1.1 = {
+	liege = k_persia
+}
+1061.1.1 = {
+	holder = 20738 #Nasr
+}
+1079.1.1 = {
+	holder = 93419 #Mansur
+}
+1086.1.1 = {
+	liege = "d_mesopotamia"
+	holder = 144065
+}
+1091.1.1 = {
+	holder = 144067
+}
+1100.1.1 = {
+	holder = 93420
+}
+1141.1.1 = {
+	holder = 93421
+}
+1183.1.1 = {
+	liege = "d_edessa"
+}
+1183.1.1 = {
+	holder = 226052
+}
+1196.1.1 = {
+	holder = 32918
+}
+1216.10.8 = {
+	holder = 32920
+}
+1250.1.1 = {
+	holder = 93422
+}
+1283.1.1 = {
+	holder = 93423
+}
+1320.1.1 = {
+	holder = 93424
+}

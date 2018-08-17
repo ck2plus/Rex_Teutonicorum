@@ -1,0 +1,241 @@
+
+on_startup = {
+			events = {
+					  rexteut.0002
+					  rexteut.0008
+					  rexteut.0014
+					  rexteut.0016
+					  rexteut.0018
+					  #rexteut.0023
+					  rexteut.0027
+                     }
+             }
+
+on_create_title = {
+			events = {
+					  rexteut.0010
+					  rexteut.0018
+					  rexteut.0027
+					  rexteut.0033
+					  rexteut.5018
+					  rexteut.7015
+                     }                 
+                  }
+on_new_holder = {
+			events = {
+					  rexteut.0001
+					  rexteut.0002
+					  rexteut.0003
+					  rexteut.0010
+					  #rexteut.0012
+					  rexteut.0013
+					  rexteut.0018
+					  rexteut.0020
+					  #rexteut.0022
+					  #rexteut.0024
+					  rexteut.0025
+					  rexteut.0026
+					  rexteut.0027
+					  rexteut.0029
+					  rexteut.0030
+					  #rexteut.0033
+					  rexteut.0034
+					  rexteut.2012
+					  rexteut.2023
+					  rexteut.2024
+					  rexteut.2027
+					  rexteut.5001
+					  rexteut.5017
+					  rexteut.5018
+					  rexteut.5026
+					  rexteut.5041
+					  rexteut.5057
+					  rexteut.60101
+					  rexteut.6011
+					  rexteut.7007
+					  rexteut.7012
+					  rexteut.7014
+                     }
+                }
+
+on_new_holder_inheritance = {
+			events = {
+					  rexteut.0001
+					  rexteut.0002
+					  rexteut.0003
+					  rexteut.0010
+					  #rexteut.0012
+					  rexteut.0013
+					  rexteut.0018
+					  rexteut.0020
+					  #rexteut.0022
+					  #rexteut.0024
+					  rexteut.0025
+					  rexteut.0026
+					  rexteut.0027
+					  rexteut.0029
+					  rexteut.0030
+					  #rexteut.0033
+					  rexteut.0034
+					  rexteut.2012
+					  rexteut.2023
+					  rexteut.2024
+					  rexteut.2027
+					  rexteut.5001
+					  rexteut.5017
+					  rexteut.5018
+					  rexteut.5026
+					  rexteut.5057
+					  rexteut.60101
+					  rexteut.7007
+					  rexteut.7012
+					  rexteut.7014
+                     }
+                            }
+ 
+on_new_holder_usurpation = {
+			events = {
+					  rexteut.0001
+					  rexteut.0002
+					  rexteut.0003
+					  rexteut.0010
+					  rexteut.0012
+					  rexteut.0013
+					  rexteut.0018
+					  rexteut.0020
+					  #rexteut.0022
+					  #rexteut.0024
+					  rexteut.0025
+					  rexteut.0026
+					  rexteut.0027
+					  rexteut.0029
+					  rexteut.0030
+					  rexteut.0033
+					  rexteut.0034
+					  rexteut.2012
+					  rexteut.2023
+					  rexteut.2024
+					  rexteut.2027
+					  rexteut.5001
+					  rexteut.5017
+					  rexteut.5018
+					  rexteut.5026
+					  rexteut.5041
+					  rexteut.5057
+					  rexteut.60101
+					  rexteut.6011
+					  rexteut.7007
+					  rexteut.7012
+					  rexteut.7014
+                     }
+                           }
+						   
+on_war_started = {
+			events = {
+					  rexteut.5067
+					 }
+			     }
+						   
+on_war_ended_victory = {
+			events = {
+					  rexteut.0010
+					  #rexteut.0022
+					  #rexteut.0024
+					  rexteut.1017
+					  rexteut.2028
+					  #rexteut.3022
+                     }
+                       } 
+on_war_ended_whitepeace = {
+			events = {
+					  rexteut.0010
+					  #rexteut.0022
+					  #rexteut.0024
+                     }
+                          } 
+on_war_ended_defeat = {
+			events = {
+					  rexteut.0010
+					  #rexteut.0022
+					  #rexteut.0024
+					  rexteut.1016
+					  rexteut.1020
+					  rexteut.3010
+                     }
+                      } 
+on_release_from_prison = {
+			events = {
+						rexteut.0015
+					   }
+						 }
+on_exiled = {
+			events = {
+					  rexteut.0015
+					 }
+			}
+
+on_county_religion_change = {
+			events = {
+					  rexteut.0009
+				      rexteut.0011
+				     }
+							}
+on_character_convert_religion = {
+			events = {
+					  rexteut.0017
+					 }
+							    }
+				
+on_death = {
+			events = {
+					  rexteut.0018
+					  rexteut.0021
+					  rexteut.0028
+					  rexteut.5042
+					  rexteut.5056
+					  rexteut.5060
+					 }
+		   }
+
+on_yearly_pulse = {
+			events = {
+					  rexteut.0006
+					 }
+			random_events = {
+							 75 = rexteut.3001
+							 75 = rexteut.5072
+							}
+				  }
+				  
+on_character_convert_culture = {
+			events = {
+					  rexteut.0027
+					 }
+							   }
+on_chronicle_start = {
+			events = {
+					  rexteut.0027
+					 }
+					 }
+				  
+on_birth = {
+			events = {
+					  rexteut.0039
+					  rexteut.50581
+					 }
+		   }
+		   
+on_eu4_conversion_start = {
+			events = {
+					  rexteut.0031
+					  rexteut.0035
+					 }
+						 }
+		   
+on_eu4_conversion_done = {
+			events = {
+					  rexteut.0032
+					  rexteut.0036
+					 }
+						}
+				

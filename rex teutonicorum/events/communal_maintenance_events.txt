@@ -1,0 +1,1196 @@
+namespace = cmnl
+
+###Startup event for communal realms###
+letter_event = {
+	id = cmnl.0001
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   NOT = {
+					  has_game_rule = {
+									   name = communal_admn_rule
+									   value = off
+									  }
+					 }
+			   OR = {
+					 government = communal_government
+					 primary_title = { has_law = communal_administration }
+					}
+			   NOT = { communal_modifier_trigger = yes }
+			  }
+			  
+	immediate = {
+				 set_variable = {
+								 which = peasant_discontent
+								 value = 30
+								}
+				 any_demesne_title = {
+									  limit = { higher_tier_than = BARON }
+									  revoke_law = feudal_administration
+									  add_law = communal_administration
+									 }
+				 communal_modifier_effect = yes
+				 any_vassal = {
+							   limit = { lower_tier_than = COUNT }
+							   primary_title = { succession = open_elective }
+							  }
+				}
+			   }
+			   
+letter_event = { #Communal vassals switching to feudal on startup for no obvious reason?
+	id = cmnl.00099
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = { communal_modifier_trigger = yes }
+			  
+	immediate = { 
+				 set_government_type = communal_government 
+				 clr_character_flag = "comm_succ_blocker"
+				 any_demesne_title = {
+									  limit = { higher_tier_than = BARON }
+									  revoke_law = feudal_administration
+									  add_law = communal_administration
+									 }
+				 communal_modifier_effect = yes
+				}
+
+			   }
+			   
+###Event for giving relevant modifiers to communal rulers###
+letter_event = {
+	id = cmnl.0002
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   OR = {
+					 communal_government_trigger = yes
+					 communal_modifier_trigger = yes
+					}
+			  }
+			  
+	immediate = { communal_modifier_effect_na = yes }
+	
+			   }
+			   
+letter_event = {
+	id = cmnl.00098
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   FROMFROM = {
+						   communal_modifier_trigger = yes
+						  }
+			  }
+			  
+	immediate = {
+				 FROMFROM = {
+							 letter_event = {
+											 id = cmnl.0002
+											 days = 1
+										    }
+							}
+				 communal_modifier_effect_na = yes
+				}
+
+			   }
+			   
+###Event for Communal rulers to inherit their predecessor's peasant discontent###
+letter_event = {
+	id = cmnl.00031
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			  }
+			  
+	immediate = {
+				 set_character_flag = "dying_ruler"
+				}
+
+			   }
+letter_event = {
+	id = cmnl.0003
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   NOT = { has_character_flag = "non_communal" }
+			   OR = {
+					 primary_title = { has_law = communal_administration }
+					 liege = { communal_government_trigger = yes }
+					 has_character_flag = "communal_character"
+					 #has_character_flag = "staying_communal"
+					}
+			   FROMFROM = { communal_government_trigger = yes }
+			   primary_title = { title = FROM }
+			  }
+			  
+	immediate = {
+				 communal_succession_effect = yes
+				}
+			   }
+			   
+#letter_event = {
+#	id = cmnl.00031
+#	
+#	hide_window = yes
+#	
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#			   communal_modifier_trigger = yes
+#			   OR = {
+#					 NOT = { government = communal_government }
+#					 lower_tier_than = COUNT
+#					}
+#			  }
+#			  
+#	immediate = {
+#				 FROM = {
+#						 if = {
+#							   limit = { NOT = { communal_modifier_trigger = yes } }
+#							   set_variable = {
+#											   which = peasant_discontent
+#											   which = ROOT
+#											  }
+#							   communal_modifier_effect = yes
+#							  }
+#						}
+#				 set_variable = {
+#								 which = peasant_discontent
+#								 value = 0
+#								}
+#				 remove_character_modifier = peasants_happy
+#				 remove_character_modifier = peasants_content
+#				 remove_character_modifier = peasants_unhappy
+#				 remove_character_modifier = peasants_angry
+#				 remove_character_modifier = peasants_rebellious
+#				}
+#			   }
+#			   
+letter_event = {
+	id = cmnl.00032
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   government = communal_government
+			   communal_modifier_trigger = yes
+			   current_heir = { is_ruler = no }
+			  }
+			  
+	immediate = {
+				 current_heir = {
+								 set_character_flag = "communal_character"
+								 set_variable = {
+												 which = peasant_discontent
+												 which = ROOT
+												}
+								 communal_modifier_effect_na = yes
+								}
+				}
+			   }
+			   
+###Newly independent communal realms get the peasant discontent variable###
+letter_event = {
+	id = cmnl.0004
+	
+	hide_window = yes
+	
+	only_independent = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   NOT = { communal_modifier_trigger = yes }
+			  }
+			  
+	immediate = {
+				 letter_event = {
+								 id = cmnl.00041
+								 days = 5
+								}
+				}
+	
+			   }
+			   
+letter_event = {
+	id = cmnl.00041
+	
+	hide_window = yes
+	
+	only_playable = yes
+	only_independent = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   NOT = { communal_modifier_trigger = yes }
+			  }
+			  
+	immediate = {
+				 set_variable = {
+								 which = peasant_discontent
+								 value = 30
+								}
+				 communal_modifier_effect = yes
+				}
+	
+			   }
+			   
+letter_event = { 
+	id = cmnl.00042
+	
+	hide_window = yes
+	
+	only_playable = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   FROM = {
+					   government = communal_government
+					   NOT = { communal_modifier_trigger = yes }
+					  }
+			  }
+			  
+	immediate = {
+				 FROM = {
+						 letter_event = { id = cmnl.0004 days = 2 }
+						}
+				}
+			   }
+			   
+###Gradually ticking up peasant discontent if certain modifiers exist in realm###
+letter_event = {
+	id = cmnl.0005
+	hide_window = yes
+	
+	only_playable = yes
+	
+	mean_time_to_happen = { months = 1 }
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   peasant_discontent_trickle_trigger = yes
+			   NOT = { peasant_content_trickle_trigger = yes }
+			   NOT = { any_demesne_province = { has_province_modifier = recent_county_uprising } }
+			  }
+			  
+	immediate = {
+				 change_variable = {
+									which = peasant_discontent
+									value = 1
+								   }
+				 if = { #Will hopefully help the AI deal with the PD mechanics
+					   limit = { 
+								ai = yes 
+								OR = {
+									  has_character_modifier = peasants_unhappy
+									  has_character_modifier = peasants_angry
+									  has_character_modifier = peasants_rebellious
+									 }
+							   }
+					   random = {
+								 chance = 50
+								 change_variable = {
+													which = peasant_discontent
+													value = -1
+												   }
+							    }
+					  }
+				 communal_modifier_effect_na = yes
+				}
+			   }
+			   
+###Gradually ticking down peasant discontent if certain modifiers exist in realm###
+letter_event = {
+	id = cmnl.0006
+	hide_window = yes
+	
+	only_playable = yes
+	
+	mean_time_to_happen = { months = 1 }
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   peasant_content_trickle_trigger = yes
+			   NOT = { peasant_discontent_trickle_trigger = yes }
+			  }
+			  
+	immediate = {
+				 change_variable = {
+									which = peasant_discontent
+									value = -1
+								   }
+				 communal_modifier_effect_na = yes
+				}
+			   }
+			   
+			   
+###Removes flags for communal rulers###
+letter_event = {
+	id = cmnl.0007
+	hide_window = yes
+	
+	only_playable = yes
+	has_character_flag = "reduced_peasant_discontent"
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   government = communal_government
+			   had_character_flag = {
+									 flag = "reduced_peasant_discontent"
+									 days = 750
+									}
+			  }
+			  
+	immediate = {
+				 clr_character_flag = "reduced_peasant_discontent"
+				}
+	
+			   }
+			   
+letter_event = {
+	id = cmnl.00071
+	hide_window = yes
+	
+	only_playable = yes
+	has_character_flag = "communal_position_retained"
+	
+	is_triggered_only = yes	
+	
+	trigger = {
+			   government = communal_government
+			   had_character_flag = {
+									 flag = "communal_position_retained"
+									 days = 1095
+									}
+			  }
+			  
+	immediate = {
+				 clr_character_flag = "communal_position_retained"
+				}
+			  
+
+			   }
+			   
+letter_event = {
+	id = cmnl.00072
+	hide_window = yes
+	
+	only_playable = yes
+	only_independent = yes
+	has_character_flag = "rejected_communal_nap"
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   government = communal_government
+			   had_character_flag = {
+									 flag = "rejected_communal_nap"
+									 days = 1825
+									}
+			  }
+			  
+	immediate = { clr_character_flag = "rejected_communal_nap" }
+			
+			   }
+
+###Events to ensure non-communal vassals in communal realms stay that way (unless exempt)###
+letter_event = {
+	id = cmnl.0008
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   independent = no
+			   FROMFROM = { NOT = { government = communal_government } }
+			   liege = { government = communal_government }
+			   FROM = { NOT = { has_law = communal_administration } }
+			   NOT = { primary_title = { has_law = communal_administration } }
+			  }
+			  
+	immediate = { 
+				 switch_from_communal_effect = yes
+				}
+			   }
+
+letter_event = {
+	id = cmnl.00081
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   government = communal_government
+			   NOT = { 
+					  FROM = { 
+							  OR = {
+									government = communal_government
+									can_communal_trigger = yes
+								   }
+							 } 
+					 }
+			  }
+			  
+	immediate = { FROM = { set_character_flag = "non_communal" } }
+	
+			   }
+			   
+###Communal rulers seizing land upsets their non-communal vassals###
+letter_event = {
+	id = cmnl.0009
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   government = communal_government
+			   FROMFROM = {
+						   is_alive = yes
+						   NOT = { government = communal_government }
+						  }
+			  }
+			  
+	immediate = {
+				 any_realm_character = {
+										limit = { 
+												 is_ruler = yes
+												 NOT = { government = communal_government } 
+												}
+										opinion = {
+												   who = ROOT
+												   modifier = opinion_seized_land
+												   years = 100
+												  }
+									   }
+				}
+	
+			   }
+	
+###Non-communal ruler inherits title with communal administration###
+letter_event = {
+	id = cmnl.0010
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   NOT = { government = communal_government }
+			   FROM = { has_law = communal_administration }
+			   NOT = { has_character_flag = "communal_character" }
+			  }
+			  
+	immediate = {
+				 if = {
+					   limit = { primary_title = { title = FROM } }
+					   any_vassal = {
+								     limit = { government = communal_government }
+									 character_event = { id = cmnl.1030 }
+									}
+					  }
+				 FROM = {
+						revoke_law = communal_administration
+						add_law = feudal_administration
+						}
+				}
+
+			   }
+			   
+###Events to ensure communal vassals in non-communal realms stay that way###
+letter_event = {
+	id = cmnl.0011
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   independent = no
+			   FROMFROM = { government = communal_government }
+			   NOT = { liege = { government = communal_government } }
+			   OR = {
+					 government = communal_government
+					 has_character_flag = "communal_character"
+					}
+			  }
+			  
+	immediate = { 
+				 set_government_type = communal_government
+				}
+			   }
+
+letter_event = {
+	id = cmnl.00111
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   FROM = { government = communal_government }
+			   NOT = { government = communal_government }
+			  }
+			  
+	immediate = { FROM = { set_character_flag = "staying_communal" } }
+	
+			   }
+			   
+###Communal-possible revolters against communal realms are set to communal###
+letter_event = {
+	id = cmnl.0012
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   government = communal_government
+			   FROM = { 
+					   can_communal_trigger = yes
+					   any_war = {
+								  OR = {
+										using_cb = peasant_revolt
+										using_cb = religious_revolt
+									   }
+								  
+								 }
+					  }
+			  }
+			  
+	immediate = {
+				 FROM = { 
+						 #set_government_type = communal_government 
+						 set_character_flag = "communal_failsafe"
+						 set_character_flag = "new_peasant_leader"
+						}
+				}
+			   }
+
+###Executing a peasant leader raises peasant discontent###
+letter_event = {
+	id = cmnl.0013
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = { 
+			   trait = peasant_leader
+			   FROM = { communal_government_trigger = yes } 
+			  }
+	
+	immediate = {
+				 FROM = {
+						 change_variable = {
+											which = peasant_discontent
+											value = 3
+										   }
+						 communal_modifier_effect = yes
+						}
+				}
+
+			   }
+			   
+###Flags for unlanded communal characters to ensure proper succession###
+letter_event = {
+	id = cmnl.0014
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   is_ruler = no
+			   liege = { communal_government_trigger = yes }
+			   #NOT = { has_character_flag = "non_communal" }
+			  }
+			  
+	immediate = {
+				 set_character_flag = "communal_character"
+				}
+			   }
+			   
+###Peasant reactions to feudal ruler obtaining communal provinces###
+letter_event = {
+	id = cmnl.0015
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   is_feudal = yes
+			   NOT = { government = communal_government }
+			   FROM = { lower_tier_than = DUKE }
+			   FROMFROM = { government = communal_government }
+			  }
+			  
+	immediate = {
+				 FROM = {
+						 location = {
+									 random_list = {
+													30 = {
+														  modifier = {
+																	  factor = 2
+																	  OR = {
+																			culture = ROOT
+																			religion = ROOT
+																		   }
+																     }
+														  add_province_modifier = {
+																				   name = peasants_cowed
+																				   duration = 1825
+																				  }
+														 }
+													70 = {
+														  add_province_modifier = {
+																				   name = peasants_defiant
+																				   duration = 1825
+																				  }
+														 }
+												   }
+									}
+						}
+				}
+
+			   }
+			   
+###Removes Tondrakian stronghold modifier from non-Tondrakian province###
+province_event = {
+	id = cmnl.0016
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_province_modifier = tondrakian_stronghold
+			   NOT = { religion = tondrakian }
+			  }
+			  
+	immediate = { 
+				 remove_province_modifier = tondrakian_stronghold 
+				 clr_province_flag = "former_tondrakian_stronghold"
+				 owner = {
+						  top_liege = { letter_event = { id = cmnl.1054 } }
+						 }
+				}
+
+				 }
+
+
+###Removes peasant modifiers if a communal ruler retakes a former communal province###
+letter_event = {
+	id = cmnl.0017
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   government = communal_government
+			   any_demesne_province = {
+									   OR = {
+											 has_province_modifier = peasants_cowed
+											 has_province_modifier = peasants_defiant
+											}
+									  }
+			  }
+			  
+	immediate = {
+				 any_demesne_province = {
+										 remove_province_modifier = peasants_cowed
+										 remove_province_modifier = peasants_defiant
+										}
+				}
+
+			   }
+			   
+###Reset peasant discontent from successful revolters from Communal realms###
+letter_event = {
+	id = cmnl.0018
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   FROM = {
+					   can_communal_trigger = yes
+					   any_war = {
+								  defender = { character = ROOT }
+								  OR = {
+										using_cb = peasant_revolt
+										using_cb = religious_revolt
+									   }
+								 }
+					  }
+			  }
+			  
+	immediate = { FROM = { set_character_flag = "communal_revolter" } }
+
+			   }
+			   
+letter_event = {
+	id = cmnl.00181
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   FROM = { has_character_flag = "communal_revolter" }
+			  }
+			  
+	immediate = {
+				 FROM = {
+						 set_variable = {
+										 which = peasant_discontent
+										 value = 30
+										}
+						 new_peasant_ruler_effect = yes
+						 communal_modifier_effect = yes
+						 clr_character_flag = "communal_revolter"
+						}
+				}
+			   }  
+letter_event = {
+	id = cmnl.00182
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   communal_government_trigger = yes
+			   FROM = { has_character_flag = "communal_revolter" }
+			  }
+			  
+	immediate = {
+				 FROM = {
+						 clr_character_flag = "communal_revolter"
+						}
+				}
+			   }
+			   
+###Event to put tondrakian stronghold modifier on game start###
+letter_event = {
+	id = cmnl.0019
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   NOT = { year = 1050 }
+			   has_global_flag = "tondrakians_rising"
+			   has_game_rule = {
+								name = communal_uprising_rule
+								value = on
+							   }
+			  }
+			  
+	immediate = {
+				 any_province = {
+								 limit = { religion = tondrakian }
+								 add_province_modifier = {
+														  name = tondrakian_stronghold
+														  duration = -1
+														 }
+								}
+				}
+			   }
+			   
+			   
+###Uyunid invasion###
+letter_event = {
+	id = cmnl.0020
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+	has_character_flag = "uyunid_attacker"
+	}
+	
+	immediate = {
+				 create_title = {
+					       	     tier = DUKE
+					       	     landless = yes
+								 adventurer = yes
+					       	     culture = ROOT
+					       	     name = "UYUNID_INVASION"
+					       	     holder = THIS
+					      	    }
+				 spawn_unit = {
+						province = 649 #Basra
+						owner = ROOT
+						leader = ROOT
+						troops = {
+								light_infantry = { 625 625 }
+								heavy_infantry = { 300 300 }
+								archers = { 525 525 }
+								light_cavalry = { 225 225 }
+								camel_cavalry = { 200 200 }
+								 }
+					    attrition = 0.5
+					    maintenance_multiplier = 0
+					 }
+				create_character = {
+									religion = ROOT
+									culture = ROOT
+									female = no
+									random_traits = yes
+									trait = skilled_tactician
+									dynasty = none
+								   }
+					new_character = {
+									spawn_unit = {
+											province = 651
+											owner = ROOT
+											leader = THIS
+											troops = {
+													  light_infantry = { 625 625 }
+													  heavy_infantry = { 300 300 }
+													  archers = { 525 525 }
+													  light_cavalry = { 225 225 }
+													  camel_cavalry = { 200 200 }
+													 }
+											attrition = 0.5
+											maintenance_multiplier = 0
+												 }
+									}
+				create_character = {
+									religion = ROOT
+									culture = ROOT
+									female = no
+									random_traits = yes
+									trait = skilled_tactician
+									dynasty = none
+								   }
+					new_character = {
+									spawn_unit = {
+											province = 690
+											owner = ROOT
+											leader = THIS
+											troops = {
+													  light_infantry = { 625 625 }
+													  heavy_infantry = { 300 300 }
+													  archers = { 525 525 }
+													  light_cavalry = { 225 225 }
+													  camel_cavalry = { 200 200 }
+													 }
+											attrition = 0.5
+											maintenance_multiplier = 0
+												 }
+									}
+				 any_independent_ruler = {
+										  limit = { has_landed_title = d_amman }
+										  reverse_war = {
+														 target = ROOT
+														 casus_belli = uyunid_1077
+														 thirdparty_title = d_amman
+														}
+										 }
+				 clr_character_flag = "uyunid_attacker"
+				}
+			   }
+			   
+###Removes flags after a war is over###
+letter_event = {
+	id = cmnl.0021
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+			  
+	immediate = {
+				 FROM = {
+						 if = {
+							   limit = { has_character_flag = "non_communal" }
+							   letter_event = {
+										       id = cmnl.00211
+											   days = 5
+											  }
+							  }
+						 if = {
+							   limit = { has_character_flag = "staying_communal" }
+							   letter_event = {
+											   id = cmnl.00212
+											   days = 5
+											  }
+							  }
+						 }
+				}
+			  
+			   }
+	
+letter_event = {
+	id = cmnl.00211
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_character_flag = "non_communal"
+			   war = no
+			  }
+			  
+	immediate = { clr_character_flag = "non_communal" }
+			  
+	
+			   }
+
+letter_event = {
+	id = cmnl.00212
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_character_flag = "staying_communal"
+			   war = no
+			  }
+			  
+	immediate = { clr_character_flag = "staying_communal" }
+			  
+	
+			   }
+###Maintenance event for "No government" bugs###
+letter_event = {
+	id = cmnl.0022
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_rulers = yes
+	
+	trigger = { 
+			   is_tribal = no
+			   is_theocracy = no
+			   is_nomadic = no
+			   is_republic = no
+			   NOR = {
+					  government = communal_government
+					  government = feudal_government
+					  government = muslim_government
+					  government = bogomilist_government
+					  government = imperial_government
+					  government = imperial_bogomilist_government
+					  government = muslim_imperial_government
+					 }
+			  }
+	
+	immediate = {
+				 if = {
+					   limit = { primary_title = { has_law = communal_administration } }
+					   set_government_type = communal_government
+					   if = {
+							 limit = { communal_modifier_trigger = no }
+							 set_variable = {
+											 which = peasant_discontent
+											 value = 30
+											}
+							}
+					   communal_modifier_effect_na = yes
+					   log = "[Root.GetBestName] changed to Communal government"
+					  }
+				 if = {
+					   limit = { 
+								primary_title = { 
+												 OR = {
+													   has_law = feudal_administration 
+													   has_law = late_feudal_administration
+													  }
+												} 
+								NOT = { religion_group = muslim }
+								NOT = { has_character_flag = "communal_failsafe" }
+							   }
+					   set_government_type = feudal_government
+					   communal_modifier_effect_na = yes
+					   log = "[Root.GetBestName] changed to Feudal government"
+					  }
+				 if = {
+					   limit = { 
+								primary_title = { 
+												 OR = {
+													   has_law = feudal_administration 
+													   has_law = late_feudal_administration
+													  }
+												} 
+								religion_group = muslim
+								NOT = { has_character_flag = "communal_failsafe" }
+							   }
+					   set_government_type = muslim_government
+					   communal_modifier_effect_na = yes
+					   log = "[Root.GetBestName] changed to Muslim government"
+					  }
+				 if = {
+					   limit = { 
+								primary_title = { 
+												 OR = {
+													   has_law = feudal_administration 
+													   has_law = late_feudal_administration
+													  }
+												} 
+								has_character_flag = "communal_failsafe" 
+							   }
+					   any_demesne_title = {
+											limit = { higher_tier_than = BARON }
+											add_law = communal_administration
+										   }
+					   set_government_type = communal_government
+					   if = {
+							 limit = { communal_modifier_trigger = no }
+							 set_variable = {
+											 which = peasant_discontent
+											 value = 30
+											}
+							}
+					   communal_modifier_effect_na = yes
+					   log = "[Root.GetBestName] changed to Communal government"
+					  }
+				}
+
+			   }
+
+###Event to ensure peasants rising up against communal realms become communal###
+letter_event = {
+	id = cmnl.0023
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   is_feudal = yes
+			   ai = yes
+			   has_character_flag = "communal_failsafe"
+			   NOT = { government = communal_government }
+			  }
+			  
+	immediate = {
+				 any_demesne_title = {
+									  limit = { higher_tier_than = BARON }
+									  add_law = communal_administration
+									 }
+				 set_government_type = communal_government
+				 set_variable = {
+								 which = peasant_discontent
+								 value = 30
+								}
+				 communal_modifier_effect_na = yes
+				 clr_character_flag = "communal_failsafe"
+				}
+
+			   }
+			   
+###Event to remove communal governments from the game with game rule set to "off"###
+letter_event = {
+	id = cmnl.0024
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_game_rule = {
+								name = communal_admn_rule
+								value = off
+							   }
+			  }
+			  
+	immediate = {
+				 any_playable_ruler = {
+									   limit = { any_demesne_title = { has_law = communal_administration } }
+									   any_demesne_title = {
+															limit = { has_law = communal_administration }
+															add_law = feudal_administration
+															revoke_law = communal_administration
+														   }
+									   switch_to_feudal_effect = yes
+									  }
+				 any_vassal = {
+							   limit = { lower_tier_than = COUNT }
+							   switch_from_communal_effect = yes
+							   character_event = { id = Plus.349 }
+							  }
+				}
+
+			   }
+
+###Mazdaki rulers in 769 are automatically converted to communal on startup###
+letter_event = {
+	id = cmnl.0025
+	hide_window = yes
+	
+	trigger = {
+		NOT = { 
+			e_placeholder = { 
+				had_title_flag = {
+					flag = startup
+					days = 2
+				}
+			} 
+		}
+		ai = no
+		NOT = { year = 770 }
+	}
+	
+	immediate = {
+		any_playable_ruler = {
+			limit = { religion = mazdaki }
+			any_demesne_title = {
+				limit = { higher_tier_than = BARON }
+				revoke_law = feudal_administration
+				add_law = communal_administration
+			}
+			set_government_type = communal_government
+			any_vassal = { 
+				limit = {
+					tier = BARON
+					religion = mazdaki
+				}
+				set_government_type = communal_government 
+			}
+		}
+	}
+}
+
+###

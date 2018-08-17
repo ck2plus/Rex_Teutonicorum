@@ -1,0 +1,97 @@
+673.1.1 = {
+	holder = 160288 #Sorkhab
+}
+717.1.1 = {
+	holder = 160289 #Mehr Mardan
+}
+755.1.1={
+	liege = d_mazandaran
+	holder = 160290 # Surkhab Bavand II
+}
+768.1.1={
+	holder = 160291 #Shervin I
+}
+817.1.1 = {
+	holder = 160292 #Shahriyar I
+}
+825.1.1 = {
+	holder = 160293 #Shapur
+}
+839.1.1 = {
+	holder = 160294 #Karen
+}
+864.1.1 = {
+	holder = 45108
+}
+884.1.1 = {
+	holder = 163166
+}
+930.1.1 = {
+	holder = 166989 #Mardavij
+}
+935.1.1 = {
+	holder = 166990 #Vushmgir
+}
+967.12.1 = {
+	holder = 166992 #Bisutun
+}
+977.1.1 = {
+	holder = 166993 #Qabus
+}
+1012.1.1 = {
+	holder = 166994 #Manuchihr
+}
+1030.1.1 = {
+	holder = 166995 #Anushirvan
+}
+1050.1.1 = {
+	holder = 20703 #Keikavus
+}
+1087.1.1 = {
+	holder = 144144
+}
+1090.1.1 = {
+	liege = "d_hashshashin"
+	holder = 144225
+}
+1124.1.1 = {
+	holder = 144226
+}
+1138.1.1 = {
+	holder = 144227
+}
+1162.1.1 = {
+	holder = 227012
+}
+1192.1.1 = {
+	holder = 144228
+}
+1210.1.1 = {
+	holder = 144229
+}
+1221.1.1 = {
+	holder = 144230
+}
+1255.1.1 = {
+	holder = 144231
+}
+1256.1.1 = {
+	liege = "d_tabriz"
+}
+1256.1.1 = {
+	holder = 93195
+}
+1277.1.1 = {
+	holder = 34430
+}
+1290.1.1 = {
+	holder = 478002
+}
+1327.1.1 = {
+	holder = 478001
+}
+1328.1.1 = {
+	holder = 34431
+}
+
+

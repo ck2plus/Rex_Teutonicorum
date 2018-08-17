@@ -1,0 +1,6 @@
+879.10.15 = {
+	de_jure_liege = "k_provence"
+}
+933.1.1 = {
+	de_jure_liege = "k_burgundy"
+}

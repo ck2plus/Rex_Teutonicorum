@@ -1,0 +1,12 @@
+spriteTypes = {
+	spriteType = {
+				  name = "GFX_evt_papal_crowning"
+				  texturefile = "gfx\\new_events\papal_crowning_rt.dds"
+				  allwaystransparent = yes
+				 }
+	spriteType = {
+				  name = "GFX_evt_conclave"
+				  texturefile = "gfx\\new_events\conclave_rt.dds"
+				  allwaystransparent = yes
+				 }
+			  }

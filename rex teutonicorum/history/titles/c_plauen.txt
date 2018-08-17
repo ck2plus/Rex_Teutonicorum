@@ -1,0 +1,50 @@
+756.1.1={
+	liege=d_thuringia
+	holder = 190387 #Hardrad
+}
+857.1.1={
+	liege=d_meissen
+	holder=184007
+}
+926.1.1 = {
+	holder = 168560 #Theitmar
+}
+932.6.1 = {
+	holder = 168561 #Siegfrid
+}
+937.12.1 = {
+	holder = 168562 #Gero
+}
+973.1.1 = {
+	holder = 33459
+}
+1066.1.1 = {
+	holder = 20266
+}
+1080.1.1 = {
+	holder = 20270
+}
+1123.9.2 = {
+	holder = 212908
+}
+1138.10.20 = {
+	holder = 212908
+}
+1142.1.1 = {
+	holder = 212600
+}
+1180.9.16 = {
+	liege = "d_saxony"
+}
+1180.9.16 = {
+	holder = 212905
+}
+1212.2.2 = {
+	holder = 462114
+}
+1260.10.7 = {
+	holder = 462101
+}
+1298.5.24 = {
+	holder = 462100
+}

@@ -1,0 +1,1492 @@
+namespace = rexteut
+
+###Fatimids take Egypt###
+narrative_event = {
+
+	  id = rexteut.7001
+	  title = EVTNAME_rexteut_7001
+	  desc = EVTDESC_rexteut_7001
+	  picture = GFX_evt_battle
+	  
+	  is_triggered_only = yes
+
+	  major = yes
+	  only_playable = yes
+
+	  trigger = {
+		     dynasty = 589
+		     has_landed_title = k_egypt
+		    }
+			
+	  major_trigger = { 
+					   OR = {
+							 religion_group = muslim
+							 any_realm_title = { region = world_africa }
+							}
+					  }
+
+	  immediate = {
+		       796 = {
+			      set_name = Cairo
+			      build_holding = {
+					       title = b_cairo
+					       type = castle
+					       holder = ROOT
+					      }
+			     }
+		       b_fustat = {
+				   convert_to = CITY
+				  }
+		       c_cairo = {
+			          set_name = ""
+			          adjective = ""
+				 }
+		       d_cairo = {
+			          set_name = ""
+			          adjective = ""
+				 }
+		      }
+
+	  option = {
+		    trigger = {
+			       has_landed_title = k_egypt
+			      }
+		    name = EVTOPTA_rexteut_7001
+		    custom_tooltip = { text = new_capital_cairo }
+		    hidden_tooltip = {
+		    		set_global_flag = "fatimid_egypt"
+		    		k_africa = { destroy_landed_title = yes }
+		    		c_cairo = { grant_title = PREV }
+		    		b_cairo = { 
+			       		   province_capital = yes
+			       		   ROOT = { capital = PREV }
+			      		  }
+				     }
+		   }
+
+	   option = {
+		     trigger = {
+				NOT = { has_landed_title = k_egypt }
+			       }
+		     name = OK
+		    }
+
+		  }
+
+###Pope offers King of Germany a claim to Italy###
+character_event = {
+
+          id = rexteut.7002
+	  desc = EVTDESC_rexteut_7002
+	  picture = GFX_evt_pope
+	  
+	  only_playable = yes
+	  
+	  trigger = {
+		     year = 950
+		     NOT = { has_global_flag = "italian_instability" }
+		     e_hre = { has_holder = no }
+		     has_landed_title = k_germany
+		     has_regent = no
+		     realm_size = 150
+		     rightful_religious_head_scope = {
+						      opinion = {
+								 who = PREV
+								 value = 25
+								}
+						     }
+		     k_italy = {
+			        has_holder = yes
+			        holder_scope = {
+						rightful_religious_head_scope = {
+							NOT = {
+						       	       opinion = {
+									  who = PREV
+									  value = 1
+									 }
+						              }
+										}
+					       }
+			       }
+		     OR = {
+			   religion = chalcedonian
+			   religion = catholic
+			  }
+		     NOT = { has_character_flag = "is_otto" }
+		     e_karling = { 
+				  has_holder = no 
+				  has_title_flag = "carolingian_empire_fallen"
+				 }
+		     NOT = { has_character_flag = "german_italy_claim" }
+		    }
+
+	 mean_time_to_happen = { years = 10 }
+
+	 option = {
+		   name = EVTOPTA_rexteut_7002
+		   ai_chance = { factor = 10 }
+		   add_claim = k_italy
+		   set_character_flag = "german_italy_claim"
+		   hidden_tooltip = {
+				     rightful_religious_head_scope = {
+								      reverse_opinion = {
+											 who = PREV
+											 modifier = opinion_gave_italy
+											 years = 15
+											}
+								     }
+				     any_independent_ruler = {
+							      character_event = { id = rexteut.7003 }
+							     }
+				    }
+		  }
+
+	 option = {
+		   name = EVTOPTB_rexteut_7002
+		   ai_chance = { factor = 1 }
+		   set_character_flag = "german_italy_claim"
+		  }
+
+		  }
+
+###King of Italy informed King of Germany has a Pope-given claim###
+character_event = {
+
+	  id = rexteut.7003
+	  desc = EVTDESC_rexteut_7003
+	  picture = GFX_evt_rival_rulers
+	  
+	  is_triggered_only = yes
+
+	  trigger = {
+		     has_landed_title = k_italy
+		    }
+
+	  immediate = {
+		       opinion = {
+				  who = FROM
+				  modifier = opinion_claim_italy
+				  years = 20
+				 }
+		       rightful_religious_head_scope = {
+							reverse_opinion = {
+									   who = PREV
+									   modifier = opinion_gave_away_italy
+									   years = 20
+									  }
+						       }
+		      }
+
+	  option = {
+		    name = EVTOPTA_rexteut_7003
+		   }
+
+		  }
+
+###Begining of post-Karling Italian instability###
+
+narrative_event = {
+
+		   id = rexteut.7004
+		   title = EVTNAME_rexteut_7004
+		   desc = EVTDESC_rexteut_7004
+		   picture = GFX_evt_pope
+
+		   major = yes
+		   only_playable = yes
+		   religion_group = christian
+
+		   trigger = {
+			      has_game_rule = {
+					       name = rexteut_italy
+					       value = on
+					      }
+			      NOT = { has_global_flag = "italian_instability" }
+			      NOT = { has_global_flag = "italian_stability" }
+			      has_landed_title = k_italy
+			      e_karling = { 
+					   has_holder = no
+					   has_title_flag = "carolingian_empire_fallen" 
+					  }
+			      NOT = { dynasty = 25061 }
+			      e_hre = { has_holder = no }
+			      e_italy = { has_holder = no }
+			      e_roman_empire = { has_holder = no }
+				  OR = {
+						NOT = {
+							   has_game_rule = {
+											    name = rexteut_story
+												value = on
+											   }
+							  }
+						NAND = {
+								k_italy = {
+										   holder_scope = {
+														   OR = {
+																 has_character_flag = "is_berengar"
+																 has_character_flag = "berengheir"
+																 has_character_flag = "is_otto"
+																}
+														  }
+										  }
+								k_germany = {
+											 holder_scope = { has_character_flag = "is_otto" }
+											}
+							   }
+					   }
+			     }
+				 
+		   major_trigger = {
+							OR = {
+								  religion = chalcedonian
+								  religion = catholic
+								  religion = orthodox
+								  any_realm_title = {
+													 OR = {
+														   region = world_europe_south_italy
+														   region = custom_africa
+														  }
+													}
+								 }
+						   }
+
+		   mean_time_to_happen = {
+					  months = 6
+					  modifier = {
+						      factor = 0.5
+						      NOT = {
+							     rightful_religious_head_scope = {
+									reverse_opinion = {
+											   who = PREV
+											   value = 0
+											  }
+											     }
+							    }
+						     }
+					  modifier = {
+						      factor = 0.2
+						      NOT = {
+							     rightful_religious_head_scope = {
+									reverse_opinion = {
+											   who = PREV
+											   value = -30
+											  }
+											     }
+							    }
+						     }
+					  modifier = {
+						      factor = 0.1
+						      is_impious_trigger = yes
+						     }
+					  modifier = {
+						      factor = 0.1
+						      is_evil_trigger = yes
+						     }
+					  modifier = {
+						      factor = 4
+						      is_pious_trigger = yes
+						     }
+					
+					 }
+
+		   immediate = {
+				set_global_flag = "italian_instability"
+			       }
+
+		   option = {
+			     trigger = { has_landed_title = k_italy }
+			     name = EVTOPTA_rexteut_7004
+			     set_character_flag = "pope_unsupported_king"
+			    }
+
+		   option = {
+			     trigger = { NOT = { has_landed_title = k_italy } }
+			     name = OK
+			    }
+
+		  }
+
+###Pope gives claim to Italy to somebody else on promise of crowning###
+
+character_event = {
+
+		   id = rexteut.7005
+		   desc = EVTDESC_rexteut_7005
+		   picture = GFX_evt_pope
+
+		   only_men = yes
+		   min_age = 16
+		   only_playable = yes
+		   capable_only = yes
+		   prisoner = no
+
+		   trigger = {
+			      is_feudal = yes
+				  is_evil_trigger = no
+				  primary_title = { is_former_carolingian_trigger = yes }
+			      has_global_flag = "italian_instability"
+			      NOT = { has_landed_title = k_italy }
+			      NOT = { has_character_flag = "pope_unsupported_king" }
+			      OR = {
+				    religion = catholic
+				    religion = chalcedonian
+				   }
+			      k_italy = {
+					 holder_scope = { 
+							 has_character_flag = "pope_unsupported_king" 
+							}
+					}
+			      OR = {
+				    independent = yes
+				    liege = { has_landed_title = k_italy }
+				   }
+			      rightful_religious_head_scope = {
+							      reverse_opinion = {
+									who = PREV
+									value = 0
+										}
+							      independent = yes
+							      NOT = { has_character_flag = "picked_italy_king" }
+												  }
+			     }
+
+		  mean_time_to_happen = { 
+					 days = 21 
+					 modifier = {
+						     factor = 0.1
+						     had_global_flag = {
+									flag = "italian_instability"
+									days = 7400
+								       }
+						     has_landed_title = k_germany
+						    }
+					 modifier = {
+						     factor = 0.5
+						     has_claim = k_italy
+						    }
+					 modifier = {
+						     factor = 0.5
+						     is_pious_trigger = yes
+						    }
+					 modifier = {
+						     factor = 5
+						     has_vice_trigger = yes
+						    }
+					 modifier = {
+						     factor = 0.5
+						     rightful_religious_head_scope = {
+							      		reverse_opinion = {
+											   who = PREV
+											   value = 40
+											  }
+										     }
+						    }
+					 modifier = {
+						     factor = 0.25
+						     rightful_religious_head_scope = {
+							      		reverse_opinion = {
+											   who = PREV
+											   value = 60
+											  }
+										     }
+						    }
+					}
+
+		  option = {
+			    name = EVTOPTA_rexteut_7005
+			    if = { 
+				  limit = { NOT = { has_claim = k_italy } }
+			    	  add_pressed_claim = k_italy
+				  set_character_flag = "pope_given_claim"
+				 }
+			    set_character_flag = "pope_supported_king"
+			    rightful_religious_head_scope = { set_character_flag = "picked_italy_king" }
+			    k_italy = {
+				       holder_scope = {
+						       character_event = {
+									  id = rexteut.7006
+									  days = 3
+									 }
+						      }
+				      }
+			   }
+
+		  option = {
+			    name = EVTOPTB_rexteut_7005
+			   }
+
+		  }
+
+
+###King of Italy informed the Pope has given a pretender a claim###
+character_event = {
+		   id = rexteut.7006
+		   desc = EVTDESC_rexteut_7006
+		   picture = GFX_evt_pope
+
+		   is_triggered_only = yes
+
+		   trigger = {
+			      has_global_flag = "italian_instability"
+			      has_landed_title = k_italy
+			      has_character_flag = "pope_unsupported_king"
+			     }
+
+		   option = {
+			     name = EVTOPTA_rexteut_7006
+			    }
+
+		  }
+
+###If Pope dies, new Pope can support chosen pretender of predecessor###
+
+letter_event = { #POPE#
+		id = rexteut.7007		
+		hide_window = yes
+		
+		is_triggered_only = yes
+		
+		religion_group = christian
+		
+		trigger = {
+				   has_global_flag = "italian_instability"
+				   is_pope_trigger = yes
+				   NOT = { has_character_flag = "picked_italy_king" }
+				   primary_title = { title = FROM }
+				  }
+				  
+		immediate = {
+				     any_character = {
+									  limit = { has_character_flag = "pope_supported_king" }
+									  letter_event = { id = rexteut.7025 }
+									 }
+					}
+		
+			   }
+			   
+letter_event = {
+		id = rexteut.7025
+		is_triggered_only = yes
+
+		hide_window = yes
+
+		trigger = {
+			   has_character_flag = "pope_supported_king"
+			   rightful_religious_head_scope = {
+							   NOT = {
+								  has_character_flag = "picked_italy_king"
+								 }
+							   }
+			  }
+
+		immediate = {
+			     rightful_religious_head_scope = {
+							      letter_event = {
+									      id = rexteut.7008
+									     }
+							     }
+			    }
+
+	       }
+
+letter_event = { #POPE#
+		id = rexteut.7008
+		desc = OK
+		
+		is_triggered_only = yes
+
+		trigger = {
+			   independent = yes
+			   is_pope_trigger = yes
+			   has_global_flag = "italian_instability"
+			  }
+
+		option = {
+			  ai_chance = {
+				       factor = 1
+				       modifier = {
+						   factor = 5
+						   FROM = { is_pious_trigger = yes }
+						  }
+				       modifier = {
+						   factor = 0
+						   FROM = { is_impious_trigger = yes }
+						  }
+				       modifier = {
+						   factor = 5
+						   opinion = {
+							      who = FROM
+							      value = 50
+							     }
+						  }
+				       modifier = {
+						   factor = 2
+						   opinion = {
+							      who = FROM
+							      value = 30
+							     }
+						  }
+				       modifier = {
+						   factor = 0
+						   NOT = { 
+							  opinion = {
+							             who = FROM
+							             value = -20
+							            }
+							 }
+						  }
+				      }
+			  name = OK #Support previous Pope's pick
+			  FROM = {
+				  character_event = {
+						     id = rexteut.7009
+						     days = 7
+						    }
+				 }
+			  set_character_flag = "picked_italy_king"
+			 }
+
+		option = {
+			  ai_chance = {
+				       factor = 1
+				       modifier = {
+						   factor = 1.5
+						   FROM = { has_vice_trigger = yes }
+						  }
+				       modifier = {
+						   factor = 1.25
+						   NOT = { 
+							  opinion = {
+							             who = FROM
+							             value = 0
+							            }
+							 }
+						  }
+				       modifier = {
+						   factor = 2
+						   NOT = { 
+							  opinion = {
+							             who = FROM
+							             value = -10
+							            }
+							 }
+						  }
+				      }
+			  name = OK #Don't support previous Pope's pick
+			  FROM = {
+				  character_event = {
+						     id = rexteut.7010
+						     days = 7
+						    }
+				 }
+			 }
+	       }
+
+
+###Pretender hears that new Pope continues to support###
+
+character_event = {
+		   id = rexteut.7009
+		   desc = EVTDESC_rexteut_7009
+		   picture = GFX_evt_pope
+
+		   is_triggered_only = yes
+
+		   trigger = {
+			      NOT = { has_landed_title = k_italy }
+			      has_character_flag = "pope_supported_king"
+			      OR = {
+				    religion = catholic
+				    religion = chalcedonian
+				   }
+			      
+			     }
+
+		   option = {
+			     name = EVTOPTA_rexteut_7009
+			    }
+		
+		  }
+
+###Pretender hears that new Pope has withdrawn support###
+
+character_event = {
+		   id = rexteut.7010
+		   desc = EVTDESC_rexteut_7010
+		   picture = GFX_evt_pope
+
+		   is_triggered_only = yes
+
+		   trigger = {
+			      NOT = { has_landed_title = k_italy }
+			      has_character_flag = "pope_supported_king"
+			      OR = {
+				    religion = catholic
+				    religion = chalcedonian
+				   }
+			      
+			     }
+
+		   option = {
+			     name = EVTOPTA_rexteut_7010
+			     clr_character_flag = "pope_supported_king"
+			     set_character_flag = "pope_unsupported_king"
+			     if = {
+				   limit = { has_character_flag = "pope_given_claim" }
+				   clr_character_flag = "pope_given_claim"
+				   remove_claim = k_italy
+				  }
+			    }
+		
+		  }
+
+###Successful pretender is given a Papal crowning as promised###
+narrative_event = {
+
+		   id = rexteut.7011
+		   title = EVTNAME_rexteut_7011
+		   desc = EVTDESC_rexteut_7011
+		   picture = GFX_evt_papal_crowning
+		   major = yes
+		   religion_group = christian
+		   only_playable = yes
+
+		   trigger = {
+			      has_global_flag = "italian_instability"
+			      has_character_flag = "pope_supported_king"
+			      has_landed_title = k_italy
+			     }
+				 
+		   major_trigger = {
+							OR = {
+								  religion = chalcedonian
+								  religion = catholic
+								  religion = orthodox
+								  any_realm_title = {
+													 OR = {
+														   region = world_europe_south_italy
+														   region = custom_africa
+														  }
+													}
+								 }
+						   }
+
+		   mean_time_to_happen = {
+					  days = 20
+					 }
+
+		   option = {
+			     trigger = { has_landed_title = k_italy }
+			     name = EVTOPTA_rexteut_7011
+			     clr_character_flag = "pope_supported_king"
+			     prestige = 100
+			     add_trait = crowned_by_pope
+			     hidden_tooltip = {
+					       remove_trait = uncrowned
+					       remove_trait = crowned
+					      }
+			    }
+
+		   option = {
+			     trigger = { NOT = { has_landed_title = k_italy }}
+			     name = OK
+			    }
+
+		  }
+
+
+###New Pope choose whether to support crowned Italian king (POPE EVENT)###
+
+letter_event = {
+		id = rexteut.7012
+		desc = OK
+
+		is_triggered_only = yes
+
+		trigger = {
+			   has_global_flag = "italian_instability"
+			   NOT = { has_character_flag = "picked_italy_king" }
+			   is_pope_trigger = yes
+			   k_italy = {
+				      holder_scope = {
+						      trait = crowned_by_pope
+						      NOR = {
+							     has_character_flag = "pope_supported_king"
+							     has_character_flag = "pope_unsupported_king"
+							    }
+						     }
+				     }
+			   primary_title = { title = FROM }
+			  }
+
+		option = { #Support
+			  ai_chance = {
+				       factor = 1
+				       modifier = {
+						   factor = 5
+						   FROM = { is_pious_trigger = yes }
+						  }
+				       modifier = {
+						   factor = 0
+						   FROM = { is_impious_trigger = yes }
+						  }
+				       modifier = {
+						   factor = 5
+						   opinion = {
+							      who = FROM
+							      value = 50
+							     }
+						  }
+				       modifier = {
+						   factor = 2
+						   opinion = {
+							      who = FROM
+							      value = 30
+							     }
+						  }
+				       modifier = {
+						   factor = 0
+						   NOT = { 
+							  opinion = {
+							             who = FROM
+							             value = -20
+							            }
+							 }
+						  }
+				      }
+			  name = OK
+			  set_character_flag = "picked_italy_king"
+			 }
+		option = { #Don't support
+			  ai_chance = {
+				       factor = 1
+				       modifier = {
+						   factor = 1.5
+						   FROM = { has_vice_trigger = yes }
+						  }
+				       modifier = {
+						   factor = 1.25
+						   NOT = { 
+							  opinion = {
+							             who = FROM
+							             value = 0
+							            }
+							 }
+						  }
+				       modifier = {
+						   factor = 2
+						   NOT = { 
+							  opinion = {
+							             who = FROM
+							             value = -10
+							            }
+							 }
+						  }
+				      }
+			  name = OK
+			  any_independent_ruler = {
+						   limit = { has_landed_title = k_italy}
+						   character_event = {
+								      id = rexteut.7013
+								      days = 7
+								     }
+						  }
+			 }
+
+	       }
+
+###New king of Italy hears of Pope's lack of support###
+
+character_event = {
+		   id = rexteut.7013
+		   desc = {
+			   trigger = { trait = crowned_by_pope }
+			   text = EVTDESCA_rexteut_7013
+			  }
+		   desc = {
+			   trigger = { 
+				      NOT = { 
+					     trait = crowned_by_pope 
+					    } 
+				     } 
+			   text = EVTDESCB_rexteut_7013
+			  }
+		   picture = GFX_evt_pope
+
+		   is_triggered_only = yes
+
+		   trigger = {
+			      has_global_flag = "italian_instability"
+			      has_landed_title = k_italy
+			      NOT = { has_character_flag = "pope_supported_king" }
+			      NOT = { has_character_flag = "pope_unsupported_king" }
+			     }	
+
+		   immediate = {
+				set_character_flag = "pope_unsupported_king"
+			       }
+
+		   option = {
+			     name = EVTOPTA_rexteut_7013
+			    }	
+
+		  }
+
+###Pope can choose whether to support new Italian king###
+letter_event = {
+		id = rexteut.7014
+		hide_window = yes
+		
+		is_triggered_only = yes
+		
+		trigger = {
+				   has_global_flag = "italian_instability"
+				   has_landed_title = k_italy
+				   NOT = { trait = crowned_by_pope }
+				   NOT = { has_character_flag = "pope_supported_king" }
+				   NOT = { has_character_flag = "pope_unsupported_king" }
+				   FROM = { title = k_italy }
+				  }
+				  
+		immediate = {
+					 rightful_religious_head_scope = {
+													  letter_event = { id = rexteut.7024 }
+													 }
+					}
+		
+
+			   }
+
+
+letter_event = { #POPE#
+		id = rexteut.7024
+		desc = OK
+
+		is_triggered_only = yes
+
+		trigger = {
+			   has_global_flag = "italian_instability"
+			   is_pope_trigger = yes
+			   FROM = {
+					   has_landed_title = k_italy
+				       NOT = { trait = crowned_by_pope }
+					   NOT = { has_character_flag = "pope_supported_king" }
+					   NOT = { has_character_flag = "pope_unsupported_king" }
+					  }
+				  }
+
+		option = { #Support
+			  ai_chance = {
+				       factor = 1
+				       modifier = {
+						   factor = 5
+						   FROM = { is_pious_trigger = yes }
+						  }
+				       modifier = {
+						   factor = 0
+						   FROM = { is_impious_trigger = yes }
+						  }
+				       modifier = {
+						   factor = 5
+						   opinion = {
+							      who = FROM
+							      value = 50
+							     }
+						  }
+				       modifier = {
+						   factor = 2
+						   opinion = {
+							      who = FROM
+							      value = 30
+							     }
+						  }
+				       modifier = {
+						   factor = 0
+						   NOT = { 
+							  opinion = {
+							             who = FROM
+							             value = -20
+							            }
+							 }
+						  }
+				      }
+			  name = OK
+			  set_character_flag = "picked_italy_king"
+			 }
+
+		option = { #Don't support
+			  ai_chance = {
+				       factor = 1
+				       modifier = {
+						   factor = 1.5
+						   FROM = { has_vice_trigger = yes }
+						  }
+				       modifier = {
+						   factor = 1.25
+						   NOT = { 
+							  opinion = {
+							             who = FROM
+							             value = 0
+							            }
+							 }
+						  }
+				       modifier = {
+						   factor = 2
+						   NOT = { 
+							  opinion = {
+							             who = FROM
+							             value = -10
+							            }
+							 }
+						  }
+				      }
+			  name = OK
+			  clr_character_flag = "picked_italy_king"
+			  any_independent_ruler = {
+						   limit = { has_landed_title = k_italy}
+						   character_event = {
+								      id = rexteut.7013
+								      days = 7
+								     }
+						  }
+			 }
+	       }
+
+###HRE being formed ends Italian instability###
+
+narrative_event = {
+		   id = rexteut.7015
+		   title = EVTNAME_rexteut_7015
+		   desc = EVTDESC_rexteut_7015
+		   picture = GFX_evt_holy_emperor
+
+		   major = yes
+		   only_playable = yes
+		   religion_group = christian
+
+		   is_triggered_only = yes
+
+		   trigger = {
+			      has_global_flag = "italian_instability"
+			      has_landed_title = e_hre
+			      trait = crowned_by_pope
+			     }
+				 
+		   major_trigger = {
+							OR = {
+								  religion = chalcedonian
+								  religion = catholic
+								  religion = orthodox
+								  any_realm_title = {
+													 OR = {
+														   region = world_europe_south_italy
+														   region = custom_africa
+														  }
+													}
+								 }
+						   }
+
+		   immediate = { 
+				clr_global_flag = "italian_instability" 
+				set_global_flag = "italian_stability"
+			       }
+
+		   option = {
+			     trigger = { NOT = { has_landed_title = e_byzantium } }
+			     name = EVTOPTA_rexteut_7015
+			    }
+		   option = {
+			     trigger = { has_landed_title = e_byzantium }
+			     name = EVTOPTB_rexteut_7015
+			    }
+
+		  }
+
+###Italian king, having ruled a while without Papal support, ends instability###
+
+narrative_event = {
+		   id = rexteut.7016
+		   title = EVTNAME_rexteut_7015
+		   desc = EVTDESC_rexteut_7016
+		   picture = GFX_evt_powerful_ruler
+
+		   major = yes
+		   only_playable = yes
+		   religion_group = christian
+
+		   trigger = {
+			      had_global_flag = {
+						 flag = "italian_instability"
+						 days = 27375
+						}
+			      has_landed_title = "k_italy"
+			      has_character_flag = "pope_unsupported_king"
+			      ruled_years = 10
+			      OR = {
+				    religion = chalcedonian
+				    religion = catholic
+				   }
+			     }
+				 
+		   major_trigger = {
+							OR = {
+								  religion = chalcedonian
+								  religion = catholic
+								  religion = orthodox
+								  any_realm_title = {
+													 OR = {
+														   region = world_europe_south_italy
+														   region = custom_africa
+														  }
+													}
+								 }
+						   }
+
+		   mean_time_to_happen = {
+					  years = 1
+				         }
+		   immediate = {
+				clr_global_flag = "italian_instability"
+				set_global_flag = "italian_stability"
+			       }
+		
+		   option = {
+			     trigger = { has_landed_title = k_italy }
+			     name = EVTOPTA_rexteut_7016
+			     clr_character_flag = "pope_unsupported_king"
+			    }
+		   option = {
+			     trigger = { has_character_flag = "pope_supported_king"}
+			     name = EVTOPTB_rexteut_7016
+			     clr_character_flag = "pope_supported_king"
+			     if = {
+				   limit = { has_character_flag = "pope_given_claim" }
+				   remove_claim = k_italy
+				  }
+			    }
+		   option = {
+			     trigger = { 
+					NOT = { has_landed_title = k_italy }
+					NOT = { has_character_flag = "pope_supported_king" } 
+				       }
+			     name = OK
+			     clr_character_flag = "pope_unsupported_king"
+			    }
+		  }
+
+
+###Pope withdraws claim from claimant taking too long to take Italy###
+
+character_event = {
+		   id = rexteut.7017
+		   desc = EVTDESC_rexteut_7017
+		   picture = GFX_evt_pope
+		   
+		   only_playable = yes
+		   religion_group = christian
+
+		   trigger = {
+			      has_global_flag = "italian_instability"
+			      had_character_flag = {
+						    flag = "pope_supported_king"
+						    days = 1825
+						   }
+			      NOT = { has_landed_title = k_italy }
+			      k_italy = {
+					 holder_scope = { 
+							 has_character_flag = "pope_unsupported_king"
+							}
+					}
+			     }
+
+		   mean_time_to_happen = { 
+					  years = 1 
+					  modifier = {
+						      factor = 0.5
+						      rightful_religious_head_scope = {
+									opinion = {
+										   who = PREV
+										   value = 0
+										  }
+										      }
+						     }
+					  modifier = {
+						      factor = 0.25
+						      rightful_religious_head_scope = {
+									opinion = {
+										   who = PREV
+										   value = -20
+										  }
+										      }
+						     }
+					 }
+
+		   immediate = {
+				clr_character_flag = "pope_supported_king"
+				set_character_flag = "pope_unsupported_king"
+				rightful_religious_head_scope = {
+						clr_character_flag = "picked_italy_king"
+								}
+			       }
+
+		   option = {
+			     name = EVTOPTA_rexteut_7017
+			     prestige = -100
+			     if = {
+				   limit = { has_character_flag = "pope_given_claim" }
+			     	   remove_claim = k_italy
+				  }
+			    }
+
+		  }
+
+###Owner of k_provence can offer it to k_burgundy in exchange for losing claim###
+character_event = {
+	  id = rexteut.7018
+	  desc = EVTDESC_rexteut_7018
+	  picture = GFX_evt_rival_rulers
+	  
+	  only_playable = yes
+	  
+	  trigger = {
+		     NOT = { has_character_flag = "rejected_arles_merger" }
+		     has_landed_title = k_provence
+		     k_provence = { 
+				   is_titular = no 
+				  }
+		     k_burgundy = {
+				   holder_scope = {
+						   NOT = { has_character_flag = "rejected_arles_merger" }
+						   war = no
+						  }
+				  }
+		     any_demesne_title = {
+					  higher_real_tier_than = DUKE
+					  NOT = { title = k_provence }
+					  is_titular = no
+					  k_burgundy = {
+							holder_scope = {
+								 	has_claim = PREVPREV
+								       }
+						       }
+					 }
+		    }
+
+	  mean_time_to_happen = { months = 1 }
+
+	  option = {
+		    name = EVTOPTA_rexteut_7018
+		    ai_chance = { 
+				 factor = 2 
+			         modifier = {
+					     factor = 2
+					     trait = craven
+					    }
+			         modifier = {
+					     factor = 1.5
+					     trait = content
+					    }
+				}
+		    set_character_flag = "merging_burgundy"
+		    k_burgundy = {
+				  holder_scope = {
+						  character_event = {
+								     id = rexteut.7019
+								     days = 10
+								    }
+						 }
+				 }
+		   }
+	  option = {
+		    name = EVTOPTB_rexteut_7018
+		    ai_chance = { 
+				 factor = 1
+			         modifier = {
+					     factor = 2
+					     trait = stubborn
+					    } 
+			         modifier = {
+					     factor = 1.5
+					     trait = brave
+					    }
+			         modifier = {
+					     factor = 2
+					     trait = ambitious
+					    }
+				}
+		    set_character_flag = "rejected_arles_merger"
+		   }
+
+}
+
+###King of Burgundy hears of King of Provence's offer###
+character_event = {
+	  id = rexteut.7019
+	  desc = EVTDESC_rexteut_7019
+	  picture = GFX_evt_emissary
+
+	  is_triggered_only = yes
+
+	  trigger = {
+		     has_landed_title = k_burgundy
+		     NOT = { has_character_flag = "rejected_arles_merger" }
+		     
+		    }
+
+	  option = {
+		    name = EVTOPTA_rexteut_7019
+		    ai_chance = { factor = 2 }
+		    FROM = {
+			    character_event = {
+					       id = rexteut.7020
+					       days = 11
+					      }
+			   }
+		   }
+	  option = {
+		    name = EVTOPTB_rexteut_7019
+		    ai_chance = { factor = 1 }
+		    FROM = {
+			    character_event = {
+					       id = rexteut.7021
+					       days = 11
+					      }
+			   }
+		   }
+
+		  }
+
+###King of Burgundy agrees###
+character_event = {
+	  id = rexteut.7020
+	  desc = EVTDESC_rexteut_7020
+	  picture = GFX_evt_emissary
+
+	  is_triggered_only = yes
+
+	  trigger = {
+		     NOT = { has_character_flag = "rejected_arles_merger" }
+		     has_landed_title = k_provence
+		     k_provence = { 
+				   is_titular = no 
+				  }
+		     k_burgundy = {
+				   holder_scope = {
+						   NOT = { has_character_flag = "rejected_arles_merger" }
+						  }
+				  }
+		     any_demesne_title = {
+					  higher_real_tier_than = DUKE
+					  NOT = { title = k_provence }
+					  is_titular = no
+					  k_burgundy = {
+							holder_scope = {
+								 	has_claim = PREVPREV
+								       }
+						       }
+					 }
+		    }
+
+	  immediate = {
+		       FROM = {
+			       any_claim = {
+					    limit = { 
+						     higher_tier_than = DUKE
+						     holder_scope = { character = ROOT }
+						    }
+					    remove_claim = PREV
+					   }
+			       if = {
+				     limit = { has_character_flag = "pope_chosen_king" }
+				     clr_character_flag = "pope_chosen_king"
+				     rightful_religious_head_scope = {
+								      clr_character_flag = "picked_italy_king"
+								     }
+				    }
+			      }
+		      }
+
+	  option = {
+		    name = EVTOPTA_rexteut_7020
+		    clr_character_flag = "merging_burgundy"
+		    k_provence = {
+			          grant_title = FROM
+			         }
+		    any_vassal = {
+				  limit = { de_jure_liege_or_above = k_provence }
+				  set_defacto_liege = FROM
+				 }
+		    any_demesne_title = {
+					 limit = { 
+						  de_jure_liege_or_above = k_provence
+						 }
+					 grant_title = FROM
+					}
+		   }
+
+		  }
+
+###King of Burgundy disagrees###
+character_event = {
+	  id = rexteut.7021
+	  desc = EVTDESC_rexteut_7021
+	  picture = GFX_evt_rival_rulers
+
+	  is_triggered_only = yes
+
+	  trigger = {
+		     NOT = { has_character_flag = "rejected_arles_merger" }
+		     has_landed_title = k_provence
+		     k_provence = { 
+				   is_titular = no 
+				  }
+		     k_burgundy = {
+				   holder_scope = {
+						   NOT = { has_character_flag = "rejected_arles_merger" }
+						  }
+				  }
+		     any_demesne_title = {
+					  higher_real_tier_than = DUKE
+					  NOT = { title = k_provence }
+					  is_titular = no
+					  k_burgundy = {
+							holder_scope = {
+								 	has_claim = PREVPREV
+								       }
+						       }
+					 }
+		    }
+
+	  option = {
+		    name = EVTOPTA_rexteut_7021
+		    set_character_flag = "rejected_arles_merger"
+		    clr_character_flag = "merging_burgundy"
+		   }
+
+		  }
+
+###Owning k_provence & k_burgundy merges them into Arles###
+narrative_event = {
+	  id = rexteut.7022
+	  title = EVTNAME_rexteut_7022
+	  desc = EVTDESC_rexteut_7022
+	  picture = GFX_evt_coronation
+
+	  major = yes
+	  religion_group = christian
+	  only_playable = yes
+
+	  trigger = {
+		     has_landed_title = k_burgundy
+		     has_landed_title = k_provence
+		     k_provence = { is_titular = no }
+		    }
+			
+	  major_trigger = {
+					   capital_scope = {
+										OR = {
+											  region = world_europe_west
+											  region = world_europe_south
+											 }
+									   }
+					  }
+
+	  mean_time_to_happen = { days = 3 }
+
+	  immediate = {
+		       k_provence = {
+				     any_direct_de_jure_vassal_title = {
+							   de_jure_liege = k_burgundy
+							  	       }
+				     destroy_landed_title = THIS
+				    }
+		       k_burgundy = {
+				     add_law = succ_primogeniture
+				     set_name = ARLES
+				     adjective = ARLES_ADJ
+				    }
+		       set_global_flag = "arles_formed"
+		      }
+
+	  option = {
+		    trigger = { has_landed_title = k_burgundy }
+		    name = EVTOPTA_rexteut_7022
+		    prestige = 200
+		    chronicle = {
+				 entry = CHRON_REXTEUT_ARLES
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_coronation
+				}
+		   }
+	  option = {
+		    trigger = { has_landed_title = k_burgundy }
+		    name = OK
+		   }
+
+		    }
+
+###7023
+
+###The Kingdom of Germany is restored###
+narrative_event = {
+		id = rexteut.7026
+		title = EVTNAME_rexteut_7026
+		desc = EVTDESC_rexteut_7026
+		picture = GFX_evt_coronation
+		
+		is_triggered_only = yes
+		
+		immediate = {
+					 primary_title = { save_event_target_as = old_title }
+					 activate_title = {
+									   title = k_germany
+									   status = yes
+									  }
+					 k_germany = { 
+								  grant_title = ROOT 
+								  copy_title_laws = event_target:old_title
+								  make_primary_title = yes
+								 }
+					 any_playable_ruler = { 
+										   narrative_event = { id = rexteut.7027 }
+									      }
+					 restore_germany_de_jure_effect = yes
+					}
+					
+		option = {
+				  name = EVTOPTA_rexteut_7026
+				  prestige = 500
+				  add_trait = crowned
+				  hidden_tooltip = { remove_trait = uncrowned }
+				 }
+				  }
+
+
+###Others hear of Germany's restoration###
+narrative_event = {
+		id = rexteut.7027
+		title = EVTNAME_rexteut_7026
+		desc = {
+				trigger = { NOT = { any_demesne_title = { is_former_k_germany_trigger = yes } } }
+				text = EVTDESCA_rexteut_7027
+			   }
+		desc = {
+				trigger = { any_demesne_title = { is_former_k_germany_trigger = yes } }
+				text = EVTDESCB_rexteut_7027
+			   }
+		picture = GFX_evt_coronation
+		
+		is_triggered_only = yes
+		
+		option = {
+				  trigger = { NOT = { any_demesne_title = { is_former_k_germany_trigger = yes } } }
+				  name = OK
+				 }
+		option = {
+				  trigger = { any_demesne_title = { is_former_k_germany_trigger = yes } }
+				  name = EVTOPTA_rexteut_7027
+				  prestige = -200
+				 }
+				  }
+
+###

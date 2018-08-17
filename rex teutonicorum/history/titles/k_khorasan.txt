@@ -1,0 +1,32 @@
+#Tahirids
+
+821.1.1={
+	liege = e_arabia
+	holder = 188686 # Tahir
+}
+822.1.1={
+	holder = 188689 # Talha
+}
+828.1.1={
+	holder = 163158 # Abdallah
+}
+845.1.1={
+	holder = 163159 # Tahir II
+}
+862.1.1={
+	liege=0
+	set_tribute_suzerain = { who = e_arabia type = forced }
+	holder = 163100
+}
+873.1.1 = {
+	holder = 0
+	clear_tribute_suzerain = e_arabia
+}
+
+#Pre-Persian conquest Seljuks
+1037.1.1 = {
+	holder = 3038 #Tughril-Beg Seljuk
+}
+1055.1.1 = {
+	holder = 0
+}

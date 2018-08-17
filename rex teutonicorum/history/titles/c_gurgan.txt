@@ -1,0 +1,100 @@
+768.1.1={
+	liege="d_mazandaran"
+	holder = 160297 # Vandad Hormozd Karen
+}
+
+867.1.1={
+	liege=d_dihistan
+	holder = 45107 # Vandad Karen
+}
+880.1.1 = {
+	liege = d_mazandaran
+	holder = 45105 #Rostam II
+}
+895.1.1 = {
+	holder = 160295 #Shervin II
+}
+930.1.1 = {
+	holder = 220996 #Shahriyar II
+}
+964.1.1 = {
+	holder = 220995 #Rostam III
+}
+979.10.12 = {
+	holder = 220994 #al-Marzuban
+}
+985.1.1 = {
+	holder = 100000196 #Shervin III, brother
+}
+986.1.1 = {
+	holder = 1000254513 #Shahriyar III
+}
+987.1.1 = {
+	holder = 220994 #al-Marzuban
+}
+1006.10.12 = {
+	holder = 220993 #Abu Jafar Muhammed
+}
+1029.11.21 = {
+	holder = 220991 #Surkhab? Sources go silent around this time
+}
+1057.1.1 = {
+	holder = 20704 #Qarin II
+}
+1074.1.1 = {
+holder = 41606
+}
+1114.1.1 = {
+holder = 93162
+}
+1117.1.1 = {
+holder = 93163
+}
+1118.1.1 = {
+liege = "d_dihistan"
+}
+1118.1.1 = {
+holder = 93164
+}
+1142.1.1 = {
+holder = 93165
+}
+1165.1.1 = {
+holder = 93166
+}
+1173.1.1 = {
+holder = 93167
+}
+1206.1.1 = {
+holder = 93168
+}
+1210.1.1={
+holder = 93169
+}
+1228.1.1={
+liege=d_khorasan
+}
+1238.1.1={
+	liege=d_mazandaran # restores Bavandid authority over Tabaristan
+}
+1249.1.1 = {
+holder = 93170
+}
+1267.1.1 = {
+holder = 93171
+}
+1271.1.1 = {
+holder = 93172
+}
+1300.1.1 = {
+holder = 93173
+}
+1310.1.1 = {
+holder = 93174
+}
+1328.1.1 = {
+holder = 93175
+}
+1336.1.1 = {
+holder = 93061
+}

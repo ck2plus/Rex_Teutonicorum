@@ -1,0 +1,69 @@
+peasants_happy = {
+	icon = 142
+	tax_income = 0.15
+	levy_size = 0.15
+	land_morale = 0.15
+				 }
+peasants_content = {
+	icon = 143
+				   }
+peasants_unhappy = {
+	icon = 144
+	tax_income = -0.1
+	levy_size = -0.1
+	land_morale = -0.1
+				   }
+peasants_angry = {
+	icon = 145
+	tax_income = -0.15
+	levy_size = -0.15
+	land_morale = -0.15
+				 }
+peasants_rebellious = {
+	icon = 146
+	tax_income = -0.2
+	levy_size = -0.2
+	land_morale = -0.2
+					  }
+peasants_cowed = {
+	icon = 1
+	local_revolt_risk = -0.25
+				 }
+peasants_defiant = {
+	icon = 19
+	levy_size = -0.5
+	tax_income = -0.9
+	local_revolt_risk = 0.5
+				   }
+peasants_productive = {
+	icon = 18
+	local_tax_modifier =  0.15
+	local_build_time_modifier = -0.1
+					  }
+peasants_unproductive = {
+	icon = 36
+	local_tax_modifier = -0.15
+	local_build_time_modifier = 0.1
+						}						
+peasants_happy_province = {
+	icon = 142
+	local_revolt_risk = -0.15
+				 }
+peasants_unhappy_province = {
+	icon = 144
+	local_revolt_risk = 0.05
+				   }
+peasants_angry_province = {
+	icon = 145
+	local_revolt_risk = 0.15
+				 }
+peasants_rebellious_province = {
+	icon = 146
+	local_revolt_risk = 0.3
+					  }
+tondrakian_stronghold = {
+	icon = 35
+	local_revolt_risk = 0.10
+	local_tax_modifier = -0.2
+						}
+					  

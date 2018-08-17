@@ -1,0 +1,18 @@
+855.1.1 = {
+	holder = 90103 #Charles, son of Lothaire
+}
+863.1.25 = {
+	holder = 0
+}
+879.10.15 = {
+	holder = 7981 #Boso
+}
+887.1.11 = {
+	holder = 1164 #Louis the Blind
+}
+928.1.2 = {
+	holder = 7923 #Hugh of Arles
+}
+933.1.1 = {
+	holder = 0
+}

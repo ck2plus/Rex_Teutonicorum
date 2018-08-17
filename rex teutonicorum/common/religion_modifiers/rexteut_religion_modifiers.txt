@@ -1,0 +1,33 @@
+#Religion modifiers#
+
+investiture_controversy_1 = {
+                             authority = -5
+                             years = 20
+                            }
+
+investiture_controversy_2 = {
+                             authority = -10
+                             years = 20
+                            }
+
+investiture_controversy_3 = {
+                             authority = 15
+                             years = 15
+                            }
+
+investiture_controversy_4 = {
+                             authority = -25
+                             years = 50
+                            }
+investiture_controversy_5 = {
+			     authority = -15
+			     years = 10
+			    }
+end_papal_crowning = {
+				 authority = -20
+				 years = 50
+					 }
+forced_papal_crowning_ma = {
+				authority = -20
+				years = 25
+						   }

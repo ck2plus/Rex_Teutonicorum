@@ -1,0 +1,345 @@
+
+faction_sifp = {
+
+	type = liege_titles
+
+	warning_level = 0.7
+
+	potential = {
+		     is_playable = yes
+		     independent = no
+		     is_nomadic = no
+		     prisoner = no
+		     is_adult = yes
+		     has_regent = no
+		     higher_tier_than = BARON
+		     has_global_flag = "sifp_activated"
+			 NOR = { 
+					is_incapable = yes
+					in_revolt = yes
+					has_character_modifier = faction_sifp_ultimatum_timer 
+				   }
+		     NAND = {
+			     has_character_flag = "bohemian_loyalty"
+			     liege = { has_character_flag = "bohemian_loyalty" }
+			    }
+		     NOT = { has_global_flag = "statutum_in_favorem_principum" }
+		     OR = {
+			   has_global_flag = "concordat_of_worms"
+			   has_global_flag = "investiture_papal"
+			  }
+		     liege = {
+					  OR = {
+							rex_teutonicorum_trigger = yes
+							primary_title = { has_title_flag = "former_hre_empire" }
+						   }
+			      NOR = {
+				     character = ROOT
+				     reverse_has_opinion_modifier = { who = ROOT modifier = opinion_coerced_into_leaving_faction }
+				     reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated }
+				     reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated_other_rel }
+				     any_demesne_title = { temporary = yes }
+					 any_war = { using_cb = weaken_imperial_authority }
+			            }
+			     }
+		     OR = {
+			   NOT = { has_character_flag = former_faction_leader }
+			   had_character_flag = { flag = former_faction_leader days = 7 }
+		          }
+		     NOT = {
+			any_faction_backer = {
+				in_faction = faction_sifp
+				NOT = { has_character_flag = removed_from_leadership }
+				higher_real_tier_than = ROOT
+					     }
+			   }
+		    }
+
+	allow = {
+		is_primary_holder_title = yes
+		FROM = { primary_title = { is_primary_type_title = no } }
+		}
+
+	allow_join = {
+		      ROOT = {
+			      is_playable = yes
+		              independent = no
+		              is_nomadic = no
+		              prisoner = no
+		              is_adult = yes
+		              has_regent = no
+		              higher_tier_than = BARON
+		              has_global_flag = "sifp_activated"
+		              NAND = {
+			              has_character_flag = "bohemian_loyalty"
+			              liege = { has_character_flag = "bohemian_loyalty" }
+			             }
+		              NOT = { has_global_flag = "statutum_in_favorem_principum" }
+		              OR = {
+			            has_global_flag = "concordat_of_worms"
+			            has_global_flag = "investiture_papal"
+			           }
+		              liege = {
+						   OR = {
+								 rex_teutonicorum_trigger = yes
+								 primary_title = { has_title_flag = "former_hre_empire" }
+								}
+			               NOR = {
+				              character = ROOT
+				              reverse_has_opinion_modifier = { who = ROOT modifier = opinion_coerced_into_leaving_faction }
+				              reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated }
+				              reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated_other_rel }
+				              any_demesne_title = { temporary = yes }
+			                     }
+			              }
+			     }
+		     }
+
+	chance = {
+		  factor = 1
+		  modifier = {
+					  factor = 5
+					  FROM = { trait = ambitious }
+					 }
+		  modifier = {
+					  factor = 2
+					  FROM = {
+							  OR = {
+									trait = stubborn
+									trait = greedy
+									trait = envious
+								   }
+							 }
+					 }
+		  modifier = {
+			      factor = 2
+			      FROM = {
+			      		  NOT = {
+								 opinion = {
+											who = liege
+											value = -20
+										   }
+								}
+						 }
+			     }
+		  modifier = {
+			      factor = 0.5
+			      FROM = {
+			      	      opinion = {
+				                 	 who = liege
+					                 value = 30
+					               	 }
+						  NOR = {
+								 trait = deceitful
+								 trait = arbitrary
+							    }
+						 }
+			     }
+			  modifier = {
+						  factor = 0.5
+						  FROM = { trait = ghibelline }
+						 }
+			  modifier = {
+						  factor = 2
+						  FROM = { trait = guelph }
+						 }
+			  modifier = {
+						  factor = 10
+						  FROM = { higher_tier_than = DUKE }
+						 }
+			  modifier = {
+						  factor = 10
+						  has_global_flag = "investiture_papal"
+						 }
+			  modifier = {
+						  factor = 5
+						  FROM = { has_character_flag = "supported_autonomy" }
+						 }
+			  modifier = {
+						  factor = 0.7
+						  FROM = { has_character_flag = "unsupported_autonomy" }
+						 }
+			  modifier = {
+						  factor = 0
+						  in_faction = faction_separatists
+						 }
+		     }
+
+	membership = {
+		      factor = 1
+			  modifier = {
+						  factor = 1000
+						  has_character_flag = "will_join_civil_war"
+						  FROM = {
+								  has_character_flag = "preparing_sifp_war"
+								  has_character_flag = "civil_war_faction_leader"
+								 }
+						 }
+		      modifier = {
+						 factor = 5
+						 trait = ambitious
+						 }
+		      modifier = {
+						 factor = 2
+						 OR = {
+			          		   trait = stubborn
+			         		   trait = greedy
+			         		   trait = envious
+							  }
+						 }
+			  modifier = {
+						  factor = 10
+						  NOT = {
+								 opinion = {
+											who = liege
+											value = -20
+										   }
+								}
+						 }
+			  modifier = {
+						 factor = 0.5
+						 opinion = {
+				                 	who = liege
+					                value = 30
+					               }
+						 NOR = {
+								trait = deceitful
+								trait = arbitrary
+							   }
+					     }
+			  modifier = {
+						  factor = 0.5
+						  trait = ghibelline
+						 }
+			  modifier = {
+						  factor = 2
+						  trait = guelph
+						 }
+			  modifier = {
+						  factor = 10
+						  higher_tier_than = DUKE
+						 }
+			  modifier = {
+						  factor = 10
+						  has_global_flag = "investiture_papal"
+						 }
+			  modifier = {
+						  factor = 5
+						  has_character_flag = "supported_autonomy"
+						 }
+			  modifier = {
+						  factor = 0.7
+						  has_character_flag = "unsupported_autonomy"
+						 }
+			  modifier = {
+						  factor = 0
+						  in_faction = faction_separatists
+						 }
+		     }
+
+	success = {
+		   has_global_flag = "statutum_in_favorem_principum"
+		  }
+
+	abort = {
+		 has_global_flag = "statutum_in_favorem_principum"
+		}
+
+	abort_effect = {
+
+		       }
+
+	effect = {
+
+		 }
+
+	       }
+
+
+faction_treaty_verdun = {
+	type = liege_titles
+
+	warning_level = 0.7
+	
+	# Plotter scope
+	potential = {
+		is_playable = yes
+		independent = no
+		is_nomadic = no
+		prisoner = no
+		verdun_vassal_trigger = yes
+		OR = {
+			  ai = no
+			  has_character_flag = "anti_emperor_king"
+			 }
+		NOT = { has_global_flag = "treaty_of_verdun" }
+		liege = {
+			has_landed_title = e_karling
+			NOR = {
+				character = ROOT
+				reverse_has_opinion_modifier = { who = ROOT modifier = opinion_coerced_into_leaving_faction }
+				reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated }
+				reverse_has_opinion_modifier = { who = ROOT modifier = opinion_subjugated_other_rel }
+				any_demesne_title = { temporary = yes }
+			}
+		}
+		OR = {
+			NOT = { has_character_flag = former_faction_leader }
+			had_character_flag = { flag = former_faction_leader days = 7 }
+		}
+		     NOT = {
+			any_faction_backer = {
+				in_faction = faction_treaty_verdun
+				NOT = { has_character_flag = removed_from_leadership }
+				higher_real_tier_than = ROOT
+					     }
+			   }
+		
+	}
+	
+	# Target scope (ROOT = liege title, FROM = faction leader)
+	allow = {
+		is_primary_holder_title = yes
+		FROM = { primary_title = { is_primary_type_title = no } }
+	}
+	
+	# Faction member scope (ROOT = joiner, FROM = target)
+	allow_join = {
+		ROOT = {
+			is_playable = yes
+		        independent = no
+		        is_nomadic = no
+			prisoner = no
+			is_adult = yes
+			higher_tier_than = DUKE
+			has_character_flag = "anti_emperor_king"
+			NOT = { is_incapable = yes }
+			NOT = { has_global_flag = "treaty_of_verdun" }
+			liege = { has_landed_title = e_karling }
+		       }
+	             }
+	
+	# AI creation weight (ROOT = title, FROM = faction creator)
+	chance = {
+		factor = 100			
+	         }
+	
+	# AI membership weight: ROOT is the prospective member. FROM is the faction leader. FROMFROM is the target title or character.
+	membership = {
+		factor = 50
+		     }
+
+	success = {
+		has_global_flag = "treaty_of_verdun"
+	}
+
+	abort = {
+		has_global_flag = "treaty_of_verdun"
+	}
+
+	abort_effect = {
+	}
+
+	effect = {
+	}
+}

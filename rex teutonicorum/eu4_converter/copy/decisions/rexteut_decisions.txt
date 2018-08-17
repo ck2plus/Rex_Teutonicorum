@@ -1,0 +1,147 @@
+country_decisions = {
+
+	hre_papal_crowning = {
+				  major = yes
+			      potential = {
+					   is_emperor = yes
+					   religion = catholic
+					   NOT = { has_global_flag = hre_end_papal_crowning }
+					   NOT = { has_ruler_flag = crowned_emperor }
+					  }
+			      allow = {
+				       is_at_war = no
+				       OR = {
+					     papal_influence = 20
+					     is_papal_controller = yes
+					    }
+				      }
+			      effect = {
+					set_ruler_flag = crowned_emperor
+					if = {
+					      limit = { NOT = { is_papal_controller = yes } }
+					      add_papal_influence = -20
+					     }
+				    hidden_effect = {
+					every_country = {
+						         limit = {
+								  any_owned_province = { is_part_of_hre = yes }
+							         }
+						         country_event = {
+									  id = rexteut.1001
+									  days = 7
+								         }
+						        }
+									}
+				       }
+				  ai_importance = 400 
+			     }
+
+	hre_end_papal_crowning = {
+				  major = yes
+			      potential = {
+					   is_emperor = yes
+					   NOT = { has_global_flag = hre_end_papal_crowning }
+					   is_year = 1500
+					  }
+			      allow = {
+				       is_at_war = no
+				       OR = {
+					     papal_influence = 50
+					     is_papal_controller = yes
+					     NOT = { religion = catholic }
+					    }
+				      }
+			      effect = {
+					hidden_effect = {
+						country_event = {
+										 id = rexteut.1002
+										 days = 7
+										}
+						every_known_country = {
+							   limit = {
+								  any_owned_province = { is_part_of_hre = yes }
+							         }
+						         country_event = {
+									  id = rexteut.1002
+									  days = 7
+								         }
+									}
+										  }
+							
+					if = {
+					      limit = { NOT = { is_papal_controller = yes } }
+					      add_papal_influence = -50
+					     }
+					set_global_flag = hre_end_papal_crowning
+				       }
+					   ai_importance = 400
+			           }
+					   
+	curtail_estate_peasant = {
+			major = yes
+			
+			potential = {
+						 government = peasants_republic
+						 has_country_flag = "peasant_estate_in_power"
+						}
+			allow = {
+					 stability = 1
+					 NOT = { num_of_rebel_armies = 1 }
+					 NOT = { num_of_rebel_controlled_provinces = 1 }			
+					 NOT = {
+							estate_influence = {
+											    estate = estate_peasants
+												influence = 60
+											   }				
+						   }
+					}
+			effect = {
+					  add_stability = -3
+					  add_prestige = -25
+					  change_government = republican_dictatorship
+					  clr_country_flag = peasant_estate_in_power
+					 }
+					 
+			ai_will_do = { factor = 1 }
+			
+							  }
+							  
+	found_communal_republic = {
+			major = yes
+			
+			potential = {
+						 NOT = { government = peasants_republic }
+						 NOT = { has_country_flag = "founding_communal" }
+						 NOT = { has_ruler_flag = "no_communal" }
+						 OR = {
+							   religion = tondrakian
+							   religion = mazdaki
+							   religion = qarmatian
+							  }
+						}
+			allow = {
+					 NOT = {
+							estate_influence = {
+												estate = estate_nobility
+												influence = 55
+											   }
+						   }
+					}
+					
+			effect = {
+					  set_country_flag = "founding_communal"
+					  country_event = { id = rexteut.3013 }
+					 }
+					 
+			ai_will_do = {
+						  factor = 0.2
+						  modifier = {
+									  factor = 100
+									  OR = {
+											religion = tondrakian
+											religion = mazdaki
+										   }
+									 }
+						 }
+							  }
+}

@@ -1,0 +1,11 @@
+uncrowned_emperor = {
+		     potential = {
+				  is_emperor = yes
+				  religion = catholic
+				  NOT = { has_ruler_flag = crowned_emperor }
+				 }
+		     trigger = {
+				NOT = { has_global_flag = hre_end_papal_crowning }
+			       }
+		     imperial_authority = -0.9
+		    }

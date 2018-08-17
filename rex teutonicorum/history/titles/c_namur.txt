@@ -1,0 +1,121 @@
+721.1.1={
+	holder = 91000 #Robert Capet
+	liege = k_france
+}
+760.1.1={
+	holder = 190409 #Anselm Capet
+}
+831.1.1 = {
+	holder = 130000088 #Pirard
+}
+838.1.1 = {
+	holder = 130000089 #Hartgard
+}
+855.1.1 = {
+	liege = k_lotharingia
+	holder = 163050 #Francon
+}
+901.1.1 = {
+	holder = 130000090 #Stephen
+}
+903.1.1 = {
+	liege = "d_lower_lorraine"
+}
+920.1.1 = {
+	holder = 120000106 #Richer
+}
+945.1.1 = {
+	holder = 120000107 #Hugh
+}
+947.1.1 = {
+	holder = 120000108 #Farabert
+}
+953.1.1 = {
+	holder = 120000109 #Rathier
+}
+955.1.1 = {
+	holder = 120000110 #Baldrick
+}
+959.1.1 = {
+	holder = 120000111 #Eraclus
+}
+972.1.1 = {
+	holder = 1000252202
+	liege = "d_lower_lorraine"
+}
+1008.1.1 = {
+	holder = 120000119 #Baldrick II son of Otto
+}
+1018.1.1 = {
+	holder = 120000121 #Wolbodo
+}
+1021.4.20 = {
+	holder = 120000122 #Durandus
+}
+1025.1.1 = {
+	holder = 120000123 #Reginard
+}
+1037.1.1 = {
+	holder = 120000124 #Nithard
+}
+1042.1.1 = {
+	holder = 120000125 #Wazo
+}
+1048.1.1 = {
+liege = "d_lower_lorraine"
+holder = 106610
+}
+1066.1.1 = {
+holder = 90119
+}
+1102.6.22 = {
+holder = 212691
+}
+1139.1.1 = {
+holder = 212690
+}
+1190.1.1 = {
+holder = 205520
+}
+1190.8.21 = {
+liege = "e_hre"
+}
+1195.12.17 = {
+holder = 205524
+}
+1212.10.12 = {
+holder = 205526
+}
+1216.1.1 = {
+holder = 91058
+}
+1226.1.1 = {
+holder = 91065
+}
+1229.1.1 = {
+holder = 91057
+}
+1237.1.1 = {
+holder = 91068
+}
+1256.1.1 = {
+holder = 462604
+}
+1263.1.1 = {
+holder = 31119
+}
+1298.9.25 = {
+holder = 455940
+}
+1330.1.31 = {
+holder = 33224
+}
+1335.1.1 = {
+holder = 33225
+}
+1336.3.12 = {
+holder = 33226
+}
+1336.9.1 = {
+holder = 33227
+}

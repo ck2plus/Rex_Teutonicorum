@@ -1,0 +1,98 @@
+spriteTypes = {
+
+	#Bogomilist frames
+	spriteType = {
+		name = "GFX_charframe_150_bogomilist"
+		texturefile = "gfx\\new_governments\\charframe_150_bogomilist.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_100_bogomilist"
+		texturefile = "gfx\\new_governments\\charframe_100_bogomilist.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_75_bogomilist"
+		texturefile = "gfx\\new_governments\\charframe_75_bogomilist.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_50_bogomilist"
+		texturefile = "gfx\\new_governments\\charframe_50_bogomilist.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_34_bogomilist"
+		texturefile = "gfx\\new_governments\\charframe_34_bogomilist.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	
+	#Imperial Bogomilist frames
+	spriteType = {
+		name = "GFX_charframe_150_imperialbog"
+		texturefile = "gfx\\new_governments\\charframe_150_imperialbog.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_100_imperialbog"
+		texturefile = "gfx\\new_governments\\charframe_100_imperialbog.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_75_imperialbog"
+		texturefile = "gfx\\new_governments\\charframe_75_imperialbog.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_50_imperialbog"
+		texturefile = "gfx\\new_governments\\charframe_50_imperialbog.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_34_imperialbog"
+		texturefile = "gfx\\new_governments\\charframe_34_imperialbog.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	
+	#Imperial Muslim frames
+	spriteType = {
+		name = "GFX_charframe_150_imperialmus"
+		texturefile = "gfx\\new_governments\\charframe_150_imperialmus.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_100_imperialmus"
+		texturefile = "gfx\\new_governments\\charframe_100_imperialmus.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_75_imperialmus"
+		texturefile = "gfx\\new_governments\\charframe_75_imperialmus.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_50_imperialmus"
+		texturefile = "gfx\\new_governments\\charframe_50_imperialmus.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_charframe_34_imperialmus"
+		texturefile = "gfx\\new_governments\\charframe_34_imperialmus.tga"
+		noOfFrames = 6
+		allwaystransparent = yes
+	}
+}

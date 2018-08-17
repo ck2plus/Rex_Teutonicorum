@@ -1,0 +1,1045 @@
+namespace = rexteut
+
+###Carolingians control HRE###
+narrative_event = {
+
+          id = rexteut.6001
+          title = EVTNAME_rexteut_6001
+          desc = EVTDESC_rexteut_6001
+          picture = GFX_evt_holy_emperor
+		  
+		  only_playable = yes
+
+          trigger = {
+                     NOT = { e_hre = { has_title_flag = "karling_hre" } }
+		     NOT = { has_global_flag = "verdun_failed" }
+                     has_landed_title = e_hre
+                     dynasty = 25061
+                    }
+
+	  mean_time_to_happen = { days = 7 }
+
+          option = {
+                    name = EVTOPTA_rexteut_6001
+                    prestige = 250
+                    e_hre = { set_title_flag = "karling_hre" }
+                   }
+
+                  }
+
+
+###King-level Carolingian can protest Emperor's authority###
+character_event = {
+
+          id = rexteut.6002
+          desc = EVTDESC_rexteut_6002
+          picture = GFX_evt_rival_rulers
+		  
+		  only_playable = yes
+		  min_age = 16
+		  prisoner = no
+		  capable_only = yes
+
+          trigger = {
+                     independent = no
+                     NOT = { has_global_flag = "treaty_of_verdun" }
+					 NOT = { has_global_flag = "verdun_failed" }
+                     NOT = { has_character_flag = "defied_imperial_authority" }
+                     NOT = { has_character_flag = "accepted_imperial_authority" }
+                     liege = { 
+                              has_landed_title = e_karling 
+							  NOT = { has_character_flag = "carolingian_empire_founder" }
+							  any_vassal = {
+											age = 16
+											prisoner = no
+											is_incapable = no
+											verdun_vassal_trigger = yes
+											count = 2
+										   }
+                             }
+                     verdun_vassal_trigger = yes
+                    }
+
+	  mean_time_to_happen = { days = 14 }
+         
+          option = {
+                    name = EVTOPTA_rexteut_6002
+		    ai_chance = { 
+				 factor = 2
+				 modifier = {
+					     factor = 2
+					     trait = stubborn
+					    }
+				 modifier = {
+					     factor = 2
+					     trait = proud
+					    }
+				}
+                    set_character_flag = "defied_imperial_authority"
+		   }
+          option = {
+                    name = EVTOPTB_rexteut_6002
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = ambitious
+					     	   trait = envious
+					     	   trait = greedy
+					     	   NOT = {
+					            	  opinion = {
+							       	     who = liege
+							             value = -20
+						                    }
+						         }
+						  }
+					    }
+				 modifier = {
+					     factor = 1.5
+					     OR = {
+					     	   trait = content
+					     	   trait = humble
+					     	   trait = kind
+					     	   trait = charitable
+					     	   opinion = {
+							      who = liege
+							      value = 50
+						             }
+						  }
+					    }
+				}
+		    set_character_flag = "accepted_imperial_authority"
+                   }          
+
+                  }
+
+###Carolingian Emperor informed king-level vassals are discontent###
+character_event = {
+
+          id = rexteut.6003
+          desc = EVTDESC_rexteut_6003
+          picture = GFX_evt_rival_rulers
+		  
+		  only_playable = yes
+          
+          trigger = {
+                     has_landed_title = e_karling
+		     any_vassal = {
+				   has_character_flag = "defied_imperial_authority"
+				  }
+		     NOT = { has_character_flag = "discontent_kings" }
+		     NOT = { has_global_flag = "verdun_broken" }
+		     NOT = { has_global_flag = "treaty_of_verdun" }
+                    }
+   
+          mean_time_to_happen = { days = 7 }
+
+	  immediate = {
+		       any_vassal = {
+				     reverse_opinion = {
+							who = PREV
+							modifier = opinion_demand_autonomy
+							years = 20
+						       }
+				    }
+		      }
+
+          option = {
+                    name = EVTOPTA_rexteut_6003
+		    ai_chance = {
+				 factor = 1
+				 modifier = {
+					     factor = 0
+					     OR = {
+					     	   trait = ambitious
+					     	   trait = stubborn
+						  }
+					    }
+				 modifier = {
+					     factor = 2
+					     OR = {
+					     	   trait = content
+					     	   trait = slothful
+					     	   trait = kind
+					     	   trait = charitable
+					     	   trait = craven
+						  }
+					    }
+				}
+		    set_character_flag = "discontent_kings"
+		    hidden_tooltip = {
+                    		ROOT = {
+			    		narrative_event = {
+					       		   id = rexteut.6004
+ 					       		   days = 14
+                                            }
+                           	       }
+				     }
+                   }
+          option = {
+                    name = EVTOPTB_rexteut_6003
+		    ai_chance = { 
+				 factor = 5
+				 modifier = {
+					     factor = 2
+					     trait = greedy
+					    } 
+				}
+		    set_character_flag = "discontent_kings"
+		    hidden_tooltip = {
+                    		  any_vassal = {
+											limit = { verdun_vassal_trigger = yes }
+                                      		character_event = {
+															   id = rexteut.6005
+															   days = 14
+															  }
+                                     		 }
+				     }
+                   }
+
+                  }
+
+###The Treaty of Verdun###
+narrative_event = {
+               
+          id = rexteut.6004
+          title = EVTNAME_rexteut_6004
+		  
+          desc = {
+		  trigger = { NOT = { has_global_flag = "verdun_broken" } }
+		  text = EVTDESCA_rexteut_6004
+		 }
+          desc = {
+		  trigger = { has_global_flag = "verdun_broken" }
+		  text = EVTDESCB_rexteut_6004
+		 }
+          picture = GFX_evt_conclave
+		  
+          is_triggered_only = yes
+ 
+          major = yes
+		  only_playable = yes
+
+	  trigger = { has_landed_title = e_karling }
+	  
+	  major_trigger = {
+					   OR = {
+							 religion = catholic
+							 religion = chalcedonian
+							 any_realm_title = { de_jure_liege_or_above = e_karling }
+							}
+					  }
+
+          option = {
+                    trigger = { has_landed_title = e_karling }
+                    name = OK
+                    set_global_flag = "treaty_of_verdun"
+		    set_global_flag = "first_verdun"
+		    set_character_flag = "verdun_emperor"
+		    clr_character_flag = "verdun_war"
+		    clr_global_flag = "verdun_broken"
+			any_vassal = {
+						  limit = { verdun_vassal_trigger = yes }
+						  set_defacto_liege = THIS
+						  ROOT = {
+								  make_tributary = {
+													who = PREV
+													tributary_type = carolingian_king
+												   }
+								 }
+						 }
+		    chronicle = {
+				 entry = CHRON_REXTEUT_VERDUN
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_conclave
+				}	
+                   }
+
+          option = {
+                    trigger = {
+			       NOT = { has_landed_title = e_karling }
+                              }
+                    name = OK
+		    clr_character_flag = "defied_imperial_authority"
+		    clr_character_flag = "anti_emperor_king"
+		    chronicle = {
+				 entry = CHRON_REXTEUT_VERDUN
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_conclave
+				}	
+                   }
+
+                  }
+
+###Carolingian king-vassals informed Emperor rejected demands###
+character_event = {
+
+          id = rexteut.6005
+          desc = EVTDESC_rexteut_6005
+          picture = GFX_evt_rival_rulers
+		  
+          is_triggered_only = yes
+
+          trigger = {
+                     independent = no
+                     liege = { has_landed_title = e_karling }
+                     verdun_vassal_trigger = yes
+                     has_character_flag = "defied_imperial_authority"
+                    }
+
+          option = {
+                    name = EVTOPTA_rexteut_6005
+		    ai_chance = { factor = 10 }
+		    custom_tooltip = { text = verdun_1 }
+                    set_character_flag = "anti_emperor_king"
+		    opinion = {
+			       who = FROM
+			       modifier = opinion_denied_autonomy
+			       years = 25
+			      }
+                   }
+          option = {
+		    name = EVTOPTB_rexteut_6005
+		    ai_chance = { factor = 1 }
+                    clr_character_flag = "defied_imperial_authority"
+                    set_character_flag = "accepted_imperial_authority"
+                   }
+
+                  }
+
+###Treaty of Verdun plot ultimatum###
+letter_event = {
+
+       id = rexteut.6006
+       desc = EVTDESC_rexteut_6006
+	   border = GFX_event_letter_frame_war
+	   
+       is_triggered_only = yes
+
+       trigger = {
+                  has_landed_title = e_karling
+                  FROM = { leads_faction = faction_treaty_verdun }
+                 }
+
+
+       option = {
+                 name = EVTOPTA_rexteut_6006
+		 ai_chance = {
+			      factor = 1
+			      modifier = {
+					  factor = 0
+					  OR = {
+					  	trait = ambitious
+					  	trait = stubborn
+					       }
+					 }
+			     }
+                 narrative_event = {
+			            id = rexteut.6004
+				    days = 7
+				    tooltip = verdun_2
+			           }
+			
+                }
+       option = {
+                 name = EVTOPTB_rexteut_6006
+		 ai_chance = { 
+			      factor = 5 
+			     }
+		 set_character_flag = "verdun_war"
+		 custom_tooltip = { text = verdun_3 }
+		 hidden_tooltip = {
+                 any_realm_lord = {
+                                   letter_event = {
+					           id = rexteut.6007
+					          }
+			          }
+				  }
+		 
+                 reverse_war = {
+				target = FROM
+				casus_belli = weaken_imperial_authority
+				faction = faction_treaty_verdun
+                               }
+					 
+		}
+
+               }
+
+###Faction informed Emperor has rejected demands again###
+letter_event = {
+
+       id = rexteut.6007
+       desc = EVTDESC_rexteut_6007
+	   
+       is_triggered_only = yes
+       
+
+       trigger = {
+                  verdun_vassal_trigger = yes
+		  liege = { has_landed_title = e_karling }
+		  NOT = { higher_tier_than = KING }
+		  in_faction = faction_treaty_verdun
+		 }
+
+       option = {
+		 name = EVTOPTA_rexteut_6007
+		}
+
+	       }
+
+###Emperor defeats king-vassals and maintains Imperial power###
+narrative_event = {
+
+          id = rexteut.6008
+	  title = EVTNAME_rexteut_6008
+	  desc = EVTDESC_rexteut_6008
+	  picture = GFX_evt_holy_emperor
+	  
+	  is_triggered_only = yes
+
+	  major = yes
+
+	  trigger = {
+		     has_landed_title = e_karling
+		     has_character_flag = "verdun_war"
+		     NOT = { has_global_flag = "treaty_of_verdun" }
+		    }
+			
+	  major_trigger = {
+					   OR = {
+							 religion = catholic
+							 religion = chalcedonian
+							 any_realm_title = { de_jure_liege_or_above = e_karling }
+							}
+					  }
+
+	  option = {
+		    trigger = { has_landed_title = e_karling }
+		    name = EVTOPTA_rexteut_6008
+		    clr_character_flag = "verdun_war"
+			set_character_flag = "verdun_victory"
+		    prestige = 250
+		    set_global_flag = "verdun_failed"
+		    chronicle = {
+				 entry = CHRON_REXTEUT_VERDUN_FAILED
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_holy_emperor
+				}	
+		   }
+	  option = {
+		    trigger = { 
+			       independent = no
+			       liege = { has_landed_title = e_karling }
+			       verdun_vassal_trigger = yes
+			      }
+		    name = EVTOPTB_rexteut_6008
+		    clr_character_flag = "defied_imperial_authority"
+		    clr_character_flag = "anti_emperor_king"
+		    chronicle = {
+				 entry = CHRON_REXTEUT_VERDUN_FAILED
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_holy_emperor
+				}	
+		   }
+	  option = {
+		    trigger = {
+			       NOT = { has_landed_title = e_karling }
+			       NOT = { liege = { has_landed_title = e_karling } }
+			      }
+		    name = OK
+		    chronicle = {
+				 entry = CHRON_REXTEUT_VERDUN_FAILED
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_holy_emperor
+				}	
+		   }
+
+		  }
+
+###King-level Carolingian vassals informed of breaking of Treaty of Verdun###
+narrative_event = {
+
+	  id = rexteut.6009
+	  title = EVTNAME_rexteut_6009
+	  desc = EVTDESC_rexteut_6009
+	  picture = GFX_evt_rival_rulers
+	  
+	  is_triggered_only = yes
+
+
+
+	  option = {
+		    trigger = {
+			       liege = { 
+							OR = {
+								  has_landed_title = e_karling 
+								  primary_title = { has_title_flag = "former_karling_empire" }
+								 }
+						   } 
+			       verdun_vassal_trigger = yes
+			      }
+		    name = EVTOPTA_rexteut_6009
+		    ai_chance = { factor = 50 }
+		    custom_tooltip = { text = verdun_1 }
+		    set_character_flag = "defied_imperial_authority"
+		    set_character_flag = "anti_emperor_king"
+			suzerain = { 
+						remove_tributary = ROOT 
+						ROOT = { set_defacto_liege = PREV }
+					   }
+		    opinion = {
+			       who = FROM
+			       modifier = opinion_revoked_autonomy
+			       years = 100
+			      }
+		   }
+	  option = {
+		    trigger = {
+			       liege = { 
+							OR = {
+								  has_landed_title = e_karling 
+								  primary_title = { has_title_flag = "former_karling_empire" }
+								 }
+						   }  
+			       verdun_vassal_trigger = yes
+			      }
+		    name = EVTOPTB_rexteut_6009
+		   }
+	  option = {
+		    trigger = { 
+			       verdun_vassal_trigger = no
+			      }
+		    name = OK
+		   }
+
+		  }
+
+
+###Carolingian Empire becomes HRE after Karlings lose the throne###
+letter_event = {
+	id = rexteut.60101
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		       has_global_flag = "verdun_failed"
+		       has_landed_title = e_karling
+	           NOT = { dynasty = 25061 }
+			   FROM = { title = e_karling }
+			  }
+			  
+	immediate = {
+				 narrative_event = {
+									id = rexteut.6010
+									days = 7
+								   }
+				}
+				
+			   }
+narrative_event = {
+
+	  id = rexteut.6010
+	  title = EVTNAME_rexteut_6010
+	  desc = EVTDESC_rexteut_6010
+	  picture = GFX_evt_holy_emperor
+	  
+	  is_triggered_only = yes
+	
+	  major = yes
+	  only_playable = yes
+	  
+	  trigger = {
+		     has_global_flag = "verdun_failed"
+		     has_landed_title = e_karling
+	         NOT = { dynasty = 25061 }
+		    }
+			
+	  major_trigger = {
+					   OR = {
+							 religion = chalcedonian
+							 religion = catholic
+							 religion = orthodox
+							}
+					  }
+
+	  option = {
+		    trigger = { has_landed_title = e_karling }
+		    name = EVTOPTA_rexteut_6010
+		    custom_tooltip = { text = karling_2_hre }
+		    hidden_tooltip = {
+		    e_hre = { 
+					 gain_title = PREV 
+					 set_title_flag = "hre_formed"
+					 copy_title_history = e_karling
+					}
+		    e_karling = {
+				 any_de_jure_vassal_title = {
+							     de_jure_liege = e_hre
+						            }
+				 destroy_landed_title = yes
+				 set_title_flag = "carolingian_empire_fallen"
+				 any_vassal = {
+					       set_defacto_liege = e_hre
+					      }
+				}
+		    chronicle = {
+				 entry = CHRON_REXTEUT_KARLING_HRE
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_holy_emperor
+				}
+			if = {
+				  limit = { has_landed_title = k_germany }
+				  germany_stem_breakup_effect = yes
+				 }
+			if = {
+				  limit = {
+						   e_hre = {
+									NOR = {
+										   has_law = succ_feudal_elective
+										   has_law = succ_elective_gavelkind
+										   has_law = succ_tanistry
+										  }
+								   }
+						  }
+				  e_hre = { set_title_flag = "hereditary_hre" }
+				 }
+				     }
+		   }
+	  option = {
+		    trigger = { has_landed_title = e_byzantium }
+		    name = EVTOPTB_rexteut_6010
+		    chronicle = {
+				 entry = CHRON_REXTEUT_KARLING_HRE
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_holy_emperor
+				}
+		   }
+	  option = {
+		    trigger = {
+			       NOT = { has_landed_title = e_karling }
+			       NOT = { has_landed_title = e_byzantium }
+			      }
+		    name = OK
+		    chronicle = {
+				 entry = CHRON_REXTEUT_KARLING_HRE
+				 portrait = [Root.GetID]
+				 picture = GFX_evt_holy_emperor
+				}
+		   }
+
+		  }
+
+
+###Southern-Italian characters can break away from Charlemagne/Carloman###
+letter_event = {
+		id = rexteut.6011
+		hide_window = yes
+		
+		is_triggered_only = yes
+		
+		trigger = {
+				   NOT = {
+						  has_game_rule = {
+										   name = charlemagne_story
+										   value = off
+										  }
+						 }
+				   has_landed_title = k_italy
+				   NOT = { has_global_flag = "southern_italy_secession" }
+				   OR = {
+						 has_character_flag = "is_charlemagne"
+						 has_character_flag = "is_carloman"
+						}
+				   over_vassal_limit = 1
+				   FROM = { title = k_italy }
+				  }
+		immediate = {
+					 set_global_flag = "southern_italy_secession"
+					 any_vassal = {
+								   limit = {
+											primary_title = { de_jure_liege_or_above = k_sicily }
+										   }
+								   character_event = {
+													  id = rexteut.6012
+													  days = 2
+													 }
+								  }
+					}
+			   }
+
+character_event = {
+		id = rexteut.6012
+		desc = EVTDESC_rexteut_6012
+		picture = GFX_evt_powerful_ruler
+		
+		is_triggered_only = yes
+		
+		trigger = {
+				   NOT = {
+						  has_game_rule = {
+										   name = charlemagne_story
+										   value = off
+										  }
+						 }
+				   independent = no
+				   primary_title = { de_jure_liege_or_above = k_sicily }
+				   liege = {
+							has_landed_title = k_italy
+							OR = {
+								  has_character_flag = "is_charlemagne"
+								  has_character_flag = "is_carloman"
+								 }
+						   }
+				  }
+				  
+		option = {
+				  name = EVTOPTA_rexteut_6012
+				  ai_chance = { factor = 20 }
+				  liege = { character_event = { id = rexteut.6013 } }
+				  set_defacto_liege = THIS
+				 }
+		option = {
+				  ai_chance = { factor = 0.5 }
+				  name = EVTOPTB_rexteut_6012
+				 }
+				  }
+				  
+###Charlemagne/Carloman informed that southern-Italian vassals have broken free###
+character_event = {
+		id = rexteut.6013
+		desc = EVTDESC_rexteut_6013
+		picture = GFX_evt_rival_rulers
+		
+		is_triggered_only = yes
+		
+		trigger = {
+				   OR = {
+						 has_character_flag = "is_charlemagne"
+						 has_character_flag = "is_carloman"
+						}
+				   has_landed_title = k_italy
+				  }
+		
+		option = {
+				  name = EVTOPTA_rexteut_6013
+				 }
+		
+		  }
+		  
+###Hunald II of Aquitaine can choose to try to gain independence###
+letter_event = {
+	id = rexteut.6014
+	hide_window = yes
+	
+	only_playable = yes
+	religion_group = christian
+	only_independent = yes
+	only_capable = yes
+	min_age = 16
+	prisoner = no
+	has_character_flag = "is_charlemagne"
+	
+	mean_time_to_happen = { months = 1 }
+	
+	trigger = { 
+			   has_game_rule = {
+								name = charlemagne_story
+								value = on
+							   }
+			   has_landed_title = k_france 
+			   d_aquitaine = { NOT = { has_title_flag = "769_aquitaine_revolt" } }
+			   NOT = { e_karling = { has_title_flag = "carolingian_empire_formed" } }
+			  }
+	
+	immediate = {
+				 any_vassal = {
+							   limit = { has_landed_title = d_aquitaine }
+							   character_event = { id = rexteut.6015 }
+							  }
+				}
+			   }
+character_event = {
+	id = rexteut.6015
+	desc = EVTDESC_rexteut_6015
+	picture = GFX_evt_rival_rulers
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	only_men = yes
+	prisoner = no
+	war = no
+	
+	trigger = {
+			   independent = no
+			   d_aquitaine = {
+							  holder_scope = { character = ROOT }
+							  NOT = { has_title_flag = "769_aquitaine_revolt" }
+							 }
+			   liege = {
+						has_character_flag = "is_charlemagne"
+						has_landed_title = k_france
+					   }
+			  }
+			  
+	immediate = { d_aquitaine = { set_title_flag = "769_aquitaine_revolt" } }
+	
+	option = { #Time to revolt!
+			  name = EVTOPTA_rexteut_6015
+			  custom_tooltip = {
+								text = hunald_1
+								hidden_tooltip = {
+												  FROM = {
+														  letter_event = {
+																		  id = rexteut.6016
+																		  days = 14
+																		 }
+														 }
+												 }
+							   }
+			  ai_chance = { factor = 1 }
+			 }
+	option = { #Actually, best not...
+			  name = EVTOPTB_rexteut_6015
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 0
+									   NOR = {
+											  trait = craven
+											  trait = content
+											 }
+									  }
+						  }
+			 }
+				  }
+				  
+###Charlemagne gets Hunald's ultimatum###
+letter_event = {
+	id = rexteut.6016
+	desc = EVTDESC_rexteut_6016
+	border = GFX_event_letter_frame_war
+	
+	is_triggered_only = yes
+	
+	option = { #Go beat him up
+			  name = EVTOPTA_rexteut_6016
+			  ai_chance = { factor = 1 }
+			  reverse_war = {
+							 target = FROM
+							 casus_belli = bid_for_independence
+						    }
+			  FROM = { letter_event = { id = rexteut.6017 } }
+			 }
+	option = { #Too much effort...
+			  name = EVTOPTB_rexteut_6016
+			  ai_chance = { factor = 0 }
+			  prestige = -100
+			  FROM = { letter_event = { id = rexteut.6018 } }
+			 }
+	
+			   }
+
+###Hunald hears of Charlemagne's response###
+
+letter_event = { #Charlemagne isn't having any of it
+	id = rexteut.6017
+	desc = EVTDESC_rexteut_6017
+	border = GFX_event_letter_frame_war
+	
+	is_triggered_only = yes
+	
+	option = { name = EVTOPTA_rexteut_6017 }
+			   }
+			   
+letter_event = { #Charlemagne is controlled by a rather unambitious player
+	id = rexteut.6018
+	desc = EVTDESC_rexteut_6018
+	
+	is_triggered_only = yes
+	
+	immediate = { 
+				 set_defacto_liege = THIS
+				 set_truce = {
+							  who = FROM
+							  years = 10
+							 }
+				}
+				
+	option = {
+			  name = EXCELLENT
+			  prestige = 100
+			 }
+	
+			   }
+
+###Treaty of Meerssen event, moved here so that there is a several day delay###
+character_event = {
+	id = rexteut.6019
+	desc = "EVTDESC_Plus_1186"
+	picture = "GFX_evt_conclave"
+	
+	is_triggered_only = yes
+	
+	only_independent = yes
+	
+	trigger = {
+		has_global_flag = "treaty_of_verdun"
+		has_landed_title = e_karling
+		has_landed_title = k_lotharingia
+		has_landed_title = k_burgundy
+		num_of_king_titles = 3
+		any_playable_ruler = {
+			OR = {
+				liege = { character = ROOT }
+				suzerain = { character = ROOT }
+			}
+			has_landed_title = k_germany
+			NOT = { has_landed_title = k_france }
+			OR = {
+				dynasty = ROOT
+				is_close_relative = ROOT
+			}
+		}
+		any_playable_ruler = {
+			OR = {
+				liege = { character = ROOT }
+				suzerain = { character = ROOT }
+			}
+			has_landed_title = k_france
+			NOT = { has_landed_title = k_germany }
+			OR = {
+				dynasty = ROOT
+				is_close_relative = ROOT
+			}
+		}
+		NOR = {
+			has_character_flag = faction_court_war
+			has_character_flag = faction_prosperity_war
+			has_character_flag = faction_glory_war
+			has_character_flag = faction_tradition_war
+			has_character_flag = faction_separatist_war
+			has_character_flag = faction_pretender_war
+			has_character_flag = faction_religious_war
+			has_character_flag = faction_succession_war
+		}
+	}
+	
+	option = {
+		name = "EVTOPTA_Plus_1186" # Agree to the treaty
+		ai_chance = {
+			factor = 9
+			modifier = {
+				factor = 0.5
+				any_playable_ruler = {
+					OR = {
+						has_landed_title = k_germany
+						has_landed_title = k_france
+					}
+					OR = {
+						  liege = { character = ROOT }
+						  suzerain = { character = ROOT }
+						 }
+					is_close_relative = ROOT
+					prisoner = yes
+				}
+			}
+			modifier = {
+				factor = 2
+				trait = content
+			}
+			modifier = {
+				factor = 2
+				trait = humble
+			}
+		}
+		if = {
+			limit = { any_vassal = { leads_faction = faction_court } }
+			custom_tooltip = { text = COURTFACTIONMOODPLUS }
+			hidden_tooltip = {
+				random_vassal = { limit = { leads_faction = faction_court } set_variable = { which = "faction_mood_increase" value = 4 } }
+			}
+		}
+		if = {
+			limit = { any_vassal = { leads_faction = faction_glory } }
+			custom_tooltip = { text = GLORYFACTIONMOODPLUS }
+			hidden_tooltip = {
+				random_vassal = { limit = { leads_faction = faction_glory } set_variable = { which = "faction_mood_increase" value = 2 } }
+			}
+		}
+		hidden_tooltip = { character_event = { id = PlusFaction.200 days = 1 } }
+		
+		
+		# notify the rulers
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					OR = {
+						has_landed_title = k_france
+						has_landed_title = k_germany
+					}
+				}
+				character_event = { id = Plus.1187 }
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTB_Plus_1186" # No, the inheritance is rightfully mine
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.5
+				war = yes
+			}
+			modifier = {
+				factor = 2
+				trait = ambitious
+			}
+			modifier = {
+				factor = 2
+				trait = proud
+			}
+		}
+		if = {
+			limit = { any_vassal = { leads_faction = faction_court } }
+			custom_tooltip = { text = COURTFACTIONMOODMINUS }
+			hidden_tooltip = {
+				random_vassal = { limit = { leads_faction = faction_court } set_variable = { which = "faction_mood_decrease" value = 4 } }
+			}
+		}
+		hidden_tooltip = { character_event = { id = PlusFaction.200 days = 1 } }
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					has_landed_title = k_france
+					has_landed_title = k_germany
+				}
+				OR = {
+					liege = { character = ROOT }
+					suzerain = { character = ROOT }
+				}
+			}
+			character_event = { id = Plus.1188 tooltip = they_are_enraged }
+		}
+		hidden_tooltip = {
+			random_realm_character = {
+				limit = {
+					character = 90102
+					is_alive = yes
+					is_ruler = no
+					ai = yes
+				}
+				if = {
+					limit = { d_alsace = { has_holder = yes } }
+					add_pressed_claim = d_alsace
+				}
+				add_pressed_claim = k_lotharingia
+				add_trait = ambitious
+				set_character_flag = flag_denied_title
+			}
+		}
+	}
+}

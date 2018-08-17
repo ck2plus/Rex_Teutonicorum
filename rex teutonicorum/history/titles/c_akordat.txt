@@ -1,0 +1,116 @@
+# c_akordat
+656.1.1 = {
+	liege="d_axum"
+}
+
+# Solomonid
+706.1.1={
+	holder=145983 #Degna Mikael
+}
+727.1.1={
+	holder=145984 #Bahr Ikela
+}
+746.1.1={
+	holder=145985 #Gum
+}
+770.1.1={
+	holder=145986 #Asgwomgum
+}
+775.1.1={
+	holder=145987 #Letem
+}
+791.1.1={
+	holder=145988 #Talatem
+}
+812.1.1={
+	holder=145989 #Oda Gosh
+}
+825.1.1={
+	holder=145990 #Ayzur
+}
+825.1.2={
+	holder=145991 #Dedem
+}
+830.1.1={
+	holder=145992 #Wededem
+}
+840.1.1={
+	holder=145993 #Wedem Asfare
+}
+870.1.1={
+	holder=145994 #Rema Armah
+}
+875.1.1={
+	holder=167707 #Degna Djan
+}
+910.1.1 = {
+holder = 167708 #Anbasa Wedem
+}
+
+950.1.1 = {
+holder = 32225 #Dil Na'od
+}
+
+960.8.1 = {
+liege = d_alodia
+holder=166163
+}
+969.1.1=
+{
+holder=166165
+}
+1015.1.1=
+{
+holder=166166
+}
+1052.1.1=
+{
+holder=166167
+}
+1094.1.1=
+{
+holder=166168
+}
+1125.1.1=
+{
+holder=166169
+}
+
+#Medri Bahri
+
+1137.1.1 = {
+	liege = d_eritrea
+	holder = 110000097
+}
+
+1170.1.1 = {
+	holder = 110000098
+}
+
+1197.1.1 = {
+	holder = 110000099
+}
+
+1229.1.1 = {
+	holder = 110000100
+}
+
+1244.1.1 = {
+	holder = 110000101
+}
+
+1270.1.1 = {
+	holder = 110000102
+}
+
+1288.1.1 = {
+	holder = 110000103
+}
+
+1307.1.1 = {
+	holder = 110000104
+}
+
+1322.1.1 = {
+	holder = 110000105
+}

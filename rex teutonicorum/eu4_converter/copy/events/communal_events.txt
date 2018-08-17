@@ -1,0 +1,1059 @@
+namespace = rexteut
+
+###The peasants take control###
+country_event = {
+	id = rexteut.3001
+	title = EVTNAME_REXTEUT_3001
+	desc = EVTDESC_REXTEUT_3001
+	picture = ANGRY_MOB_eventPicture
+	
+	major = yes	
+	is_triggered_only = yes
+	
+	immediate = { set_country_flag = "peasant_estate_in_power" }
+	
+	option = {
+			  name = EVTOPTA_REXTEUT_3001
+			  add_stability = -1
+			  custom_tooltip = peasant_disaster_1
+			 }
+	
+				}
+
+###Peasants brought to heel###
+country_event = {
+	id = rexteut.3002
+	title = EVTNAME_REXTEUT_3002
+	desc = EVTDESC_REXTEUT_3002
+	picture = ANGRY_MOB_eventPicture
+	
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+			  name = EVTOPTA_REXTEUT_3002
+			 }
+	
+				}
+				
+###Ruler in financial difficulties can ask peasants for support###
+country_event = {
+	id = rexteut.3003
+	title = EVTNAME_REXTEUT_3003
+	desc = EVTDESC_REXTEUT_3003
+	picture = BANKRUPTCY_eventPicture
+	
+	trigger = {
+			   has_dlc = "The Cossacks"
+			   has_estate = estate_peasants
+			   estate_influence = {
+								   estate = estate_peasants
+								   influence = 25
+								  }
+			   NOT = {
+					  estate_influence = {
+										  estate = estate_peasants
+										  influence = 75
+										 }
+					  has_estate_influence_modifier = {
+													   estate = estate_peasants
+													   modifier = EST_VAL_DEMANDED_CHURCH_MONEY
+													  }
+					  has_estate_influence_modifier = {
+													   estate = estate_peasants
+													   modifier = EST_VAL_DIDNT_DEMAND_CHURCH_MONEY
+													  }
+					  years_of_income = 1
+					 }
+			  }
+			  
+	mean_time_to_happen = { months = 6 }
+	
+	option = {
+			  name = EVTOPTA_REXTEUT_3003 #Ask for money
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 ruler_has_personality = greedy_personality
+											 ruler_has_personality = embezzler_personality
+											}
+									  }
+						   modifier = {
+									   factor = 0.5
+									   NOT = {
+											  estate_loyalty = {
+																estate = estate_peasants
+																loyalty = 45
+															   }
+											 }
+									  }
+						   modifier = {
+									   factor = 0.5
+									   estate_influence = {
+														   estate = estate_peasants
+														   influence = 60
+														  }
+									  }
+						  }
+			  add_estate_loyalty = {
+									estate = estate_peasants
+									loyalty = -15
+								   }
+			  add_years_of_income = 0.5
+			  add_estate_influence_modifier = {
+											   estate = estate_peasants
+											   desc = EST_VAL_DEMANDED_CHURCH_MONEY
+											   influence = -10
+											   duration = 9125
+											  }
+			 }
+	option = {
+			  name = EVTOPTB_REXTEUT_3003 #Leave them be
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 ruler_has_personality = benevolent_personality
+											 ruler_has_personality = just_personality
+											}
+									  }
+						   modifier = {
+									   factor = 1.5
+									   NOT = {
+											  estate_loyalty = {
+																estate = estate_peasants
+																loyalty = 40
+															   }
+											 }
+									  }
+						   modifier = {
+									   factor = 1.5
+									   estate_influence = {
+														   estate = estate_peasants
+														   influence = 60
+														  }
+									  }
+						  }
+			  add_estate_loyalty = {
+									estate = estate_peasants
+									loyalty = 10
+								   }
+			  add_estate_influence_modifier = {
+											   estate = estate_peasants
+											   desc = EST_VAL_DIDNT_DEMAND_CHURCH_MONEY
+											   influence = 10
+											   duration = 9125
+											  }
+			 }
+
+				}
+				
+###Peasants upset at the fact the clergy is more powerful than them###
+country_event = {
+	id = rexteut.3004
+	title = EVTNAME_REXTEUT_3004
+	desc = EVTDESC_REXTEUT_3004
+	picture = ANGRY_MOB_eventPicture
+	
+	trigger = {
+			   has_dlc = "The Cossacks"
+			   has_estate = estate_peasants
+			   has_estate = estate_church
+			   estate_influence = {
+								   estate = estate_church
+								   influence = 60
+								  }
+			   NOT = {
+					  estate_influence = {
+										  estate = estate_peasants
+										  influence = 60
+										 }
+					 }
+			   NOR = {
+					  has_estate_influence_modifier = {
+													   estate = estate_peasants
+													   modifier = EST_VAL_PEASANTS_OVER_CLERGY
+													  }
+					  has_estate_influence_modifier = {
+													   estate = estate_peasants
+													   modifier = EST_VAL_CLERGY_OVER_PEASANTS
+													  }
+					 }
+			  }
+			  
+	mean_time_to_happen = { months = 6 }
+	
+	option = { #Support peasants
+			  name = EVTOPTA_REXTEUT_3004
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 ruler_has_personality = sinner_personality
+											 ruler_has_personality = benevolent_personality
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   estate_influence = {
+														   estate = estate_church
+														   influence = 70
+														  }
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  estate_influence = {
+																  estate = estate_peasants
+																  influence = 50
+																 }
+											 }
+									  }
+						  }
+			  add_estate_influence_modifier = {
+											   estate = estate_peasants
+											   desc = EST_VAL_PEASANTS_OVER_CLERGY
+											   influence = 10
+											   duration = 9125
+											  }
+			  add_estate_loyalty = {
+									estate = estate_peasants
+									loyalty = 15
+								   }
+			  add_estate_influence_modifier = {
+											   estate = estate_church
+											   desc = EST_VAL_PEASANTS_OVER_CLERGY
+											   influence = -10
+											   duration = 9125
+											  }
+			  add_estate_loyalty = {
+									estate = estate_church
+									loyalty = -15
+								   }
+			 }
+	option = { #Support clergy
+			  name = EVTOPTB_REXTEUT_3004
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 ruler_has_personality = righteous_personality
+											 ruler_has_personality = pious_personality
+											 ruler_has_personality = zealot_personality
+											}
+									  }
+						  }
+			  add_estate_influence_modifier = {
+											   estate = estate_peasants
+											   desc = EST_VAL_CLERGY_OVER_PEASANTS
+											   influence = -10
+											   duration = 9125
+											  }
+			  add_estate_loyalty = {
+									estate = estate_peasants
+									loyalty = -15
+								   }
+			  add_estate_loyalty = {
+									estate = estate_church
+									loyalty = 15
+								   }
+			 }
+
+				}
+				
+###Dispute between peasants and clergy needs ruler to mediate###
+country_event = {
+	id = rexteut.3005
+	title = EVTNAME_REXTEUT_3005
+	desc = EVTDESC_REXTEUT_3005
+	picture = DEBATE_REPUBLICAN_eventPicture
+	
+	trigger = {
+			   has_dlc = "The Cossacks"
+			   has_estate = estate_peasants
+			   has_estate = estate_church
+			   NOR = {
+					  has_estate_influence_modifier = {
+													   estate = estate_peasants
+													   modifier = EST_VAL_PEASANTS_OVER_CLERGY
+													  }
+					  has_estate_influence_modifier = {
+													   estate = estate_peasants
+													   modifier = EST_VAL_CLERGY_OVER_PEASANTS
+													  }
+					  has_estate_influence_modifier = {
+													   estate = estate_peasants
+													   modifier = EST_VAL_FENCE_SITTING
+													  }
+					 }
+			  }
+	
+	mean_time_to_happen = { years = 25 }
+			  
+	option = { #Support peasants
+			  name = EVTOPTA_REXTEUT_3005
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   ruler_has_personality = benevolent_personality
+									  }
+						   modifier = {
+									   factor = 2
+									   estate_influence = {
+														   estate = estate_church
+														   influence = 70
+														  }
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  estate_influence = {
+																  estate = estate_peasants
+																  influence = 50
+																 }
+											 }
+									  }
+						  }
+			  add_estate_influence_modifier = {
+											   estate = estate_peasants
+											   desc = EST_VAL_PEASANTS_OVER_CLERGY
+											   influence = 10
+											   duration = 9125
+											  }
+			  add_estate_loyalty = {
+									estate = estate_peasants
+									loyalty = 15
+								   }
+			  add_estate_influence_modifier = {
+											   estate = estate_church
+											   desc = EST_VAL_PEASANTS_OVER_CLERGY
+											   influence = -10
+											   duration = 9125
+											  }
+			  add_estate_loyalty = {
+									estate = estate_church
+									loyalty = -15
+								   }
+			 }
+	option = { #Support clergy
+			  name = EVTOPTB_REXTEUT_3005
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 ruler_has_personality = righteous_personality
+											 ruler_has_personality = pious_personality
+											 ruler_has_personality = zealot_personality
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   estate_influence = {
+														   estate = estate_peasants
+														   influence = 70
+														  }
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  estate_influence = {
+																  estate = estate_church
+																  influence = 50
+																 }
+											 }
+									  }
+						  }
+			  add_estate_influence_modifier = {
+											   estate = estate_peasants
+											   desc = EST_VAL_CLERGY_OVER_PEASANTS
+											   influence = -10
+											   duration = 9125
+											  }
+			  add_estate_loyalty = {
+									estate = estate_peasants
+									loyalty = -15
+								   }
+			  add_estate_influence_modifier = {
+											   estate = estate_church
+											   desc = EST_VAL_CLERGY_OVER_PEASANTS
+											   influence = 10
+											   duration = 9125
+											  }
+			  add_estate_loyalty = {
+									estate = estate_church
+									loyalty = 15
+								   }
+			 }
+	option = { #Support nobody
+			  name = EVTOPTC_REXTEUT_3005
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 ruler_has_personality = careful_personality
+											 ruler_has_personality = calm_personality
+											 
+											}
+									  }
+						  }
+			  add_estate_influence_modifier = {
+											   estate = estate_peasants
+											   desc = EST_VAL_FENCE_SITTING
+											   influence = -5
+											   duration = 9125
+											  }
+			  add_estate_loyalty = {
+									estate = estate_peasants
+									loyalty = -10
+								   }
+			  add_estate_influence_modifier = {
+											   estate = estate_church
+											   desc = EST_VAL_FENCE_SITTING
+											   influence = -5
+											   duration = 9125
+											  }
+			  add_estate_loyalty = {
+									estate = estate_church
+									loyalty = -10
+								   }
+			 }
+
+				}
+
+###Bonus for strong and loyal peasantry###
+country_event = {
+	id = rexteut.3006
+	title = EVTNAME_REXTEUT_3006
+	desc = EVTDESC_REXTEUT_3006
+	picture = STREET_SPEECH_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_dlc = "The Cossacks"
+			   has_estate = estate_peasants
+			   estate_loyalty = {
+								 estate = estate_peasants
+								 loyalty = 70
+								}
+			   estate_influence = {
+								   estate = estate_peasants
+								   influence = 70
+								  }
+			  }
+			  
+	mean_time_to_happen = { days = 1 }
+	
+	immediate = {
+				 hidden_effect = {
+								  if = {
+										limit = { NOT = { stability = 3 } }
+										random_list = {
+													   65 = { set_country_flag = loyalty_to_the_crown }
+													   35 = { set_country_flag = efficient_administration }
+													  }
+									  }
+								  if = {
+										limit = { stability = 3 }
+										set_country_flag = loyalty_to_the_crown
+									   }
+								 }
+				}
+	
+	option = {
+			  name = church_estate_events.7.a #Agree
+			  trigger_switch = {
+							    on_trigger = has_country_flag
+								loyalty_to_the_crown = {
+													    add_republican_tradition = 7
+														add_devotion = 7
+														add_authority = 15
+														add_piety = 0.15
+														add_papal_influence = 10
+														add_patriarch_authority = 0.1
+														clr_country_flag = loyalty_to_the_crown
+													   }
+								efficient_administration = {
+															add_stability_or_adm_power = yes
+															clr_country_flag = efficient_administration
+														   }
+							   }
+			}
+
+				}
+				
+###Local revolt###
+province_event = {
+	id = rexteut.3007
+	title = EVTNAME_REXTEUT_3007
+	desc = EVTDESC_REXTEUT_3007
+	picture = ANGRY_MOB_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+			  name = church_estate_events.11.a
+			 }
+				 }
+
+
+###Peasants seize church land###
+province_event = {
+	id = rexteut.3008
+	title = EVTNAME_REXTEUT_3008
+	desc = EVTDESC_REXTEUT_3008
+	picture = BORDER_TENSION_eventPicture
+	
+	trigger = {
+			   has_dlc = "The Cossacks"
+			   owner = {
+						has_estate = estate_peasants
+						has_estate = estate_church
+						NOT = {
+							   estate_loyalty = {
+												 estate = estate_peasants
+												 loyalty = 50
+												}
+							  }
+						NOR = {
+							   has_estate_influence_modifier = {
+													   estate = estate_peasants
+													   modifier = EST_VAL_PEASANT_LAND_SEIZE
+															   }
+							   has_estate_influence_modifier = {
+													   estate = estate_peasants
+													   modifier = EST_VAL_CLERGY_LAND_RETAIN
+															   }
+							   has_estate_influence_modifier = {
+													   estate = estate_peasants
+													   modifier = EST_VAL_SEIZE_LAND_PEASANTS
+															   }
+					 }
+					   }
+			   has_estate = estate_church
+			  }
+			  
+	immediate = {
+				 remove_estate = estate_church
+				 set_estate = estate_peasants
+				}
+				
+	option = { #Allow peasants to keep the land
+			  name = EVTOPTA_REXTEUT_3008
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   estate_influence = {
+														   estate = estate_church
+														   influence = 70
+														  }
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  estate_influence = {
+																  estate = estate_peasants
+																  influence = 50
+																 }
+											 }
+									  }
+						  }
+			  owner = {
+					   add_estate_loyalty = {
+											 estate = estate_peasants
+											 loyalty = 10
+										    }
+					   add_estate_influence_modifier = {
+														estate = estate_peasants
+														desc = EST_VAL_PEASANT_LAND_SEIZE
+														influence = 10
+														duration = 7300
+													   }
+					   add_estate_loyalty = {
+											 estate = estate_church
+											 loyalty = -15
+										    }
+					   add_estate_influence_modifier = {
+													    estate = estate_church
+													    desc = EST_VAL_PEASANT_LAND_SEIZE
+													    influence = -10
+													    duration = 7300
+													   }
+					  }
+			 }
+				
+	option = { #Return land to clergy
+			  name = EVTOPTB_REXTEUT_3008
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 ruler_has_personality = righteous_personality
+											 ruler_has_personality = pious_personality
+											 ruler_has_personality = zealot_personality
+											}
+									  }
+						   modifier = {
+									   factor = 2
+									   estate_influence = {
+														   estate = estate_peasants
+														   influence = 70
+														  }
+									  }
+						   modifier = {
+									   factor = 2
+									   NOT = {
+											  estate_influence = {
+																  estate = estate_church
+																  influence = 50
+																 }
+											 }
+									  }
+						  }
+			  remove_estate = estate_peasants
+			  set_estate = estate_church
+			  owner = {
+					   add_estate_loyalty = {
+											 estate = estate_peasants
+											 loyalty = -15
+										    }
+					   add_estate_influence_modifier = {
+														estate = estate_peasants
+														desc = EST_VAL_CLERGY_LAND_RETAIN
+														influence = -10
+														duration = 7300
+													   }
+					   add_estate_loyalty = {
+											 estate = estate_church
+											 loyalty = 10
+										    }
+					   add_estate_influence_modifier = {
+													    estate = estate_church
+													    desc = EST_VAL_CLERGY_LAND_RETAIN
+													    influence = 10
+													    duration = 7300
+													   }
+					  }
+			  spawn_rebels = {
+							  type = anti_tax_rebels
+							  size = 1
+							 }
+			 }
+				
+	option = { #Seize land yourself
+			  name = EVTOPTC_REXTEUT_3008
+			  ai_chance = {
+						   factor = 1
+						   modifier = {
+									   factor = 2
+									   OR = {
+											 ruler_has_personality = greedy_personality
+											 ruler_has_personality = embezzler_personality
+											 ruler_has_personality = malevolent_personality
+											 ruler_has_personality = conqueror_personality
+											 ruler_has_personality = expansionist_personality
+											}
+									  }
+						  }
+			  remove_estate = estate_peasants
+			  owner = {
+					   add_estate_loyalty = {
+											 estate = estate_peasants
+											 loyalty = -15
+										    }
+					   add_estate_influence_modifier = {
+														estate = estate_peasants
+														desc = EST_VAL_SEIZE_LAND_PEASANTS
+														influence = -10
+														duration = 7300
+													   }
+					   add_estate_loyalty = {
+											 estate = estate_church
+											 loyalty = -15
+										    }
+					   add_estate_influence_modifier = {
+													    estate = estate_church
+													    desc = EST_VAL_SEIZE_LAND_PEASANTS
+													    influence = -10
+													    duration = 7300
+													   }
+					  }
+			  spawn_rebels = {
+							  type = anti_tax_rebels
+							  size = 1
+							 }
+			 }
+
+				 }
+
+
+###Deteriorating relations with peasants###
+country_event = {
+	id = rexteut.3009
+	title = EVTNAME_REXTEUT_3009
+	desc = EVTDESC_REXTEUT_3009
+	picture = ANGRY_MOB_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_dlc = "The Cossacks"
+		has_estate = estate_peasants
+		NOT = {
+			estate_loyalty = {
+				estate = estate_peasants
+				loyalty = 30
+			}
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { has_estate = estate_peasants }
+				set_province_flag = peasant_estate_revolt
+			}
+			random_owned_province = {
+				limit = {
+					has_estate = estate_peasants
+					NOT = { has_province_flag = peasant_estate_revolt }
+				}
+				set_province_flag = peasant_estate_revolt
+			}
+			random_owned_province = {
+				limit = {
+					has_estate = estate_peasants
+					NOT = { has_province_flag = peasant_estate_revolt }
+				}
+				set_province_flag = peasant_estate_revolt
+			}
+			random_owned_province = {
+				limit = {
+					has_estate = estate_peasants
+					NOT = { has_province_flag = peasant_estate_revolt }
+				}
+				set_province_flag = peasant_estate_revolt
+			}
+			random_owned_province = {
+				limit = {
+					has_estate = estate_peasants
+					owner = {
+						num_of_owned_provinces_with = {
+							has_estate = estate_peasants
+							value = 15
+						}
+					}
+					NOT = { has_province_flag = peasant_estate_revolt }
+				}
+				set_province_flag = peasant_estate_revolt
+			}
+			random_owned_province = {
+				limit = {
+					has_estate = estate_peasants
+					owner = {
+						num_of_owned_provinces_with = {
+							has_estate = estate_peasants
+							value = 15
+						}
+					}
+					NOT = { has_province_flag = peasant_estate_revolt }
+				}
+				set_province_flag = peasant_estate_revolt
+			}
+			random_owned_province = {
+				limit = {
+					has_estate = estate_peasants
+					owner = {
+						num_of_owned_provinces_with = {
+							has_estate = estate_peasants
+							value = 15
+						}
+					}
+					NOT = { has_province_flag = peasant_estate_revolt }
+				}
+				set_province_flag = peasant_estate_revolt
+			}
+			random_owned_province = {
+				limit = {
+					has_estate = estate_peasants
+					owner = {
+						num_of_owned_provinces_with = {
+							has_estate = estate_peasants
+							value = 15
+						}
+					}
+					NOT = { has_province_flag = peasant_estate_revolt }
+				}
+				set_province_flag = peasant_estate_revolt
+			}
+			random_owned_province = {
+				limit = {
+					has_estate = estate_peasants
+					owner = {
+						num_of_owned_provinces_with = {
+							has_estate = estate_peasants
+							value = 20
+						}
+					}
+					NOT = { has_province_flag = peasant_estate_revolt }
+				}
+				set_province_flag = peasant_estate_revolt
+			}
+			random_owned_province = {
+				limit = {
+					has_estate = estate_peasants
+					owner = {
+						num_of_owned_provinces_with = {
+							has_estate = estate_peasants
+							value = 20
+						}
+					}
+					NOT = { has_province_flag = peasant_estate_revolt }
+				}
+				set_province_flag = peasant_estate_revolt
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = church_estate_events.5.a #Ok
+		add_stability = -1
+		if = {
+			limit = { any_owned_province = { has_estate = estate_church } } #Prevents faulty tooltip.
+			every_owned_province = {
+				limit = { has_province_flag = peasant_estate_revolt }
+				clr_province_flag = peasant_estate_revolt
+				spawn_rebels = {
+					type = anti_tax_rebels
+					size = 1
+				}
+			}
+		}
+	}
+}
+
+###Declining power of the peasants###
+country_event = {
+	id = rexteut.3010
+	title = EVTNAME_REXTEUT_3010
+	desc = EVTDESC_REXTEUT_3010
+	picture = PLAGUE_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_dlc = "The Cossacks"
+		has_estate = estate_peasants
+		NOR = {
+			has_estate_influence_modifier = {
+				estate = estate_church
+				modifier = EST_VAL_PEASANT_DECLINE
+			}
+			has_estate_influence_modifier = {
+				estate = estate_church
+				modifier = EST_VAL_PEASANT_ADVANCE
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = church_estate_events.3.a #Ok
+		add_estate_influence_modifier = {
+			estate = estate_peasants
+			desc = EST_VAL_PEASANT_DECLINE
+			influence = -10
+			duration = 5475
+		}
+	}
+				}
+				
+###Growing influence of the peasants###
+country_event = {
+	id = rexteut.3011
+	title = EVTNAME_REXTEUT_3011
+	desc = EVTDESC_REXTEUT_3011
+	picture = STREET_SPEECH_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_dlc = "The Cossacks"
+		has_estate = estate_peasants
+		NOR = {
+			has_estate_influence_modifier = {
+				estate = estate_church
+				modifier = EST_VAL_PEASANT_ADVANCE
+			}
+			has_estate_influence_modifier = {
+				estate = estate_church
+				modifier = EST_VAL_PEASANT_DECLINE
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = church_estate_events.2.a #Ok
+		add_estate_influence_modifier = {
+			estate = estate_peasants
+			desc = EST_VAL_PEASANT_ADVANCE
+			influence = 10
+			duration = 5475
+		}
+	}
+}
+
+###Peasants demand greater autonomy###
+country_event = {
+	id = rexteut.3012
+	title = EVTNAME_REXTEUT_3012
+	desc = EVTDESC_REXTEUT_3012
+	picture = ANGRY_MOB_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   has_dlc = "The Cossacks"
+			   has_estate = estate_peasants
+			   estate_influence = {
+								   estate = estate_peasants
+								   influence = 70
+								  }
+				NOR = {
+					   has_estate_influence_modifier = {
+														modifier = EST_VAL_PEASANT_AUTONOMY
+														estate = estate_nomadic_tribes
+													   }
+					   has_estate_influence_modifier = {
+														modifier = EST_VAL_REFUSED_PEASANT_AUTONOMY
+														estate = estate_nomadic_tribes
+													   }
+					  }
+			  }
+	
+	mean_time_to_happen = { days = 1 }
+	
+	option = {
+			  name = EVTOPTA_REXTEUT_3012
+			  ai_chance = {
+						   factor = 1
+						  }
+			  custom_tooltip = peasant_autonomy_event
+			  hidden_effect = {
+							   every_province = {
+												 limit = { has_estate = estate_peasants }
+												 add_local_autonomy = 35
+												}
+							  }
+			  add_estate_influence_modifier = {
+											   desc = EST_VAL_PEASANT_AUTONOMY
+											   estate = estate_peasants
+											   influence = 10
+											   duration = 3650
+											  }
+			 }
+	option = {
+			  name = EVTOPTB_REXTEUT_3012
+			  ai_chance = {
+						   factor = 99
+						   modifier = {
+									   factor = 0.01
+									   NOT = {
+											  estate_loyalty = {
+																estate = estate_peasants
+																loyalty = 45
+															   }
+											 }
+									  }
+						  }
+			  add_estate_influence_modifier = {
+											   desc = EST_VAL_REFUSED_PEASANT_AUTONOMY
+											   estate = estate_peasants
+											   influence = -10
+											   duration = 3650
+											  }
+			  add_estate_loyalty = {
+									estate = estate_peasants
+									loyalty = -20
+								   }
+			 }
+
+				}
+
+###New communal republic founded###
+country_event = {
+	id = rexteut.3013
+	title = EVTNAME_REXTEUT_3013
+	desc = EVTDESC_REXTEUT_3013
+	picture = CITY_DEVELOPMENT_eventPicture
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+			  name = EVTOPTA_REXTEUT_3013	
+			  change_government = peasants_republic
+			  add_stability = -2
+			  add_prestige = -25
+			  custom_tooltip = noble_backlash
+			  hidden_effect = {
+							   every_owned_province = {
+													   if = {
+															 limit = {
+																	  NOT = { religion = qarmatian }
+																	  NOT = { religion = mazdaki }
+																	  NOT = { religion = tondrakian }
+																	  NOT = { has_estate = estate_nobles }
+																     }
+															 random = {
+																	   chance = 20
+																	   spawn_rebels = {
+																				  type = anti_communal_rebels
+																				  size = 1
+																					  }
+																	  }
+															}
+													}
+							   every_owned_province = {
+													   if = {
+															 limit = {
+																	  NOT = { religion = qarmatian }
+																	  NOT = { religion = mazdaki }
+																	  NOT = { religion = tondrakian }
+																	  has_estate = estate_nobles
+																     }
+															 spawn_rebels = {
+																			 type = anti_communal_rebels
+																			 size = 1
+																			}
+															}
+													}
+							   }
+			  clr_country_flag = "founding_communal"
+			 }
+
+				}
+				
+###

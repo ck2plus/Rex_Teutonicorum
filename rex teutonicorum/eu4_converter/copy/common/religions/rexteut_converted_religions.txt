@@ -1,0 +1,111 @@
+
+christian = {
+             hussite = {
+			color = { 0 0 0.6 }
+			icon = 73
+			country = {
+				   defensiveness = 0.2
+				   tolerance_heretic = 2
+				   global_tax_modifier = -0.05
+				  }
+			province = {
+				    local_missionary_strength = -0.01
+				   }
+			heretic = { TABORITE OREBITE }
+			uses_church_power = yes
+			aspects = {
+				   organised_through_bishops_aspect
+				   priests_may_marry_aspect
+				   adult_baptism_aspect
+				   holy_sacraments_aspect
+				   saints_accept_prayers_aspect
+				   icons_images_aspect
+				   legalised_divorces_aspect
+				   heretics_deported_aspect
+				   parish_registers_aspect
+				   individual_creeds_aspect
+				   allow_usury_aspect
+				   translated_bibles_aspect
+				  }
+			country_as_secondary = {
+						tolerance_heretic = 1
+						tolerance_own = 1
+					       }
+		       }
+             war_hussite = {
+			color = { 0 0 0.6 }
+			icon = 73
+			country = {
+				   defensiveness = 0.2
+				   tolerance_heretic = 2
+				   global_tax_modifier = -0.05
+				  }
+			province = {
+				    local_missionary_strength = -0.01
+				   }
+			heretic = { TABORITE OREBITE }
+			uses_church_power = yes
+			aspects = {
+				   organised_through_bishops_aspect
+				   priests_may_marry_aspect
+				   adult_baptism_aspect
+				   holy_sacraments_aspect
+				   saints_accept_prayers_aspect
+				   icons_images_aspect
+				   legalised_divorces_aspect
+				   heretics_deported_aspect
+				   parish_registers_aspect
+				   individual_creeds_aspect
+				   allow_usury_aspect
+				   translated_bibles_aspect
+				  }
+			country_as_secondary = {
+						tolerance_heretic = 1
+						tolerance_own = 1
+					       }
+		            }
+			
+		 tondrakian = {
+			color = { 0.5 0.15 0.3 }
+			icon = 75
+			country = {
+					   global_unrest = -3
+					   global_tax_modifier = -0.15
+					   tolerance_heathen = 2
+					  }
+			province = {
+						local_missionary_strength = -0.01
+					   }
+			heretic = { PAULICIAN }
+			
+			country_as_secondary = {
+						global_unrest = -1
+						tolerance_heathen = 1
+								   }
+					  }
+	
+	    }
+
+muslim = {
+	  qarmatian = {
+		       color = { 0.47 0.92 0.53 }
+		       icon = 74
+
+		       country = {
+				  tolerance_heretic = -2
+				  global_unrest = -3
+				  global_tax_modifier = -0.05
+				 }
+		       province = {
+				   local_missionary_strength = -0.02
+				  }
+		       heretic = { ISMAILI }
+
+		       uses_piety = yes
+
+		       country_as_secondary = {
+					       global_unrest = -1
+					       tolerance_heretic = -1
+					      }
+		      }
+	 }

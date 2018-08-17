@@ -1,0 +1,24 @@
+spriteTypes = {
+	       spriteType = {
+			     name = GFX_convert_to_communal_ind
+			     texturefile = "gfx\\new_decisions\\peasant_discontent.tga"
+			    }
+	       spriteType = {
+			     name = GFX_convert_to_communal_vassal
+			     texturefile = "gfx\\new_decisions\\peasant_discontent.tga"
+			    }
+	       spriteType = {
+			     name = GFX_reduce_peasant_discontent
+			     texturefile = "gfx\\new_decisions\\peasant_discontent.tga"
+			    }
+	       spriteType = {
+			     name = GFX_reduce_peasant_discontent_ai
+			     texturefile = "gfx\\new_decisions\\peasant_discontent.tga"
+			    }
+				
+			spriteType = {
+				 name = GFX_action_organize_peasants
+				 texturefile = "gfx\\interface\\job_organize_peasants.dds"
+				 noOfFrames = 2
+				}
+              }

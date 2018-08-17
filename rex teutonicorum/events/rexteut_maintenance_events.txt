@@ -1,0 +1,1164 @@
+namespace = rexteut
+				  
+###Removes cannot_marry from story characters should Berengar lose Italy###
+letter_event = {
+		id = rexteut.0001
+		hide_window = yes
+		
+		is_triggered_only = yes
+		
+		only_playable = yes
+		
+		trigger = {
+				   OR = {
+						 k_italy = {
+									holder_scope = {
+													NOR = {
+														   has_character_flag = "is_berengar"
+														   has_character_flag = "berengheir"
+														  }
+												   }
+								   }
+						 k_germany = {
+									  holder_scope = {
+													  NOT = { has_character_flag = "is_otto" }
+													 }
+									 }
+						}
+				  }
+				  
+		immediate = {
+					 any_character = {
+									  limit = {
+											   OR = {
+													 has_character_flag = "is_otto"
+													 has_character_flag = "is_adelaide"
+													}
+											  }
+									  remove_trait = cannot_marry
+									 }
+					}
+			   }
+
+###Authority limiter added to new Emperors###
+character_event = {
+ 
+          id = rexteut.0002
+          hide_window = yes
+		  
+          is_triggered_only = yes
+		  
+		  only_playable = yes
+
+          trigger = {
+					 OR = {
+						   AND = {
+								  rex_teutonicorum_trigger = yes
+								  has_global_flag = "statutum_in_favorem_principum"
+								 }
+						   AND = {
+								  primary_title = { has_title_flag = "former_hre_empire" }
+								  has_global_flag = "statutum_in_favorem_principum"
+								 }
+						  }
+					 FROM = {
+							 OR = {
+								   title = e_hre
+								   title = e_karling
+								   title = e_roman_empire
+								  }
+							}
+                    }
+
+          immediate = {
+					   add_character_modifier = {
+												 name = stat_fav_prin
+												 duration = -1
+												}
+					  }
+
+                  }
+
+
+###Authority limiters removed from usurped Emperors###
+character_event = {
+
+	id = rexteut.0003
+	hide_window = yes
+	 
+	is_triggered_only = yes
+
+	trigger = {
+			   NOR = {
+					  has_landed_title = e_hre
+					  has_landed_title = e_karling
+					  has_landed_title = e_roman_empire
+					  primary_title = { has_title_flag = "former_hre_empire" }
+					  primary_title = { has_title_flag = "former_karling_empire" }
+					 }
+		      }
+
+	 immediate = { 
+				  remove_character_modifier = stat_fav_prin
+				 }
+
+				 }
+
+###Pope-chosen anti-king loses Pope-chosen status if Emperor fights back###
+character_event = {
+
+          id = rexteut.0004
+	  hide_window = yes
+	  
+	  is_triggered_only = yes
+	  
+	  has_character_flag = "chosen_by_pope"
+
+	  trigger = {
+		     NOT = { has_global_flag = "investiture_papal" }
+		    }
+
+	  immediate = { 
+		       clr_character_flag = "chosen_by_pope" 
+		       clr_character_flag = "hre_investiture_antiking"
+		      }
+
+		  }
+
+###Remove "defied_pope" from Emperors who aren't excommunicated###
+character_event = {
+		  
+	  id = rexteut.0005
+	  hide_window = yes
+	  
+	  only_playable = yes
+	  has_character_flag = "defied_pope"
+	  only_independent = yes
+	  
+	  mean_time_to_happen = { days = 15 }
+
+	  trigger = {
+		     OR = {
+			   has_landed_title = e_hre
+			   has_landed_title = e_karling
+			  }
+		     has_global_flag = "investiture_controversy"
+		     NOT = { trait = excommunicated }
+		    }
+
+	  immediate = { clr_character_flag = "defied_pope" }
+
+		  }
+
+###Sets Papal or Imperial victory in Investiture Controversy to permanent###
+character_event = {
+
+	  id = rexteut.0006
+	  hide_window = yes
+	  
+	  is_triggered_only = yes
+	  
+	  only_playable = yes
+
+
+	  trigger = {
+		     OR = {
+			   had_global_flag = {
+					      flag = "investiture_papal"
+					      days = 36500
+					     }
+			   had_global_flag = {
+					      flag = "investiture_imperial"
+					      days = 36500
+					     }
+			  }
+		     OR = {
+			   has_landed_title = e_hre
+			   has_landed_title = e_karling
+			  }
+		    }
+
+	  immediate = {
+		       if = {
+			     limit = { has_global_flag = "investiture_papal" }
+			     set_global_flag = "permanent_investiture_papal"
+				 log = "Papal victory in the Investiture Controversy set to permanent"
+			    }
+		       if = {
+			     limit = { has_global_flag = "investiture_imperial" }
+			     set_global_flag = "permanent_investiture_imperial"
+				 log = "Imperial victory in the Investiture Controversy set to permanent"
+			    }
+		       }
+
+		      }
+
+###Remove opinion bonuses from vassals if Emperor not excommunicated###
+character_event = {
+
+	  id = rexteut.0007
+	  hide_window = yes
+	  
+	  only_playable = yes
+	  only_independent = yes
+	  
+	  mean_time_to_happen = { days = 15 }
+
+	  trigger = { 
+		     OR = {
+			   has_landed_title = e_hre
+			   has_landed_title = e_karling
+			  }
+		     NOT = { trait = excommunicated }
+		    }
+
+	  immediate = { 
+		       any_vassal = {
+		                     remove_opinion = {
+					               who = ROOT
+					               modifier = opinion_supported_liege
+					              }
+				    }
+		      }
+
+		  }
+
+
+###Event for launching IC when starting the IC bookmark###
+character_event = {
+
+	  id = rexteut.0008
+	  hide_window = yes
+	  
+	  is_triggered_only = yes
+
+	  trigger = {
+		     year = 1075
+		     NOT = { year = 1076 }
+		     has_global_flag = "investiture_bookmark"
+		     religion = catholic
+		     controls_religion = yes
+		    }
+
+	  immediate = {
+		       clr_global_flag = "investiture_bookmark"
+		       letter_event = { 
+				       id = rexteut.2001 
+				       days = 7
+				      }
+		      }
+
+		  }
+
+###Remove Hussite War modifier from provinces that are no longer Hussite###
+province_event = {
+
+	  id = rexteut.0009
+	  hide_window = yes
+	  
+	  is_triggered_only = yes
+	  
+	  trigger = {
+		     has_province_modifier = hussite_war
+		     NOT = { religion = hussite }
+		    }
+
+	  immediate = {
+		       remove_province_modifier = hussite_war
+		      }
+
+		 }
+
+###Sets flag for Bohemian vassalization when all of k_bohemia owned###
+character_event = {
+
+	  id = rexteut.0010
+	  hide_window = yes
+	  
+	  only_playable = yes
+	  
+	  is_triggered_only = yes
+
+	  trigger = {
+			 has_landed_title = d_bohemia
+		     NOT = {
+			    d_bohemia = {
+					 has_title_flag = "all_bohemia_owned"
+					}
+			   }
+		     d_bohemia = {
+				  holder_scope = {
+						  completely_controls = k_bohemia
+						 }
+				 }
+		    }
+
+	  immediate = {
+		       d_bohemia = {
+				    set_title_flag = "all_bohemia_owned"
+				   }
+		      }
+
+	  
+
+		  }
+
+###If a county randomly converts to war_hussite, convert it to Hussite ###
+province_event = {
+		  id = rexteut.0011
+		  hide_window = yes
+		  
+		  is_triggered_only = yes
+
+		  trigger = { religion = war_hussite }
+
+		  immediate = { religion = hussite }
+
+		 }
+		 
+###Event for setting up overthrow of Berenger/his heirs story event###
+letter_event = {
+	id = rexteut.0012
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	only_independent = yes
+	has_global_flag = "berengar_beaten"
+	
+	trigger = {
+			   has_game_rule = {
+								name = rexteut_story
+								value = on
+							   }
+			   NOT = { has_character_flag = "is_otto" }
+			   FROM = { title = k_italy }
+			   FROMFROM = {
+						   OR = {
+								 has_character_flag = "is_berengar"
+								 has_character_flag = "berengheir"
+								}
+						  }
+			  }
+			  
+	immediate = {
+				 any_independent_ruler = {
+										  limit = {
+												   has_landed_title = k_germany
+												   has_character_flag = "is_otto"
+												  }
+										  character_event = {
+															 id = rexteut.1022
+															 days = 3
+															}
+										 }
+				}
+			   }
+
+###Event for removing Pope-crowned trait during Italian instability###
+letter_event = {
+		id = rexteut.0013
+		hide_window = yes
+
+		is_triggered_only = yes
+
+		trigger = {
+			   has_global_flag = "italian_instability"
+			   trait = crowned_by_pope
+			   NOR = {
+				  has_landed_title = k_italy
+				  has_landed_title = e_hre
+				  has_landed_title = e_italy
+				 }
+			  }
+
+		immediate = {
+			     remove_trait = crowned_by_pope
+			    }
+
+	       }
+
+###Attempt to keep Otto and Adelaide unwed until story says so###
+letter_event = {
+       id = rexteut.0014
+       hide_window = yes
+
+       is_triggered_only = yes
+
+       trigger = {
+		  has_game_rule = {
+				   name = "rexteut_story"
+				   value = on
+				  }
+		  ai = yes
+		  OR = {
+			has_character_flag = "is_otto"
+		        has_character_flag = "is_adelaide"
+		       }
+		  NOT = { has_character_flag = "rexteut_story_startup" }
+		 }
+
+       immediate = {
+		    add_trait = cannot_marry
+			set_character_flag = "rexteut_story_startup"
+		   }
+	       }
+
+###Event to put Adelaide back in prison if AI Berengar banishes her#
+letter_event = {
+       id = rexteut.0015
+       hide_window = yes
+
+       is_triggered_only = yes
+
+       trigger = {
+		  ai = yes
+		  has_game_rule = {
+				   name = "rexteut_story"
+				   value = on
+				  }
+		  has_character_flag = "is_adelaide"
+		  has_global_flag = "adelaide_imprisoned"
+		  prisoner = no
+		  k_italy = {
+			     holder_scope = {
+			     		     ai = yes
+					    }
+			    }
+	 	 }
+
+       immediate = {
+		    remove_nickname = yes
+		    k_italy = {
+			       holder_scope = {
+					       ROOT = { move_character = PREV }
+					       reverse_imprison = ROOT
+					      }
+			      }
+		   }
+
+	       }
+
+###Event for adding Suspected Usurper to Berengar at game start###
+letter_event = {
+       id = rexteut.0016
+       hide_window = yes
+
+       is_triggered_only = yes
+
+       trigger = {
+		  has_game_rule = {
+				   name = "rexteut_story"
+				   value = on
+				  }
+		  has_character_flag = "is_berengar"
+		  has_landed_title = k_italy
+		  year = 950
+		  NOT = { has_character_flag = "rexteut_story_startup" }
+		 }
+
+       immediate = {
+		    add_character_modifier = {
+					      name = suspected_usurper
+					      duration = -1
+					     }
+			set_character_flag = "rexteut_story_startup"
+		   }
+
+	       }
+
+
+###Rulers converted to war_hussite are immediately re-converted to Hussite###
+letter_event = {
+	id = rexteut.0017
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = { religion = war_hussite }
+
+	immediate = { religion = hussite }
+
+	       }
+
+
+###Event for dynamic "title-merging"###
+letter_event = {
+	id = rexteut.0018
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   OR = {
+					 AND = {
+							OR = {
+								  has_landed_title = k_france
+								  has_landed_title = k_lotharingia
+								 }
+							e_karling = { NOT = { has_title_flag = "carolingian_empire_formed" } }
+						   }
+					 OR = {
+						   has_landed_title = d_upper_lorraine
+						   has_landed_title = d_lower_lorraine
+						  }
+					 OR = {
+						   has_landed_title = d_westphalia
+						   has_landed_title = d_eastphalia
+						  }
+					}
+			  }
+			  
+	immediate = {
+				 ###RENAME IF HOLD BOTH TITLES###
+				 if = {
+					   limit = {
+								has_landed_title = k_france
+								has_landed_title = k_lotharingia
+								e_karling = { NOT = { has_title_flag = "carolingian_empire_formed" } }
+							   }
+					   k_france = {
+								   set_name = FRANCIA
+								   adjective = FRANCIA_ADJ
+								  }
+					   k_lotharingia = {
+										set_name = FRANCIA
+										#adjective = FRANCIA_ADJ
+									   }
+					  }
+				 if = {
+					   limit = {
+								has_landed_title = d_upper_lorraine
+								has_landed_title = d_lower_lorraine
+								d_upper_lorraine = { has_title_flag = "lorraine_renamed" }
+								german_cultures_trigger = yes
+							   }
+					   d_upper_lorraine = {
+										   set_name = LOTHRINGEN
+										   adjective = LOTHRINGEN_ADJ
+										  }
+					   d_lower_lorraine = {
+										   set_name = LOTHRINGEN
+										   #adjective = LOTHRINGEN_ADJ
+										  }
+					  }
+				 if = {
+					   limit = {
+								has_landed_title = d_upper_lorraine
+								has_landed_title = d_lower_lorraine
+								d_upper_lorraine = { has_title_flag = "lorraine_renamed" }
+								german_cultures_trigger = no
+							   }
+					   d_upper_lorraine = {
+										   set_name = LOTHARINGIA
+										   adjective = LOTHARINGIA_ADJ
+										  }
+					   d_lower_lorraine = {
+										   set_name = LOTHARINGIA
+										   #adjective = LOTHARINGIA_ADJ
+										  }
+					  }
+				 if = {
+					   limit = {
+								has_landed_title = d_westphalia
+								has_landed_title = d_eastphalia
+								d_saxony = { has_holder = no }
+							   }
+					   d_westphalia = {
+									   set_name = SAXONY
+									   adjective = SAXONY_ADJ
+									  }
+					   d_eastphalia = {
+									   set_name = SAXONY
+									   #adjective = SAXONY_ADJ
+									  }
+					  }
+					  
+				 ###RESET NAME IF DON'T HOLD BOTH TITLES###
+				 if = {
+					   limit = {
+								OR = {
+									  AND = {
+											 has_landed_title = k_france
+											 NOT = { has_landed_title = k_lotharingia }
+										    }
+									  AND = {
+											 has_landed_title = k_lotharingia
+											 NOT = { has_landed_title = k_france }
+										    }
+									 }
+								e_karling = { NOT = { has_title_flag = "carolingian_empire_formed" } }
+							   }
+					   k_france = {
+								   set_name = NEUSTRIA
+								   adjective = NEUSTRIA_ADJ
+								  }
+					   k_lotharingia = {
+										set_name = AUSTRASIA
+										adjective = AUSTRASIA_ADJ
+									   }
+					  }
+				 if = {
+					   limit = {
+								OR = {
+									  AND = {
+											 has_landed_title = d_upper_lorraine
+											 NOT = { has_landed_title = d_lower_lorraine }
+											}
+									  AND = {
+											 has_landed_title = d_lower_lorraine
+											 NOT = { has_landed_title = d_upper_lorraine }
+											}
+									 }
+								d_upper_lorraine = { has_title_flag = "lorraine_renamed" }
+							   }
+					   d_upper_lorraine = {
+										   if = {
+												 limit = { holder_scope = { german_cultures_trigger = yes } }
+												 set_name = U_LOTHRINGEN
+												 adjective = U_LOTHRINGEN_ADJ
+												}
+										   if = {
+												 limit = { 
+														  OR = {
+																has_holder = no
+																holder_scope = { german_cultures_trigger = no }
+															   }
+														 }
+												 set_name = ""
+												 adjective = ""
+												}
+										  }
+					   d_lower_lorraine = {
+										   if = {
+												 limit = { holder_scope = { german_cultures_trigger = yes } }
+												 set_name = L_LOTHRINGEN
+												 adjective = L_LOTHRINGEN_ADJ
+												}
+										   if = {
+												 limit = { 
+														  OR = {
+																has_holder = no
+																holder_scope = { german_cultures_trigger = no }
+															   }
+														 }
+												 set_name = ""
+												 adjective = ""
+												}
+										  }
+					  }
+				 if = {
+					   limit = {
+								OR = {
+									  AND = {
+											 has_landed_title = d_westphalia
+											 NOT = { has_landed_title = d_eastphalia }
+											}
+									  AND = {
+											 has_landed_title = d_eastphalia
+											 NOT = { has_landed_title = d_westphalia }
+											}
+									  d_saxony = { has_holder = yes }
+									 }
+							   }
+					   d_eastphalia = {
+									   set_name = ""
+									   adjective = ""
+									  }
+					   d_westphalia = {
+									   set_name = ""
+									   adjective = ""
+									  }
+					  }
+				}
+
+			   }
+
+###PLACEHOLDER###
+				 
+###Remove guelph/ghibelline from those who don't have Emperor as top liege###
+letter_event = {
+	id = rexteut.0020
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   NOT = { top_liege = { rex_teutonicorum_trigger = yes } }
+			   OR = {
+					 trait = guelph 
+					 trait = ghibelline
+					}
+			   in_revolt = no
+			  }
+			  
+	immediate = {
+				 remove_trait = guelph
+				 remove_trait = ghibelline
+				 any_character = {
+								  limit = {
+										   OR = {
+												 rex_teutonicorum_trigger = yes
+												 AND = {
+														religion = catholic
+														controls_religion = yes
+													   }
+												}
+										  }
+								  if = {
+										limit = { rex_teutonicorum_trigger = yes }
+										remove_opinion = {
+														  who = ROOT
+														  modifier = opinion_guelph_negative
+														 }
+										reverse_remove_opinion = {
+																  who = ROOT
+																  modifier = opinion_guelph_negative
+																 }
+										remove_opinion = {
+														  who = ROOT
+														  modifier = opinion_ghibelline_positive
+														 }
+										reverse_remove_opinion = {
+																  who = ROOT
+																  modifier = opinion_ghibelline_positive
+																 }
+									   }
+								  if = {
+										limit = {
+												 religion = catholic
+												 controls_religion = yes
+												}
+										remove_opinion = {
+														  who = ROOT
+														  modifier = opinion_guelph_positive
+														 }
+										reverse_remove_opinion = {
+																  who = ROOT
+																  modifier = opinion_guelph_positive
+																 }
+										remove_opinion = {
+														  who = ROOT
+														  modifier = opinion_ghibelline_negative
+														 }
+										reverse_remove_opinion = {
+																  who = ROOT
+																  modifier = opinion_ghibelline_negative
+																 }
+									   }
+								 }
+				}
+			   }
+###If Italian Instability claimant dies, removes flag from Pope so can choose a new claimant###
+letter_event = {
+	id = rexteut.0021
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	religion_group = christian
+	
+	trigger = {
+			   has_global_flag = "italian_instability"
+			   has_character_flag = "pope_supported_king"
+			   NOT = { has_landed_title = k_italy }
+			  }
+			  
+	immediate = {
+				 rightful_religious_head_scope = { clr_character_flag = "picked_italy_king" }
+				}
+			   }
+					  
+
+###Event to give the Papal State to a Chalcedonian Pope if it despawns for whatever reason###
+letter_event = {
+	id = rexteut.0025
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	religion = chalcedonian
+	only_men = yes
+	only_rulers = yes
+	
+	trigger = {
+			   has_landed_title = k_pentarch_rome
+			   NOT = { has_landed_title = k_papal_chalcedon }
+			   NOT = { has_global_flag = patriarch_supreme_created }
+			   k_papal_chalcedon = { has_holder = no }
+			  }
+	
+	immediate = {
+				 k_papal_chalcedon = { gain_title = ROOT }
+				}
+
+			   }
+			   
+###Caliphs of Cordoba inherit predecessor's claim to d_sunni###
+letter_event = {
+	id = rexteut.0026
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	religion = sunni
+	only_men = yes
+	only_playable = yes
+	
+	trigger = {
+			   FROM = { title = k_andalusia }
+			   year = 929
+			   FROMFROM = { has_claim = d_sunni }
+			  }
+			  
+	immediate = {
+				 d_sunni = { add_pressed_claim = ROOT }
+				}
+
+			   }
+			   
+###Renames Lotharingia/Lorraine titles to Lothringen if German culture###
+letter_event = {
+	id = rexteut.0027
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   d_upper_lorraine = { has_title_flag = "lorraine_renamed" }
+			   OR = {
+					 has_landed_title = d_upper_lorraine
+					 has_landed_title = d_lower_lorraine
+					 has_landed_title = c_lorraine
+					 has_landed_title = k_lotharingia
+					}
+			  }
+			  
+	immediate = { lorraine_cultural_renaming_effect = yes  }
+
+			   }
+				  
+###King of the Romans succession event###			  
+letter_event = {
+	id = rexteut.0028
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+			   rex_teutonicorum_trigger = yes
+			   has_character_flag = "co_crowned_heir"
+			   NOT = { e_hre = { has_title_flag = "ended_co_crownings" } }
+			  }
+
+	immediate = { 
+				 co_crowning_inheritance_effect = yes 
+				 any_realm_character = {
+										limit = { has_character_flag = "temp_succession_block" }
+										remove_trait = abdicated
+										clr_character_flag = "temp_succession_block"
+									   }
+				 current_heir = { 
+								 set_character_flag = "was_co_crowned" 
+								 remove_trait = co_crowned
+								}
+				}
+
+			    }
+			   
+###Adds and/or removes guelph/ghibelline opinion modifiers for title changes###
+
+letter_event = { #NEW EMPEROR
+	id = rexteut.0029
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   rex_teutonicorum_trigger = yes
+			   has_global_flag = "guelphs_ghibellines"
+			   FROM = { 
+					   OR = {
+							 title = e_hre 
+							 title = e_karling
+							 title = e_roman_empire
+							}
+					  }
+			  }
+			  
+	immediate = {
+				 remove_trait = guelph
+				 remove_trait = ghibelline
+				 any_character = {
+								   limit = { trait = guelph }
+								   opinion = {
+											  modifier = opinion_guelph_negative
+											  who = ROOT
+											  years = 100
+											 }
+								   reverse_opinion = {
+													  modifier = opinion_guelph_negative
+													  who = ROOT
+													  years = 100
+													 }
+								   FROMFROM = {
+											   remove_opinion = {
+																 modifier = opinion_guelph_negative
+																 who = PREV
+																}
+											   reverse_remove_opinion = {
+																		 modifier = opinion_guelph_negative
+																		 who = PREV
+																		}
+											  }
+								  }
+				 any_character = {
+								   limit = { trait = ghibelline }
+								   opinion = {
+											  modifier = opinion_ghibelline_positive
+											  who = ROOT
+											  years = 100
+											 }
+								   reverse_opinion = {
+													  modifier = opinion_ghibelline_positive
+													  who = ROOT
+													  years = 100
+													 }
+								   FROMFROM = {
+											   character_event = { 
+																  id = rexteut.5026
+																  days = 7
+																 }
+											   remove_opinion = {
+																 modifier = opinion_ghibelline_positive
+																 who = PREV
+																}
+											   reverse_remove_opinion = {
+																		 modifier = opinion_ghibelline_positive
+																		 who = PREV
+																		}
+											  }
+								  }
+				}
+			   }
+			   
+letter_event = {
+	id = rexteut.0030 #NEW POPE
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   religion = catholic
+			   controls_religion = yes
+			   has_global_flag = "guelphs_ghibellines"
+			   FROM = { title = k_papal_state }
+			  }
+			  
+	immediate = {
+				 any_character = {
+								  limit = { trait = guelph }
+								  opinion = {
+											 modifier = opinion_guelph_positive
+											 who = ROOT
+											 years = 100
+											}
+								  reverse_opinion = {
+													 modifier = opinion_guelph_positive
+													 who = ROOT
+													 years = 100
+													}
+								 }
+				 any_character = {
+								  limit = { trait = ghibelline }
+								  opinion = {
+											 modifier = opinion_ghibelline_negative
+											 who = ROOT
+											 years = 100
+											}
+								  reverse_opinion = {
+													 modifier = opinion_ghibelline_negative
+													 who = ROOT
+													 years = 100
+													}
+								 }
+				}
+				
+			   }
+			   
+###Temporarily converts the Carolingian Empire to the HRE for EU4 conversion purposes###
+letter_event = {
+	id = rexteut.0031
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+			   e_karling = { has_holder = yes }
+			   e_hre = { has_holder = no }
+			  }
+			  
+	immediate = {
+				 random_character = {
+								  limit = { has_landed_title = e_karling }
+								  e_hre = { 
+										   grant_title = PREV
+										   copy_title_laws = e_karling
+										  }
+								 e_karling = { destroy_landed_title = THIS }
+								 set_character_flag = "karling_conversion"
+								    }
+				}
+
+			   }
+			   
+letter_event = {
+	id = rexteut.0032
+	hide_window = yes
+	
+	is_triggered_only = yes
+			  
+	immediate = {
+				 random_character = {
+								  limit = { has_character_flag = "karling_conversion" }
+								  clr_character_flag = "karling_conversion"
+								  e_karling = {
+											   grant_title = PREV
+											   make_primary_title = yes
+											  }
+								  e_hre = { destroy_landed_title = THIS }
+									}
+				}
+
+			   }
+			   
+###Makes Karling king vassals independent upon title change###
+letter_event = {
+	id = rexteut.0033
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_playable = yes
+	
+	trigger = {
+			   liege = { has_landed_title = e_karling }
+			   has_global_flag = "treaty_of_verdun"
+			   verdun_vassal_trigger = yes
+			   primary_title = { title = FROM }
+			  }
+			  
+	immediate = {
+				 set_defacto_liege = THIS
+				 FROM = {
+						 make_tributary = {
+										   who = ROOT
+										   tributary_type = carolingian_king
+										  }
+						}	
+				}
+			   }
+			   
+###If Carolingian Empire changes hands, move tributaries accordingly###
+letter_event = {
+		id = rexteut.0034
+		hide_window = yes
+		
+		is_triggered_only = yes
+		
+		trigger = {
+				   has_global_flag = "treaty_of_verdun"
+				   FROM = {
+						   OR = {
+								 title = e_karling
+								 has_title_flag = "former_karling_empire"
+								}
+						  }
+				  }
+				  
+		immediate = {
+					 FROMFROM = {
+								 any_tributary = {
+												  limit = { is_tributary = { type = carolingian_king } }  
+												  suzerain = { remove_tributary = PREV }
+												  ROOT = {
+														  make_tributary = {
+																			who = PREV
+																			tributary_type = carolingian_king
+																		   }
+														 }
+												 }
+								 if = {
+									   limit = { verdun_vassal_trigger = yes }
+									   letter_event = { id = rexteut.00341 days = 1 }
+									  }
+								}
+					}
+					
+			   }
+			   
+letter_event = { #For some reason needs it's not working right away on usurped character
+	id = rexteut.00341
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+				 set_defacto_liege = THIS
+				 FROM = {
+						 make_tributary = {
+										   who = ROOT
+										   tributary_type = carolingian_king
+										  }
+						}
+				}
+
+			   }
+
+###Hussite war conversion events###
+letter_event = {
+	id = rexteut.0035
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = { has_global_flag = "hussite_wars" }
+	
+	immediate = {
+				 any_playable_ruler = {
+									   limit = { has_landed_title = k_bohemia }
+									   any_realm_province = {
+															 limit = { religion = hussite }
+															 religion = war_hussite
+															}
+									  }
+				}
+				
+			   }
+			   
+letter_event = {
+	id = rexteut.0036
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = { has_global_flag = "hussite_wars" }
+	
+	immediate = {
+				 any_playable_ruler = {
+									   limit = { has_landed_title = k_bohemia }
+									   any_realm_province = {
+															 limit = { religion = war_hussite }
+															 religion = hussite
+															}
+									  }
+				}
+				
+			   }
+		
+		
+###

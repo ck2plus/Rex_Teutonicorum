@@ -1,0 +1,144 @@
+spriteTypes = {
+               spriteType = {
+                             name = GFX_repudiate_papal
+                             texturefile = "gfx\\interface\\decision_icon_form_the_hre.dds"
+                            }
+               spriteType = {
+                             name = GFX_break_verdun
+                             texturefile = "gfx\\interface\\decision_icon_restore_roman_empire.dds"
+                            }
+               spriteType = {
+                             name = GFX_revoke_sifp
+                             texturefile = "gfx\\interface\\decision_icon_form_the_hre.dds"
+                            }
+			   spriteType = {
+							 name = GFX_claim_karling_crown
+							 texturefile = "gfx\\new_decisions\\decision_icon_imperial_coronation.dds"
+							}
+	       spriteType = {
+			     name = GFX_faction_treaty_verdun_ultimatum
+			     texturefile = "gfx\\interface\\decision_icon_faction_lower_crown_authority_ultimatum.dds"
+			    }
+	       spriteType = {
+			     name = GFX_faction_sifp_ultimatum
+			     texturefile = "gfx\\interface\\decision_icon_faction_lower_crown_authority_ultimatum.dds"
+			    }
+	       spriteType = {
+			     name = GFX_faction_sifp_prepare
+			     texturefile = "gfx\\interface\\decision_icon_faction_lower_crown_authority_ultimatum.dds"
+			    }
+	       spriteType = {
+			     name = GFX_faction_sifp
+			     texturefile = "gfx/ambitions/plot_lower_crown_authority.tga"
+		             noOfFrames = 1
+		             norefcount = yes
+		             effectFile = "gfx/FX/buttonstate.lua"
+			    }
+	       spriteType = {
+			     name = GFX_faction_treaty_verdun
+			     texturefile = "gfx/ambitions/plot_lower_crown_authority.tga"
+		             noOfFrames = 1
+		             norefcount = yes
+		             effectFile = "gfx/FX/buttonstate.lua"
+			    }
+	       spriteType = {
+			     name = GFX_raise_franconia
+			     texturefile = "gfx\\new_decisions\\raise_franconia.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_swabia
+			     texturefile = "gfx\\new_decisions\\raise_swabia.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_bavaria
+			     texturefile = "gfx\\new_decisions\\raise_bavaria.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_austria
+			     texturefile = "gfx\\new_decisions\\raise_austria.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_luxembourg
+			     texturefile = "gfx\\new_decisions\\raise_luxembourg.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_tuscany
+			     texturefile = "gfx\\new_decisions\\raise_tuscany.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_saxony
+			     texturefile = "gfx\\new_decisions\\raise_saxony.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_lorraine
+			     texturefile = "gfx\\new_decisions\\raise_lorraine.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_holland
+			     texturefile = "gfx\\new_decisions\\raise_holland.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_bohemia
+			     texturefile = "gfx\\new_decisions\\raise_bohemia.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_sicily
+			     texturefile = "gfx\\new_decisions\\raise_sicily.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_aquitaine
+			     texturefile = "gfx\\new_decisions\\raise_aquitaine.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_burgundy
+			     texturefile = "gfx\\new_decisions\\raise_burgundy.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_normandy
+			     texturefile = "gfx\\new_decisions\\raise_normandy.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_milan
+			     texturefile = "gfx\\new_decisions\\raise_milan.tga"
+			    }
+	       spriteType = {
+			     name = GFX_raise_naples
+			     texturefile = "gfx\\new_decisions\\raise_naples.tga"
+			    }
+	       spriteType = {
+			     name = GFX_restore_germany
+			     texturefile = "gfx\\new_decisions\\restore_germany.tga"
+			    }
+	       spriteType = {
+			     name = GFX_build_cairo
+			     texturefile = "gfx\\new_decisions\\decision_icon_build_pyramid.dds"
+			    }
+	       spriteType = {
+			     name = GFX_restore_roman_empire_latin
+			     texturefile = "gfx\\interface\\decision_icon_restore_roman_empire.dds"
+			    }
+	       spriteType = {
+			     name = GFX_restore_roman_empire_italy
+			     texturefile = "gfx\\interface\\decision_icon_restore_roman_empire.dds"
+			    }
+	       spriteType = {
+			     name = GFX_restore_roman_empire_hre
+			     texturefile = "gfx\\interface\\decision_icon_restore_roman_empire.dds"
+			    }
+	       spriteType = {
+			     name = GFX_restore_roman_empire_karling
+			     texturefile = "gfx\\interface\\decision_icon_restore_roman_empire.dds"
+			    }
+	       spriteType = {
+			     name = GFX_end_papal_crownings
+			     texturefile = "gfx\\interface\\decision_icon_form_new_empire.dds"
+			    }
+           spriteType = {
+                 name = GFX_restore_hre
+                 texturefile = "gfx\\interface\\decision_icon_form_the_hre.dds"
+                }
+           spriteType = {
+                 name = GFX_form_marca_hispanica
+                 texturefile = "gfx\\new_decisions\\form_marca_hispanica.tga"
+                }
+              }

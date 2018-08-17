@@ -1,0 +1,267 @@
+﻿l_english:
+
+#Religions
+
+ hussite: "Hussite"
+ war_hussite: "Hussite"
+ hussite_religion_desc: "Based on the teachings of Bohemian preacher Jan Hus, Hussites are a reformist offshoot of Catholicism that seek to redress what they see as deviance of the church from the true teachings of Christ, including poverty of clergy and punishment of mortal sins."
+ tondrakian: "Tondrakian"
+ tondrakian_religion_desc: "Tondrakians are an anti-feudal, anti-church sect that originally flourished in Armenia between the 9th and 11th Century. They denied the immortality of the soul, the afterlife, and the rights of the church to rule over its fellow man. They supported property rights for peasants and equality between men and women."
+ tondrakian_rebels_title: "Religious"
+ qarmatian: "Qarmatian"
+ qarmatian_religion_desc: "The Qarmatians were followers of a syncretic branch of Isma'ili Shia, who founded a utopian communal republic in eastern Arabia at the end of the 9th century. They are best known for raiding their more orthodox Muslim neighbours, including a sack of Mecca and theft of the Black Stone from the Kaaba in 930."
+ TABORITE: "Taborite"
+ OREBITE: "Orebite"
+ ISMAILI: "Isma'ili"
+
+ #Rebels
+
+ hussite_rebels_title: "Religious"
+ hussite_rebels_name: "$RELIGION$ Zealots"
+ hussite_rebels_desc: "Religious fanatics tend to rise up in provinces controlled by nations of a different faith. They seek to spread their faith and smite all unbelievers."
+ hussite_rebels_army: "$RELIGION$ Army"
+ hussite_rebels_demand: "Convert $COUNTRYNAME$"
+ hussite_rebels_demand_desc: "The religious rebels fight for the $RELIGION$ religion. They demand that we recognize its supremacy or at the very least cease our efforts to convert them and let them worship in peace."
+
+ tondrakian_rebels_title: "Religious"
+ tondrakian_rebels_name: "$RELIGION$ Zealots"
+ tondrakian_rebels_desc: "Religious fanatics tend to rise up in provinces controlled by nations of a different faith. They seek to spread their faith and smite all unbelievers."
+ tondrakian_rebels_army: "$RELIGION$ Army"
+ tondrakian_rebels_demand: "Convert $COUNTRYNAME$"
+ tondrakian_rebels_demand_desc: "The religious rebels fight for the $RELIGION$ religion. They demand that we recognize its supremacy or at the very least cease our efforts to convert them and let them worship in peace." 
+
+ qarmatian_rebels_title: "Religious"
+ qarmatian_rebels_name: "$RELIGION$ Zealots"
+ qarmatian_rebels_desc: "Religious fanatics tend to rise up in provinces controlled by nations of a different faith. They seek to spread their faith and smite all unbelievers."
+ qarmatian_rebels_army: "$RELIGION$ Army"
+ qarmatian_rebels_demand: "Convert $COUNTRYNAME$"
+ qarmatian_rebels_demand_desc: "The religious rebels fight for the $RELIGION$ religion. They demand that we recognize its supremacy or at the very least cease our efforts to convert them and let them worship in peace."
+
+ anti_communal_rebels_title: "Anti-Communal"
+ anti_communal_rebels_name: "Anti-Communal Reactionaries"
+ anti_communal_rebels_desc: "Those who feel they would be better off under a less equal society seek to reverse the communalism that rules our country."
+ anti_communal_rebels_army: "Anti-Communal Army"
+ anti_communal_rebels_demand: "Revert $COUNTRNAME$ to a non-communal state"
+ anti_communal_rebels_demand_desc: "The reactionaries feel the communal republic seek to abolish communalism and restore aristocracy to the realm. They demand that we restore the old hierarchies with themselves at the top."
+
+ #Government names
+
+ COMMONWEALTH: "Commonwealth"
+ GRAND_COMMONWEALTH: "Grand Commonwealth"
+ HAKIMATE: "Hakimate"
+ MALIKATE: "Malikate"
+ GREAT_MALIKATE: "Great Malikate"
+ HAKIM: "Hakim"
+ MALIK: "Malik"
+ GREAT_MALIK: "Great Malik"
+ 
+
+ #Events
+
+ EVTNAME_REXTEUT_1001: "Emperor crowned by Pope"
+ EVTDESC_REXTEUT_1001: "Historically, the Holy Roman Emperor would be crowned by the Pope as a symbolic confirmation of their authority. Now, [Root.Monarch.GetTitle] [Root.Monarch.GetName] has successfully received a Papal coronation, cementing [Root.Monarch.GetHerHis] authority as Emperor."
+ EVTOPTA_REXTEUT_1001: "Excellent!"
+ EVTOPTB_REXTEUT_1001: "Fair enough"
+
+ EVTNAME_REXTEUT_1002: "Emperor ends Papal Crownings!"
+ EVTDESC_REXTEUT_1002: "Historically, the Holy Roman Emperor would be crowned by the Pope as a symbolic confirmation of their authority. Now, however, [Root.Monarch.GetTitle] [Root.Monarch.GetName] has, with Papal blessing, styled [Root.Monarch.GetHerselfHimself] as Emperor Elect without a Papal coronation, setting a precedent for ending the age-old tradition."
+ EVTOPTA_REXTEUT_1002: "Excellent!"
+ EVTOPTB_REXTEUT_1002: "Fair enough"
+
+ EVTNAME_REXTEUT_2001: "The Hussite Wars"
+ EVTDESC_REXTEUT_2001: "Even as a new age seems set to begin in Europe, the followers of Jan Hus remain staunch in their opposition to your enlightened Catholic rule. Armed and ready to fight for their heresy, there are many who are questioning whether the so-called Hussite Wars will ever truly end..."
+ EVTOPTA_REXTEUT_2001: "We'll deal with these heretics, you'll see!"
+
+ EVTNAME_REXTEUT_2002: "The Protestant Reformation"
+ EVTDESC_REXTEUT_2002: "As the Reformation sweeps across Europe, it's becoming increasingly clear that there is a great deal in common between us Hussites and the new Protestant denominations. Many are even suggesting that we should join the larger Protestant movement."
+ EVTOPTA_REXTEUT_2002: "Let us be one with our Protestant siblings!"
+ EVTOPTB_REXTEUT_2002: "Bah! We were deviating from Papal orthodoxy BEFORE it was fashionable!"
+
+ EVTNAME_REXTEUT_2003: "End of the Hussite Wars?"
+ EVTDESC_REXTEUT_2003: "As the Hussite Wars rage across Bohemia, there are many who have grown weary of the bloodshed. Hussites and Catholic alike are calling for a negotiated end to it all."
+ EVTOPTA_REXTEUT_2003: "These wars must end."
+ EVTOPTB_REXTEUT_2003: "The King of Bohemia does not negotiate with heretics!"
+
+ EVTNAME_REXTEUT_2004: "End of the Hussite Wars"
+ EVTDESCA_REXTEUT_2004: "For years the Kingdom of Bohemia has been consumed  by war between the Catholic faithful and the Hussite heretics. Now, however, the King of Bohemia has sought  a compromise, ending the wars by allowing free worship for the Hussites. While this has brought peace in the short term, allowing such a heresy such free reign will encourage others in the future..."
+ EVTDESCB_REXTEUT_2004: "For years the Kingdom of Bohemia has been consumed  by war between the Catholic faithful and the Hussite heretics. Now, however, the King of Bohemia has been forced to convert to the Hussite dogma. With such a victory for the forces of heresy, it's only a matter of time before other heresies threaten to consume the Catholic world..."
+ EVTDESCC_REXTEUT_2004: "For years the Kingdom of Bohemia has been consumed  by war between the Catholic faithful and the Hussite heretics. Now, however, the King of Bohemia has successfully destroyed the Hussites, stamping out their practises and forcing those that remain deep underground, where they can cause no further trouble."
+ EVTOPTA_REXTEUT_2004: "Let's hope this is the last of it..."
+ EVTOPTB_REXTEUT_2004: "Accursed heretics!"
+ EVTOPTC_REXTEUT_2004: "Praise the Lord!"
+
+ EVTNAME_REXTEUT_2005: "Hussites spread influence!"
+ EVTDESC_REXTEUT_2005: "The Hussite Wars continue to ravage Bohemia. However, out attempts to stamp out the Hussite heresy have backfired, allowing them to increase their influence as more deviate from the true path!"
+
+ EVTNAME_REXTEUT_2006: "Hussites in retreat!"
+ EVTDESC_REXTEUT_2006: "The Hussite Wars continue to ravage Bohemia. However, our attempts to stamp out the Hussite heresy have shown success, and many are flocking back to the true faith!"
+
+ EVTNAME_REXTEUT_2007: "Hussites victorious?"
+ EVTDESC_REXTEUT_2007: "For years, the Hussite Wars have burned across Bohemia with no sign of ending. Now, the situation for the Catholic faithful is looking grim. As more and more flock to the Hussite cause, it's looking increasingly like the only way to end the war is to give in to the heretics' demands, including converting to their faith."
+ EVTOPTA_REXTEUT_2007: "I guess I have no choice..."
+ EVTOPTB_REXTEUT_2007: "Never give in! Never surrender!"
+
+ EVTNAME_REXTEUT_2008: "Hussites defeated!"
+ EVTDESC_REXTEUT_2008: "For years, the Hussite Wars have burned across Bohemia with no sign of ending. Now, the situation for the Hussite heretics is looking grim. As more and more of their numbers return to the Catholic fold, their positions have become untenable, the last few stragglers falling effortlessly to the forces of Catholicism."
+ EVTOPTA_REXTEUT_2008: "Sic semper haereticus."
+
+ EVTNAME_REXTEUT_2009: "Hussites convert to Protestant."
+ EVTDESC_REXTEUT_2009: "As the Reformation sweeps across Europe, the Hussites living in your realm have decided to join the wider Protestant movement."
+
+ EVTNAME_REXTEUT_3001: "The Peasants Seize Power"
+ EVTDESC_REXTEUT_3001: "$MONARCH$ has allowed the peasantry to become too powerful and now they have made their move. Seizing the reigns of power directly, they have begun to act in their own interests, rather than for the good of the republic, and already wealth and centralisation has begun to suffer."
+ EVTOPTA_REXTEUT_3001: "We should have seen this coming..."
+
+ EVTNAME_REXTEUT_3002: "The Peasantry Curtailed"
+ EVTDESC_REXTEUT_3002: "Taking the initiative, we have struck back against the anarchy the peasants put in place, seizing the power of the state, restoring centralised rule and cowing them into accepting our supreme authority."
+ EVTOPTA_REXTEUT_3002: "The $MONARCHTITLE$ is back in control."
+
+ EVTNAME_REXTEUT_3003: "The Wealth of the People"
+ EVTDESC_REXTEUT_3003: "In a communal realm such as yours, wealth is, in theory at least, held collectively so that it can be used for the good of everybody who lives within its borders. \nHowever, times are hard right now, and the republic's central authority is finding its expenses piling up. More of the state's accumulated wealth can be taken aside for the good of all, but it's unlikely the peasants will be too happy with such a diversion of  resources."
+ EVTOPTA_REXTEUT_3003: "It's just until times are better..."
+ EVTOPTB_REXTEUT_3003: "The peasants shouldn't bear this burden."
+
+ EVTNAME_REXTEUT_3004: "Peasants Threatened by the $ESTATE_CHURCH$"
+ EVTDESC_REXTEUT_3004: "While technically the communal republic is ruled on behalf of the peasants, religion and the $ESTATE_CHURCH$ are still a major part of the running of the state and the lives of its people. The balance of power between the $ESTATE_CHURCH$ and the peasants has always been somewhat variable, but now the latter are feeling increasingly threatened by the former, and demanding that you curtail their power."
+ EVTOPTA_REXTEUT_3004: "The peasants come first"
+ EVTOPTB_REXTEUT_3004: "We cannot downplay the importance of the $ESTATE_CHURCH$"
+
+ EVTNAME_REXTEUT_3005: "Dispute Between Peasants and $ESTATE_CHURCH$"
+ EVTDESC_REXTEUT_3005: "A dispute between a group of peasants and the $ESTATE_CHURCH$ has been growing lately, and shows no signs of slowing down, with members from both groups across the country getting involved. In fact, members of both groups are petitioning you for support, hoping that you'll take their side on the issue"
+ EVTOPTA_REXTEUT_3005: "Support the Peasants"
+ EVTOPTB_REXTEUT_3005: "Support the $ESTATE_CHURCH$"
+ EVTOPTC_REXTEUT_3005: "Stay out of it"
+
+ EVTNAME_REXTEUT_3006: "Strong Peasantry"
+ EVTDESC_REXTEUT_3006: "Peasants are a fact of life in countries across the world, their work in providing food and resources often not truly appreciated by the ruling elites. The peasants in our country, however, have become a major part in the day-to-day running of affairs, but at the same time are showing tremendous loyalty and support to the republic itself."
+
+ EVTNAME_REXTEUT_3007: "Revolt of the [Root.GetName] Peasantry"
+ EVTDESC_REXTEUT_3007: "In reaction to the reduction of the land under their direct control, the peasants of the province have risen up in anger against what they see as your tyranny."
+
+ EVTNAME_REXTEUT_3008: "Peasants seize $ESTATE_CHURCH$ land"
+ EVTDESC_REXTEUT_3008: "A disagreement between the $ESTATE_CHURCH$ and the peasants  about land ownership in [Root.GetName] has turned nasty, to the point where a group of armed peasants have seized control of the province itself."
+ EVTOPTA_REXTEUT_3008: "Let the Peasants Keep the Province"
+ EVTOPTB_REXTEUT_3008: "Restore the Province to the $ESTATE_CHURCH$"
+ EVTOPTC_REXTEUT_3008: "Seize the Province for Yourself"
+ 
+ EVTNAME_REXTEUT_3009: "Deteriorating Relations with the Peasantry"
+ EVTDESC_REXTEUT_3009: "Relations between the state and the peasants it is supposed to be representing have reached the point where many of the latter are starting to view the former with open distrust and even open defiance. Already, many peasants have begun to arm themselves, hoping to show their displeasure in rather dramatic ways, and spreading their anti-state views among their peers. \nWith the situation so tense, the smallest of sparks, in this case a heated argument in the street that got out of hand, was all that was needed to trigger an anti-state uprising among the peasantry."
+
+ EVTNAME_REXTEUT_3010: "Peasants losing Power"
+ EVTDESC_REXTEUT_3010: "A communal republic such as yours should ideally be run in the interests of the peasants. However, recently the peasantry has become more disorganised and apathetic, finding it increasingly hard to get their views and concerns to the higher levels of state, and their influence suffering as a result."
+
+ EVTNAME_REXTEUT_3011: "Advancement of the Peasants"
+ EVTDESC_REXTEUT_3011: "A communal republic such as yours should ideally be run in the interests of the peasants. Recently the peasants have become more proactive and organised, taking a greater role in the day to day running of the state on the lower levels of power, and increasing their overall influence over the state as a whole."
+
+ EVTNAME_REXTEUT_3012: "Independent Peasants"
+ EVTDESC_REXTEUT_3012: "While our country rules on behalf of the peasants, there are many who think that we interfere with their lives too much, ruling them like lords rather than as representatives. They feel that the state needs to roll itself back and grant the peasantry more autonomy in the provinces they directly control."
+ EVTOPTA_REXTEUT_3012: "Perhaps the state does meddle too much..."
+ EVTOPTB_REXTEUT_3012: "We rule for their own good though."
+
+ EVTNAME_REXTEUT_3013: "New Communal Republic Founded"
+ EVTDESC_REXTEUT_3013: "For too long the peasants of [Root.GetName] have languished in oppression and inequality. Henceforth, the state shall be reorganised into a new communal republic, where the peasants shall be free and egalitarianism shall drive us all to a new and better tomorrow!"
+ EVTOPTA_REXTEUT_3013: "It's a new era for [Root.GetName]!"
+
+ #Decisions
+
+ hre_papal_crowning_title: "Request Papal Crowning"
+ hre_papal_crowning_desc: "As Holy Roman Emperor, your authority relies on being crowned by the Pope. Without an official Papal coronation, you cannot be seen as truly legitimate, and the Empire's perceived authority will suffer as a result."
+ hre_end_papal_crowning_title: "End the policy of Papal Crownings"
+ hre_end_papal_crowning_desc: "While traditionally the Holy Roman Emperor would cement their authority with a Papal crowning, this is something of a hassle. Surely the Empire would be strengthened by, with Papal blessing, doing away with such an outdated institution and style ourselves as Emperor Elect."
+
+ curtail_estate_peasant_title: "Curtail the Peasantry"
+ curtail_estate_peasant_desc: "The peasantry has grown too powerful and complacent and are now running the nation based on what they feel works best for them, rather than what works for the country as a whole."
+
+ found_communal_republic_title: "Create Communal Republic"
+ found_communal_republic_desc: "Our religious views demand egalitarianism that cannot be provided with our current system of governance. Surely it's time to create a new government for the peasants, by the peasants, of the peasants."
+
+ #Custom tooltips
+
+ reform_desire: "Catholic reform desire will increase"
+ unreform_desire: "Catholic reform desire will decrease"
+ peasant_disaster_1: "[Root.GetName] will now be controlled by the §YPeasantry§! until the §Y'Curtail the Peasantry'§! decision is taken."
+ peasant_autonomy_event: "Every Province owned by the Peasantry will gain §R40§! Autonomy."
+ noble_backlash: "Anti-communal forces will attempt to reverse the decision."
+
+ #Modifiers
+
+ uncrowned_emperor: "Uncrowned Emperor"
+ uncrowned_emperor_desc: "Emperor is Uncrowned."
+ op_emp_elect: "Ended Papal Coronations"
+ op_emp_elect_desc: "Ended the tradition of the Emperor requiring a Papal Coronation for their authority to be considered legitimate."
+ peasant_emigration: "Increased Peasant Emigration"
+ peasant_emigration_desc: "The peasantry has been encouraged to provide greater support the colonies, and more are heading there for a new life."
+ peasants_motivated: "Peasants Motivated"
+ peasants_motivated_desc: "The peasantry has been filled with motivation, and is working harder than ever."
+ peasant_tax_break: "Peasant Tax Break"
+ peasant_tax_break_desc: "The peasantry has been allowed to keep more of their accumulated wealth."
+ peasant_military_support: "Peasant Military Support"
+ peasant_military_support_desc: "The peasantry has been encouraged to provide greater support the republic's military."
+
+ #Disasters
+
+ hussite_war: "Hussite Wars"
+ estate_peasants_disaster: "Dominance of the Peasantry"
+
+ #Ideas
+
+ communal_ideas: "Communal Ideas" 
+ communal_ideas_start: "Communal Ideas"
+ communal_ideas_bonus: "Full Communal"
+ no_lords_masters: "No Lords, No Masters"  
+ no_lords_masters_desc: "With the peasants in our realm enjoying many personal freedoms, even the prospect of a return to the old, feudal ways is enough to inspire resistance against any attacker." 
+ welfare_programs: "Welfare Programs"  
+ welfare_programs_desc: "Ensuring that the people of the republic have all their basic provisions provided for also ensures a happy realm." 
+ greater_good: "The Greater Good"  
+ greater_good_desc: "With our republic placing particular emphasis on egalitarianism, our administrators care not for wealth or personal glory." 
+ collectivism: "Collectivism"  
+ collectivism_desc: "Ensuring that all goods and wealth generated are distributed equally according to need, the peasants are more likely to work harder, knowing that they will get a piece of the pie for sure." 
+ shared_community: "Shared Community"  
+ shared_community_desc: "With all citizens of our republic working towards a greater whole, the old divisions that once plagued our land are slowly disappearing." 
+ international_communalism: "International Communalism"  
+ international_communalism_desc: "Our communal ways hardly make us popular among those who do not share them. Only by supporting foreign peasants in their struggle against their oppressors can we truly be safe from those who would seek to destroy us." 
+ peasant_liberation: "Peasant Liberation"  
+ peasant_liberation_desc: "Upon seeing the freedom we provide to even the lowliest of commoners, peasants in the land we add to our glorious republic will greet us not as conquerors, but as liberators." 
+
+#Estates
+
+ estate_peasants: "Peasantry"
+ estate_peasants_desc: "This estate represents the common workers, those who would be silenced under other systems of governance, but under your communal republic, have a voice and influence. Traditionally, it is your responsibility as [Root.Monarch.GetTitle] to ensure that the peasants feel represented, safe and happy."
+ EST_VAL_RULER_BENEVOLENT: "Ruler is Benevolent: §Y$VAL$%§!"
+ EST_VAL_RULER_CRUEL: "Ruler is Cruel: §Y$VAL$%§!"
+ EST_VAL_RULER_JUST: "Ruler is Just: §Y$VAL$%§!"
+ EST_VAL_RULER_RIGHTEOUS: "Ruler is Righteous: §Y$VAL$%§!"
+ EST_VAL_RULER_KIND_HEARTED: "Ruler is Kind Hearted: §Y$VAL$%§!"
+ EST_VAL_RULER_MIDAS_TOUCHED: "Ruler is Midas Touched: §Y$VAL$%§!"
+ EST_VAL_RULER_SILVER_TONGUE: "Ruler is Silver Tongued: §Y$VAL$%§!"
+ EST_VAL_RULER_INCORRUPTIBLE: "Ruler is Incorruptible: §Y$VAL$%§!"
+ EST_VAL_RULER_SECRETIVE: "Ruler is Secretive: §Y$VAL$%§!"
+ EST_VAL_RULER_BABBLING: "Ruler is a Babbling Buffoon: §Y$VAL$%§!"
+ EST_VAL_RULER_EMBEZZLER: "Ruler is an Embezzler: §Y$VAL$%§!"
+ EST_VAL_RULER_SINNER: "Ruler is Sinful: §Y$VAL$%§!"
+ EST_VAL_RULER_GREEDY: "Ruler is Greedy: §Y$VAL$%§!"
+ EST_VAL_RULER_MALEVOLENT: "Ruler is Malevolent: §Y$VAL$%§!"
+ EST_VAL_POLICY_AGRICULTURE: "Agricultural Cultivations Policy: §Y$VAL$%§!"
+ EST_VAL_HIGH_REP_TRAD: "High Republican Tradition: §Y$VAL$%§!"
+ EST_VAL_LOW_REP_TRAD: "Low Republican Tradition: §Y$VAL$%§!"
+ EST_PEASANTS_WAR: "Peasant War: §Y$VAL$%§!"
+ EST_CRUSHED_PEASANTS: "The Peasants have been curtailed: §Y$VAL$%§!"
+ EST_VAL_PEASANT_MILITARY: "Influence on the Military: §Y$VAL$%§!"
+ EST_VAL_PEASANT_TAX: "Receiving Tax Cut: §Y$VAL$%§!"
+ EST_VAL_PEASANT_COLONY: "Influence on Colonial Development: §Y$VAL$%§!"
+ EST_VAL_PEASANTS_OVER_CLERGY:"Supported Peasants over $ESTATE_CHURCH: §Y$VAL$%§!$"
+ EST_VAL_CLERGY_OVER_PEASANTS: "Supported $ESTATE_CHURCH$ over Peasants: §Y$VAL$%§!"
+ EST_VAL_FENCE_SITTING: "Supported neither $ESTATE_CHURCH$, nor Peasants: §Y$VAL$%§!"
+ EST_VAL_PEASANT_LAND_SEIZE: "Allowed land seizure from $ESTATE_CHURCH$: §Y$VAL$%§!"
+ EST_VAL_CLERGY_LAND_RETAIN: "Prevented land seizure by Peasants: §Y$VAL$%§!"
+ EST_VAL_SEIZE_LAND_PEASANTS: "Seized disputed land: §Y$VAL$%§!"
+ EST_VAL_PEASANT_DECLINE: "Decline of the Peasantry: §Y$VAL$%§!"
+ EST_VAL_PEASANT_ADVANCE: "Peasant Self-Rule: §Y$VAL$%§!"
+ EST_VAL_PEASANT_AUTONOMY: "Advancement of the Peasantry: §Y$VAL$%§!"
+ EST_VAL_REFUSED_PEASANT_AUTONOMY: "Refused Peasant Autonomy: §Y$VAL$%§!"
+ REDISTRIBUTE_WEALTH: "Redistribute Wealth"
+ MOTIVATE_PEASANTS: "Motivate the Peasantry"
+ PEASANT_MILITARY_SUPPORT: "Request Military Support"
+ PEASANT_TAX_BREAK: "Give Tax Break"
+ PEASANT_EMIGRATION: "Request Colonial Emigration"
+ 

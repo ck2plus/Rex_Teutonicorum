@@ -1,0 +1,17 @@
+644.1.1={
+	liege=e_arabia
+}
+
+765.1.1={
+	holder=188605
+}
+780.1.1={
+	holder=0
+} 
+943.1.1={
+	liege = k_khwarizm
+	holder = 120000038
+}
+973.1.1 = {
+	holder = 0
+}
