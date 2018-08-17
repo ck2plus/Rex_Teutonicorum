@@ -2960,12 +2960,12 @@ has_assassins_prerequisites_inferface = {
 		AND = {
 			ai = no
 			NOT = { trait = zealous }
-				any_playable_ruler = {
-					religion = shiite
-					NOT = {
-						distance_from_realm = { value = 300 who = ROOT }
-					}
+			any_playable_ruler = {
+				religion = shiite
+				NOT = {
+					distance_from_realm = { value = 300 who = ROOT }
 				}
+			}
 		}
 	}
 	OR = {
@@ -4995,7 +4995,7 @@ likes_berbers = {
 		culture = atlasian
 		culture = garamante
 		culture = guanche
-		culture = taureg
+		culture = tuareg
 		culture = zenati
 	}
 }

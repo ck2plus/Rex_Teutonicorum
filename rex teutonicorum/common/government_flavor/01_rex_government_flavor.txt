@@ -1,0 +1,28 @@
+#########################
+# Standard Flavor Names #
+#########################
+
+government_flavor = {
+	name = gov_communal
+	graphics = GFX_evt_peasants
+	priority = 1
+	trigger = {
+		government = communal_government
+	}
+}
+
+#####################################
+# Special Flavor Names (priority 2) #
+#####################################
+
+#####################################
+# Special Flavor Names (priority 3) #
+#####################################
+
+#####################################
+# Special Flavor Names (priority 4) #
+#####################################
+
+#########################
+# Failsafe Flavor Names #
+#########################

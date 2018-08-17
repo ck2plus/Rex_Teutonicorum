@@ -1,0 +1,38 @@
+# country
+on_startup = {
+	events = {
+		rexteut.2001
+	}
+}
+
+on_revoke_estate_land = {
+	if = {
+		limit = {
+			has_estate = estate_peasants
+			owner = {
+				NOT = {
+					estate_loyalty = {
+						estate = estate_peasants
+						loyalty = 40
+					}
+				}
+			}
+		}
+		spawn_rebels = {
+			type = peasant_rebels
+			size = 1
+		}
+		province_event = { id = rexteut.3007 }
+	}
+}
+
+on_five_year_pulse = {
+	random_events = {
+		100 = rexteut.3006
+		100 = rexteut.3008
+		400 = rexteut.3009
+		100 = rexteut.3010
+		100 = rexteut.3011
+		150 = rexteut.3012
+	}
+}

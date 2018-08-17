@@ -157,7 +157,6 @@ succession_laws = {
 							NOT = { any_liege = { holy_order = yes } }
 						}
 						OR = {
-							NOT = { religion_group = pagan_group }
 							is_pagan_religion = no
 							religion = bon
 							is_reformed_pagan_religion = yes

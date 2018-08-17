@@ -3202,12 +3202,7 @@ character_event = { # Convert Latin Empire to Byzantine Empire if the holder is 
 		}
 		NOR = {
 			religion = chalcedonian
-			religion = catholic
-			religion = cathar
-			religion = fraticelli
-			religion = waldensian
-			religion = lollard
-			religion = adoptionist
+			is_christian_catholic = yes
 		}
 		war = no
 	}
@@ -3359,13 +3354,7 @@ character_event = { # Convert Latin Empire to Byzantine Empire if the holder is 
 				location = {
 					OR = {
 						religion = chalcedonian
-						religion = catholic
-						religion = cathar
-						religion = fraticelli
-						religion = waldensian
-						religion = lollard
-						religion = adoptionist
-						religion = hussite
+						is_christian_catholic = yes
 					}
 				}
 			}
@@ -3437,15 +3426,7 @@ character_event = { # Byzantium Auto-Destroy Mechanic. Destroys Byzantium if the
 			religion = messalian
 			AND = {
 				e_latin_empire = { has_holder = yes }
-				OR = {
-					religion = catholic
-					religion = cathar
-					religion = fraticelli
-					religion = waldensian
-					religion = lollard
-					religion = adoptionist
-					religion = hussite
-				}
+				is_christian_catholic = yes
 			}
 		}
 		war = no
@@ -3459,16 +3440,7 @@ character_event = { # Byzantium Auto-Destroy Mechanic. Destroys Byzantium if the
 			limit = {
 				OR = {
 					e_latin_empire = { has_holder = yes }
-					NOR = {
-						religion = chalcedonian
-						religion = catholic
-						religion = cathar
-						religion = fraticelli
-						religion = waldensian
-						religion = lollard
-						religion = adoptionist
-						religion = hussite
-					}
+					NOT = { is_christian_catholic = yes }
 				}
 			}
 			capital_scope = {
@@ -3503,13 +3475,7 @@ character_event = { # Byzantium Auto-Destroy Mechanic. Destroys Byzantium if the
 			limit = {
 				OR = {
 					religion = chalcedonian
-					religion = catholic
-					religion = cathar
-					religion = fraticelli
-					religion = waldensian
-					religion = lollard
-					religion = adoptionist
-					religion = hussite
+					is_christian_catholic = yes
 				}
 				e_latin_empire = { has_holder = no }
 			}

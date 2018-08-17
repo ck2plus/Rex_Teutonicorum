@@ -3044,10 +3044,7 @@ character_event = {
 							event_target:conversion_ruler = {
 								OR = {
 									religion = chalcedonian
-									religion = orthodox
-									religion = bogomilist
-									religion = monothelite
-									religion = iconoclast
+									is_christian_orthodox = yes
 								}
 								is_heretic = no
 							}
@@ -3057,7 +3054,10 @@ character_event = {
 							culture_group = north_germanic
 							is_pagan_religion = yes
 							event_target:conversion_ruler = {
-								is_catholic_variant_trigger = yes
+								OR = {
+									religion = chalcedonian
+									is_christian_catholic = yes
+								}
 								is_heretic = no
 							}
 						}
@@ -3219,10 +3219,7 @@ character_event = {
 							event_target:conversion_ruler = {
 								OR = {
 									religion = chalcedonian
-									religion = orthodox
-									religion = bogomilist
-									religion = monothelite
-									religion = iconoclast
+									is_christian_orthodox = yes
 								}
 								is_heretic = no
 							}
@@ -3232,7 +3229,10 @@ character_event = {
 							culture_group = north_germanic
 							is_pagan_religion = yes
 							event_target:conversion_ruler = {
-								is_catholic_variant_trigger = yes
+								OR = {
+									religion = chalcedonian
+									is_christian_catholic = yes
+								}
 								is_heretic = no
 							}
 						}
@@ -3496,10 +3496,7 @@ character_event = {
 									event_target:conversion_ruler = {
 										OR = {
 											religion = chalcedonian
-											religion = orthodox
-											religion = bogomilist
-											religion = monothelite
-											religion = iconoclast
+											is_christian_orthodox = yes
 										}
 										is_heretic = no
 									}
@@ -3509,7 +3506,10 @@ character_event = {
 									culture_group = north_germanic
 									is_pagan_religion = yes
 									event_target:conversion_ruler = {
-										is_catholic_variant_trigger = yes
+										OR = {
+											religion = chalcedonian
+											is_christian_catholic = yes
+										}
 										is_heretic = no
 									}
 								}
@@ -3633,10 +3633,7 @@ character_event = {
 									event_target:conversion_ruler = {
 										OR = {
 											religion = chalcedonian
-											religion = orthodox
-											religion = bogomilist
-											religion = monothelite
-											religion = iconoclast
+											is_christian_orthodox = yes
 										}
 										is_heretic = no
 									}
@@ -3646,7 +3643,10 @@ character_event = {
 									culture_group = north_germanic
 									is_pagan_religion = yes
 									event_target:conversion_ruler = {
-										is_catholic_variant_trigger = yes
+										OR = {
+											religion = chalcedonian
+											is_christian_catholic = yes
+										}
 										is_heretic = no
 									}
 								}
@@ -4382,10 +4382,7 @@ character_event = {
 				event_target:conversion_ruler = {
 					OR = {
 						religion = chalcedonian
-						religion = orthodox
-						religion = bogomilist
-						religion = monothelite
-						religion = iconoclast
+						is_christian_orthodox = yes
 					}
 					is_heretic = no
 				}
@@ -4395,7 +4392,10 @@ character_event = {
 				culture_group = north_germanic
 				is_pagan_religion = yes
 				event_target:conversion_ruler = {
-					is_catholic_variant_trigger = yes
+					OR = {
+						religion = chalcedonian
+						is_christian_catholic = yes
+					}
 					is_heretic = no
 				}
 			}
@@ -4591,10 +4591,7 @@ character_event = {
 				event_target:conversion_ruler = {
 					OR = {
 						religion = chalcedonian
-						religion = orthodox
-						religion = bogomilist
-						religion = monothelite
-						religion = iconoclast
+						is_christian_orthodox = yes
 					}
 					is_heretic = no
 				}
@@ -4604,7 +4601,10 @@ character_event = {
 				culture_group = north_germanic
 				is_pagan_religion = yes
 				event_target:conversion_ruler = {
-					is_catholic_variant_trigger = yes
+					OR = {
+						religion = chalcedonian
+						is_christian_catholic = yes
+					}
 					is_heretic = no
 				}
 			}
@@ -5187,10 +5187,7 @@ character_event = {
 					event_target:conversion_ruler = {
 						OR = {
 							religion = chalcedonian
-							religion = orthodox
-							religion = bogomilist
-							religion = monothelite
-							religion = iconoclast
+							is_christian_orthodox = yes
 						}
 						is_heretic = no
 					}
@@ -5200,7 +5197,10 @@ character_event = {
 					culture_group = north_germanic
 					is_pagan_religion = yes
 					event_target:conversion_ruler = {
-						is_catholic_variant_trigger = yes
+						OR = {
+							religion = chalcedonian
+							is_christian_catholic = yes
+						}
 						is_heretic = no
 					}
 				}
@@ -5324,10 +5324,7 @@ character_event = {
 					event_target:conversion_ruler = {
 						OR = {
 							religion = chalcedonian
-							religion = orthodox
-							religion = bogomilist
-							religion = monothelite
-							religion = iconoclast
+							is_christian_orthodox = yes
 						}
 						is_heretic = no
 					}
@@ -5337,7 +5334,10 @@ character_event = {
 					culture_group = north_germanic
 					is_pagan_religion = yes
 					event_target:conversion_ruler = {
-						is_catholic_variant_trigger = yes
+						OR = {
+							religion = chalcedonian
+							is_christian_catholic = yes
+						}
 						is_heretic = no
 					}
 				}

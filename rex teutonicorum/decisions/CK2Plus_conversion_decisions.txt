@@ -400,7 +400,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE } 
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -488,7 +488,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE } 
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -596,7 +596,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }  
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -692,7 +692,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE } 
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -719,7 +719,7 @@ decisions = {
 				}
 			}
 		}
-	}	
+	}
 
 	gone_pagan_slavic = {
 		is_high_prio = yes
@@ -778,7 +778,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE } 
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -861,7 +861,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE } 
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -945,7 +945,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE } 
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -1032,7 +1032,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }  
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 				
 		ai_will_do = {
@@ -1047,7 +1047,7 @@ decisions = {
 					AND = {
 						any_demesne_province = {
 							OR = {
-								AND = {	
+								AND = {
 									religion = west_african_pagan
 									ROOT = { west_african_pagan_culture_trigger = yes }
 								}
@@ -1134,7 +1134,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE } 
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -1220,7 +1220,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE } 
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -1250,7 +1250,7 @@ decisions = {
 				}
 			}
 		}
-	}	
+	}
 	
 	gone_pagan_hellenic = {
 		is_high_prio = yes
@@ -1312,7 +1312,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE } 
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -1398,7 +1398,7 @@ decisions = {
 		
 		effect = {
 			set_character_flag = gone_pagan
-			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE } 
+			character_event = { id = GoPagan.100 tooltip = CONSIDER_RELIGION_CHANGE }
 		}
 		
 		ai_will_do = {
@@ -1631,7 +1631,7 @@ decisions = {
 			ai = no # Not ready for usage
 			#custom_tooltip = {
 			#	text = COMPLETELY_CONTROLS_GERMANIA_REGION
-			#	
+			#
 			#	hidden_tooltip = { # Slightly round about way of checking if the region is completely controlled by ROOT
 			#		any_realm_province = { region = world_europe_west_germania }
 			#		NOT = {
@@ -2024,7 +2024,7 @@ decisions = {
 			OR = {
 				religion = hellenic_pagan
 				religion = roman_pagan
-			}			
+			}
 		}
 		allow = {
 			NOT = { trait = zealous }

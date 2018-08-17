@@ -1,312 +1,272 @@
 ###
-
 rex_teutonicorum_trigger = {
-			    OR = {
-				  has_landed_title = e_hre
-				  AND = {
-					 has_landed_title = e_karling
-					 has_global_flag = "verdun_failed"
-					}
-				  AND = {
-						 has_landed_title = e_roman_empire
-						 OR = {
-							   has_global_flag = "rome_restored_by_hre"
-							   has_global_flag = "rome_restored_by_karling"
-							  }
-						 e_roman_empire = { NOT = { has_title_flag = "ended_papal_crownings" } }
-						}
-				 }
-			   }
-###
-
-bohemian_loyalty_trigger = {
-			    has_character_flag = "bohemian_loyalty"
-			    liege = { has_character_flag = "bohemian_loyalty" }
-			   }
-			   
-###
-
-is_pope_trigger = {
-		   OR = {
-			 AND = {
-				religion = chalcedonian
-				OR = {
-					  has_landed_title = k_pentarch_rome
-					  has_landed_title = k_papal_chalcedon
-					 }
-			       }
-			 AND = {
-				religion = catholic
-			  	controls_religion = yes
-			       }
+	OR = {
+		has_landed_title = e_hre
+		AND = {
+			has_landed_title = e_karling
+			has_global_flag = "verdun_failed"
+		}
+		AND = {
+			has_landed_title = e_roman_empire
+			OR = {
+				has_global_flag = "rome_restored_by_hre"
+				has_global_flag = "rome_restored_by_karling"
 			}
-		  }
-		  
+			e_roman_empire = { NOT = { has_title_flag = "ended_papal_crownings" } }
+		}
+	}
+}
 ###
-		  
+bohemian_loyalty_trigger = {
+	has_character_flag = "bohemian_loyalty"
+	liege = { has_character_flag = "bohemian_loyalty" }
+}
+###
+is_pope_trigger = {
+	OR = {
+		AND = {
+			religion = chalcedonian
+			OR = {
+				has_landed_title = k_pentarch_rome
+				has_landed_title = k_papal_chalcedon
+			}
+		}
+		AND = {
+			religion = catholic
+			controls_religion = yes
+		}
+	}
+}
+###
 verdun_vassal_trigger = {
-						 OR = {
-							   higher_tier_than = DUKE
-							   OR = {
-									 realm_size = 90
-									 num_of_count_titles_in_realm = 20
-									}
-							  }
-						}
-						
+	OR = {
+		higher_tier_than = DUKE
+		OR = {
+			realm_size = 90
+			num_of_count_titles_in_realm = 20
+		}
+	}
+}
 ###
-
 limited_imperial_authority_trigger = {
-									  has_character_modifier = stat_fav_prin
-									 }
-									 
+	has_character_modifier = stat_fav_prin
+}
 ###
-									 
 is_former_carolingian_trigger = {
-								 OR = {
-									   region = world_europe_west_francia
-									   region = world_europe_south_italy
-									   region = custom_frisia
-									   region = custom_germany
-									   region = custom_lotharingia
-									   region = custom_burgundy
-									  }
-								}
-								
+	OR = {
+		region = world_europe_west_francia
+		region = world_europe_south_italy
+		region = custom_frisia
+		region = custom_germany
+		region = custom_lotharingia
+		region = custom_burgundy
+	}
+}
 ###
-								
 grand_saxony_trigger = {
-						OR = {
-							  has_landed_title = d_saxony
-							  AND = {
-									 has_landed_title = d_eastphalia
-									 has_landed_title = d_westphalia
-									 d_saxony = { has_holder = no }
-									}
-							 }
-					   }
-
+	OR = {
+		has_landed_title = d_saxony
+		AND = {
+			has_landed_title = d_eastphalia
+			has_landed_title = d_westphalia
+			d_saxony = { has_holder = no }
+		}
+	}
+}
 ###
-
 grand_lorraine_trigger = {
-						  has_landed_title = d_upper_lorraine
-						  has_landed_title = d_lower_lorraine
-						 }
-						 
+	has_landed_title = d_upper_lorraine
+	has_landed_title = d_lower_lorraine
+}
 ###
-
 grand_milan_trigger = {
-					   has_landed_title = d_lombardia
-					   has_landed_title = d_modena
-					   completely_controls = d_lombardia
-					   completely_controls = d_modena
-					  }
-						 
+	has_landed_title = d_lombardia
+	has_landed_title = d_modena
+	completely_controls = d_lombardia
+	completely_controls = d_modena
+}
 ###
-
 grand_naples_trigger = {
-					   has_landed_title = d_capua
-					   completely_controls = d_capua
-					   OR = {
-							 AND = {
-								    has_landed_title = d_salerno
-									completely_controls = d_salerno
-								   }
-							 AND = {
-									has_landed_title = d_benevento
-									completely_controls = d_benevento
-								   }
-							}
-					  }
-						 
+	has_landed_title = d_capua
+	completely_controls = d_capua
+	OR = {
+		AND = {
+			has_landed_title = d_salerno
+			completely_controls = d_salerno
+		}
+		AND = {
+			has_landed_title = d_benevento
+			completely_controls = d_benevento
+		}
+	}
+}
 ###
-						 
 true_religion_hussite_trigger = {
-								 true_religion = hussite
-								}
-								
+	true_religion = hussite
+}
 ###
-
 is_catholic_group_trigger = {
-							  OR = {
-								    religion = chalcedonian
-								    religion = catholic
-								    religion = cathar
-								    religion = fraticelli
-								    religion = waldensian
-								    religion = lollard
-								    religion = adoptionist
-								    religion = hussite
-								   }
-							  is_heretic = no
-							}
-							
+	OR = {
+		religion = chalcedonian
+		religion = catholic
+		religion = cathar
+		religion = fraticelli
+		religion = waldensian
+		religion = lollard
+		religion = adoptionist
+		religion = hussite
+	}
+	is_heretic = no
+}
 ###
-							  
 is_former_k_germany_trigger = {
-							  OR = {
-								    title = k_austria
-								    title = k_arch_austria
-								    title = k_bavaria
-								    title = k_grand_bavaria
-								    title = k_franconia
-								    title = k_grand_franconia
-								    title = k_swabia
-								    title = k_grand_swabia
-								    title = k_saxony
-								    title = k_grand_saxony
-								    title = k_brandenburg
-								  }
-							   is_titular = no
-							  }
-							  
+	OR = {
+		title = k_austria
+		title = k_arch_austria
+		title = k_bavaria
+		title = k_grand_bavaria
+		title = k_franconia
+		title = k_grand_franconia
+		title = k_swabia
+		title = k_grand_swabia
+		title = k_saxony
+		title = k_grand_saxony
+		title = k_brandenburg
+	}
+	is_titular = no
+}
 ###
-
 german_kingdoms_trigger = {
-						   OR = {
-								 title = k_germany
-								 title = k_austria
-								 title = k_bavaria
-								 title = k_franconia
-								 title = k_swabia
-								 title = k_saxony
-								 title = k_brandenburg
-								}
-						  }
-						  
+	OR = {
+		title = k_germany
+		title = k_austria
+		title = k_bavaria
+		title = k_franconia
+		title = k_swabia
+		title = k_saxony
+		title = k_brandenburg
+	}
+}
 ###
-
 controls_italy_trigger = {
-						  OR = {
-								k_italy = {
-										   is_titular = no
-										   holder_scope = { character = ROOT }
-										  }
-								AND = {
-									   k_italy = { is_titular = yes }
-									   completely_controls = d_lombardia
-									   completely_controls = d_verona
-									   completely_controls = d_susa
-									   completely_controls = d_piedmont
-									   completely_controls = d_genoa
-									   completely_controls = d_modena
-									   completely_controls = d_ferrara
-									   completely_controls = d_toscana
-									   completely_controls = d_pisa
-									   completely_controls = d_ancona
-									   completely_controls = d_spoleto
-									  }
-							   }
-						 }
-						 
+	OR = {
+		k_italy = {
+			is_titular = no
+			holder_scope = { character = ROOT }
+		}
+		AND = {
+			k_italy = { is_titular = yes }
+			completely_controls = d_lombardia
+			completely_controls = d_verona
+			completely_controls = d_susa
+			completely_controls = d_piedmont
+			completely_controls = d_genoa
+			completely_controls = d_modena
+			completely_controls = d_ferrara
+			completely_controls = d_toscana
+			completely_controls = d_pisa
+			completely_controls = d_ancona
+			completely_controls = d_spoleto
+		}
+	}
+}
 ###
-
 french_cultures_trigger = {
-			       OR = {
-				     culture = frankish
-				     culture = old_frankish
-				     culture = occitan
-				     culture = norman
-				    }
-						  }
-						  
+	OR = {
+		culture = frankish
+		culture = old_frankish
+		culture = occitan
+		culture = norman
+	}
+}
 ###
-						  
 italian_cultures_trigger = {
-			       OR = {
-				     is_italian_trigger = yes
-				     culture = sicilian
-				     culture = roman
-				     culture = longobard
-				    }
-						   }
-						   
+	OR = {
+		is_italian_trigger = yes
+		culture = sicilian
+		culture = roman
+		culture = longobard
+	}
+}
 ###
-
 pope_religion_head_trigger = {
-					OR = {
-						  AND = {
-								 religion = chalcedonian
-								 rightful_religious_head_scope = { 
-																  OR = {
-																		has_landed_title = k_pentarch_rome 
-																		has_landed_title = k_papal_chalcedon
-																	   }
-																 }
-								}
-						  religion = catholic
-						  AND = {
-								 religion = fraticelli
-								 is_heretic = no
-								 rightful_religious_head_scope = { has_landed_title = d_fraticelli }
-								}
-						 }
-					}
-					
+	OR = {
+		AND = {
+			religion = chalcedonian
+			rightful_religious_head_scope = {
+				OR = {
+					has_landed_title = k_pentarch_rome
+					has_landed_title = k_papal_chalcedon
+				}
+			}
+		}
+		religion = catholic
+		AND = {
+			religion = fraticelli
+			is_heretic = no
+			rightful_religious_head_scope = { has_landed_title = d_fraticelli }
+		}
+	}
+}
 ###
-
 grand_duchy_raise_trigger = {
-					liege = { rex_teutonicorum_trigger = yes }
-					lower_tier_than = KING
-					OR = {
-						  AND = {
-								 has_landed_title = d_franconia
-								 completely_controls_region = custom_hre_franconia
-								}
-						  AND = {
-								 has_landed_title = d_swabia
-								 completely_controls_region = custom_hre_swabia
-								}
-						  AND = {
-								 has_landed_title = d_bavaria
-								 completely_controls_region = custom_hre_bavaria
-								}
-						  AND = {
-								 has_landed_title = d_osterreich
-								 completely_controls_region = custom_hre_austria
-								}
-						  AND = {
-								 grand_saxony_trigger = yes
-								 completely_controls_region = custom_hre_saxony
-								}
-						  AND = {
-								 grand_lorraine_trigger = yes
-								 completely_controls = d_upper_lorraine
-								 completely_controls = d_lower_lorraine
-								}
-						  AND = {
-								 has_landed_title = d_luxembourg
-								 completely_controls_region = custom_hre_luxembourg
-								}
-						  AND = {
-								 has_landed_title = d_toscana
-								 completely_controls_region = custom_hre_tuscany
-								}
-						  AND = {
-								 has_landed_title = d_holland
-								 completely_controls_region = custom_frisia
-								}
-						  AND = {
-								 has_landed_title = d_bohemia
-								 completely_controls_region = custom_bohemia
-								}
-						 }
-						}
-						
+	liege = { rex_teutonicorum_trigger = yes }
+	lower_tier_than = KING
+	OR = {
+		AND = {
+			has_landed_title = d_franconia
+			completely_controls_region = custom_hre_franconia
+		}
+		AND = {
+			has_landed_title = d_swabia
+			completely_controls_region = custom_hre_swabia
+		}
+		AND = {
+			has_landed_title = d_bavaria
+			completely_controls_region = custom_hre_bavaria
+		}
+		AND = {
+			has_landed_title = d_osterreich
+			completely_controls_region = custom_hre_austria
+		}
+		AND = {
+			grand_saxony_trigger = yes
+			completely_controls_region = custom_hre_saxony
+		}
+		AND = {
+			grand_lorraine_trigger = yes
+			completely_controls = d_upper_lorraine
+			completely_controls = d_lower_lorraine
+		}
+		AND = {
+			has_landed_title = d_luxembourg
+			completely_controls_region = custom_hre_luxembourg
+		}
+		AND = {
+			has_landed_title = d_toscana
+			completely_controls_region = custom_hre_tuscany
+		}
+		AND = {
+			has_landed_title = d_holland
+			completely_controls_region = custom_frisia
+		}
+		AND = {
+			has_landed_title = d_bohemia
+			completely_controls_region = custom_bohemia
+		}
+	}
+	}
 ###
-						
 borders_character_realm_trigger = {
 	any_realm_province = {
-						  any_neighbor_province = {
-												   owner = { 
-															OR = {
-																  character = ROOT
-																  top_liege = { character = ROOT }
-																 }
-														   }
-												  }
-						 }
-								  }
-								  
+		any_neighbor_province = {
+			owner = {
+				OR = {
+					character = ROOT
+					top_liege = { character = ROOT }
+				}
+			}
+		}
+	}
+}
 ###
-

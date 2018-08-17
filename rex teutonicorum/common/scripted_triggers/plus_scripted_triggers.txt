@@ -2731,6 +2731,20 @@ is_crowned_trigger = {
 	}
 }
 
+is_high_crowned_trigger = {
+	custom_tooltip = {
+		text = HAS_HIGH_CROWNED_TRAIT
+		hidden_tooltip = {
+			OR = {
+				trait = crowned_by_pope
+				trait = crowned_by_vip
+				trait = crowned_by_relhead
+				trait = strong_basileus
+			}
+		}
+	}
+}
+
 patrician_is_in_caspian = { # Check if a patrician's realm holds any of the Caspian ports
 	AND = {
 		FROM = { 
