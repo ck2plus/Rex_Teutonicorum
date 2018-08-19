@@ -444,15 +444,7 @@ narrative_event = {
 		text = EVTDESCCLoR.20
 	}
 	desc = {
-		trigger = { 
-			OR = {
-				has_character_flag = "italy_restored_rome" 
-				AND = {
-					has_character_flag = "hre_restored_rome"
-					e_hre = { has_title_flag = "italian_hre" }
-				}
-			}
-		}
+		trigger = { has_character_flag = "italy_restored_rome" }
 		text = EVTDESCDLoR.20
 	}
 	desc = {
