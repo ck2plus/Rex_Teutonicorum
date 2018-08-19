@@ -39,11 +39,11 @@ character_event = {
 			}
 		}
 		religion_authority = 0.35
-                OR = {
-                      has_global_flag = "investiture_controversy"
-                      has_global_flag = "investiture_papal"
-                      has_global_flag = "concordat_of_worms"
-                     }
+		OR = {
+			has_global_flag = "investiture_controversy"
+			has_global_flag = "investiture_papal"
+			has_global_flag = "concordat_of_worms"
+		}
 		NOT = { has_character_flag = pope_currently_demanding }
 		any_independent_ruler = {
 			religion = ROOT
@@ -78,10 +78,10 @@ character_event = {
 				rightful_religious_head = ROOT
 				NOT = { has_character_flag = pope_wants_our_law_changed }
 				NOT = { has_character_flag = pope_respects_our_law }
-                                NAND = { 
-                                        rex_teutonicorum_trigger = yes 
-                                        has_global_flag = "investiture_controversy"
-                                       }
+				NAND = { 
+					rex_teutonicorum_trigger = yes 
+					has_global_flag = "investiture_controversy"
+				}
 				any_demesne_title = {
 					tier = EMPEROR
 					has_law = investiture_law_1
@@ -97,10 +97,10 @@ character_event = {
 				rightful_religious_head = ROOT
 				NOT = { has_character_flag = pope_wants_our_law_changed }
 				NOT = { has_character_flag = pope_respects_our_law }
-                                NAND = { 
-                                        rex_teutonicorum_trigger = yes
-                                        has_global_flag = "investiture_controversy"
-                                       }
+				NAND = { 
+					rex_teutonicorum_trigger = yes
+					has_global_flag = "investiture_controversy"
+				}
 				any_demesne_title = {
 					tier = KING
 					has_law = investiture_law_1
@@ -129,7 +129,6 @@ character_event = {
 
 	option = {
 		name = EVTOPTA67001 # Fold to demand
-
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -207,7 +206,7 @@ character_event = {
 	option = {
 		name = EVTOPTC67001 # Give gold to Pope
 		trigger = {
-			diplomacy = 10			
+			diplomacy = 10
 		}
 		ai_chance = {
 			factor = 5

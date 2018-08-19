@@ -85,7 +85,7 @@ character_event = {
 				hidden = yes
 				days = 3
 			}
-		}		
+		}
 	}
 }
 
@@ -425,7 +425,7 @@ character_event = {
 				if = {
 					limit = {
 						NOT = {
-							any_child = { character = FROM }	
+							any_child = { character = FROM }
 						}
 					}
 					opinion = {
@@ -1176,7 +1176,7 @@ character_event = {
 			who = FROMFROM
 			modifier = scheming_bastard
 			years = 5
-		}		
+		}
 	}
 }
 
@@ -1967,7 +1967,7 @@ character_event = {
 				if = {
 					limit = {
 						NOT = {
-							any_child = { character = FROM }	
+							any_child = { character = FROM }
 						}
 					}
 					opinion = {

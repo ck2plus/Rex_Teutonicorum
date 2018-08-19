@@ -235,7 +235,7 @@ decisions = {
 			NOT = {
 			       rex_teutonicorum_trigger = yes
 			       has_global_flag = "investiture_controversy"
-			      }
+			}
 			OR = {
 				NOT = { has_character_flag = ask_for_repentance }
 				had_character_flag = {
@@ -525,14 +525,15 @@ decisions = {
 		potential = {
 			is_playable = yes
 			has_dlc = "Legacy of Rome"
-			has_landed_title = e_byzantium
+			primary_title = {
+				OR = {
+					has_title_flag = eastern_roman_successor
+					has_title_flag = western_roman_successor
+				}
+			}
 			independent = yes
 			has_regent = no
 			NOT = { has_global_flag = rome_restored }
-			OR = {
-				religion_group = christian
-				religion_group = hellenic_pagan_group
-			}
 		}
 		allow = {
 			prestige = 3000
@@ -610,7 +611,6 @@ decisions = {
 			}
 		}
 		effect = {
-			set_character_flag = "byzantine_restored_rome"
 			if = {
 				limit = { NOT = { is_title_active = e_roman_empire } }
 				hidden_tooltip = {
@@ -618,7 +618,7 @@ decisions = {
 				}
 			}
 			if = {
-				limit = { has_landed_title = e_byzantium }
+				limit = { primary_title = { has_title_flag = eastern_roman_successor } }
 				e_roman_empire = { set_pentarch_title = k_pentarch_constantinople }
 			}
 			narrative_event = { id = LoR.20 tooltip = EVTTOOLTIPLoR.20 }
@@ -899,7 +899,7 @@ decisions = {
 		is_high_prio = yes
 		only_independent = yes
 		potential = {
-			#NOT = { has_dlc = "Horse Lords" }
+			NOT = { has_dlc = "Horse Lords" }
 			is_playable = yes
 			independent = yes
 			culture = hungarian
@@ -983,6 +983,7 @@ decisions = {
 			war = no
 			completely_controls = d_tabriz
 			completely_controls = d_khorasan
+			completely_controls = d_khorasan_south
 			completely_controls = d_hormuz
 			completely_controls = d_fars
 			completely_controls = d_khiva
@@ -1926,14 +1927,14 @@ decisions = {
 			e_karling = { has_holder = no }
 			e_roman_empire = { has_holder = no }
 			OR = {
-				  NOT = { tier = EMPEROR }
-				  primary_title = { has_title_flag = "former_hre_empire" }
-				 }
+				NOT = { tier = EMPEROR }
+				primary_title = { has_title_flag = "former_hre_empire" }
+			}
 			e_hre = { has_title_flag = hre_formed }
 			NOR = {
-				   has_character_flag = "wants_coronation"
-				   trait = crowned_by_pope
-				  }
+				has_character_flag = "wants_coronation"
+				trait = crowned_by_pope
+			}
 		}
 		allow = {
 			has_regent = no
@@ -1941,64 +1942,62 @@ decisions = {
 			piety = 200
 			realm_size = 150
 			OR = {
-				  custom_tooltip = {
-								    text = "former_hre_1"
-									hidden_tooltip = {
-													  primary_title = { has_title_flag = "former_hre_empire" }
-													 }
-								   }
-				  AND = {
-						 OR = {
-							   custom_tooltip = { 
-												 text = "german_kingdoms" 
-												 hidden_tooltip = { 
-																   any_demesne_title = { german_kingdoms_trigger = yes } 
-																  }
-												}
-							   has_landed_title = k_lotharingia
-							  }
-						 NOT = { e_hre = { has_title_flag = "french_hre" } }
+				custom_tooltip = {
+					text = "former_hre_1"
+					hidden_tooltip = { primary_title = { has_title_flag = "former_hre_empire" } }
+				}
+				AND = {
+					OR = {
+						custom_tooltip = {
+							text = "german_kingdoms" 
+						hidden_tooltip = { 
+						any_demesne_title = { german_kingdoms_trigger = yes } 
 						}
-			      AND = {
-						 OR = {
-							   has_landed_title = k_france
-							   has_landed_title = k_burgundy
-							  }
-						 e_hre = { 
-								  OR = {
-									    has_title_flag = "french_hre" 
-										has_title_flag = "italian_hre"
-									   }
-								 }
 						}
-			     }
+						has_landed_title = k_lotharingia
+					}
+					NOT = { e_hre = { has_title_flag = "french_hre" } }
+				}
+				AND = {
+					OR = {
+						has_landed_title = k_france
+						has_landed_title = k_burgundy
+					}
+					e_hre = { 
+						OR = {
+							has_title_flag = "french_hre" 
+							has_title_flag = "italian_hre"
+						}
+					}
+				}
+			}
 			OR = {
-				  custom_tooltip = {
-									text = "controls_italy"
-									hidden_tooltip = { controls_italy_trigger = yes }
-								   }
-				  custom_tooltip = {
-								    text = "former_hre_1"
-									hidden_tooltip = {
-													  primary_title = { has_title_flag = "former_hre_empire" }
-													 }
-								   }
-				 }
+				custom_tooltip = {
+					text = "controls_italy"
+					hidden_tooltip = { controls_italy_trigger = yes }
+				}
+				custom_tooltip = {
+					text = "former_hre_1"
+					hidden_tooltip = {
+						primary_title = { has_title_flag = "former_hre_empire" }
+					}
+				}
+			}
 			scaled_wealth = 1
 			custom_tooltip = {
-							  text = POPE_WOULD_HEAR_REQUEST
-							  hidden_tooltip = {
-												NOT = { trait = excommunicated }
-											    rightful_religious_head_scope = {
-													NOT = {
-														has_opinion_modifier = {
-																				who = ROOT
-																				modifier = coronation_rejected
-																			   }
-														  }
-																				}
-											   }
-							 }
+				text = POPE_WOULD_HEAR_REQUEST
+				hidden_tooltip = {
+					NOT = { trait = excommunicated }
+					rightful_religious_head_scope = {
+						NOT = {
+							has_opinion_modifier = {
+								who = ROOT
+								modifier = coronation_rejected
+							}
+						}
+					}
+				}
+			}
 		}
 		effect = {
 			set_character_flag = "wants_coronation"
@@ -2040,9 +2039,9 @@ decisions = {
 				OR = {
 					controls_religion = yes
 					OR = {
-						  has_landed_title = k_pentarch_rome
-						  has_landed_title = k_papal_chalcedon
-						 }
+						has_landed_title = k_pentarch_rome
+						has_landed_title = k_papal_chalcedon
+					}
 				}
 			}
 			NOR = {
@@ -2177,13 +2176,13 @@ decisions = {
 			}
 		}
 		effect = {
-			e_karling = { 
-						 set_title_flag = carolingian_empire_formed 
-						 if = {
-							   limit = { ROOT = { religion = chalcedonian } }
-							   set_pentarch_title = k_pentarch_rome
-							  }
-						}
+			e_karling = {
+				set_title_flag = carolingian_empire_formed 
+				if = {
+					limit = { ROOT = { religion = chalcedonian } }
+					set_pentarch_title = k_pentarch_rome
+				}
+			}
 			if = {
 				limit = { lower_tier_than = EMPEROR }
 				scaled_wealth = -1
@@ -2205,12 +2204,12 @@ decisions = {
 					}
 				}
 				any_title = {
-							 limit = {
-									  tier = KING
-									  ROOT = { completely_controls = PREV }
-									 }
-							 de_jure_liege = e_karling
-							}
+					limit = {
+						tier = KING
+						ROOT = { completely_controls = PREV }
+					}
+					de_jure_liege = e_karling
+				}
 			}
 			primary_title = {
 				k_germany = {
@@ -2388,7 +2387,7 @@ decisions = {
 							title = c_ravenna
 							title = c_ferrara
 							title = c_urbino
-							title = c_perugia
+							title = c_spoleto
 							title = c_orvieto
 						}
 					}
@@ -2403,7 +2402,7 @@ decisions = {
 						title = c_ravenna
 						title = c_ferrara
 						title = c_urbino
-						title = c_perugia
+						title = c_spoleto
 						title = c_orvieto
 					}
 				}
@@ -2801,7 +2800,7 @@ decisions = {
 					holding_type = castle
 					AND = {
 						holding_type = tribal
-						has_building = tb_hillfort_4
+						has_building = tb_basic_keep_5
 					}
 				}
 			}
@@ -2813,7 +2812,7 @@ decisions = {
 					culture = ROOT
 					any_province_holding = {
 						holding_type = tribal
-						NOT = { has_building = tb_hillfort_4 }
+						NOT = { has_building = tb_basic_keep_5 }
 					}
 				}
 				random_province_holding = {
@@ -2831,7 +2830,7 @@ decisions = {
 					NOT = { culture = ROOT }
 					any_province_holding = {
 						holding_type = tribal
-						NOT = { has_building = tb_hillfort_4 }
+						NOT = { has_building = tb_basic_keep_5 }
 					}
 				}
 				random_province_holding = {
@@ -2848,13 +2847,13 @@ decisions = {
 				limit = {
 					any_province_holding = {
 						holding_type = tribal
-						has_building = tb_hillfort_4
+						has_building = tb_basic_keep_5
 					}
 				}
 				any_province_holding = {
 					limit = {
 						holding_type = tribal
-						has_building = tb_hillfort_4
+						has_building = tb_basic_keep_5
 					}
 					set_title_flag = refill_levy
 					convert_to = CASTLE
@@ -2955,7 +2954,7 @@ decisions = {
 				any_demesne_title = {
 					tier = baron
 					holding_type = tribal
-					NOT = { has_building = tb_hillfort_4 }
+					NOT = { has_building = tb_basic_keep_5 }
 					location = { NOT = { culture = ROOT } }
 				}
 			}
@@ -3015,7 +3014,7 @@ decisions = {
 						holding_type = castle
 						AND = {
 							holding_type = tribal
-							has_building = tb_hillfort_4
+							has_building = tb_basic_keep_5
 						}
 					}
 				}
@@ -3042,7 +3041,7 @@ decisions = {
 					culture = ROOT
 					any_province_holding = {
 						holding_type = tribal
-						NOT = { has_building = tb_hillfort_4 }
+						NOT = { has_building = tb_basic_keep_5 }
 					}
 				}
 				random_province_holding = {
@@ -3060,7 +3059,7 @@ decisions = {
 					NOT = { culture = ROOT }
 					any_province_holding = {
 						holding_type = tribal
-						NOT = { has_building = tb_hillfort_4 }
+						NOT = { has_building = tb_basic_keep_5 }
 					}
 				}
 				random_province_holding = {
@@ -3077,13 +3076,13 @@ decisions = {
 				limit = {
 					any_province_holding = {
 						holding_type = tribal
-						has_building = tb_hillfort_4
+						has_building = tb_basic_keep_5
 					}
 				}
 				any_province_holding = {
 					limit = {
 						holding_type = tribal
-						has_building = tb_hillfort_4
+						has_building = tb_basic_keep_5
 					}
 					set_title_flag = refill_levy
 					convert_to = CASTLE
@@ -3237,30 +3236,30 @@ decisions = {
 				any_demesne_title = {
 					tier = baron
 					holding_type = tribal
-					NOT = { has_building = tb_hillfort_4 }
+					NOT = { has_building = tb_basic_keep_5 }
 					location = { NOT = { culture = ROOT } }
 				}
 			}
 			modifier = {
-						factor = 0
-						OR = {
-							  religion = tondrakian
-							  religion = mazdaki
-							 }
-					   }
+				factor = 0
+				OR = {
+					religion = tondrakian
+					religion = mazdaki
+				}
+			}
 			modifier = {
-						factor = 0.2
-						religion = qarmatian
-					   }
+				factor = 0.2
+				religion = qarmatian
+			}
 			modifier = {
-						factor = 0.5
-						liege = { government = communal_government }
-						NOR = {
-							   trait = proud
-							   trait = ambitious
-							   trait = greedy
-							  }
-					   }
+				factor = 0.5
+				liege = { government = communal_government }
+				NOR = {
+					trait = proud
+					trait = ambitious
+					trait = greedy
+				}
+			}
 			modifier = {
 				factor = 0
 				any_vassal = {
@@ -3393,7 +3392,7 @@ decisions = {
 					holding_type = city
 					AND = {
 						holding_type = tribal
-						has_building = tb_market_town_4
+						has_building = tb_town_hall_5
 					}
 				}
 			}
@@ -3405,7 +3404,7 @@ decisions = {
 					culture = ROOT
 					any_province_holding = {
 						holding_type = tribal
-						NOT = { has_building = tb_market_town_4 }
+						NOT = { has_building = tb_town_hall_5 }
 					}
 				}
 				random_province_holding = {
@@ -3423,7 +3422,7 @@ decisions = {
 					NOT = { culture = ROOT }
 					any_province_holding = {
 						holding_type = tribal
-						NOT = { has_building = tb_market_town_4 }
+						NOT = { has_building = tb_town_hall_5 }
 					}
 				}
 				random_province_holding = {
@@ -3497,13 +3496,13 @@ decisions = {
 									limit = {
 										any_province_holding = {
 											holding_type = tribal
-											has_building = tb_market_town_4
+											has_building = tb_town_hall_5
 										}
 									}
 									any_province_holding = {
 										limit = {
 											holding_type = tribal
-											has_building = tb_market_town_4
+											has_building = tb_town_hall_5
 										}
 										set_title_flag = refill_levy
 										convert_to = CITY
@@ -3531,13 +3530,13 @@ decisions = {
 				limit = {
 					any_province_holding = {
 						holding_type = tribal
-						has_building = tb_market_town_4
+						has_building = tb_town_hall_5
 					}
 				}
 				any_province_holding = {
 					limit = {
 						holding_type = tribal
-						has_building = tb_market_town_4
+						has_building = tb_town_hall_5
 					}
 					set_title_flag = refill_levy
 					convert_to = CITY
@@ -3584,7 +3583,7 @@ decisions = {
 				any_demesne_title = {
 					tier = baron
 					holding_type = tribal
-					NOT = { has_building = tb_market_town_4 }
+					NOT = { has_building = tb_town_hall_5 }
 					location = { NOT = { culture = ROOT } }
 				}
 			}
@@ -3660,7 +3659,7 @@ decisions = {
 					holding_type = city
 					AND = {
 						holding_type = tribal
-						has_building = tb_market_town_4
+						has_building = tb_town_hall_5
 					}
 				}
 			}
@@ -3672,7 +3671,7 @@ decisions = {
 					culture = ROOT
 					any_province_holding = {
 						holding_type = tribal
-						NOT = { has_building = tb_market_town_4 }
+						NOT = { has_building = tb_town_hall_5 }
 					}
 				}
 				random_province_holding = {
@@ -3690,7 +3689,7 @@ decisions = {
 					NOT = { culture = ROOT }
 					any_province_holding = {
 						holding_type = tribal
-						NOT = { has_building = tb_market_town_4 }
+						NOT = { has_building = tb_town_hall_5 }
 					}
 				}
 				random_province_holding = {
@@ -3761,13 +3760,13 @@ decisions = {
 									limit = {
 										any_province_holding = {
 											holding_type = tribal
-											has_building = tb_market_town_4
+											has_building = tb_town_hall_5
 										}
 									}
 									any_province_holding = {
 										limit = {
 											holding_type = tribal
-											has_building = tb_market_town_4
+											has_building = tb_town_hall_5
 										}
 										set_title_flag = refill_levy
 										convert_to = CITY
@@ -3795,13 +3794,13 @@ decisions = {
 				limit = {
 					any_province_holding = {
 						holding_type = tribal
-						has_building = tb_market_town_4
+						has_building = tb_town_hall_5
 					}
 				}
 				any_province_holding = {
 					limit = {
 						holding_type = tribal
-						has_building = tb_market_town_4
+						has_building = tb_town_hall_5
 					}
 					set_title_flag = refill_levy
 					convert_to = CITY
@@ -3851,30 +3850,30 @@ decisions = {
 				any_demesne_title = {
 					tier = baron
 					holding_type = tribal
-					NOT = { has_building = tb_market_town_4 }
+					NOT = { has_building = tb_town_hall_5 }
 					location = { NOT = { culture = ROOT } }
 				}
 			}
 			modifier = {
-						factor = 0
-						OR = {
-							  religion = tondrakian
-							  religion = mazdaki
-							 }
-					   }
+				factor = 0
+				OR = {
+					religion = tondrakian
+					religion = mazdaki
+				}
+			}
 			modifier = {
-						factor = 0.2
-						religion = qarmatian
-					   }
+				factor = 0.2
+				religion = qarmatian
+			}
 			modifier = {
-						factor = 0.5
-						liege = { government = communal_government }
-						NOR = {
-							   trait = proud
-							   trait = ambitious
-							   trait = greedy
-							  }
-					   }
+				factor = 0.5
+				liege = { government = communal_government }
+				NOR = {
+					trait = proud
+					trait = ambitious
+					trait = greedy
+				}
+			}
 			modifier = {
 				factor = 0
 				any_vassal = {
@@ -4138,11 +4137,11 @@ decisions = {
 					holding_type = city
 					AND = {
 						holding_type = tribal
-						has_building = tb_market_town_4
+						has_building = tb_town_hall_5
 					}
 					AND = {
 						holding_type = tribal
-						has_building = tb_hillfort_4
+						has_building = tb_basic_keep_5
 					}
 				}
 			}
@@ -4154,8 +4153,8 @@ decisions = {
 					any_province_holding = {
 						holding_type = tribal
 						OR = {
-							has_building = tb_market_town_4
-							has_building = tb_hillfort_4
+							has_building = tb_town_hall_5
+							has_building = tb_basic_keep_5
 						}
 					}
 				}
@@ -4163,8 +4162,8 @@ decisions = {
 					limit = {
 						holding_type = tribal
 						OR = {
-							has_building = tb_market_town_4
-							has_building = tb_hillfort_4
+							has_building = tb_town_hall_5
+							has_building = tb_basic_keep_5
 						}
 					}
 					set_title_flag = refill_levy
@@ -4208,8 +4207,8 @@ decisions = {
 				any_demesne_title = {
 					tier = baron
 					holding_type = tribal
-					NOT = { has_building = tb_market_town_4 }
-					NOT = { has_building = tb_hillfort_4 }
+					NOT = { has_building = tb_town_hall_5 }
+					NOT = { has_building = tb_basic_keep_5 }
 					location = { NOT = { culture = ROOT } }
 				}
 			}
@@ -4476,11 +4475,11 @@ decisions = {
 					holding_type = temple
 					AND = {
 						holding_type = tribal
-						has_building = tb_market_town_4
+						has_building = tb_town_hall_5
 					}
 					AND = {
 						holding_type = tribal
-						has_building = tb_hillfort_4
+						has_building = tb_basic_keep_5
 					}
 				}
 			}
@@ -4492,8 +4491,8 @@ decisions = {
 					any_province_holding = {
 						holding_type = tribal
 						OR = {
-							has_building = tb_market_town_4
-							has_building = tb_hillfort_4
+							has_building = tb_town_hall_5
+							has_building = tb_basic_keep_5
 						}
 					}
 				}
@@ -4501,8 +4500,8 @@ decisions = {
 					limit = { 
 						holding_type = tribal
 						OR = {
-							has_building = tb_market_town_4
-							has_building = tb_hillfort_4
+							has_building = tb_town_hall_5
+							has_building = tb_basic_keep_5
 						}
 					}
 					set_title_flag = refill_levy
@@ -4546,8 +4545,8 @@ decisions = {
 				any_demesne_title = {
 					tier = baron
 					holding_type = tribal
-					NOT = { has_building = tb_market_town_4 }
-					NOT = { has_building = tb_hillfort_4 }
+					NOT = { has_building = tb_town_hall_5 }
+					NOT = { has_building = tb_basic_keep_5 }
 					location = { NOT = { religion = ROOT } }
 				}
 			}

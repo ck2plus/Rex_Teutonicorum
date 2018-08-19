@@ -1071,12 +1071,12 @@ letter_event = {
 			if = {
 				limit = { supported_claimant = { character = PREV } }
 				if = {
-				      limit = {
-				               liege = { rex_teutonicorum_trigger = yes }
-					       has_global_flag = "investiture_papal"
-					      }
-				      set_character_flag = "hre_investiture_antiking"
-				     }
+					limit = {
+						liege = { rex_teutonicorum_trigger = yes }
+						has_global_flag = "investiture_papal"
+					}
+					set_character_flag = "hre_investiture_antiking"
+				}
 				faction_pretender = { # The target (title) of the faction
 					reverse_war = {
 						target = FROM
@@ -1090,12 +1090,12 @@ letter_event = {
 					NOT = { supported_claimant = { character = PREV } }
 				}
 				if = {
-				      limit = {
-				               liege = { rex_teutonicorum_trigger = yes }
-					       has_global_flag = "investiture_papal"
-					      }
-				      supported_claimant = { set_character_flag = "hre_investiture_antiking" }
-				     }
+					limit = {
+						liege = { rex_teutonicorum_trigger = yes }
+						has_global_flag = "investiture_papal"
+					}
+					supported_claimant = { set_character_flag = "hre_investiture_antiking" }
+				}
 				faction_pretender = { # The target (title) of the faction
 					reverse_war = {
 						target = FROM

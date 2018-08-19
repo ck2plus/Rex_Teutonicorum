@@ -496,9 +496,9 @@ character_event = {
 		father_even_if_dead = {
 			is_alive = no
 			prestige = 100
-			primary_title = { 
-				higher_tier_than = COUNT 
-			} 
+			primary_title = {
+				higher_tier_than = COUNT
+			}
 		}
 	}
 

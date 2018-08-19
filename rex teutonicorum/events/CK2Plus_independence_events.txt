@@ -459,7 +459,7 @@ character_event = {
 	only_rulers = yes
 	is_patrician = no
 
-	trigger = {	
+	trigger = {
 		#non-rebelling landed count+ with an independent liege
 		independent = no
 		is_nomadic = no
@@ -518,7 +518,7 @@ character_event = {
 			modifier = {
 				factor = 5
 				liege = { primary_title = { is_titular = yes } }
-			}			
+			}
 			modifier = {
 				factor = 25
 				in_faction = faction_separatist
@@ -621,7 +621,7 @@ character_event = {
 				trait = possessed
 				NOT = { has_character_modifier = voice_of_jesus }
 				NOT = { has_character_modifier = voice_of_satan }
-			}			
+			}
 		}
 		liege = {
 			hidden_tooltip = {
@@ -645,15 +645,15 @@ character_event = {
 			modifier = {
 				factor = 5
 				liege = { primary_title = { is_titular = no } }
-			}						
+			}
 			modifier = {
 				factor = 5
 				trait = slothful
-			}	
+			}
 			modifier = {
 				factor = 2
 				trait = infirm
-			}				
+			}
 			modifier = {
 				factor = 10
 				liege = {
@@ -677,7 +677,7 @@ character_event = {
 						has_non_aggression_pact_with = ROOT
 					}
 				}
-			}			
+			}
 			modifier = {
 				factor = 0.2
 				NOT = { opinion = { who = liege value = -100 } }
@@ -748,7 +748,7 @@ character_event = {
 					NOT = { decadence = 100 }
 					decadence = 80
 				}
-			}				
+			}
 			modifier = {
 				factor = 0.3
 				uses_decadence = yes
@@ -757,7 +757,7 @@ character_event = {
 					NOT = { decadence = 80 }
 					decadence = 60
 				}
-			}				
+			}
 			modifier = {
 				factor = 0.6
 				uses_decadence = yes
@@ -766,7 +766,7 @@ character_event = {
 					NOT = { decadence = 60 }
 					decadence = 40
 				}
-			}				
+			}
 			modifier = {
 				factor = 0.8
 				uses_decadence = yes
@@ -775,7 +775,7 @@ character_event = {
 					NOT = { decadence = 40 }
 					decadence = 25
 				}
-			}			
+			}
 			modifier = {
 				factor = 2
 				uses_decadence = yes
@@ -784,7 +784,7 @@ character_event = {
 					NOT = { decadence = 20 }
 					decadence = 15
 				}
-			}	
+			}
 			modifier = {
 				factor = 4
 				uses_decadence = yes
@@ -892,6 +892,10 @@ character_event = {
 			modifier = opinion_independent
 			who = FROM
 			years = 50
+		}
+		random_list = {
+			25 = { add_trait = stressed }
+			75 = { }
 		}
 	}
 }

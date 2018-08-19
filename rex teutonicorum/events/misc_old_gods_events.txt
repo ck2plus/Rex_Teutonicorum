@@ -976,10 +976,10 @@ narrative_event = {
 					set_title_flag = do_not_destroy
 				}
 			}
-		 if = {
-			   limit = { is_titular = yes }
-			   destroy_landed_title = THIS
-			  }
+			if = {
+				limit = { is_titular = yes }
+				destroy_landed_title = THIS
+			}
 		}
 		hidden_tooltip = {
 			if = {
