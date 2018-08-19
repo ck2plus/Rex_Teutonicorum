@@ -174,13 +174,13 @@ action_organize_peasants = {
 	attribute = stewardship
 	
 	potential = {
-				 FROM = { government = communal_government }
-				}
+		FROM = { government = communal_government }
+	}
 	trigger = {
 		any_province_lord = {
 			character = FROM
-							}
-			  }
+		}
+	}
 	local_tax_modifier = 0.015
 	
 	events = { cmnl.1040 cmnl.1042 }

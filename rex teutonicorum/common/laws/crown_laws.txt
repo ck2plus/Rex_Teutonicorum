@@ -639,29 +639,30 @@ de_jure_laws = {
 			}
 			is_tribal = no
 			is_nomadic = no
-                        NOR = { 
-                               title = e_hre
-							   title = e_karling
-                               custom_tooltip = { text = invest_imperial_law
-                                      hidden_tooltip = {
-                                               has_global_flag = "investiture_imperial"  
-						       }
-                  				}
-                              }
+			NOR = { 
+				title = e_hre
+				title = e_karling
+				custom_tooltip = {
+					text = invest_imperial_law
+					hidden_tooltip = {
+						has_global_flag = "investiture_imperial"  
+					}
+				}
+			}
 		}
 		allow = {
 			has_law = investiture_law_1
-                        NAND = {
-                                OR = {
-									  title = e_hre
-									  title = e_karling
-									 }
+			NAND = {
+				OR = {
+					title = e_hre
+					title = e_karling
+				}
 				custom_tooltip = { text = investiture_ongoing
-				       hidden_tooltip = {
-                                              has_global_flag = "investiture_controversy"
-                                                        }
-			                         }
-                               }
+					hidden_tooltip = {
+						has_global_flag = "investiture_controversy"
+					}
+				}
+			}
             NOT = {
 				empire = {
 					NOT = { title = PREV }
@@ -706,10 +707,10 @@ de_jure_laws = {
 		
 		potential = {
 			holder_scope = {
-                                NAND = { 
-                                        rex_teutonicorum_trigger = yes
-                                        has_global_flag = "investiture_papal"
-                                       }
+				NAND = { 
+					rex_teutonicorum_trigger = yes
+					has_global_flag = "investiture_papal"
+				}
 				religion_head = {
 					primary_title = {
 						OR = {
@@ -732,15 +733,14 @@ de_jure_laws = {
 			has_law = investiture_law_0
 			holder_scope = {
 				controls_religion = no
-                                OR = {
-                                      rex_teutonicorum_trigger = no
-                                      custom_tooltip = { text = invest_papal_law
-                                             hidden_tooltip = {
-                                                   NOT = { has_global_flag = "investiture_papal" }
-                                                              }
-                                                       }
-                                     }
-                                                 
+				OR = {
+					rex_teutonicorum_trigger = no
+					custom_tooltip = { text = invest_papal_law
+						hidden_tooltip = {
+							NOT = { has_global_flag = "investiture_papal" }
+						}
+					}
+				}
 			}
 			NOT = {
 				empire = {

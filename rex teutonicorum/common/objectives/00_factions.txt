@@ -723,9 +723,9 @@ faction_succ_seniority = {
 	# Plotter scope
 	potential = {
 		OR = {
-		      ai = no
-	          NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			ai = no
+			NOT = { has_character_flag = "anti_emperor_king" }
+		}
 		is_playable = yes
 		is_landed = yes
 		independent = no
@@ -817,10 +817,10 @@ faction_succ_seniority = {
 	# Faction member scope (ROOT = joiner, FROM = target)
 	allow_join = {
 		ROOT = {
-		OR = {
-		      ai = no
-	          NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			OR = {
+				ai = no
+				NOT = { has_character_flag = "anti_emperor_king" }
+			}
 			is_playable = yes
 			is_landed = yes
 			independent = no
@@ -1405,9 +1405,9 @@ faction_succ_primogeniture = {
 	# Plotter scope
 	potential = {
 		OR = {
-		      ai = no
-	          NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			ai = no
+			NOT = { has_character_flag = "anti_emperor_king" }
+		}
 		is_playable = yes
 		is_landed = yes
 		independent = no
@@ -1486,10 +1486,10 @@ faction_succ_primogeniture = {
 	# Faction member scope (ROOT = joiner, FROM = target)
 	allow_join = {
 		ROOT = {
-		OR = {
-		      ai = no
-	          NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			OR = {
+				ai = no
+				NOT = { has_character_flag = "anti_emperor_king" }
+			}
 			is_playable = yes
 			is_landed = yes
 			independent = no
@@ -2083,9 +2083,9 @@ faction_succ_gavelkind = {
 	# Plotter scope
 	potential = {
 		OR = {
-		      ai = no
-	          NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			ai = no
+			NOT = { has_character_flag = "anti_emperor_king" }
+		}
 		is_playable = yes
 		is_landed = yes
 		independent = no
@@ -2154,10 +2154,10 @@ faction_succ_gavelkind = {
 	# Faction member scope (ROOT = joiner, FROM = target)
 	allow_join = {
 		ROOT = {
-		OR = {
-		      ai = no
-	          NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			OR = {
+				ai = no
+				NOT = { has_character_flag = "anti_emperor_king" }
+			}
 			is_playable = yes
 			is_landed = yes
 			independent = no
@@ -2843,9 +2843,9 @@ faction_succ_feudal_elective = {
 	# Plotter scope
 	potential = {
 		OR = {
-		      ai = no
-	          NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			ai = no
+			NOT = { has_character_flag = "anti_emperor_king" }
+		}
 		is_playable = yes
 		is_landed = yes
 		independent = no
@@ -2937,9 +2937,9 @@ faction_succ_feudal_elective = {
 	allow_join = {
 		ROOT = {
 			OR = {
-		      	  ai = no
-	              NOT = { has_character_flag = "anti_emperor_king" }
-		     	 }
+				ai = no
+				NOT = { has_character_flag = "anti_emperor_king" }
+			}
 			is_playable = yes
 			is_landed = yes
 			independent = no
@@ -3619,9 +3619,9 @@ faction_separatist = {
 	# Plotter scope
 	potential = {
 		OR = {
-		      ai = no
-	          NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			ai = no
+			NOT = { has_character_flag = "anti_emperor_king" }
+		}
 		is_playable = yes
 		is_landed = yes
 		independent = no
@@ -3715,9 +3715,9 @@ faction_separatist = {
 	allow_join = {
 		ROOT = {
 			OR = {
-		      	  ai = no
-	              NOT = { has_character_flag = "anti_emperor_king" }
-		    	 }
+				ai = no
+				NOT = { has_character_flag = "anti_emperor_king" }
+			}
 			is_playable = yes
 			is_landed = yes
 			independent = no
@@ -4231,16 +4231,16 @@ faction_separatist = {
 		modifier = {
 			factor = 0.5
 			FROM = { 
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = ghibelline
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = ghibelline
+			}
 		}
 		modifier = {
 			factor = 2
 			FROM = { 
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = guelph 
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = guelph 
+			}
 		}
 		modifier = {
 			factor = 2
@@ -4844,9 +4844,9 @@ faction_pretender = {
 	# Plotter scope
 	potential = {
 		OR = {
-		      ai = no
-	              NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			ai = no
+			NOT = { has_character_flag = "anti_emperor_king" }
+		}
 		prisoner = no
 		is_playable = yes
 		is_landed = yes
@@ -5007,9 +5007,9 @@ faction_pretender = {
 	allow_join = {
 		ROOT = {
 			OR = {
-		      		ai = no
-	              		NOT = { has_character_flag = "anti_emperor_king" }
-		     		}
+				ai = no
+				NOT = { has_character_flag = "anti_emperor_king" }
+			}
 			is_playable = yes
 			is_landed = yes
 			independent = no
@@ -6286,82 +6286,82 @@ faction_pretender = {
 			factor = 1.2
 			has_global_flag = "concordat_of_worms"
 			FROM = { rex_teutonicorum_trigger = yes }
-			   }
+		}
 		modifier = {	#Even more likely if the Pope won
 			factor = 1.5
 			has_global_flag = "investiture_papal"
 			FROM = { rex_teutonicorum_trigger = yes }
-			   }
+		}
 		modifier = {	#More likely for Pope-chosen claimant
 			factor = 3
 			FROM = {
-					OR = {
-						  has_character_flag = "pope_unsupported_king"
-						  trait = excommunicated
-						  has_global_flag = "investiture_papal"
-						 }
-				   }
+				OR = {
+					has_character_flag = "pope_unsupported_king"
+					trait = excommunicated
+					has_global_flag = "investiture_papal"
+				}
+			}
 			new_character = { has_character_flag = "pope_supported_king" }
-			   }
-	    modifier = { #More likely if supporting Pope in Investiture Controversy
+		}
+		modifier = { #More likely if supporting Pope in Investiture Controversy
 			factor = 2.5
 			has_character_flag = "investiture_support_pope"
-			   }
-	    modifier = { #Less likely if supporting Pope in Investiture Controversy
+		}
+		modifier = { #Less likely if supporting Pope in Investiture Controversy
 			factor = 0.5
 			has_character_flag = "investiture_support_emperor"
-			   }
+		}
 		modifier = { #Communal characters in communal realms unlikely to support non-communal claimants
 			factor = 0.01
 			government = communal_government
 			FROM = { government = communal_government }
 			NOT = { new_character = { government = communal_government } }
-			   }
+		}
 		modifier = { #Feudal vassals in communal realms will massively support non-communal claimants
 			factor = 50
 			NOT = { government = communal_government }
 			FROM = { government = communal_government }
 			new_character = { 
-							 NOR = { 
-									government = communal_government
-									liege = { government = communal_government }
-								   } 
-							}
-			   }
+				NOR = { 
+					government = communal_government
+					liege = { government = communal_government }
+				} 
+			}
+		}
 		modifier = {
 			factor = 0.5
 			FROM = { 
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = ghibelline
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = ghibelline
+			}
 		}
 		modifier = {
 			factor = 2
 			FROM = { 
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = guelph 
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = guelph 
+			}
 		}
 		modifier = {
 			factor = 1.5
 			FROM = { 
-					 liege = { has_character_flag = "was_co_crowned" }
-					 has_character_flag = "oppose_co_crown"
-				   }
+				liege = { has_character_flag = "was_co_crowned" }
+				has_character_flag = "oppose_co_crown"
+			}
 		}
 		modifier = {
 			factor = 0.2
 			FROM = { 
-					 liege = { has_character_flag = "was_co_crowned" }
-					 has_character_flag = "support_co_crown"
-				   }
+				liege = { has_character_flag = "was_co_crowned" }
+				has_character_flag = "support_co_crown"
+			}
 		}
 		modifier = {
 			factor = 0
 			FROM = {
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = co_crowned
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = co_crowned
+			}
 		}
 	}
 
@@ -6381,10 +6381,10 @@ faction_pretender = {
 			pacifist = yes
 		}
 		modifier = {
-			    factor = 2
-			    has_global_flag = "investiture_controversy"
-			    FROM = { trait = excommunicated }
-			   }
+			factor = 2
+			has_global_flag = "investiture_controversy"
+			FROM = { trait = excommunicated }
+		}
 		modifier = {
 			factor = 0.9
 			liege = {
@@ -7909,25 +7909,25 @@ faction_pretender = {
 			factor = 1.2
 			has_global_flag = "concordat_of_worms"
 			FROM = { rex_teutonicorum_trigger = yes }
-			   }
+		}
 		modifier = {	#Even more likely if the Pope won
 			factor = 1.5
 			has_global_flag = "investiture_papal"
 			FROM = { rex_teutonicorum_trigger = yes }
-			   }
+		}
 		modifier = {	#More likely for Pope-chosen king
 			factor = 2
 			FROM = { has_character_flag = "pope_unsupported_king" }
 			new_character = { has_character_flag = "pope_supported_king" }
-			   }
+		}
 	    modifier = { #More likely if supporting Pope in Investiture Controversy
 			factor = 2.5
 			has_character_flag = "investiture_support_pope"
-			   }
+		}
 	    modifier = { #Less likely if supporting Emperor in Investiture Controversy
 			factor = 0.5
 			has_character_flag = "investiture_support_emperor"
-			   }
+		}
 		modifier = {
 			factor = 0.5
 			liege = { rex_teutonicorum_trigger = yes }
@@ -8267,16 +8267,16 @@ faction_antiking = {
 		modifier = {
 			factor = 0.5
 			FROM = { 
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = ghibelline
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = ghibelline
+			}
 		}
 		modifier = {
 			factor = 2
 			FROM = { 
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = guelph 
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = guelph 
+			}
 		}
 	}
 	
@@ -8507,9 +8507,9 @@ faction_religious = {
 	# Plotter scope
 	potential = {
 		OR = {
-		      ai = no
-	          NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			ai = no
+			NOT = { has_character_flag = "anti_emperor_king" }
+		}
 		is_playable = yes
 		is_landed = yes
 		independent = no
@@ -9595,9 +9595,9 @@ faction_increase_council_power = {
 	# Plotter scope
 	potential = {
 		OR = {
-		      ai = no
-	          NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			ai = no
+			NOT = { has_character_flag = "anti_emperor_king" }
+		}
 		has_dlc = "Zeus"
 		prisoner = no
 		is_ruler = yes
@@ -9684,9 +9684,9 @@ faction_increase_council_power = {
 	allow_join = {
 		ROOT = {
 			OR = {
-		      	  ai = no
-	              NOT = { has_character_flag = "anti_emperor_king" }
-		     	 }
+				ai = no
+				NOT = { has_character_flag = "anti_emperor_king" }
+			}
 			is_ruler = yes
 			independent = no
 			is_landed = yes
@@ -9955,16 +9955,16 @@ faction_increase_council_power = {
 		modifier = {
 			factor = 0.5
 			FROM = { 
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = ghibelline
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = ghibelline
+			}
 		}
 		modifier = {
 			factor = 2
 			FROM = { 
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = guelph 
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = guelph 
+			}
 		}
 	}
 	
@@ -10286,9 +10286,9 @@ faction_powerful_vassal_takeover = {
 	# Plotter scope
 	potential = {
 		OR = {
-		      ai = no
-	              NOT = { has_character_flag = "anti_emperor_king" }
-		     }
+			ai = no
+			NOT = { has_character_flag = "anti_emperor_king" }
+		}
 		has_dlc = "Zeus"
 		always = no
 		prisoner = no
@@ -10375,9 +10375,9 @@ faction_powerful_vassal_takeover = {
 	allow_join = {
 		ROOT = {
 			OR = {
-		      	  ai = no
-	              NOT = { has_character_flag = "anti_emperor_king" }
-		     	 }
+				ai = no
+				NOT = { has_character_flag = "anti_emperor_king" }
+			}
 			is_ruler = yes
 			independent = no
 			is_landed = yes
@@ -10614,16 +10614,16 @@ faction_powerful_vassal_takeover = {
 		modifier = {
 			factor = 0.5
 			FROM = { 
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = ghibelline
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = ghibelline
+			}
 		}
 		modifier = {
 			factor = 2
 			FROM = { 
-					liege = { rex_teutonicorum_trigger = yes }
-					trait = guelph 
-				   }
+				liege = { rex_teutonicorum_trigger = yes }
+				trait = guelph 
+			}
 		}
 	}
 	

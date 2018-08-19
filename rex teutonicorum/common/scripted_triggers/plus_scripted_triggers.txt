@@ -1014,21 +1014,21 @@ may_create_kingdom_trigger = {
 			text = TITLE_IS_EXEMPT
 			hidden_tooltip = {
 				OR = {
-					  FROM = { culture = roman }
-					  AND = {
-							 top_liege = { has_landed_title = e_karling }
-							 FROM = {
-									 OR = {
-										   title = k_france
-										   title = k_burgundy
-										   title = k_germany
-										   title = k_italy
-										   title = k_lotharingia
-										   title = k_aquitaine
-										  }
-									}
+					FROM = { culture = roman }
+					AND = {
+						top_liege = { has_landed_title = e_karling }
+						FROM = {
+							OR = {
+								title = k_france
+								title = k_burgundy
+								title = k_germany
+								title = k_italy
+								title = k_lotharingia
+								title = k_aquitaine
 							}
-					 }
+						}
+					}
+				}
 			}
 		}
 	}

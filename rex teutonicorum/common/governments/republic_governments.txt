@@ -194,7 +194,7 @@ republic_governments = {
 		frame_suffix = "_confucian"
 		potential = {
 			OR = {
-			is_offmap_tag = offmap_china
+				is_offmap_tag = offmap_china
 				AND = {
 					has_game_started = no
 					realm = { title = e_china_west_governor }

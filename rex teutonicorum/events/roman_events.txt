@@ -428,203 +428,137 @@ narrative_event = {
 	desc = {
 		trigger = { has_character_flag = "byzantine_restored_rome" }
 		text = EVTDESCLoR.20
-	       }
+	}
 	desc = {
-		trigger = { 
-			   has_character_flag = "hre_restored_rome" 
-			   e_hre = {
-				    NOR = {
-					   has_title_flag = "french_hre"
-					   has_title_flag = "italian_hre"
-					  }
-				   }
-			  }
+		trigger = { has_character_flag = "hre_restored_rome" }
 		text = EVTDESCALoR.20
-	       }
+	}
 	desc = {
 		trigger = { 
-			   OR = {
-			   	 has_character_flag = "karling_restored_rome" 
-				 AND = {
-					has_character_flag = "hre_restored_rome"
-					e_hre = { has_title_flag = "french_hre" }
-				       }
-				}
-			  }
+			has_character_flag = "karling_restored_rome"
+		}
 		text = EVTDESCBLoR.20
-	       }
+	}
 	desc = {
 		trigger = { has_character_flag = "latin_restored_rome" }
 		text = EVTDESCCLoR.20
-	       }
+	}
 	desc = {
 		trigger = { 
-			   OR = {
-			   	 has_character_flag = "italy_restored_rome" 
-				 AND = {
+			OR = {
+				has_character_flag = "italy_restored_rome" 
+				AND = {
 					has_character_flag = "hre_restored_rome"
 					e_hre = { has_title_flag = "italian_hre" }
-				       }
 				}
-			  }
+			}
+		}
 		text = EVTDESCDLoR.20
-	       }
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				has_character_flag = "byzantine_restored_rome"
+				has_character_flag = "hre_restored_rome"
+				has_character_flag = "karling_restored_rome"
+				has_character_flag = "latin_restored_rome"
+				has_character_flag = "italy_restored_rome"
+			}
+		}
+		text = EVTDESCELoR.20
+	}
 	
 	picture = GFX_evt_rome_restored_byzantine
 	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		add_trait = augustus
 		give_nickname = nick_the_glorious
-		if = { # in case this event is called by the title being formed regularly
-			limit = { NOT = { has_landed_title = e_roman_empire } }
-
-			e_roman_empire = {
-				grant_title = ROOT
-				make_primary_title = yes
+		set_global_flag = rome_restored
+		if = { #Just in case
+			limit = { NOT = { is_title_active = e_roman_empire } }
+			hidden_tooltip = {
+				activate_title = { title = e_roman_empire status = yes }
 			}
-			
-			if = { # If Byzantium formed it
-				limit = {
-					has_landed_title = e_byzantium
-					NOR = {
-						has_landed_title = e_latin_empire 
-						has_landed_title = e_hre
-						has_landed_title = e_italy
-						has_landed_title = e_karling
-					}
-				}
-				set_character_flag = "byzantine_restored_rome"
-				e_roman_empire = {
-					copy_title_laws = e_byzantium
-					copy_title_history = e_byzantium
-					set_global_flag = rome_restored_by_byzantium
-				}
-				e_byzantium = {
-					any_direct_de_jure_vassal_title = {
-						de_jure_liege = e_roman_empire
-					}
-					destroy_landed_title = THIS
-					activate_title = { title = e_byzantium status = no }
-				}
-			}
+		}
 
-			if = { # If the Latin Empire formed it
-				limit = {
-					has_landed_title = e_latin_empire
-					NOR = {
-						has_landed_title = e_byzantium
-						has_landed_title = e_hre
-						has_landed_title = e_italy
-						has_landed_title = e_karling
-					}
-				}
-				set_character_flag = "latin_restored_rome"
-				e_roman_empire = {
-					copy_title_laws = e_latin_empire
-					copy_title_history = e_latin_empire
-					set_global_flag = rome_restored_by_latin_empire
-				}
-				e_latin_empire = {
-					any_direct_de_jure_vassal_title = {
-						de_jure_liege = e_roman_empire
-					}
-					destroy_landed_title = THIS
-					activate_title = { title = e_latin_empire status = no }
-				}
-			}
-
-			if = { # if the HRE formed it
-				limit = {
-					has_landed_title = e_hre
-					NOR = {
-						has_landed_title = e_byzantium
-						has_landed_title = e_latin_empire
-						has_landed_title = e_italy
-						has_landed_title = e_karling
-					}
-				}
-				set_character_flag = "hre_restored_rome"
-				e_roman_empire = {
-					copy_title_laws = e_hre
-					copy_title_history = e_hre
-					set_global_flag = rome_restored_by_hre
-				}
-				e_hre = {
-					any_direct_de_jure_vassal_title = {
-						de_jure_liege = e_roman_empire
-					}
-					destroy_landed_title = THIS
-					activate_title = { title = e_hre status = no }
-				}
-			}
-
-			if = { # If the empire of Italy formed it
-				limit = {
-					has_landed_title = e_italy
-					NOR = {
-						has_landed_title = e_byzantium
-						has_landed_title = e_latin_empire
-						has_landed_title = e_hre
-						has_landed_title = e_karling
-					}
-				}
-				set_character_flag = "italy_restored_rome"
-				e_roman_empire = {
-					copy_title_laws = e_italy
-					copy_title_history = e_italy
-					set_global_flag = rome_restored_by_italy
-				}
-				e_italy = {
-					any_direct_de_jure_vassal_title = {
-						de_jure_liege = e_roman_empire
-					}
-					destroy_landed_title = THIS
-					activate_title = { title = e_italy status = no }
-				}
-			}
-
-			if = { # If the Karlings formed it
-				limit = {
-					has_landed_title = e_karling
-					NOR = {
-						has_landed_title = e_byzantium
-						has_landed_title = e_latin_empire
-						has_landed_title = e_hre
-						has_landed_title = e_italy
-					}
-				}
+		if = {
+			limit = { primary_title = { title = e_byzantium } }
+			set_character_flag = "byzantine_restored_rome"
+			set_global_flag = rome_restored_by_byzantium
+		}
+		else_if = {
+			limit = { primary_title = { title = e_hre } }
+			if = {
+				limit = { e_hre = { has_title_flag = "french_hre" } }
 				set_character_flag = "karling_restored_rome"
-				e_roman_empire = {
-					copy_title_laws = e_karling
-					copy_title_history = e_karling
-					set_global_flag = rome_restored_by_karling
+			}
+			else_if = {
+				limit = { e_hre = { has_title_flag = "italian_hre" } }
+				set_character_flag = italy_restored_rome
+			}
+			else = {
+				set_character_flag = "hre_restored_rome"
+			}
+			set_global_flag = "rome_restored_by_hre"
+		}
+		else_if = {
+			limit = { primary_title = { title = e_karling } }
+			set_character_flag = "karling_restored_rome"
+			set_global_flag = rome_restored_by_karling
+		}
+		else_if = {
+			limit = { primary_title = e_latin_empire }
+			set_character_flag = "latin_restored_rome"
+			set_global_flag = "rome_restored_by_latin_empire"
+		}
+		else_if = {
+			limit = { primary_title = { title = e_italy } }
+			set_character_flag = italy_restored_rome
+			set_global_flag = italy_restored_rome
+		}
+
+		if = {
+			limit = { NOT = { primary_title = { title = e_roman_empire } } }
+			primary_title = { save_event_target_as = current_title }
+			e_roman_empire = { grant_title = ROOT }
+			#Law Copying
+			e_roman_empire = {
+				copy_title_laws = event_target:current_title
+				copy_title_history = event_target:current_title
+			}
+			event_target:current_title = {
+				any_direct_de_jure_vassal_title = {
+					de_jure_liege = e_roman_empire
 				}
-				e_karling = {
-					any_direct_de_jure_vassal_title = {
-						de_jure_liege = e_roman_empire
-					}
-					destroy_landed_title = THIS
-					activate_title = { title = e_karling status = no }
-				}
+				destroy_landed_title = THIS
+				activate_title = { title = event_target:current_title status = no}
 			}
 		}
 
 		any_playable_ruler = {
-			limit = {
-				NOT = { character = ROOT }
-				OR = {
-					ai = no
-					has_landed_title = e_hre
-					has_landed_title = e_byzantium
-					has_landed_title = e_latin_empire
-					has_landed_title = e_italy
-					has_landed_title = e_karling
-				}
-			}
+			limit = { NOT = { character = ROOT } }
 			narrative_event = { id = LoR.21 }
 		}
+	}
+	
+	after = {
+		e_roman_empire = { make_primary_title = yes }
+		any_title = {
+			limit = {
+				tier = EMPEROR
+				OR = {
+					has_title_flag = eastern_roman_successor
+					has_title_flag = western_roman_successor
+				}
+			}
+			clr_title_flag = eastern_roman_successor
+			clr_title_flag = western_roman_successor
+		}
+		clr_global_flag = east_rome_lives
+		clr_global_flag = west_rome_lives
+		
 	}
 	
 	option = {
@@ -646,33 +580,28 @@ narrative_event = {
 	option = {
 		name = EVTOPTALoR.21
 		trigger = {
-			NOR = {
-				has_landed_title = e_byzantium
-				has_landed_title = e_latin_empire
-				has_landed_title = e_italy
+			NOT = {
+				primary_title = {  
+					OR = {
+						has_title_flag = eastern_roman_successor
+						has_title_flag = western_roman_successor
+					}
+				}
 			}
 		}
 	}
 	option = {
 		name = EVTOPTBLoR.21
 		trigger = {
-			OR = {
-				has_landed_title = e_byzantium
-				has_landed_title = e_latin_empire
-				has_landed_title = e_italy
+			primary_title = {  
+				OR = {
+					has_title_flag = eastern_roman_successor
+					has_title_flag = western_roman_successor
+				}
 			}
 		}
 		prestige = -500
 	}
-	option = {
-		  name = EVTOPTBLoR.21
-		  trigger = {
-			     OR = {
-				   has_landed_title = e_hre
-				   has_landed_title = e_karling
-				  }
-			    }
-		 }
 }
 
 ### Victory Triumphs
@@ -843,7 +772,6 @@ narrative_event = {
 		
 		# Provincia Armenia
 		completely_controls = d_armenia
-		completely_controls = d_vaspurakan
 		completely_controls = d_kartli
 	}
 	

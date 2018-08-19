@@ -777,21 +777,21 @@ decisions = {
 			tier = EMPEROR
 			OR = {
 				AND = {
-					   has_landed_title = e_hre
-					   e_hre = { NOT = { has_title_flag = "ended_papal_crownings" } }
-					  }
+					has_landed_title = e_hre
+					e_hre = { NOT = { has_title_flag = "ended_papal_crownings" } }
+				}
 				AND = {
-					   has_landed_title = e_karling
-					   e_karling = { NOT = { has_title_flag = "ended_papal_crownings" } }
-					  }
+					has_landed_title = e_karling
+					e_karling = { NOT = { has_title_flag = "ended_papal_crownings" } }
+				}
 				AND = {
-					   has_landed_title = e_roman_empire
-					   OR = {
-							 has_global_flag = "rome_restored_by_hre"
-							 has_global_flag = "rome_restored_by_karling"
-						    }
-					   NOT = { e_roman_empire = { has_title_flag = "ended_papal_crownings" } }
-					  }
+					has_landed_title = e_roman_empire
+					OR = {
+						has_global_flag = "rome_restored_by_hre"
+						has_global_flag = "rome_restored_by_karling"
+					}
+					NOT = { e_roman_empire = { has_title_flag = "ended_papal_crownings" } }
+				}
 			}
 			NOR = {
 				has_character_flag = wants_coronation
@@ -873,15 +873,15 @@ decisions = {
 				}
 			}
 			custom_tooltip = { 
-							  text = "controls_italy"
-							  hidden_tooltip = { controls_italy_trigger = yes }
-							 }
+				text = "controls_italy"
+				hidden_tooltip = { controls_italy_trigger = yes }
+			}
 			OR = {
-			      has_landed_title = k_germany
-			      has_landed_title = k_france
-			      has_landed_title = k_burgundy
-			      has_landed_title = k_lotharingia
-			     }
+				has_landed_title = k_germany
+				has_landed_title = k_france
+				has_landed_title = k_burgundy
+				has_landed_title = k_lotharingia
+			}
 			custom_tooltip = {
 				text = POPE_WOULD_HEAR_REQUEST
 				hidden_tooltip = {

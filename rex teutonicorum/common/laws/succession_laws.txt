@@ -22,9 +22,9 @@ succession_laws = {
 				in_revolt = no
 				limited_imperial_authority_trigger = no
 				NAND = {
-					    government = communal_government
-					    lower_tier_than = COUNT
-					   }
+					government = communal_government
+					lower_tier_than = COUNT
+				}
 			}
 			NOT = { holder_scope = { government = confucian_bureaucracy } }
 			NOT = { holder_scope = { government = chinese_imperial_government } }
@@ -59,9 +59,9 @@ succession_laws = {
 				limited_imperial_authority_trigger = no
 				in_revolt = no
 				NAND = {
-					    government = communal_government
-					    lower_tier_than = COUNT
-					   }
+					government = communal_government
+					lower_tier_than = COUNT
+				}
 			}
 			NOT = { holder_scope = { government = confucian_bureaucracy } }
 			NOT = { holder_scope = { government = chinese_imperial_government } }
@@ -110,9 +110,9 @@ succession_laws = {
 					has_global_flag = ancient_religions
 				}
 				NAND = {
-					    government = communal_government
-					    lower_tier_than = COUNT
-					   }
+					government = communal_government
+					lower_tier_than = COUNT
+				}
 			}
 			OR = {
 				NOT = { tier = baron }
@@ -144,9 +144,9 @@ succession_laws = {
 				AND = {
 					holder_scope = {
 						NAND = {
-								government = communal_government
-								lower_tier_than = COUNT
-							}
+							government = communal_government
+							lower_tier_than = COUNT
+						}
 						limited_imperial_authority_trigger = no
 						NOT = { religion_group = muslim }
 						NOT = { religion = celtic_pagan }
@@ -208,9 +208,9 @@ succession_laws = {
 					has_global_flag = ancient_religions
 				}
 				NAND = {
-					    government = communal_government
-					    lower_tier_than = COUNT
-					   }
+					government = communal_government
+					lower_tier_than = COUNT
+				}
 			}
 			NOT = { tier = baron }
 			NOT = { holder_scope = { government = confucian_bureaucracy } }
@@ -246,9 +246,9 @@ succession_laws = {
 					religion = celtic_pagan
 				}
 				NAND = {
-					    government = communal_government
-					    lower_tier_than = COUNT
-					   }
+					government = communal_government
+					lower_tier_than = COUNT
+				}
 			}
 			NOT = { tier = baron }
 			NOT = { holder_scope = { government = confucian_bureaucracy } }
@@ -285,9 +285,9 @@ succession_laws = {
 				is_merchant_republic = no
 				is_patrician = no
 				NAND = {
-					    government = communal_government
-					    lower_tier_than = COUNT
-					   }
+					government = communal_government
+					lower_tier_than = COUNT
+				}
 			}			
 			OR = {
 				AND = {
@@ -316,9 +316,9 @@ succession_laws = {
 				is_merchant_republic = no
 				is_nomadic = no
 				NAND = {
-					    government = communal_government
-					    lower_tier_than = COUNT
-					   }
+					government = communal_government
+					lower_tier_than = COUNT
+				}
 			}			
 			OR = {
 				holder_scope = { any_demesne_title = { is_vice_royalty = yes } }
@@ -412,9 +412,9 @@ succession_laws = {
 					OR = {
 						is_republic = yes
 						AND = {
-							   government = communal_government
-							   lower_tier_than = COUNT
-							  }
+							government = communal_government
+							lower_tier_than = COUNT
+						}
 						AND = {
 							is_theocracy = yes
 							NOT = { religion_group = muslim }
@@ -437,9 +437,9 @@ succession_laws = {
 				is_landless_type_title = yes
 				holder_scope = { is_theocracy = no }
 				holder_scope = { 
-								government = communal_government 
-								lower_tier_than = COUNT
-							   }
+					government = communal_government 
+					lower_tier_than = COUNT
+				}
 				holder_scope = {
 					NOR = {
 						religion = catholic
@@ -471,12 +471,12 @@ succession_laws = {
 				OR = {
 					independent = yes
 					OR = {
-						  is_feudal = no
-						  AND = {
-								 lower_tier_than = COUNT
-								 government = communal_government
-								}
-						 }
+						is_feudal = no
+						AND = {
+							lower_tier_than = COUNT
+							government = communal_government
+						}
+					}
 					NOT = { any_liege = { holy_order = yes } }
 				}
 			}

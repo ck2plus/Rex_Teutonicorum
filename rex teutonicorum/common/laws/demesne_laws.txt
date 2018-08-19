@@ -684,145 +684,145 @@ laws = {
 		group = administration
 		
 		potential = {
-			     holder_scope = {
-					     OR = {
-							   can_communal_trigger = yes
-							   liege = { government = communal_government }
-							   has_game_rule = {
-												name = communal_admn_rule
-												value = unrestricted
-											   }
-							  }
-						 NOT = { has_character_flag = "non_communal" }
-						 is_tribal = no
-						 is_nomadic = no
-						 is_patrician = no
-					    }
-			    }
+			holder_scope = {
+				OR = {
+					can_communal_trigger = yes
+					liege = { government = communal_government }
+					has_game_rule = {
+						name = communal_admn_rule
+						value = unrestricted
+					}
+				}
+				NOT = { has_character_flag = "non_communal" }
+				is_tribal = no
+				is_nomadic = no
+				is_patrician = no
+			}
+		}
 
 		allow = {
 			NOT = {
-				   has_game_rule = {
-								    name = communal_admn_rule
-									value = off
-								   }
-				  }
+				has_game_rule = {
+					name = communal_admn_rule
+					value = off
+				}
+			}
 			holder_scope = { 
-							OR = {
-								  can_communal_trigger = yes
-								  liege = { government = communal_government }
-								  has_game_rule = {
-												   name = communal_admn_rule
-												   value = unrestricted
-												  }
-								 }
-							is_patrician = no
-							NOT = { has_character_flag = "communal_to_feudal" }
-							NOT = { has_character_flag = "non_communal" }
-						   }
+				OR = {
+					can_communal_trigger = yes
+					liege = { government = communal_government }
+					has_game_rule = {
+						name = communal_admn_rule
+						value = unrestricted
+					}
+				}
+				is_patrician = no
+				NOT = { has_character_flag = "communal_to_feudal" }
+				NOT = { has_character_flag = "non_communal" }
+			}
 			OR = { 
-			      has_law = feudal_administration
-			      has_law = late_feudal_administration
-			     }
+				has_law = feudal_administration
+				has_law = late_feudal_administration
+			}
 			temporary = no
 			NOT = { has_law = imperial_administration }
-			}
-			
+		}
+		
 		ai_will_do = {
-					  factor = 0.1
-					  modifier = {
-								  factor = 10
-								  holder_scope = {
-												  true_religion = qarmatian
-												  trait = heresiarch
-											     }
-								 }
-					  modifier = {
-								  factor = 0
-								  holder_scope = { has_secret_religion = yes }
-								 }
-					  modifier = {
-								  factor = 0
-								  holder_scope = {
-												  trait = peasant_leader
-												  NOR = {
-														 true_religion = qarmatian
-														 true_religion = tondrakian
-														 true_religion = mazdaki
-														}
-												  ruled_years = 1
-												 }
-								 }
-					  modifier = {
-								  factor = 100
-								  holder_scope = {
-												  OR = {
-														true_religion = tondrakian
-														true_religion = mazdaki
-														government = communal_government
-														has_character_flag = "communal_failsafe"
-													   }
-												 }
-								 }
-					  modifier = {
-								  factor = 0
-								  holder_scope = {
-								  NOR = {
-										 true_religion = qarmatian
-										 true_religion = tondrakian
-										 true_religion = mazdaki
-										}
-								  OR = {
-										trait = proud
-										trait = ambitious
-										trait = greedy
-										trait = cruel
-										trait = envious
-										trait = arbitrary
-									   }
-												}
-								 }
-					  modifier = {
-								  factor = 0
-								  holder_scope = {
-												  NOR = {
-														 true_religion = qarmatian
-														 true_religion = tondrakian
-														 true_religion = mazdaki
-														 trait = peasant_leader
-														}
-												 }
-								 }
-					 }
-					 
+			factor = 0.1
+			modifier = {
+				factor = 10
+				holder_scope = {
+					true_religion = qarmatian
+					trait = heresiarch
+				}
+			}
+			modifier = {
+				factor = 0
+				holder_scope = { has_secret_religion = yes }
+			}
+			modifier = {
+				factor = 0
+				holder_scope = {
+					trait = peasant_leader
+					NOR = {
+					true_religion = qarmatian
+					true_religion = tondrakian
+					true_religion = mazdaki
+					}
+					ruled_years = 1
+				}
+			}
+			modifier = {
+				factor = 100
+				holder_scope = {
+					OR = {
+						true_religion = tondrakian
+						true_religion = mazdaki
+						government = communal_government
+						has_character_flag = "communal_failsafe"
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				holder_scope = {
+					NOR = {
+						true_religion = qarmatian
+						true_religion = tondrakian
+						true_religion = mazdaki
+					}
+					OR = {
+						trait = proud
+						trait = ambitious
+						trait = greedy
+						trait = cruel
+						trait = envious
+						trait = arbitrary
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				holder_scope = {
+					NOR = {
+						true_religion = qarmatian
+						true_religion = tondrakian
+						true_religion = mazdaki
+						trait = peasant_leader
+					}
+				}
+			}
+		}
+		
 		ai_will_revoke = {
-						  factor = 0
-						 }
-			
+			factor = 0
+		}
+		
 		pass_effect = {
-					   hidden_tooltip = { 
-										 holder_scope = {
-														 clr_character_flag = "communal_failsafe"
-														 if = { 
-															   limit = { primary_title = { title = ROOT } }
-															   narrative_event = { id = cmnl.1026 }
-															  }
-														} 
-										}
-					  }
-					  
+			hidden_tooltip = { 
+				holder_scope = {
+					clr_character_flag = "communal_failsafe"
+					if = { 
+						limit = { primary_title = { title = ROOT } }
+						narrative_event = { id = cmnl.1026 }
+					}
+				} 
+			}
+		}
+		
 		effect = {
-				  hidden_tooltip = {
-									revoke_law = feudal_administration
-									revoke_law = late_feudal_administration
-								   }
-				 }
-
+			hidden_tooltip = {
+				revoke_law = feudal_administration
+				revoke_law = late_feudal_administration
+			}
+		}
+		
 		vassal_limit = 5
 		global_tax_modifier = -0.3
 		#global_revolt_risk = -0.1
 		
-				  }
+		}
 
 	
 	feudal_administration = {
@@ -836,10 +836,10 @@ laws = {
 			}
 		}
 		allow = {
-			 OR = {
+			OR = {
 				has_law = late_feudal_administration
 				has_law = communal_administration
-			      }
+			}
 		}
 		ai_will_do = { factor = 0 }
 		pass_effect = {
@@ -857,24 +857,24 @@ laws = {
 				}
 			}
 		    holder_scope = {
-						    if = {
-								  limit = { 
-										   government = communal_government 
-										   NOT = {
-												  has_game_rule = {
-																   name = communal_admn_rule
-																   value = off
-																  }
-												 }
-										  }
-								  set_character_flag = "communal_to_feudal"
-								  switch_from_communal_effect = yes
-								  if = {
-										limit = { primary_title = { title = ROOT } }
-										hidden_tooltip = { character_event = { id = cmnl.1029 } }
-									   }
-								 }
-						   }
+				if = {
+					limit = { 
+						government = communal_government 
+						NOT = {
+							has_game_rule = {
+								name = communal_admn_rule
+								value = off
+							}
+						}
+					}
+					set_character_flag = "communal_to_feudal"
+					switch_from_communal_effect = yes
+					if = {
+						limit = { primary_title = { title = ROOT } }
+						hidden_tooltip = { character_event = { id = cmnl.1029 } }
+					}
+				}
+			}
 		}
 		effect = {
 			custom_tooltip = {

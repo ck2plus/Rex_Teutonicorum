@@ -151,10 +151,10 @@ pragmatist_pattern_for = {
 	
 	communal_administration = {
 		OR = {
-			  can_communal_trigger = yes
-			  government = communal_government
-			 }
-							  }
+			can_communal_trigger = yes
+			government = communal_government
+		}
+	}
 
 	feudal_slider_4 = {
 		is_feudal = yes

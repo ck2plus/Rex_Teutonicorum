@@ -114,7 +114,7 @@ feudal_governments = {
 				AND = {
 					independent = no
 					top_liege = { is_tribal = yes }
-				 }
+				}
 			}
 		}
 		
@@ -126,7 +126,7 @@ feudal_governments = {
 		can_build_tribal = yes
 		can_build_city = no
 		can_build_castle = no
-		
+
 		capital_move_delay = 600
 	}
 	
@@ -302,7 +302,7 @@ feudal_governments = {
 				AND = {
 					independent = no
 					top_liege = { is_tribal = yes }
-				 }
+				}
 			}
 		}
 		
@@ -315,7 +315,7 @@ feudal_governments = {
 		can_build_city = no
 		can_build_castle = no
 	}
-		
+
 	chinese_imperial_government = {
 		preferred_holdings = { CASTLE CITY }
 		allowed_holdings = {
@@ -436,9 +436,9 @@ feudal_governments = {
 				AND = { #so it displays on the map before game start
 					has_game_started = no
 					realm = { title = e_byzantium }
-				 }
+				}
 				AND = {
-				in_revolt = yes
+					in_revolt = yes
 					liege_before_war = { realm = { has_law = imperial_administration } }
 				}
 				realm = { has_law = imperial_administration }
@@ -520,7 +520,7 @@ feudal_governments = {
 				AND = {
 					independent = no
 					top_liege = { is_tribal = yes }
-				 }
+				}
 			}
 		}
 		
@@ -585,7 +585,7 @@ feudal_governments = {
 				AND = {
 					independent = no
 					top_liege = { is_tribal = yes }
-				 }
+				}
 			}
 		}
 
