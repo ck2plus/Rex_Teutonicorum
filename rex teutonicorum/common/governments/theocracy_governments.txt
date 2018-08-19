@@ -29,21 +29,18 @@ theocracy_governments = {
 		frame_suffix = "_theocracy"
 		title_prefix = "temple_"
 		potential = {
+			ai = yes
 			NOT = {	religion_group = muslim	}
+			OR = { #No more accidental theocracies
+				controls_religion = yes
+				capital_holding = { holding_type = temple }
+			}
 			is_patrician = no
 			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
-				 }
-			NOT = { communal_modifier_trigger = yes }
-			OR = {
-				  higher_tier_than = BARON
-				  NOT = { liege = { government = communal_government } }
-				 }
-			OR = {
-				  is_female = no
-				  religion_allows_female_temple_holders = yes
-				 }
+				is_female = no
+				religion_allows_female_temple_holders = yes
+			}
+			NOT = { is_government_potential = communal_government }
 		}
 		
 		color = { 220 220 220 }
@@ -52,7 +49,9 @@ theocracy_governments = {
 		have_gender_laws = no
 		can_be_granted_kingdoms_and_empires_by_other_government = no
 
-		can_build_tribal = no
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		
 		capital_move_delay = 600
 	}

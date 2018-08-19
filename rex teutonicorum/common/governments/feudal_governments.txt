@@ -12,10 +12,8 @@ feudal_governments = {
 		allowed_holdings_culture = { # Will not get the wrong government type penalty for tribes of the same culture
 			TRIBAL
 		}
-		accepts_liege_governments = { 
-		}
-		free_revoke_on_tiers = {
-		}
+		accepts_liege_governments = {}
+		free_revoke_on_tiers = {}
 		vassal_call_to_arms = {
 			tribal_government
 		}
@@ -30,21 +28,24 @@ feudal_governments = {
 		frame_suffix = "_communal"
 		title_prefix = "communal_"
 		potential = {
-			OR = {
-				  primary_title = { has_law = communal_administration }
-				  AND = {
-						 communal_modifier_trigger = yes
-						 primary_title = { temporary = yes }
-						}
-				  liege = { government = communal_government }
-				  has_character_flag = "staying_communal"
-				  liege_before_war = {
-									  NOT = { character = PREV }
-									  government = communal_government
-									 }
-				  has_character_flag = "staying_communal"
-				 }
 			is_patrician = no
+			OR = {
+				AND = {
+					primary_title = { has_law = communal_administration }
+					NOT = { has_character_flag = "communal_to_feudal" }
+				}
+				AND = {
+					communal_modifier_trigger = yes
+					primary_title = { temporary = yes }
+				}
+				liege = { government = communal_government }
+				has_character_flag = "staying_communal"
+				liege_before_war = {
+					NOT = { character = PREV }
+					government = communal_government
+				}
+				has_character_flag = "staying_communal"
+			}
 		}
 		
 		color = { 200 67 10 }
@@ -57,7 +58,9 @@ feudal_governments = {
 		
 		free_levies_in_offensive_war = yes
 
-		can_build_tribal = no
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		
 		capital_move_delay = 600
 	}
@@ -91,43 +94,27 @@ feudal_governments = {
 			tribal_government
 		}
 		potential = {
-			NOT = { has_character_flag = "staying_communal" }
 			NAND = {
 				controls_religion = yes
 				NOT = { religion_group = muslim }
 				is_pagan_religion = no
 				NOT = { religion = paulician }
 			}
-			NOT = { religion = bogomilist }
-			NOT = {	religion_group = muslim	}
-			NAND = { 
-				culture_group = tibetan_group
-				OR = {
-					religion = bon
-					religion = buddhist
-					religion = tibetan_pagan
-				}
-				higher_tier_than = BARON
-			}
-			NAND = { 
-				tier = EMPEROR
-				primary_title = { has_title_flag = pretender_chinese_empire }
-				OR = {
-					culture_group = chinese_group
-					culture = khitan
-					culture = tangut
-					culture = jurchen
-					has_character_flag = chinese_imperial_government_preserve
-				}
-			}
 			is_patrician = no
-			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
-				 }
 			NOR = {
-				primary_title = { has_title_flag = has_imperial_administration }
-				top_liege = { government = imperial_government }
+				is_government_potential = communal_government
+				is_government_potential = muslim_government
+				is_government_potential = theocratic_feudal_government
+				is_government_potential = bogomilist_government
+				is_government_potential = chinese_imperial_government
+				is_government_potential = imperial_government
+				is_government_potential = imperial_bogomilist_government
+				is_government_potential = muslim_imperial_government
+				is_government_potential = confucian_bureaucracy
+				AND = {
+					independent = no
+					top_liege = { is_tribal = yes }
+				 }
 			}
 		}
 		
@@ -136,7 +123,9 @@ feudal_governments = {
 		dukes_called_kings = yes
 		barons_need_dynasty = yes
 
-		can_build_tribal = no
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		
 		capital_move_delay = 600
 	}
@@ -175,34 +164,18 @@ feudal_governments = {
 		}
 		frame_suffix = "_iqta"
 		potential = {
-			NOT = { has_character_flag = "staying_communal" }
-			NAND = {
-				controls_religion = yes
-				NOT = { religion_group = muslim }
-				is_pagan_religion = no
-				NOT = { religion = paulician }
-			}
-			NOT = { religion = bogomilist }
 			religion_group = muslim
-			NAND = { 
-				tier = EMPEROR
-				primary_title = { has_title_flag = pretender_chinese_empire }
-				OR = {
-					culture_group = chinese_group
-					culture = khitan
-					culture = tangut
-					culture = jurchen
-					has_character_flag = chinese_imperial_government_preserve
-				}
-			}
+			NOT = { religion = druze }
 			is_patrician = no
-			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
-				 }
 			NOR = {
-				primary_title = { has_title_flag = has_imperial_administration }
-				top_liege = { government = imperial_government }
+				is_government_potential = communal_government
+				is_government_potential = chinese_imperial_government
+				is_government_potential = muslim_imperial_government
+				is_government_potential = confucian_bureaucracy
+				AND = {
+					independent = no
+					top_liege = { is_tribal = yes }
+				}
 			}
 		}
 		
@@ -218,8 +191,9 @@ feudal_governments = {
 		
 		free_levies_in_offensive_war = yes # Took away the hardcoded stuff for muslims where they could raise levies without pissing off vassals if in an offensive war.
 
-		can_build_tribal = no
-		
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		capital_move_delay = 600
 	}
 	
@@ -243,9 +217,6 @@ feudal_governments = {
 			imperial_bogomilist_government
 			bogomilist_government
 		}
-		free_revoke_on_governments = {
-			communal_government
-		}
 		vassal_call_to_arms = {
 			tribal_government
 		}
@@ -254,12 +225,7 @@ feudal_governments = {
 		}
 		frame_suffix = "_theocraticfeudal"
 		potential = {
-			NAND = {
-				controls_religion = yes
-				NOT = { religion_group = muslim }
-				NOT = { religion = norse_pagan_reformed }
-			}
-			NOT = {	religion_group = muslim	}
+			controls_religion = no
 			AND = { 
 				culture_group = tibetan_group
 				OR = {
@@ -270,10 +236,15 @@ feudal_governments = {
 				higher_tier_than = BARON
 			}
 			is_patrician = no
-			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
-				 }
+			NOR = {
+				is_government_potential = communal_government
+				is_government_potential = chinese_imperial_government
+				is_government_potential = confucian_bureaucracy
+				AND = {
+					independent = no
+					top_liege = { is_tribal = yes }
+				}
+			}
 		}
 		
 		color = { 207 145 90 }
@@ -282,8 +253,9 @@ feudal_governments = {
 		dukes_called_kings = yes
 		barons_need_dynasty = yes
 
-		can_build_tribal = no
-		
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		capital_move_delay = 600
 	}
 	
@@ -319,35 +291,18 @@ feudal_governments = {
 		}
 		frame_suffix = "_bogomilist"
 		potential = {
-			NOT = { has_character_flag = "staying_communal" }
-			NAND = {
-				controls_religion = yes
-				NOT = { religion_group = muslim }
-				is_pagan_religion = no
-				NOT = { religion = paulician }
-			}
-			religion = bogomilist
-			NAND = { 
-				tier = EMPEROR
-				primary_title = { has_title_flag = pretender_chinese_empire }
-				OR = {
-					culture_group = chinese_group
-					culture = khitan
-					culture = tangut
-					culture = jurchen
-					has_character_flag = chinese_imperial_government_preserve
-				}
-			}
-			NOT = {	religion_group = muslim	}
+			controls_religion = no
 			is_patrician = no
-			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
-				 }
+			religion = bogomilist
 			NOR = {
-				primary_title = { has_title_flag = has_imperial_administration }
-				top_liege = { government = imperial_government }
-				top_liege = { government = tribal_government }
+				is_government_potential = communal_government
+				is_government_potential = chinese_imperial_government
+				is_government_potential = imperial_bogomilist_government
+				is_government_potential = confucian_bureaucracy
+				AND = {
+					independent = no
+					top_liege = { is_tribal = yes }
+				 }
 			}
 		}
 		
@@ -356,9 +311,11 @@ feudal_governments = {
 		dukes_called_kings = yes
 		barons_need_dynasty = yes
 
-		can_build_tribal = no
-		
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 	}
+		
 	chinese_imperial_government = {
 		preferred_holdings = { CASTLE CITY }
 		allowed_holdings = {
@@ -402,17 +359,19 @@ feudal_governments = {
 				has_character_flag = chinese_imperial_government_preserve #keeps government when player is given culture change opton
 			}
 			is_patrician = no
-			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
-				 }
+			NOR = {
+				is_government_potential = communal_government
+				is_government_potential = confucian_bureaucracy
+			}
 		}
 		
 		color = { 118 255 163 }
 
 		barons_need_dynasty = yes
 
-		can_build_tribal = no
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		
 		capital_move_delay = 200
 		
@@ -466,24 +425,34 @@ feudal_governments = {
 		frame_suffix = "_imperial"
 		title_prefix = "imperial_"
 		potential = {
-			NOT = { has_character_flag = "staying_communal" }
 			NAND = {
 				controls_religion = yes
 				NOT = { religion_group = muslim }
 				is_pagan_religion = no
 				NOT = { religion = paulician }
 			}
-			NOT = { religion = bogomilist }
-			NOT = { religion_group = muslim }
 			is_patrician = no
 			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
+				AND = { #so it displays on the map before game start
+					has_game_started = no
+					realm = { title = e_byzantium }
 				 }
-			OR = {
+				AND = {
 				in_revolt = yes
-				primary_title = { has_title_flag = has_imperial_administration }
-				top_liege = { government = imperial_government }
+					liege_before_war = { realm = { has_law = imperial_administration } }
+				}
+				realm = { has_law = imperial_administration }
+			}
+			NOR = {
+				is_government_potential = communal_government
+				is_government_potential = chinese_imperial_government
+				is_government_potential = imperial_bogomilist_government
+				is_government_potential = muslim_imperial_government
+				is_government_potential = confucian_bureaucracy
+				AND = {
+					independent = no
+					top_liege = { is_tribal = yes }
+				}
 			}
 		}
 		
@@ -492,7 +461,9 @@ feudal_governments = {
 		dukes_called_kings = yes
 		barons_need_dynasty = yes
 
-		can_build_tribal = no
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		
 	}
 	
@@ -532,24 +503,24 @@ feudal_governments = {
 		frame_suffix = "_imperialbog"
 		title_prefix = "imperial_"
 		potential = {
-			NOT = { has_character_flag = "staying_communal" }
-			NAND = {
-				controls_religion = yes
-				NOT = { religion_group = muslim }
-				NOT = { religion_group = pagan_group }
-				NOT = { religion = paulician }
-			}
-			religion = bogomilist
-			NOT = {	religion_group = muslim	}
+			controls_religion = no
 			is_patrician = no
 			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
+				AND = {
+					in_revolt = yes
+					liege_before_war = { realm = { has_law = imperial_administration } }
+				}
+				realm = { has_law = imperial_administration }
+			}
+			religion = bogomilist
+			NOR = {
+				is_government_potential = communal_government
+				is_government_potential = chinese_imperial_government
+				is_government_potential = confucian_bureaucracy
+				AND = {
+					independent = no
+					top_liege = { is_tribal = yes }
 				 }
-			OR = {
-				in_revolt = yes
-				primary_title = { has_title_flag = has_imperial_administration }
-				top_liege = { government = imperial_government }
 			}
 		}
 		
@@ -597,23 +568,24 @@ feudal_governments = {
 		frame_suffix = "_imperialmus"
 		title_prefix = "almulk_"
 		potential = {
-			NOT = { has_character_flag = "staying_communal" }
-			NAND = {
-				controls_religion = yes
-				NOT = { religion_group = muslim }
-				is_pagan_religion = no
-				NOT = { religion = paulician }
-			}
-			religion_group = muslim
 			is_patrician = no
 			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
+				AND = {
+					in_revolt = yes
+					liege_before_war = { realm = { has_law = imperial_administration } }
+				}
+				realm = { has_law = imperial_administration }
+			}
+			religion_group = muslim
+			NOT = { religion = druze }
+			NOR = {
+				is_government_potential = communal_government
+				is_government_potential = chinese_imperial_government
+				is_government_potential = confucian_bureaucracy
+				AND = {
+					independent = no
+					top_liege = { is_tribal = yes }
 				 }
-			OR = {
-				in_revolt = yes
-				primary_title = { has_title_flag = has_imperial_administration }
-				top_liege = { government = imperial_government }
 			}
 		}
 
@@ -629,7 +601,9 @@ feudal_governments = {
 		
 		free_levies_in_offensive_war = yes # Took away the hardcoded stuff for muslims where they could raise levies without pissing off vassals if in an offensive war.
 
-		can_build_tribal = no
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		
 	}
 }

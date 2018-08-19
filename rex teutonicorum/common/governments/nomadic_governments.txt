@@ -25,14 +25,30 @@ nomadic_governments = {
 			mercenary = no
 			holy_order = no
 			OR = {
-				independent = yes
-				liege = { is_nomadic = yes }
+				has_game_started = no
+				AND = {
+					has_game_started = yes
+					is_nomadic = yes
+				}
+				liege_before_war = {
+					top_liege = { is_nomadic = yes }
+				}
+				any_realm_province = {
+					OR = {
+						region = world_steppe
+						any_neighbor_province = { region = world_steppe }
+					}
+				}
+			}
+			NAND = {
+				independent = no
+				liege = { is_tribal = yes }
 			}
 			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
-				 }
-			NOT = { communal_modifier_trigger = yes }
+				num_of_count_titles = 1
+				liege = { is_nomadic = yes }
+			}
+			NOT = { is_government_potential = communal_government }
 		}
 		
 		unit_home_modifier = {

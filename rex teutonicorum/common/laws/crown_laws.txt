@@ -997,6 +997,21 @@ de_jure_laws = {
 								}
 							}
 						}
+						AND = {
+							has_law = crown_authority_2
+							OR = {
+								holder_scope = {
+									government = theocratic_feudal_government
+									government = chinese_imperial_government
+								}
+								empire = {
+									holder_scope = {
+										government = theocratic_feudal_government
+										government = chinese_imperial_government
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -1088,6 +1103,21 @@ de_jure_laws = {
 						has_law = imperial_administration
 						empire = { 
 							has_law = imperial_administration
+						}
+					}
+				}
+				AND = {
+					has_law = crown_authority_3
+					OR = {
+						holder_scope = {
+							government = theocratic_feudal_government
+							government = chinese_imperial_government
+						}
+						empire = {
+							holder_scope = {
+								government = theocratic_feudal_government
+								government = chinese_imperial_government
+							}
 						}
 					}
 				}

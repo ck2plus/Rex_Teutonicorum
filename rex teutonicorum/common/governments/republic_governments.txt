@@ -74,12 +74,13 @@ republic_governments = {
 					}
 				}
 			}
-			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
-				 }
-			NOT = { communal_modifier_trigger = yes }
-			NOT = { top_liege = { government = tribal_government } }
+			NOT = {
+				AND = {
+					independent = no
+					top_liege = { is_tribal = yes }
+				}
+			}
+			NOT = { is_government_potential = communal_government }
 		}
 		
 		color = { 250 0 0 }
@@ -94,7 +95,9 @@ republic_governments = {
 		allows_matrilineal_marriage = no
 		uses_bride_price = yes
 
-		can_build_tribal = no
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		
 		landed_inheritance = no
 		
@@ -130,23 +133,23 @@ republic_governments = {
 		frame_suffix = "_republic"
 		title_prefix = "city_"
 		potential = {
+			ai = yes
 			NAND = {
 				controls_religion = yes
 				NOT = { religion_group = muslim }
 				is_pagan_religion = no
 				NOT = { religion = paulician }
 			}
-			NOT = { is_government_potential = merchant_republic_government }
-			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
-				 }
-			NOT = { communal_modifier_trigger = yes }
-			OR = {
-				  higher_tier_than = BARON
-				  liege = { NOT = { government = communal_government } }
-				 }
-			NOT = { top_liege = { government = tribal_government } }
+			NOR = {
+				is_government_potential = communal_government
+				is_government_potential = merchant_republic_government
+			}
+			NOT = {
+				AND = {
+					independent = no
+					top_liege = { is_tribal = yes }
+				}
+			}
 		}
 		
 		color = { 209 125 130 }
@@ -154,7 +157,9 @@ republic_governments = {
 		can_imprison_without_reason = no
 		can_revoke_without_reason = no
 		
-		can_build_tribal = no
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		
 		capital_move_delay = 600
 	}
@@ -188,7 +193,13 @@ republic_governments = {
 		}
 		frame_suffix = "_confucian"
 		potential = {
+			OR = {
 			is_offmap_tag = offmap_china
+				AND = {
+					has_game_started = no
+					realm = { title = e_china_west_governor }
+				}
+			}
 		}
 		
 		color = { 94 187 185 }
@@ -196,7 +207,9 @@ republic_governments = {
 		can_imprison_without_reason = no
 		can_revoke_without_reason = no
 		
-		can_build_tribal = no
+		can_build_tribal = yes
+		can_build_city = no
+		can_build_castle = no
 		
 		capital_move_delay = 600
 		

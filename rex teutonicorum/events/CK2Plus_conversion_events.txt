@@ -5737,6 +5737,11 @@ character_event = {
 						dynasty = event_target:conversion_target
 					}
 					religion = event_target:conversion_target
+					if = {
+						limit = { religion_group = indian_group }
+						set_character_flag = india_converted
+						character_event = { id = RoI.30122 }
+					}
 				}
 			}
 		}

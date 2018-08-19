@@ -1,10 +1,18 @@
 tribal_governments = {
 
 	tribal_government = {
-		preferred_holdings = { TRIBAL CASTLE CITY }
+		preferred_holdings = { TRIBAL }
 		allowed_holdings = {
 			TRIBAL
 			FORT
+		}
+		allowed_holdings_religion = {
+			CITY
+			CASTLE
+		}
+		allowed_holdings_culture = {
+			CITY
+			CASTLE
 		}
 		accepts_liege_governments_culture = { # Tribals have no opinion penalty towards their liege if of the same culture
 			republic_government
@@ -20,6 +28,9 @@ tribal_governments = {
 			theocracy_government
 			feudal_government
 			bogomilist_government
+			muslim_government
+			theocratic_feudal_government
+			chinese_imperial_government
 			communal_government
 		}
 		vassal_call_to_arms = {
@@ -41,13 +52,14 @@ tribal_governments = {
 				NOT = { religion = paulician }
 			}
 			is_patrician = no
-			OR = {
-				  NOT = { primary_title = { has_law = communal_administration } }
-				  has_character_flag = "communal_to_feudal"
-				 }
 			mercenary = no
 			holy_order = no
-			NOT = { communal_modifier_trigger = yes }
+			NOR = {
+				realm = { has_law = late_feudal_administration }
+				realm = { has_law = imperial_administration }
+				is_government_potential = chinese_imperial_government
+				is_government_potential = communal_government
+			}
 		}
 		
 		color = { 92 31 23 }
