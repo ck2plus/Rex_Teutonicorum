@@ -86,7 +86,7 @@
 	mother = 167929
 	900.1.1 = {
 		birth = yes
-                effect = { set_character_flag = "is_berengar" }
+        effect = { set_character_flag = "is_berengar" }
 	}
 	950.11.22 = {
 		effect = { health = 1 }
