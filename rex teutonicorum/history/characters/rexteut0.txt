@@ -611,46 +611,13 @@
                         }
             }
 
-10000042 = {
-	  name = "Bahram"
-	  dynasty = 12279 #Jannabid
-	  religion = qarmatian
-	  culture = persian
-	 
-	  828.1.1 = {
-		     birth = yes
-		    }
-	  889.1.1 = {
-		     death = yes
-		    }	  
-	 }
-
-100000043 = {
-	  name = "Abu-Sa'id Jannabi"
-	  dynasty = 12279 #Jannabid
-	  religion = qarmatian
-	  culture = persian
-	  trait = zealous
-	  father = 10000042
-	
-	  850.1.1 = {
-		     birth = yes
-		    }
-	  899.1.1 = {
-		     trait = heresiarch
-		    }
-	  914.1.1 = {
-		     death = yes
-		    }
-	 }
-
 100000044 = {
 	  name = "Abu-Tahir"
 	  dynasty = 12279 #Jannabid
 	  religion = qarmatian
 	  culture = persian
 	  trait = zealous
-	  father = 100000043
+	  father = 74039
 
 	  906.1.1 = {
 		     birth = yes

@@ -1273,7 +1273,6 @@
 	stewardship=4
 	religion="shiite"
 	culture="bedouin_arabic"
-	father=191120 #MyMod
 	1070.1.1={
 		birth=yes
 	}
@@ -1328,7 +1327,6 @@
 	stewardship=4
 	religion="shiite"
 	culture="bedouin_arabic"
-	father=191121 #MyMod
 	1095.1.1={
 		birth=yes
 	}
@@ -7213,6 +7211,7 @@
 		death=yes
 	}
 }
+
 74041 = {
 	name="Mohammad"
 	dynasty=1056
@@ -11112,18 +11111,6 @@
 	}
 }
 
-188685 = {
-	name="Yahya"
-	dynasty=1042147
-	religion="sunni"
-	culture="bedouin_arabic"
-	710.1.1={
-		birth=yes
-	}
-	780.1.1={
-		death=yes
-	}
-}
 188629 = {
 	name="Khuzaymah" 
 	dynasty=1042122 # Banu Tamim
@@ -11206,7 +11193,18 @@
 		death=yes
 	}
 }
-
+188685 = {
+	name="Yahya"
+	dynasty=1042147
+	religion="sunni"
+	culture="bedouin_arabic"
+	710.1.1={
+		birth=yes
+	}
+	780.1.1={
+		death=yes
+	}
+}
 188683 = {
 	# general who fought al-Muqanna
 	name="Uqbah" 

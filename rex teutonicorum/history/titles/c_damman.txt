@@ -12,7 +12,7 @@ liege = e_arabia
 }
 #Qarmatians
 899.5.1 = {
-	holder = 100000043 #Abu Sa'id
+	holder = 74040 #Abu Sa'id
 	liege = d_amman
 }
 923.1.1 = {

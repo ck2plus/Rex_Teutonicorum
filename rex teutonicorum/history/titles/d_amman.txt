@@ -14,7 +14,7 @@
 #Qarmatians
 899.5.1 = {
 	law = communal_administration
-	holder = 100000043 #Abu Sa'id
+	holder = 74040 #Abu Sa'id
 	effect = { set_global_flag = "qarmatian_uprising" }
 	liege = 0
 }
