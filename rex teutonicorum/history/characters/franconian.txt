@@ -693,10 +693,10 @@
 		give_nickname = nick_the_salic
 	}
 	1027.3.26 = {
-	trait = crowned_by_pope
+		trait = crowned_by_pope
 	}
 	1027.8.1 = {
-	effect = { set_character_flag = "burgundian_heir" }
+		effect = { set_character_flag = "burgundian_heir" }
 	}
 	1039.1.2 = {
 		death = "1039.1.2"
@@ -806,32 +806,32 @@
 		add_spouse = 1183
 	}# Investiture controversy
 	1076.2.22 = {
-	trait = "excommunicated"
+		trait = "excommunicated"
 	}
 	1076.2.22 = {
         effect = { set_character_flag = "defied_pope" }
 	}
 	1076.2.22 = {
-	effect = { set_character_flag = "no_invest_end" }
+		effect = { set_character_flag = "no_invest_end" }
 	}# The walk to Canossa
 	1077.1.28 = {
-	remove_trait = "excommunicated"
+		remove_trait = "excommunicated"
         effect = { clr_character_flag = "defied_pope" }
 	}
 	1080.3.2 = {
-	trait = excommunicated
-	effect = { set_character_flag = "defied_pope" }
+		trait = excommunicated
+		effect = { set_character_flag = "defied_pope" }
 	}
 	1084.3.15 = {
-	remove_trait = excommunicated
-	effect = { clr_character_flag = "defied_pope" }
+		remove_trait = excommunicated
+		effect = { clr_character_flag = "defied_pope" }
 	}
 	1084.3.31 = {
-	trait = crowned_by_pope
+		trait = crowned_by_pope
 	}
 	1088.3.8 = {
-	trait = excommunicated
-	effect = { set_character_flag = "defied_pope" }
+		trait = excommunicated
+		effect = { set_character_flag = "defied_pope" }
 	}
 	1089.1.1 = {
 		add_spouse = 125094
@@ -1507,7 +1507,7 @@
 	father = 1314
 	mother = 237
 	1054.4.9 = {
-		birth = "1054.4.9"
+		birth = yes
 	}
 	1054.1.1 = {
 		religion = "catholic"

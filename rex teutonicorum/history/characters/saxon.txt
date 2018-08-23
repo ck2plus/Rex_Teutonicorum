@@ -1791,8 +1791,8 @@
 	}
 	955.11.23 = {
 		death= {
-				death_reason = death_trait
-			   }
+			death_reason = death_trait
+		}
 	}
 }
 
@@ -3908,9 +3908,9 @@
 	}
 }
 205072 = {
-	name="Offa" # 
-	dna = zmawnwppcak 
-	properties = hi0cgd000000000000 
+	name="Offa" #
+	dna = zmawnwppcak
+	properties = hi0cgd000000000000
 	dynasty=1047002
 	religion="chalcedonian"
 	culture="saxon"

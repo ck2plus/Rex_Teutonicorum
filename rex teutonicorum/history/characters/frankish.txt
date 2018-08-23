@@ -46899,7 +46899,7 @@
 	905.7.21 = {
 		add_trait = blinded 
 		give_nickname = "nick_the_blind"
-}
+	}
 	928.1.2 = {
 		death=yes
 	}

@@ -1770,9 +1770,9 @@
 }
 
 145655 = { 
-	name="Dawit" 
-	dna = xcwcafweuwz 
-	properties = ec0ecd000000000000 
+	name="Dawit"
+	dna = xcwcafweuwz
+	properties = ec0ecd000000000000
 	dynasty=1022242
 	religion="jewish"
 	culture="ethiopian"

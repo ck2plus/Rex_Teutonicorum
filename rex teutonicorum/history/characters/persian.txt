@@ -37,6 +37,39 @@
 	}
 }
 
+74039 = {
+	name = "Bahram"
+	dynasty = 12279 #Jannabid
+	religion = qarmatian
+	culture = persian
+
+	828.1.1 = {
+		birth = yes
+	}
+	889.1.1 = {
+		death = yes
+	}
+}
+
+74040 = {
+	name = "Abu-Sa'id Jannabi"
+	dynasty = 12279 #Jannabid
+	religion = qarmatian
+	culture = persian
+	trait = zealous
+	father = 74039
+
+	850.1.1 = {
+		birth = yes
+	}
+	899.1.1 = {
+		trait = heresiarch
+	}
+	914.1.1 = {
+		death = yes
+	}
+}
+
 144140 = {
 	name="Muhammad"
 	dynasty=791
@@ -7021,19 +7054,6 @@
 }
 
 #Begin mod added characters
-1000254500={
-	name="Abu'l Qasim"
-	dynasty=1000124164
-	religion="sunni"
-	culture="turkish"
-	father = 120000027
-	962.1.1={
-		birth=yes
-	}
-	1002.1.1={
-		death=yes
-	}
-}
 1000254501={
 	name="Buya"
 	dynasty=1000124165

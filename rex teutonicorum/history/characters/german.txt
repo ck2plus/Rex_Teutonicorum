@@ -229,7 +229,7 @@
 		effect = { set_character_flag = "is_adelaide" }
 	}
 	950.11.23 = {
-		     employer = 1108
+		employer = 1108
 	}
 	999.12.16 = {
 		trait = "saint"
@@ -357,9 +357,9 @@
 		remove_trait = crowned
 		trait = crowned_by_pope
 		effect = {
-				  prestige = 2000
-				  piety = 300
-				 }
+			prestige = 2000
+			piety = 300
+		}
 	}
 	973.5.7 = {
 		death=yes
@@ -2734,7 +2734,7 @@
 	}
 }
 33459 = {
-	name = "G·ther"
+	name = "GÃ¼nther"
 	dynasty = 669
 	religion = "chalcedonian"
 	culture = "german"
@@ -2772,7 +2772,7 @@
 	}
 }
 33461 = {
-	name = "G·zelin"
+	name = "Gunzelin"
 	dynasty = 669
 	religion = "chalcedonian"
 	culture = "german"

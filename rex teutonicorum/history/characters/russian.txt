@@ -9732,15 +9732,15 @@
 		birth=yes
 	}
 	977.1.2 = {
-	add_spouse = 609
-	give_nickname = "nick_the_great"
+		add_spouse = 609
+		give_nickname = "nick_the_great"
 	}
 	989.1.2 = {
-	religion = "chalcedonian"
-	remove_spouse = 609
+		religion = "chalcedonian"
+		remove_spouse = 609
 	}
 	989.1.2 = {
-	add_spouse = 41100
+		add_spouse = 41100
 	}
 	1015.7.15 = {
 		death=yes

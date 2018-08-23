@@ -1012,22 +1012,22 @@
 
 
 100000070 = {
-	     name = "Ragnvald"
-	     dynasty = 703
-	     religion = norse_pagan
-	     culture = norse
-	     father = 100000072
+	name = "Ragnvald"
+	dynasty = 703
+	religion = norse_pagan
+	culture = norse
+	father = 100000072
 
-	     920.1.1 = {
-			birth = yes
-		       }
-	     978.1.1 = {
-		        death = {
-                                 death_reason = death_murder  
-                                 killer = 608
-                                } 
-		       }
-	    }
+	920.1.1 = {
+		birth = yes
+	}
+	978.1.1 = {
+		death = {
+			death_reason = death_murder
+			killer = 608
+		}
+	}
+}
 
 100000071 = {
 	     name = "Tur"
