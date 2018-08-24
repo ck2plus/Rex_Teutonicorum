@@ -35,13 +35,13 @@
 	holder= 41560 #Ashot
 }
 852.1.1 = {
-	holder = 100000079 #Gurgen
+	holder = 1000250242 #Gurgen
 }
 853.1.1 = {
-	holder = 100000080 #Abu-Djafar
+	holder = 1000250243 #Abu-Djafar
 }
 854.1.1 = {
-	holder = 100000076 #Gurgen II
+	holder = 1000250239 #Gurgen II
 }
 857.1.1 = {
 	holder = 41562 #Grigor-Derenik
@@ -53,16 +53,16 @@
 	holder = 41562 #Grigor-Derenik (second time)
 }
 887.1.1 = {
-	holder = 100000078 #Gagik-Abu-Morvan
+	holder = 1000250241 #Gagik-Abu-Morvan
 }
 898.1.1 = {
-	holder = 100000081 #Ashot-Sargis
+	holder = 1000250244 #Ashot-Sargis
 }
 #900.1.1 = {
 #	holder = #Sajid occupation
 #}
 901.1.1 = {
-	holder = 100000081 #Ashot-Sargis (reinstated)
+	holder = 1000250244 #Ashot-Sargis (reinstated)
 }
 904.1.1 = {
 	holder = 41563 #Gagik II

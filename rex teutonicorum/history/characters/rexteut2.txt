@@ -792,7 +792,6 @@ birth = yes
 death = yes
 }
 }
-
 120000085 = {
 name = "Theodoros"
 religion = chalcedonian
@@ -808,7 +807,6 @@ birth = yes
 death = yes
 }
 }
-
 120000086 = {
 name = "Arotras"
 religion = chalcedonian
@@ -823,23 +821,6 @@ birth = yes
 death = yes
 }
 }
-
-120000087 = {
-name = "Vakram"
-religion = chalcedonian
-culture = armenian
-dynasty = 1000254542
-
-906.1.1 = {
-birth = yes
-}
-
-970.1.1 = {
-death = yes
-}
-
-}
-
 120000088 = {
 name = "Theoktistos"
 religion = chalcedonian
@@ -854,7 +835,6 @@ birth = yes
 death = yes
 }
 }
-
 120000089 = {
 name = "Konstantinos"
 religion = chalcedonian
@@ -870,7 +850,6 @@ birth = yes
 death = yes
 }
 }
-
 120000090 = {
 name = "Theoktistos"
 religion = chalcedonian
@@ -1230,7 +1209,6 @@ death = yes
 		death=yes
 	}
 }
-
 120000135  = {
 	name = "Auctune"
 	dynasty = 100374
@@ -1245,21 +1223,6 @@ death = yes
 		death=yes
 	}
 }
-
-120000136  = {
-	name = "Deryab"
-	dynasty = 100376
-	religion = "finnish_pagan"
-	culture = "ugricbaltic"
-
-	1012.1.1 = {
-		birth=yes
-	}
-	1065.1.1 = {
-		death=yes
-	}
-}
-
 120000137 = {
 	name = "Pukuveras"
 	dynasty = 100376

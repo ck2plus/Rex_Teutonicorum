@@ -152,7 +152,7 @@
 	culture = "lettigallish"
 	trait = "ill"
 	trait = "tough_soldier"
-	father = 110000081
+	father = 1000253300
 	1039.1.1 = {
 		birth=yes
 	}
@@ -378,7 +378,7 @@
 }
 
 #Begin mod added characters
-1000253300 = {
+1000256002 = {
 	name = "Vykantas"
 	dynasty = 100377
 	religion = "finnish_pagan"
@@ -391,7 +391,7 @@
 		death=yes
 	}
 }
-1000253301 = {
+1000256003 = {
 	name = "Ylle"
 	religion = "finnish_pagan"
 	culture = "ugricbaltic"

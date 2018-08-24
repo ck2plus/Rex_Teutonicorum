@@ -41,7 +41,7 @@
 #Fatimid governors
 1016.10.1 = {
 	liege = k_egypt
-	holder = 100000185
+	holder = 1000250234
 }
 1020.1.1 = {
 	liege = 0

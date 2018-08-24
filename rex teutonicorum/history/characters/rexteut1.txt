@@ -965,65 +965,48 @@ death = yes
 }
 
 110000078  = {
-name = "Ihala"
-dynasty = 1000124225
-religion = "finnish_pagan"
-culture = "ugricbaltic"
-father = 1000251900
+	name = "Ihala"
+	dynasty = 1000124225
+	religion = "finnish_pagan"
+	culture = "ugricbaltic"
+	father = 1000251900
 
-969.1.1 = {
-birth=yes
-}
-1031.1.1 = {
-death=yes
-}
+	969.1.1 = {
+		birth=yes
+	}
+	1031.1.1 = {
+		death=yes
+	}
 }
 
 110000079  = {
-name = "Ukko"
-dynasty = 1000124225
-religion = "finnish_pagan"
-culture = "ugricbaltic"
-father = 1000251900
+	name = "Ukko"
+	dynasty = 1000124225
+	religion = "finnish_pagan"
+	culture = "ugricbaltic"
+	father = 1000251900
 
-1004.1.1 = {
-birth=yes
+	1004.1.1 = {
+		birth=yes
+	}
+	1066.1.1 = {
+		death=yes
+	}
 }
-1066.1.1 = {
-death=yes
-}
-}
-
 110000080  = {
-name = "Viryas"
-dynasty = 100379
-religion = "finnish_pagan"
-culture = "ugricbaltic"
-father = 1000251901
+	name = "Viryas"
+	dynasty = 100379
+	religion = "finnish_pagan"
+	culture = "ugricbaltic"
+	father = 1000251901
 
-1001.1.1 = {
-birth=yes
+	1001.1.1 = {
+		birth=yes
+	}
+	1069.1.1 = {
+		death=yes
+	}
 }
-1069.1.1 = {
-death=yes
-}
-}
-
-110000081  = {
-name = "Narvait"
-dynasty = 100373
-religion = "baltic_pagan"
-culture = "lettigallish"
-father = 1000254902
-
-1005.1.1 = {
-birth=yes
-}
-1063.1.1 = {
-death=yes
-}
-}
-
 110000082 = {
 name = "Nalka"
 dynasty = 100377
@@ -1038,13 +1021,12 @@ birth = yes
 death = yes
 }
 }
-
 110000083 = {
 name = "Vykantas"
 dynasty = 100377
 religion = finnish_pagan
 culture = ugricbaltic
-father = 1000253300
+father = 1000256002
 
 1007.1.1 = {
 birth = yes
@@ -1053,13 +1035,12 @@ birth = yes
 death = yes
 }
 }
-
 110000084 = {
 name = "Nuyanza"
 dynasty = 1000124207
 religion = finnish_pagan
 culture = ugricbaltic
-father = 1000253301
+father = 1000256003
 
 991.1.1 = {
 birth = yes
@@ -1068,7 +1049,6 @@ birth = yes
 death = yes
 }
 }
-
 110000085 = {
 name = "Kezhay"
 dynasty = 1000124207
@@ -1082,7 +1062,7 @@ birth = yes
 1060.1.1 = {
 death = {
 death_reason = death_battle
-killer = 120000136
+killer = 1000256001
 }
 }
 }
