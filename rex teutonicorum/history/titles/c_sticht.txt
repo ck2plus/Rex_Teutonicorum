@@ -33,25 +33,25 @@
 	holder = 1000260301 #Radboud
 }
 917.1.1 = {
-	holder = 120000114 #Baldrick
+	holder = 1000251510 #Baldrick
 }
 923.1.1 = {
 	liege = "d_lower_lorraine"
 }
 975.12.27 = {
-	holder = 120000126 #Folcmar
+	holder = 1000255446 #Folcmar
 }
 990.1.1 = {
-	holder = 120000127 #Baldwin
+	holder = 1000252282 #Baldwin
 }
 995.5.10 = {
 	holder = 168218 #Ansfried
 }
 1010.1.1 = {
-	holder = 120000128 #Adalbold
+	holder = 1000251516 #Adalbold
 }
 1026.11.27 = {
-	holder = 120000129 #Bernold
+	holder = 1000251517 #Bernold
 }
 1054.7.19 = {
 holder = 106530 #Willem van Wassenberg

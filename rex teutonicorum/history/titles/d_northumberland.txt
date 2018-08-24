@@ -50,7 +50,7 @@
 	holder = 163103 # Alle II
 }
 883.1.1 = {
-	holder = 120000001
+	holder = 1000255427
 }
 927.7.12 = {
         liege = k_england
@@ -83,7 +83,7 @@
 }
 954.1.1 = {
         liege = k_england
-        holder = 120000002
+        holder = 1000255428
 }
 965.1.1 = {
 	holder = 186

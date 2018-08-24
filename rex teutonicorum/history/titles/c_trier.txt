@@ -35,7 +35,7 @@
 	holder = 120000146 #Dietrich
 }
 977.1.1 = {
-	holder = 120000147 #Egbert
+	holder = 1000251507 #Egbert
 }
 993.12.9 = {
 	liege = "d_lower_lorraine"
@@ -51,7 +51,7 @@
 	holder = 120000149 #Eberhard
 }
 1066.4.15 = {
-	holder = 120000150 #Conrad
+	holder = 1000257457 #Conrad
 }
 1066.6.1 = {
 	holder = 33109 #Udo von Nellenburg

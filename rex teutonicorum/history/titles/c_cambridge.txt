@@ -16,14 +16,14 @@
 	liege = k_england
 }
 932.1.1 = {
-	holder = 120000004
+	holder = 1000255430
 	liege = "d_norfolk"
 }
 956.1.1 = {
-	holder = 120000008
+	holder = 1000255434
 }
 962.1.1 = {
-	holder = 120000009
+	holder = 1000255435
 }
 998.1.1 = {
 	holder = 1000255400

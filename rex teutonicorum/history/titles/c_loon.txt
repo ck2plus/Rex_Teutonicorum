@@ -33,7 +33,7 @@
 	holder = 1290 #Bruno
 }
 1000.1.1 = {
-	holder = 120000118 #Otto
+	holder = 1000251514 #Otto
 }
 1016.1.1 = {
 holder = 106572 #Giselbert

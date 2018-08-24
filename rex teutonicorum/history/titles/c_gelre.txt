@@ -11,13 +11,13 @@
 	holder = 106516
 }
 897.1.1 = {
-	holder = 120000112 #Ricfried
+	holder = 1000251508 #Ricfried
 }
 923.1.1 = {
 	liege = "d_lower_lorraine"
 }
 950.1.1 = {
-	holder = 120000113 #Nibelung
+	holder = 1000251509 #Nibelung
 }
 953.1.1 = {
 	holder = 161296 #Rudolf

@@ -107,7 +107,7 @@
 		birth=yes
 	}
 	944.1.1 = {
-		add_spouse = 120000017
+		add_spouse = 1000255443
 	}
 	946.1.1 = {
 		give_nickname = nick_the_magnificent

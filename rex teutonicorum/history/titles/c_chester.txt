@@ -15,7 +15,7 @@
 	liege = "d_hereford"
 }
 940.1.1 = {
-	holder = 120000010 #Ealhhelm
+	holder = 1000255436 #Ealhhelm
 }
 998.1.1 = {
 	holder = 5640

@@ -95,13 +95,13 @@
 	clear_tribute_suzerain = d_somerset
 }
 930.1.1 = {
-	holder = 120000005 #Ælfstan
+	holder = 1000255431 #Ælfstan
 }
 940.1.1 = {
-	holder = 120000010 #Ealhhelm
+	holder = 1000255436 #Ealhhelm
 }
 956.1.1 = {
-	holder = 120000011 #Ælfhere
+	holder = 1000255437 #Ælfhere
 }
 995.1.1 = {
 	holder = 5640

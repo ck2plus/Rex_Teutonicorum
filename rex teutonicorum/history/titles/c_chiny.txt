@@ -22,10 +22,10 @@
 	liege = "d_upper_lorraine"
 }
 936.1.1 = {
-	holder = 120000115 #Rudolf I
+	holder = 1000251511 #Rudolf I
 }
 946.1.1 = {
-	holder = 120000116 #Rudolf II Son of above
+	holder = 1000251512 #Rudolf II Son of above
 }
 948.1.1 = {
 	holder = 120000120 #Stephen

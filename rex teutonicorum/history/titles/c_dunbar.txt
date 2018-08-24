@@ -9,10 +9,10 @@
 	holder = 163103
 }
 883.1.1 = {
-	holder = 120000001
+	holder = 1000255427
 }
 946.1.1 = {
-	holder = 120000002
+	holder = 1000255428
 }
 954.1.1 = {
         liege = k_england

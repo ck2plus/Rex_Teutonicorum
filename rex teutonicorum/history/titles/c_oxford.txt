@@ -16,7 +16,7 @@
 	liege = k_england
 }
 940.1.1 = {
-	holder = 120000012
+	holder = 1000255438
 }
 990.1.1 = {
 	holder = 1000255404

@@ -12,19 +12,19 @@
 	holder = 163102
 }
 882.1.1 = {
-	holder = 120000003
+	holder = 1000255429
 }
 927.7.12 = {
 	liege = k_england
 }
 930.1.1 = {
-	holder = 120000005 #Ælfstan
+	holder = 1000255431 #Ælfstan
 }
 940.1.1 = {
-	holder = 120000010 #Ealhhelm
+	holder = 1000255436 #Ealhhelm
 }
 956.1.1 = {
-	holder = 120000011 #Ælfhere
+	holder = 1000255437 #Ælfhere
 }
 970.1.1 = {
 	holder = 1000255420
