@@ -1587,66 +1587,6 @@ death=yes
 }
 }
 
-120000145  = {
-name = "Heinrich"
-dynasty = 247
-religion = chalcedonian
-culture = german
-father = 10097
-
-911.1.1 = {
-birth=yes
-}
-964.7.3 = {
-death=yes
-}
-}
-
-120000146  = {
-name = "Dietrich"
-religion = chalcedonian
-culture = german
-
-916.1.1 = {
-birth=yes
-}
-977.7.3 = {
-death=yes
-}
-}
-
-120000148  = {
-name = "Megingod"
-religion = chalcedonian
-culture = german
-
-958.1.1 = {
-birth=yes
-}
-1000.1.1 = {
-culture = colognian
-}
-1015.1.1 = {
-death=yes
-}
-}
-
-120000149  = {
-name = "Eberhard"
-religion = chalcedonian
-culture = colognian
-
-1010.1.1 = {
-birth=yes
-}
-1054.1.1 = {
-religion = catholic
-}
-1066.4.15 = {
-death=yes
-}
-}
-
 120000151  = {
 name = "Hasan"
 dynasty = 1000253255

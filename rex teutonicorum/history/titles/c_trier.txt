@@ -29,10 +29,10 @@
 	holder = 168215 #Rotbert
 }
 956.5.19 = {
-	holder = 120000145 #Henry 
+	holder = 1000252286 #Henry 
 }
 964.7.3 = {
-	holder = 120000146 #Dietrich
+	holder = 1000252287 #Dietrich
 }
 977.1.1 = {
 	holder = 1000251507 #Egbert
@@ -42,13 +42,13 @@
 	holder = 1000252203 #Luidolf
 }
 1008.1.1 = {
-	holder = 120000148 #Megingod
+	holder = 1000252288 #Megingod
 }
 1015.1.1 = {
     holder = 183189 #Poppo von Babenberg
 }
 1047.1.1 = {
-	holder = 120000149 #Eberhard
+	holder = 1000258300 #Eberhard
 }
 1066.4.15 = {
 	holder = 1000257457 #Conrad

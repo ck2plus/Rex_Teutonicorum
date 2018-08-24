@@ -2734,7 +2734,7 @@
 	}
 }
 33459 = {
-	name = "GÃ¼nther"
+	name = "Günther"
 	dynasty = 669
 	religion = "chalcedonian"
 	culture = "german"
@@ -8468,3 +8468,222 @@
 	}
 }
 # Following bishops are considered -> old_saxon.txt
+
+1000252271 = {
+	name = "Herman"
+	dynasty = 101554
+	religion = "chalcedonian"
+	culture = "german"
+	father = 161525
+	870.1.1 = {
+		birth=yes
+	}
+	924.4.11 = {
+		death=yes
+	}
+}
+1000252272 = {
+	name = "Berthold"
+	dynasty = 1054
+	religion = "chalcedonian"
+	culture = "german"
+	father = 163058
+	855.1.1 = {
+		birth=yes
+	}
+	911.1.1 = {
+		death=yes
+	}
+}
+1000252273 = {
+	name = "Bruno"
+	religion = "chalcedonian"
+	culture = "german"
+	863.1.1 = {
+		birth=yes
+	}
+	932.1.1 = {
+		death=yes
+	}
+}
+1000252274 = {
+	name = "Eginhard"
+	religion = chalcedonian
+	culture = german
+	789.1.1 = {
+		birth = yes
+	}
+	848.1.1 = {
+		death = yes
+	}
+}
+1000252275 = {
+	name = "Stephen"
+	religion = chalcedonian
+	culture = german
+	849.1.1 = {
+		birth = yes
+	}
+	920.1.1 = {
+		death = yes
+	}
+}
+1000252276 = {
+	name = "Arnulf"
+	religion = chalcedonian
+	culture = german
+	757.1.1 = {
+		birth = yes
+	}
+	816.1.1 = {
+		death = yes
+	}
+}
+1000252277 = {
+	name = "Hetto"
+	religion = chalcedonian
+	culture = german
+	father = 1000252276
+	786.1.1 = {
+		birth = yes
+	}
+	847.1.1 = {
+		death = yes
+	}
+}
+1000252278 = {
+	name = "Udo"
+	religion = chalcedonian
+	culture = german
+	father = 1000252276
+	790.1.1 = {
+		birth = yes
+	}
+	855.1.1 = {
+		death = yes
+	}
+}
+1000252279 = {
+	name = "Dietgold"
+	religion = chalcedonian
+	culture = german
+	father = 1000252278
+	815.1.1 = {
+		birth = yes
+	}
+	863.6.15 = {
+		trait = excommunicated
+	}
+	867.12.14 = {
+		remove_trait = excommunicated
+	}
+	868.1.1 = {
+		death = yes
+	}
+}
+1000252280 = {
+	name = "Ratbod"
+	religion = chalcedonian
+	culture = german
+	852.1.1 = {
+		birth = yes
+	}
+	915.1.1 = {
+		death = yes
+	}
+}
+1000252281 = {
+	name = "Rudgar"
+	religion = chalcedonian
+	culture = german
+	866.1.1 = {
+		birth = yes
+	}
+	931.1.27 = {
+		death = yes
+	}
+}
+1000252282 = {
+	name = "Baldwin"
+	religion = chalcedonian
+	culture = german
+	931.1.1 = {
+		birth = yes
+	}
+	995.5.10 = {
+		death = yes
+	}
+}
+1000252283 = {
+	name = "Baldrick"
+	religion = chalcedonian
+	culture = german
+	901.1.1 = {
+		birth = yes
+	}
+	959.1.1 = {
+		death = yes
+	}
+}
+1000252284 = {
+	name = "Eraclus"
+	religion = chalcedonian
+	culture = german
+	897.1.1 = {
+		birth = yes
+	}
+	971.10.28 = {
+		death = yes
+	}
+}
+1000252285 = {
+	name = "Richer"
+	religion = chalcedonian
+	culture = german
+	879.1.1 = {
+		birth = yes
+	}
+	945.1.1 = {
+		death = yes
+}
+1000252286  = {
+	name = "Heinrich"
+	dynasty = 247
+	religion = chalcedonian
+	culture = german
+	father = 10097
+
+	911.1.1 = {
+		birth=yes
+	}
+	964.7.3 = {
+		death=yes
+	}
+}
+1000252287  = {
+	name = "Dietrich"
+	religion = chalcedonian
+	culture = german
+
+	916.1.1 = {
+		birth=yes
+	}
+	977.7.3 = {
+		death=yes
+	}
+}
+1000252288  = {
+	name = "Megingod"
+	religion = chalcedonian
+	culture = german
+
+	958.1.1 = {
+		birth=yes
+	}
+	1000.1.1 = {
+		culture = colognian
+	}
+	1015.1.1 = {
+		death=yes
+	}
+}
