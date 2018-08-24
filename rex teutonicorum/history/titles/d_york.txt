@@ -21,19 +21,19 @@
 	holder = 168338 #Sigfrothr
 }
 900.1.1 = {
-	holder = 130000024 #Æthelwold 
+	holder = 1000255426 #Æthelwold 
 }
 902.1.1 = {
 	holder = 168339 #Halfdan
 }
 914.1.1 = {
-	holder = 130000025 #Ragnall
+	holder = 1000254118 #Ragnall
 }
 921.1.1 = {
 	holder = 5789 #Sitric
 }
 927.1.1 = {
-	holder = 130000026 #Gofraid
+	holder = 1000254119 #Gofraid
 }
 927.7.12 = {
 	holder = 0

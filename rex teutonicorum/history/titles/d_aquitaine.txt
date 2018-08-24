@@ -27,7 +27,7 @@
 	liege=0
 }
 768.6.2={
-	holder = 130000083 #Hunoald II
+	holder = 1000254309 #Hunoald II
 }
 768.6.2={
 	liege=k_france

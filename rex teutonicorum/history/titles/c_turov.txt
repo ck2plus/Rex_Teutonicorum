@@ -9,7 +9,7 @@
 	liege = d_turov
 }
 950.1.1 = {
-	holder = 100000071
+	holder = 1000254130
 }
 970.1.1 = {
 	liege = d_turov

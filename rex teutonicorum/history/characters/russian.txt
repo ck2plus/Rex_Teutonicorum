@@ -9754,7 +9754,7 @@
 	dynasty = 703
 	religion = "norse_pagan"
 	culture = "norse"
-	father = 100000070
+	father = 1000254129
 	960.1.2 = {
 		birth=yes
 	}

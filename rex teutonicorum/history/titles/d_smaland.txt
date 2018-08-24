@@ -3,7 +3,7 @@
 	holder = 41266 # Fictional local chief
 }
 875.1.1 = {
-	holder = 130000017
+	holder = 1000254111
 }
 923.1.1 = {
 	holder = 110000034

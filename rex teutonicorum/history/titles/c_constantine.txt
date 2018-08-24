@@ -7,7 +7,7 @@
 	holder = 6883
 }
 885.1.1 = {
-	holder = 130000080
+	holder = 1000262000
 }
 947.1.1 = {
 	liege = d_tlemcen

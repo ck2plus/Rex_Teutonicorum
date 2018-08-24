@@ -1,5 +1,5 @@
 752.1.1 = {
-	holder = 130000039 #Milo
+	holder = 1000267401 #Milo
 }
 753.1.1={
 	holder = 190550 #Bego
@@ -8,7 +8,7 @@
 	liege=d_toulouse
 }
 780.1.1 = {
-	holder = 130000039 #Milo
+	holder = 1000267401 #Milo
 }
 817.1.1 = {
 	holder = 70140 #Bera
@@ -33,13 +33,13 @@
 	holder = 127019 #Bernard II
 }
 876.1.1 = {
-	holder = 130000042 #Lindoi
+	holder = 1000254310 #Lindoi
 	law = succ_primogeniture
 	law = cognatic_succession
 	liege = d_toulouse
 }
 878.1.1 = {
-	holder = 130000043 #Maiol
+	holder = 1000254311 #Maiol
 }
 911.1.1 = {
 	holder = 138216 #Odon I de Narbonne

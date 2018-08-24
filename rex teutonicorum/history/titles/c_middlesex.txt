@@ -24,13 +24,13 @@
 }
 886.1.1 = {
 	liege = d_hereford
-	holder = 130000001 #Granted to Æthelred of Mercia
+	holder = 1000255423 #Granted to Æthelred of Mercia
 }
 911.1.1 = {
-	holder = 130000002 #Æthelflæd
+	holder = 1000255424 #Æthelflæd
 }
 918.6.12 = {
-	holder = 130000003 #Ælfwynn
+	holder = 1000255425 #Ælfwynn
 }
 918.12.5 = {
 	holder = 100 # Edward the Elder

@@ -10,7 +10,7 @@
 }
 881.1.1 = {
 	liege = d_hereford
-	holder = 130000001 #Æthelred
+	holder = 1000255423 #Æthelred
 }
 927.7.12 = {
 	liege = k_england

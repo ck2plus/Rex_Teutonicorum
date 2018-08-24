@@ -59,7 +59,7 @@ holder = 71911
 	holder = 167981
 }  
 959.1.1 = {
-	holder = 100000162
+	holder = 1000264200
 }  
 962.2.2 = {
 	liege = e_hre
@@ -71,7 +71,7 @@ holder = 71911
 	holder = 73326
 }
 982.1.1 = {
-	holder = 100000162
+	holder = 1000264200
 }
 1004.1.1 = {
 	holder = 0
@@ -89,7 +89,7 @@ holder = 33466
 holder = 100000067 #Conrad
 }
 1131.1.1 = {
-	holder = 100000068 #Rampret
+	holder = 1000263200 #Rampret
 }
 1135.1.1 = {
 holder = 212996

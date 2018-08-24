@@ -20,19 +20,19 @@
 }
 
 884.1.1 = {
-	holder = 130000048 #Lietald I
+	holder = 1000252023 #Lietald I
 }
 900.1.1 = {
-	holder = 130000049 #Ranoux
+	holder = 1000252024 #Ranoux
 }
 915.1.1 = {
-	holder = 130000044 #Aubry I
+	holder = 1000254312 #Aubry I
 }
 943.1.1 = {
-	holder = 130000045 #Lietald II
+	holder = 1000254313 #Lietald II
 }
 965.1.1 = {
-	holder = 130000046 #Aubry II
+	holder = 1000254314 #Aubry II
 }
 982.1.1 = {
 	liege = "k_burgundy"

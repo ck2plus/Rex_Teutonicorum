@@ -20,7 +20,7 @@
 	liege = "d_oman"
 }
 1002.1.1 = {
-	holder = 130000037 #al-Khalil bin Shadhan
+	holder = 1000250594 #al-Khalil bin Shadhan
 }
 1032.1.1 = {
 	holder = 100000198 #Rashid bin Sa'id 

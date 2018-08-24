@@ -22,7 +22,7 @@
 }
 877.1.1 = {
 	liege = e_arabia
-	holder = 130000016
+	holder = 1000255918
 }
 902.1.1 = {
 	liege = 0

@@ -14,14 +14,14 @@
 	holder = 168069
 }
 877.1.1 = {
-	holder = 130000050
+	holder = 1000250901
 }
 895.1.1 = {
 	liege = k_bulgaria
 }
 950.1.1 = {
 	liege = "k_pechenegs"
-	holder = 110000041
+	holder = 1000254408
 }
 989.1.2 = {
 	holder = 125017

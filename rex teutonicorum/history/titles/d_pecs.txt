@@ -20,7 +20,7 @@
 	holder=187012
 }
 882.1.1={
-	holder = 130000006
+	holder = 1000250609
 	set_tribute_suzerain = { who = k_germany type = default }
 }
 895.1.1 = {

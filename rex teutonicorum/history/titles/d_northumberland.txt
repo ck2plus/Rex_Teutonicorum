@@ -60,7 +60,7 @@
 }
 939.10.27 = {
         liege = 0
-	holder = 130000027 #Olaf Guthrithson
+	holder = 1000254120 #Olaf Guthrithson
 }
 941.1.1 = {
         holder = 5790

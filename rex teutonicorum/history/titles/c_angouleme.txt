@@ -8,10 +8,10 @@
 	holder = 190505 #Wulgrin (II)
 }
 839.1.1 = {
-	holder = 130000061 #Turpio
+	holder = 1000252030 #Turpio
 }
 863.1.1 = {
-	holder = 130000061 #Emenon
+	holder = 1000252030 #Emenon
 }
 866.1.1={
 	liege="d_aquitaine"
@@ -23,7 +23,7 @@
 	holder = 40084 #Audouin I Taillefer
 }
 916.3.27 = {
-	holder = 130000067 #Adhemar
+	holder = 1000252036 #Adhemar
 }
 926.1.1 = {
 	holder = 40086 #Guillaume II Taillefer

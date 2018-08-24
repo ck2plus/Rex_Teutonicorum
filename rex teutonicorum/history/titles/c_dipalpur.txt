@@ -9,7 +9,7 @@
 	liege = k_afghanistan
 }
 888.1.1 = {
-	holder = 130000013
+	holder = 1000256612
 }
 950.1.1 = {
 	holder = 110000015

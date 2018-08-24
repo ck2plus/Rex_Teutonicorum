@@ -7,7 +7,7 @@
 }
 888.1.1 = {
 	liege = d_lancaster
-	holder = 130000029
+	holder = 1000254122
 }
 927.7.12 = {
 	liege = k_england

@@ -13,7 +13,7 @@
 }
 945.1.1 = {
 	liege = d_polotsk
-	holder = 100000070
+	holder = 1000254129
 }
 989.1.2 = {
 liege = d_polotsk

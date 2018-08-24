@@ -40,7 +40,7 @@
 	holder=0
 }
 882.1.1={
-	holder = 130000006
+	holder = 1000250609
 }
 895.1.1 = {
 	liege = k_magyar

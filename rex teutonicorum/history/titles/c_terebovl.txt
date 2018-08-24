@@ -15,7 +15,7 @@
 }
 950.1.1 = {
 	liege = d_volhynia
-	holder = 110000039
+	holder = 1000255211
 }
 989.1.2 = {
 	holder = 125017

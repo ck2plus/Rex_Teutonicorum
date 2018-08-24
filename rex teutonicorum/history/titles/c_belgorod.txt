@@ -30,11 +30,11 @@
 	holder = 168070
 }
 879.1.1={
-	holder = 130000051
+	holder = 1000250902
 }
 950.1.1 = {
 	liege = k_pechenegs
-	holder = 110000041
+	holder = 1000254408
 }
 990.1.1 = {
 	liege = "k_pechenegs"

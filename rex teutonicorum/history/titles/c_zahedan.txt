@@ -15,10 +15,10 @@
 }
 922.1.1 = {
         liege = d_sistan
-        holder = 100000040
+        holder = 1000254542
 }
 963.1.1 = {
-	holder = 100000041
+	holder = 1000254543
 }
 1002.12.1={
 	liege = "k_afghanistan"

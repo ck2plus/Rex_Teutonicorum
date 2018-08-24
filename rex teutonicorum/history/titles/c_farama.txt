@@ -6,10 +6,10 @@
 }
 865.1.1 = {
 	liege = d_sinai
-	holder = 130000072
+	holder = 1000255920
 }
 897.1.1 = {
-	holder = 130000073
+	holder = 1000251617
 }
 940.1.1 = {
 	liege = d_sinai

@@ -5,10 +5,10 @@
 	liege = k_france
 }
 814.1.2 = {
-	holder = 130000101 #Hetto
+	holder = 1000252277 #Hetto
 }
 847.1.1 = {
-	holder = 130000103 #Dietgold
+	holder = 1000252279 #Dietgold
 }
 855.1.1 = {
 	liege = "k_lotharingia"
@@ -17,13 +17,13 @@
 	holder = 163051 #Bertholf 
 }
 883.1.1 = {
-	holder = 130000104 #Radbod (died 915)
+	holder = 1000252280 #Radbod (died 915)
 }
 903.1.1 = {
 	liege = "d_upper_lorraine"
 }
 915.1.1 = {
-	holder = 130000105 #Rudgar (died 931)
+	holder = 1000252281 #Rudgar (died 931)
 }
 930.1.1 = {
 	holder = 168215 #Rotbert

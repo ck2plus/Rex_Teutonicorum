@@ -23,19 +23,19 @@
         liege = 0
 }
 920.1.1 = {
-	holder = 130000026 #Gofraid
+	holder = 1000254119 #Gofraid
 }
 934.1.1 = {
-	holder = 130000027 #Olaf
+	holder = 1000254120 #Olaf
 }
 939.1.1 = {
-	holder = 130000028 #Blacaire
+	holder = 1000254121 #Blacaire
 }
 945.1.1 = {
 	holder = 5790 #Olaf Cuaran
 }
 947.1.1 = {
-	holder = 130000028 #Blacaire
+	holder = 1000254121 #Blacaire
 }
 948.1.1 = {
         holder = 100000014 #Gofraid mac Sihtirc

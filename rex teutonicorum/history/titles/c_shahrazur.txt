@@ -8,13 +8,13 @@
 	holder = 163131
 }
 888.1.1 = {
-	holder = 130000008 #Actually ruled in 889 at the earliest, but hush you
+	holder = 1000254528 #Actually ruled in 889 at the earliest, but hush you
 }
 901.1.1 = {
-	holder = 130000009
+	holder = 1000254529
 }
 901.5.1 = {
-	holder = 130000010
+	holder = 1000254530
 }
 928.1.1 = {
 	holder = 130000011

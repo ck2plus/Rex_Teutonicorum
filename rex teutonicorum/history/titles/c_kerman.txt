@@ -6,7 +6,7 @@
 }
 861.1.1 = {
 	liege = k_baluchistan
-	holder = 130000074
+	holder = 1000267000
 }
 932.1.1 = {
 	liege = d_hormuz

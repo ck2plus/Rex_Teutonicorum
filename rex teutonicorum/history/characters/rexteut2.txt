@@ -1,1840 +1,1796 @@
 #VASSAL RULERS#
 
 120000001 = {
-	name = "Eadwulf"
-	dynasty = 100000011
-	religion = chalcedonian
-	culture = saxon
-	
-	856.1.1 = {
-		   birth = yes
-		  }
-	913.1.1 = {
-		   death = yes
-		  }
+name = "Eadwulf"
+dynasty = 1000253186
+religion = chalcedonian
+culture = saxon
+
+856.1.1 = {
+birth = yes
+}
+913.1.1 = {
+death = yes
+}
 }
 120000002 = {
-	name = "Osulf"
-	dynasty = 100000011
-	religion = chalcedonian
-	culture = saxon
-	father = 120000001
+name = "Osulf"
+dynasty = 1000253186
+religion = chalcedonian
+culture = saxon
+father = 120000001
 
-	902.1.1 = {
-	           birth = yes
-	          }
-	963.1.1 = {
-		   death = yes
-		  }
+902.1.1 = {
+birth = yes
+}
+963.1.1 = {
+death = yes
+}
 }
 120000003 = {
-	name = "Æthelfrith"
-	dynasty = 100000012
-	religion = chalcedonian
-	culture = saxon
+name = "Æthelfrith"
+dynasty = 1000253187
+religion = chalcedonian
+culture = saxon
 
-	860.1.1 = {
-		   birth = yes
-		  }
+860.1.1 = {
+birth = yes
+}
 
-	915.1.1 = {
-		   death = yes
-		  }
-	
+915.1.1 = {
+death = yes
+}
+
 
 }
 120000004 = {
-	name = "Æthelstan" #Half-King
-	dynasty = 100000012
-	religion = chalcedonian
-	culture = saxon
-	father = 120000003
+name = "Æthelstan" #Half-King
+dynasty = 1000253187
+religion = chalcedonian
+culture = saxon
+father = 120000003
 
-	900.1.1 = {
-		   birth = yes
-		  }
+900.1.1 = {
+birth = yes
+}
 
-	918.1.1 = {
-		   add_spouse = 130000003
-		  }
+918.1.1 = {
+add_spouse = 1000255425
+}
 
-	956.1.1 = {
-		   trait = monk
-		  }
+956.1.1 = {
+trait = monk
+}
 
-	972.1.1 = {
-		   death = yes
-		  }
-	
+972.1.1 = {
+death = yes
+}
+
 
 }
 120000005 = {
-	name = "Ælfstan"
-	dynasty = 100000012
-	religion = chalcedonian
-	culture = saxon
-	father = 120000003
+name = "Ælfstan"
+dynasty = 1000253187
+religion = chalcedonian
+culture = saxon
+father = 120000003
 
-	880.1.1 = {
-		   birth = yes
-		  }
+880.1.1 = {
+birth = yes
+}
 
-	934.1.1 = {
-		   death = yes
-		  }
-	
+934.1.1 = {
+death = yes
+}
+
 
 }
 120000006 = {
-	name = "Æthelwald"
-	dynasty = 100000012
-	religion = chalcedonian
-	culture = saxon
-	father = 120000003
+name = "Æthelwald"
+dynasty = 1000253187
+religion = chalcedonian
+culture = saxon
+father = 120000003
 
-	902.1.1 = {
-		   birth = yes
-		  }
+902.1.1 = {
+birth = yes
+}
 
-	946.1.1 = {
-		   death = yes
-		  }
-	
+946.1.1 = {
+death = yes
+}
+
 
 }
 120000007 = {
-	name = "Eadric"
-	dynasty = 100000012
-	religion = chalcedonian
-	culture = saxon
-	father = 120000003
+name = "Eadric"
+dynasty = 1000253187
+religion = chalcedonian
+culture = saxon
+father = 120000003
 
-	904.1.1 = {
-		   birth = yes
-		  }
+904.1.1 = {
+birth = yes
+}
 
-	949.1.1 = {
-		   death = yes
-		  }
-	
+949.1.1 = {
+death = yes
+}
+
 
 }
 120000008 = {
-	name = "Æthelwald"
-	dynasty = 100000012
-	religion = chalcedonian
-	culture = saxon
-	father = 120000004
-	mother = 130000003
+name = "Æthelwald"
+dynasty = 1000253187
+religion = chalcedonian
+culture = saxon
+father = 120000004
+mother = 1000255425
 
-	919.1.1 = {
-		   birth = yes
-		  }
+919.1.1 = {
+birth = yes
+}
 
-	962.1.1 = {
-		   death = yes
-		  }
-	
+962.1.1 = {
+death = yes
+}
+
 
 }
 120000009 = {
-	name = "Æthelwine"
-	dynasty = 100000012
-	religion = chalcedonian
-	culture = saxon
-	father = 120000004
-	mother = 130000003
+name = "Æthelwine"
+dynasty = 1000253187
+religion = chalcedonian
+culture = saxon
+father = 120000004
+mother = 1000255425
 
-	933.1.1 = {
-		   birth = yes
-		  }
+933.1.1 = {
+birth = yes
+}
 
-	992.1.1 = {
-		   death = yes
-		  }
-	
+992.1.1 = {
+death = yes
+}
+
 
 }
 120000010 = {
-	name = "Ealhhelm"
-	dynasty = 100000013
-	religion = chalcedonian
-	culture = saxon
+name = "Ealhhelm"
+dynasty = 1000253188
+religion = chalcedonian
+culture = saxon
 
-	897.1.1 = {
-		   birth = yes
-		  }
+897.1.1 = {
+birth = yes
+}
 
-	956.1.1 = {
-		   death = yes
-		  }
-	
+956.1.1 = {
+death = yes
+}
+
 
 }
 120000011 = {
-	name = "Ælfhere"
-	dynasty = 100000013
-	religion = chalcedonian
-	culture = saxon
-	father = 120000010
+name = "Ælfhere"
+dynasty = 1000253188
+religion = chalcedonian
+culture = saxon
+father = 120000010
 
-	917.1.1 = {
-		   birth = yes
-		  }
+917.1.1 = {
+birth = yes
+}
 
-	983.1.1 = {
-		   death = yes
-		  }
-	
+983.1.1 = {
+death = yes
+}
+
 
 }
 120000012 = {
-	name = "Æthelstan" #Rota
-	dynasty = 100000015
-	religion = chalcedonian
-	culture = saxon
+name = "Æthelstan" #Rota
+dynasty = 1000253190
+religion = chalcedonian
+culture = saxon
 
-	905.1.1 = {
-		   birth = yes
-		  }
-	947.1.1 = {
-		   add_spouse = 120000017
-		  }
-	970.1.1 = {
-		   death = yes
-		  }
+905.1.1 = {
+birth = yes
+}
+947.1.1 = {
+add_spouse = 120000017
+}
+970.1.1 = {
+death = yes
+}
 }
 120000013 = {
-	name = "Æthelsige"
-	dynasty = 100000014
-	religion = chalcedonian
-	culture = saxon
+name = "Æthelsige"
+dynasty = 1000253189
+religion = chalcedonian
+culture = saxon
 
-	914.1.1 = {
-		   birth = yes
-		  }
+914.1.1 = {
+birth = yes
+}
 
-	970.1.1 = {
-		   death = yes
-		  }
+970.1.1 = {
+death = yes
+}
 }
 120000014 = {
-	name = "Uhtred"
-	dynasty = 100000011
-	religion = chalcedonian
-	culture = saxon
+name = "Uhtred"
+dynasty = 1000253186
+religion = chalcedonian
+culture = saxon
 
-	883.1.1 = {
-		   birth = yes
-		  }
+883.1.1 = {
+birth = yes
+}
 
-	950.1.1 = {
-		   death = yes
-		  }
+950.1.1 = {
+death = yes
+}
 }
 120000015 = {
-	name = "Uhtred"
-	dynasty = 100000011
-	religion = chalcedonian
-	culture = saxon
-	father = 120000014
+name = "Uhtred"
+dynasty = 1000253186
+religion = chalcedonian
+culture = saxon
+father = 120000014
 
-	900.1.1 = {
-		   birth = yes
-		  }
+900.1.1 = {
+birth = yes
+}
 
-	960.1.1 = {
-		   death = yes
-		  }
+960.1.1 = {
+death = yes
+}
 }
 120000016 = {
-	name = "Ælfgar"
-	dynasty = 100000016
-	religion = chalcedonian
-	culture = saxon
+name = "Ælfgar"
+dynasty = 1000253191
+religion = chalcedonian
+culture = saxon
 
-	894.1.1 = {
-		   birth = yes
-		  }
+894.1.1 = {
+birth = yes
+}
 
-	951.1.1 = {
-		   death = yes
-		  }
+951.1.1 = {
+death = yes
+}
 }
 120000017 = {
-	name = "Æthelflæd"
-	female = yes
-	dynasty = 100000016
-	religion = chalcedonian
-	culture = saxon
-	father = 120000016
+name = "Æthelflæd"
+female = yes
+dynasty = 1000253191
+religion = chalcedonian
+culture = saxon
+father = 120000016
 
-	922.1.1 = {
-		   birth = yes
-		  }
+922.1.1 = {
+birth = yes
+}
 
-	975.1.1 = {
-		   death = yes
-		  }
+975.1.1 = {
+death = yes
+}
 }
 120000018 = {
-	name = "Ælflæd"
-	female = yes
-	dynasty = 100000016
-	religion = chalcedonian
-	culture = saxon
-	father = 120000016
+name = "Ælflæd"
+female = yes
+dynasty = 1000253191
+religion = chalcedonian
+culture = saxon
+father = 120000016
 
-	930.1.1 = {
-		   birth = yes
-		  }
+930.1.1 = {
+birth = yes
+}
 
-	997.1.1 = {
-		   death = yes
-		  }
+997.1.1 = {
+death = yes
+}
 }
 120000019 = {
-	name = "Byrthnoth"
-	dynasty = 100000017
-	religion = chalcedonian
-	culture = saxon
+name = "Byrthnoth"
+dynasty = 1000253192
+religion = chalcedonian
+culture = saxon
 
-	930.1.1 = {
-		   birth = yes
-		  }
+930.1.1 = {
+birth = yes
+}
 
-	950.1.1 = {
-		   add_spouse = 120000018
-		  }
+950.1.1 = {
+add_spouse = 120000018
+}
 
-	991.1.1 = {
-		   death = {
-			    death_reason = death_battle
-			   }
-		  }
+991.1.1 = {
+death = {
+death_reason = death_battle
+}
+}
 }
 120000020 = {
-	name = "Farighun"
-	dynasty = 100000018
-	religion = sunni
-	culture = persian
+name = "Farighun"
+dynasty = 1000253193
+religion = sunni
+culture = persian
 
-	827.1.1 = {
-		   birth = yes
-		  }
+827.1.1 = {
+birth = yes
+}
 
-	886.1.1 = {
-		   death = yes
-		  }
+886.1.1 = {
+death = yes
+}
 }
 120000021 = {
-	name = "Ahmad"
-	dynasty = 100000018
-	religion = sunni
-	culture = persian
-	father = 120000020
+name = "Ahmad"
+dynasty = 1000253193
+religion = sunni
+culture = persian
+father = 120000020
 
-	865.1.1 = {
-		   birth = yes
-		  }
+865.1.1 = {
+birth = yes
+}
 
-	940.1.1 = {
-		   death = yes
-		  }
+940.1.1 = {
+death = yes
+}
 }
 120000022 = {
-	name = "Abu'l Haret Muhammed"
-	dynasty = 100000018
-	religion = sunni
-	culture = persian
-	father = 120000021
+name = "Abu'l Haret Muhammed"
+dynasty = 1000253193
+religion = sunni
+culture = persian
+father = 120000021
 
-	911.1.1 = {
-		   birth = yes
-		  }
+911.1.1 = {
+birth = yes
+}
 
-	982.1.1 = {
-		   death = yes
-		  }
+982.1.1 = {
+death = yes
+}
 }
 120000023 = {
-	name = "Abu'l Haret Ahmad"
-	dynasty = 100000018
-	religion = sunni
-	culture = persian
-	father = 120000022
+name = "Abu'l Haret Ahmad"
+dynasty = 1000253193
+religion = sunni
+culture = persian
+father = 120000022
 
-	943.1.1 = {
-		   birth = yes
-		  }
+943.1.1 = {
+birth = yes
+}
 
-	1000.1.1 = {
-		    death = yes
-		   }
+1000.1.1 = {
+death = yes
+}
 }
 120000024 = {
-	name = "Abu'l Nasr Muhammed"
-	dynasty = 100000018
-	religion = sunni
-	culture = persian
-	father = 120000023
+name = "Abu'l Nasr Muhammed"
+dynasty = 1000253193
+religion = sunni
+culture = persian
+father = 120000023
 
-	960.1.1 = {
-		   birth = yes
-		  }
+960.1.1 = {
+birth = yes
+}
 
-	1010.1.1 = {
-		    death = yes
-		   }
+1010.1.1 = {
+death = yes
+}
 }
 120000025 = {
-	name = "Simjur al-Dawati"
-	dynasty = 1000124164
-	religion = sunni
-	culture = turkish
+name = "Simjur al-Dawati"
+dynasty = 1000124164
+religion = sunni
+culture = turkish
 
-	869.1.1 = {
-		   birth = yes
-		  }
+869.1.1 = {
+birth = yes
+}
 
-	930.1.1 = {
-		   death = yes
-		  }
+930.1.1 = {
+death = yes
+}
 }
 120000026 = {
-	name = "Ibrahim"
-	dynasty = 1000124164
-	religion = sunni
-	culture = turkish
-	father = 120000025
+name = "Ibrahim"
+dynasty = 1000124164
+religion = sunni
+culture = turkish
+father = 120000025
 
-	891.1.1 = {
-		   birth = yes
-		  }
+891.1.1 = {
+birth = yes
+}
 
-	948.1.1 = {
-		   death = yes
-		  }
+948.1.1 = {
+death = yes
+}
 }
 120000027 = {
-	name = "Abu'l Hasan"
-	dynasty = 1000124164
-	religion = sunni
-	culture = turkish
-	father = 120000026
+name = "Abu'l Hasan"
+dynasty = 1000124164
+religion = sunni
+culture = turkish
+father = 120000026
 
-	914.1.1 = {
-		   birth = yes
-		  }
+914.1.1 = {
+birth = yes
+}
 
-	982.1.1 = {
-		   death = yes
-		  }
+982.1.1 = {
+death = yes
+}
 }
 120000028 = {
-	name = "Qaratarkin"
-	dynasty = 100000019
-	religion = sunni
-	culture = turkish
+name = "Qaratarkin"
+dynasty = 1000253194
+religion = sunni
+culture = turkish
 
-	877.1.1 = {
-		   birth = yes
-		  }
+877.1.1 = {
+birth = yes
+}
 
-	939.1.1 = {
-		   death = yes
-		  }
+939.1.1 = {
+death = yes
+}
 }
 120000029 = {
-	name = "Kamaluka"
-	dynasty = 1043006
-	religion = hindu
-	culture = afghan
-	trait = brahmin
-	father = 175060
+name = "Kamaluka"
+dynasty = 1043006
+religion = hindu
+culture = afghan
+trait = brahmin
+father = 175060
 
-	863.1.1 = {
-		   birth = yes
-		  }
+863.1.1 = {
+birth = yes
+}
 
-	921.1.1 = {
-		   death = yes
-		  }
+921.1.1 = {
+death = yes
+}
 }
 120000030 = {
-	name = "Bhima"
-	dynasty = 1043006
-	religion = hindu
-	culture = afghan
-	trait = brahmin
-	father = 120000029
+name = "Bhima"
+dynasty = 1043006
+religion = hindu
+culture = afghan
+trait = brahmin
+father = 120000029
 
-	900.1.1 = {
-		   birth = yes
-		  }
+900.1.1 = {
+birth = yes
+}
 
-	964.1.1 = {
-		   death = yes
-		  }
+964.1.1 = {
+death = yes
+}
 }
 120000031 = {
-	name = "Mansur"
-	dynasty = 100000019
-	religion = sunni
-	culture = turkish
-	father = 120000028
+name = "Mansur"
+dynasty = 1000253194
+religion = sunni
+culture = turkish
+father = 120000028
 
-	912.1.1 = {
-		   birth = yes
-		  }
+912.1.1 = {
+birth = yes
+}
 
-	950.1.1 = {
-		   trait = drunkard
-		  }
+950.1.1 = {
+trait = drunkard
+}
 
-	952.1.1 = {
-		   death = { death_reason = death_drunkard }
-		  }
+952.1.1 = {
+death = { death_reason = death_drunkard }
+}
 }
 
 120000032 = {
-	name = "Muhtaj"
-	dynasty = 100000020
-	religion = sunni
-	culture = turkish
+name = "Muhtaj"
+dynasty = 1000253195
+religion = sunni
+culture = turkish
 
-	820.1.1 = {
-		   birth = yes
-		  }
+820.1.1 = {
+birth = yes
+}
 
-	875.1.1 = {
-		   death = yes
-		  }
+875.1.1 = {
+death = yes
+}
 }
 120000033 = {
-	name = "Muzuffar"
-	dynasty = 100000020
-	religion = sunni
-	culture = turkish
-	father = 120000032
+name = "Muzuffar"
+dynasty = 1000253195
+religion = sunni
+culture = turkish
+father = 120000032
 
-	847.1.1 = {
-		   birth = yes
-		  }
+847.1.1 = {
+birth = yes
+}
 
-	900.1.1 = {
-		   death = yes
-		  }
+900.1.1 = {
+death = yes
+}
 }
 120000034 = {
-	name = "Abu Bakr"
-	dynasty = 100000020
-	religion = sunni
-	culture = turkish
-	father = 120000033
+name = "Abu Bakr"
+dynasty = 1000253195
+religion = sunni
+culture = turkish
+father = 120000033
 
-	877.1.1 = {
-		   birth = yes
-		  }
+877.1.1 = {
+birth = yes
+}
 
-	941.1.1 = {
-		   death = { death_reason = death_poor_health }
-		  }
+941.1.1 = {
+death = { death_reason = death_poor_health }
+}
 }
 120000035 = {
-	name = "Abu Ali"
-	dynasty = 100000020
-	religion = sunni
-	culture = turkish
-	father = 120000034
+name = "Abu Ali"
+dynasty = 1000253195
+religion = sunni
+culture = turkish
+father = 120000034
 
-	902.1.1 = {
-		   birth = yes
-		  }
+902.1.1 = {
+birth = yes
+}
 
-	955.1.1 = {
-		   death = { death_reason = death_plague }
-		  }
+955.1.1 = {
+death = { death_reason = death_plague }
+}
 }
 120000036 = {
-	name = "Muhammed"
-	dynasty = 100000020
-	religion = sunni
-	culture = turkish
-	father = 120000035
+name = "Muhammed"
+dynasty = 1000253195
+religion = sunni
+culture = turkish
+father = 120000035
 
-	926.1.1 = {
-		   birth = yes
-		  }
+926.1.1 = {
+birth = yes
+}
 
-	955.1.1 = {
-		   death = { death_reason = death_plague }
-		  }
+955.1.1 = {
+death = { death_reason = death_plague }
+}
 }
 120000037 = {
-	name = "Abu'l Muzaffar"
-	dynasty = 100000020
-	religion = sunni
-	culture = turkish
-	father = 120000036
+name = "Abu'l Muzaffar"
+dynasty = 1000253195
+religion = sunni
+culture = turkish
+father = 120000036
 
-	943.1.1 = {
-		   birth = yes
-		  }
-
-	998.1.1 = {
-		   death = yes
-		  }
+943.1.1 = {
+birth = yes
 }
 
-120000038 = {
-	name = "Abu Ali" #fictional
-	dynasty = 100000021
-	religion = sunni
-	culture = persian
-
-	920.1.1 = {
-		   birth = yes
-		  }
-	973.1.1 = {
-		   death = yes
-		  }
+998.1.1 = {
+death = yes
+}
 }
 
 120000039 = {
-	name = "Haraldr" #fictional
-	dynasty = 100000022
-	religion = norse_pagan
-	culture = norse
-	father = 120000047
+name = "Haraldr" #fictional
+dynasty = 1000253197
+religion = norse_pagan
+culture = norse
+father = 120000047
 
-	908.1.1 = {
-		   birth = yes
-		  }
+908.1.1 = {
+birth = yes
+}
 
-	970.1.1 = {
-		   death = yes
-		  }
+970.1.1 = {
+death = yes
+}
 }
 
 120000040 = {
-	name = "Olafr" #fictional
-	dynasty = 1043303
-	religion = norse_pagan
-	culture = norse
-	father = 186007
+name = "Olafr" #fictional
+dynasty = 1043303
+religion = norse_pagan
+culture = norse
+father = 186007
 
-	890.1.1 = {
-	           birth = yes
-	          }
-	
-	962.1.1 = {
-		   death = yes
-		  }
+890.1.1 = {
+birth = yes
+}
+
+962.1.1 = {
+death = yes
+}
 }
 
 120000041 = {
-	name = "Rodislav"
-	dynasty = 1029137
-	religion = finnish_pagan
-	culture = severian
-	father = 6826
+name = "Rodislav"
+dynasty = 1029137
+religion = finnish_pagan
+culture = severian
+father = 6826
 
-	870.1.1 = {
-		   birth = yes
-		  }
+870.1.1 = {
+birth = yes
+}
 
-	939.1.1 = {
-		   death = yes
-		  }
+939.1.1 = {
+death = yes
+}
 }
 120000042 = {
-	name = "Nikita"
-	dynasty = 1029137
-	religion = finnish_pagan
-	culture = severian
-	father = 120000041
+name = "Nikita"
+dynasty = 1029137
+religion = finnish_pagan
+culture = severian
+father = 120000041
 
-	925.1.1 = {
-		   birth = yes
-		  }
+925.1.1 = {
+birth = yes
+}
 
-	984.1.1 = {
-		   death = yes
-		  }
+984.1.1 = {
+death = yes
+}
 }
 120000043 = {
-	name = "Sigurdr"
-	dynasty = 471
-	religion = norse_pagan
-	culture = norse
-	father = 186003
+name = "Sigurdr"
+dynasty = 471
+religion = norse_pagan
+culture = norse
+father = 186003
 
-	890.1.1 = {
-		   birth = yes
-		  }
+890.1.1 = {
+birth = yes
+}
 
-	915.1.1 = {
-		   add_spouse = 120000044
-		  }
+915.1.1 = {
+add_spouse = 120000044
+}
 
-	962.1.1 = {
-		   death = yes
-		  }
+962.1.1 = {
+death = yes
+}
 }
 120000044 = {
-	name = "Bergljot"
-	female = yes
-	dynasty = 1043303
-	religion = norse_pagan
-	culture = norse
-	father = 186007
+name = "Bergljot"
+female = yes
+dynasty = 1043303
+religion = norse_pagan
+culture = norse
+father = 186007
 
-	897.1.1 = {
-	           birth = yes
-	          }
-	
-	969.1.1 = {
-		   death = yes
-		  }
+897.1.1 = {
+birth = yes
+}
+
+969.1.1 = {
+death = yes
+}
 }
 
 120000045 = {
-	name = "Halfur"
-	dynasty = 100000022
-	religion = norse_pagan
-	culture = norse
+name = "Halfur"
+dynasty = 100000022
+religion = norse_pagan
+culture = norse
 
-	802.1.1 = {
-		   birth = yes
-		  }
-	867.1.1 = {
-		   death = yes
-		  }
+802.1.1 = {
+birth = yes
+}
+867.1.1 = {
+death = yes
+}
 }
 
 120000046 = {
-	name = "Hjör"
-	dynasty = 100000022
-	religion = norse_pagan
-	culture = norse
-	father = 120000045
-	
-	830.1.1 = {
-		   birth = yes
-		  }
+name = "Hjör"
+dynasty = 100000022
+religion = norse_pagan
+culture = norse
+father = 120000045
 
-	879.1.1 = {
-		   death = yes
-		  }
+830.1.1 = {
+birth = yes
+}
+
+879.1.1 = {
+death = yes
+}
 }
 
 120000047 = {
-	name = "Geirmundr"
-	dynasty = 100000022
-	religion = norse_pagan
-	culture = norse
-	father = 120000046
+name = "Geirmundr"
+dynasty = 100000022
+religion = norse_pagan
+culture = norse
+father = 120000046
 
-	862.1.1 = {
-		   birth = yes
-		  }
-	
-	928.1.1 = {
-		   death = yes
-	 	  }
+862.1.1 = {
+birth = yes
+}
+
+928.1.1 = {
+death = yes
+}
 
 }
 
 120000048 = {
-	     name = "Gleb"
-	     religion = "slavic_pagan"
-	     culture = "ilmenian"
-	     dynasty = 1029118
-	     father = 6834
+name = "Gleb"
+religion = "slavic_pagan"
+culture = "ilmenian"
+dynasty = 1029118
+father = 6834
 
-	     860.1.1 = {
-		        birth = yes
-		       }
-	
-	     917.1.1 = {
-			death = yes
-		       }
+860.1.1 = {
+birth = yes
+}
+
+917.1.1 = {
+death = yes
+}
 }
 
 120000049 = {
-	     name = "Vyshata"
-	     religion = "slavic_pagan"
-	     culture = "ilmenian"
-	     dynasty = 1029118
-	     father = 120000048
+name = "Vyshata"
+religion = "slavic_pagan"
+culture = "ilmenian"
+dynasty = 1029118
+father = 120000048
 
-	     915.1.1 = {
-		        birth = yes
-		       }
-	
-	     975.1.1 = {
-			death = yes
-		       }
+915.1.1 = {
+birth = yes
+}
+
+975.1.1 = {
+death = yes
+}
 }
 
 120000050 = {
-	name = "Tunya"
-	religion = finnish_pagan
-	culture = mordvin
-	dynasty = 1029104
-	father = 159708
+name = "Tunya"
+religion = finnish_pagan
+culture = mordvin
+dynasty = 1029104
+father = 159708
 
-	880.1.1 = {
-		   birth = yes
-		  }
+880.1.1 = {
+birth = yes
+}
 
-	944.1.1 = {
-		   death = yes
-		  }
+944.1.1 = {
+death = yes
+}
 }
 
 120000051 = {
-	name = "Dergun"
-	religion = finnish_pagan
-	culture = mordvin
-	dynasty = 1029104
-	father = 120000050
+name = "Dergun"
+religion = finnish_pagan
+culture = mordvin
+dynasty = 1029104
+father = 120000050
 
-	913.1.1 = {
-		   birth = yes
-		  }
+913.1.1 = {
+birth = yes
+}
 
-	965.1.1 = {
-		   death = yes
-		  }
+965.1.1 = {
+death = yes
+}
 }
 
 120000052 = {
-	name = "Surt"
-	religion = finnish_pagan
-	culture = mordvin
-	dynasty = 1029107
-	father = 159714
+name = "Surt"
+religion = finnish_pagan
+culture = mordvin
+dynasty = 1029107
+father = 159714
 
-	906.1.1 = {
-		   birth = yes
-		  }
-	963.1.1 = {
-		   death = yes
-		  }
+906.1.1 = {
+birth = yes
+}
+963.1.1 = {
+death = yes
+}
 
 }
 
 120000053 = {
-	name = "Aras" #Fictional
-	religion = sunni
-	culture = maghreb_arabic
-	dynasty = 100000023
-	
-	918.1.1 = {
-		   birth = yes
-		  }
+name = "Aras" #Fictional
+religion = sunni
+culture = maghreb_arabic
+dynasty = 1000253198
 
-	971.1.1 = {
-		   death = yes
-		  }
+918.1.1 = {
+birth = yes
+}
+
+971.1.1 = {
+death = yes
+}
 }
 
 120000054 = {
-	name = "Umar" #Fictional
-	religion = sunni
-	culture = andalusian_arabic
-	dynasty = 12296
-	father = 73911
+name = "Umar" #Fictional
+religion = sunni
+culture = andalusian_arabic
+dynasty = 12296
+father = 73911
 
-	883.1.1 = {
-		   birth = yes
-		  }
+883.1.1 = {
+birth = yes
+}
 
-	937.1.1 = {
-		   death = yes
-		  }
+937.1.1 = {
+death = yes
+}
 }
 
 120000055 = {
-	name = "Ali" #Fictional
-	religion = sunni
-	culture = andalusian_arabic
-	dynasty = 12296
-	father = 120000054
+name = "Ali" #Fictional
+religion = sunni
+culture = andalusian_arabic
+dynasty = 12296
+father = 120000054
 
-	921.1.1 = {
-		   birth = yes
-		  }
+921.1.1 = {
+birth = yes
+}
 
-	973.1.1 = {
-		   death = yes
-		  }
+973.1.1 = {
+death = yes
+}
 }
 
 120000056 = {
-	name = "Mundir" #Fictional
-	religion = sunni
-	culture = andalusian_arabic
-	dynasty = 12305
-	father = 73959
-	
-	881.1.1 = {
-		   birth = yes
-		  }
+name = "Mundir" #Fictional
+religion = sunni
+culture = andalusian_arabic
+dynasty = 12305
+father = 73959
 
-	944.1.1 = {
-		   death = yes
-		  }
+881.1.1 = {
+birth = yes
+}
+
+944.1.1 = {
+death = yes
+}
 }
 
 120000057 = {
-	name = "Abdul-Hasan" #Fictional
-	religion = sunni
-	culture = andalusian_arabic
-	dynasty = 12305
-	father = 120000056
+name = "Abdul-Hasan" #Fictional
+religion = sunni
+culture = andalusian_arabic
+dynasty = 12305
+father = 120000056
 
-	925.1.1 = {
-		   birth = yes
-		  }
-	
-	989.1.1 = {
-		   death = yes
-		  }
+925.1.1 = {
+birth = yes
+}
+
+989.1.1 = {
+death = yes
+}
 }
 
 120000058 = {
-	name = "Ismail" #Fictional
-	religion = sunni
-	culture = basque
-	dynasty = 12293
-	father = 73822
+name = "Ismail" #Fictional
+religion = sunni
+culture = basque
+dynasty = 12293
+father = 73822
 
-	911.1.1 = {
-		   birth = yes
-		  }
+911.1.1 = {
+birth = yes
+}
 
-	968.1.1 = {
-		   death = yes
-		  }
+968.1.1 = {
+death = yes
+}
 }
 
 120000059 = {
-	name = "Yahaff" #Fictional
-	religion = sunni
-	culture = andalusian_arabic
-	dynasty = 100000025
+name = "Yahaff" #Fictional
+religion = sunni
+culture = andalusian_arabic
+dynasty = 1000253200
 
-	900.1.1 = {
-		   birth = yes
-		  }
-	950.1.1 = {
-		   death = yes
-		  }
+900.1.1 = {
+birth = yes
+}
+950.1.1 = {
+death = yes
+}
 }
 
 120000060 = {
-	name = "Muhammad" #Fictional
-	religion = sunni
-	culture = andalusian_arabic
-	dynasty = 100000025
-	father = 120000059
+name = "Muhammad" #Fictional
+religion = sunni
+culture = andalusian_arabic
+dynasty = 1000253200
+father = 120000059
 
-	923.1.1 = {
-		   birth = yes
-		  }
-	976.1.1 = {
-		   death = yes
-		  }
+923.1.1 = {
+birth = yes
+}
+976.1.1 = {
+death = yes
+}
 }
 
 120000061 = {
-	name = "Sanyo" #Fictional
-	religion = sunni
-	culture = andalusian_arabic
-	dynasty = 100000026
+name = "Sanyo" #Fictional
+religion = sunni
+culture = andalusian_arabic
+dynasty = 1000253201
 
-	916.1.1 = {
-		   birth = yes
-		  }
+916.1.1 = {
+birth = yes
+}
 
-	973.1.1 = {
-		   death = yes
-		  }
+973.1.1 = {
+death = yes
+}
 }
 
 120000062 = {
-	name = "Garsiya" #Fictional
-	religion = sunni
-	culture = andalusian_arabic
-	dynasty = 100000027
+name = "Garsiya" #Fictional
+religion = sunni
+culture = andalusian_arabic
+dynasty = 1000253202
 
-	928.1.1 = {
-		   birth = yes
-		  }
+928.1.1 = {
+birth = yes
+}
 
-	990.1.1 = {
-		   death = yes
-		  }
+990.1.1 = {
+death = yes
+}
 }
 
 120000063 = {
-	name = "Balashk" #Fictional
-	religion = sunni
-	culture = andalusian_arabic
-	dynasty = 100000028
+name = "Balashk" #Fictional
+religion = sunni
+culture = andalusian_arabic
+dynasty = 1000253203
 
-	926.1.1 = {
-		   birth = yes
-		  }
-
-	979.1.1 = {
-		   death = yes
-		  }
+926.1.1 = {
+birth = yes
 }
 
-120000064 = {
-	name = "Khalid" #Fictional
-	religion = sunni
-	culture = egyptian_arabic
-	dynasty = 100000029
-
-	919.1.1 = {
-		   birth = yes
-		  }
-
-	977.1.1 = {
-		   death = yes
-		  }
+979.1.1 = {
+death = yes
+}
 }
 
 120000065 = {
-	name = "Jalil" #Fictional
-	religion = sunni
-	culture = bedouin_arabic
-	dynasty = 100000031
+name = "Jalil" #Fictional
+religion = sunni
+culture = bedouin_arabic
+dynasty = 1000254533
 
-	920.1.1 = {
-		   birth = yes
-		  }
+920.1.1 = {
+birth = yes
+}
 
-	980.1.1 = {
-		   death = yes
-		  }
+980.1.1 = {
+death = yes
+}
 }
 
 120000066 = {
-	name = "Ibrahim" #Fictional
-	religion = sunni
-	culture = maghreb_arabic
-	dynasty = 100000032
+name = "Ibrahim" #Fictional
+religion = sunni
+culture = maghreb_arabic
+dynasty = 1000254534
 
-	909.1.1 = {
-		   birth = yes
-		  }
+909.1.1 = {
+birth = yes
+}
 
-	967.1.1 = {
-		   death = yes
-		  }
+967.1.1 = {
+death = yes
+}
 }
 
 120000067 = {
-	name = "Latif" #Fictional
-	religion = sunni
-	culture = levantine_arabic
-	dynasty = 100000024
+name = "Latif" #Fictional
+religion = sunni
+culture = levantine_arabic
+dynasty = 1000253199
 
-	917.1.1 = {
-		   birth = yes
-		  }
-
-	973.1.1 = {
-		   death = yes
-		  }
+917.1.1 = {
+birth = yes
 }
 
-120000068 = {
-	name = "Sharif" #Fictional
-	religion = sunni
-	culture = egyptian_arabic
-	dynasty = 100000030
-
-	918.1.1 = {
-		   birth = yes
-		  }
-
-	970.1.1 = {
-		   death = yes
-		  }
+973.1.1 = {
+death = yes
+}
 }
 
 120000069 = {
-	name = "Abdul" #Fictional
-	religion = sunni
-	culture = levantine_arabic
-	dynasty = 100000033
+name = "Abdul" #Fictional
+religion = sunni
+culture = levantine_arabic
+dynasty = 1000254535
 
-	921.1.1 = {
-		   birth = yes
-		  }
+921.1.1 = {
+birth = yes
+}
 
-	985.1.1 = {
-		   death = yes
-		  }
+985.1.1 = {
+death = yes
+}
 }
 
 120000070 = {
-	name = "Muhammed" #Fictional
-	religion = sunni
-	culture = bedouin_arabic
-	dynasty = 100000034
+name = "Muhammed" #Fictional
+religion = sunni
+culture = bedouin_arabic
+dynasty = 1000254536
 
-	918.1.1 = {
-		   birth = yes
-		  }
+918.1.1 = {
+birth = yes
+}
 
-	964.1.1 = {
-		   death = yes
-		  }
+964.1.1 = {
+death = yes
+}
 }
 
 120000071 = {
-	name = "Ashi"
-	religion = sunni
-	culture = coptic
-	dynasty = 100000035
+name = "Ashi"
+religion = sunni
+culture = coptic
+dynasty = 1000254537
 
-	912.1.1 = {
-		   birth = yes
-		  }
-	
-	969.1.1 = {
-		   death = yes
-		  }
+912.1.1 = {
+birth = yes
+}
+
+969.1.1 = {
+death = yes
+}
 }
 
 120000072 = {
-	name = "Georgi"
-	religion = chalcedonian
-	culture = bulgarian
-	dynasty = 100000036
+name = "Georgi"
+religion = chalcedonian
+culture = bulgarian
+dynasty = 1000254538
 
-	902.1.1 = {
-		   birth = yes
-		  }
-	
-	969.1.30 = {
-		   death = yes
-		  }
+902.1.1 = {
+birth = yes
+}
+
+969.1.30 = {
+death = yes
+}
 }
 
 120000073 = {
-	name = "Svetoslav"
-	religion = chalcedonian
-	culture = bulgarian
-	dynasty = 100000037
+name = "Svetoslav"
+religion = chalcedonian
+culture = bulgarian
+dynasty = 1000254539
 
-	916.1.1 = {
-		   birth = yes
-		  }
-	
-	962.1.1 = {
-		   death = yes
-		  }
+916.1.1 = {
+birth = yes
+}
+
+962.1.1 = {
+death = yes
+}
 }
 
 120000074 = {
-	name = "Constantine"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 641
-	father = 41317
+name = "Constantine"
+religion = chalcedonian
+culture = greek
+dynasty = 641
+father = 41317
 
-	915.1.1 = {
-		   birth = yes
-		  }
+915.1.1 = {
+birth = yes
+}
 
-	964.1.1 = {
-		   death = { death_reason = death_poor_health }
-		  }
+964.1.1 = {
+death = { death_reason = death_poor_health }
+}
 
 }
 
 120000075 = {
-	name = "Theodoulos"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101446
+name = "Theodoulos"
+religion = chalcedonian
+culture = greek
+dynasty = 101446
 
-	904.1.1 = {
-		   birth = yes
-		  }
-	
-	970.1.1 = {
-		   death = yes
-		  }
+904.1.1 = {
+birth = yes
+}
+
+970.1.1 = {
+death = yes
+}
 }
 
 120000076 = {
-	name = "Theodore"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101446
-	father = 120000075
+name = "Theodore"
+religion = chalcedonian
+culture = greek
+dynasty = 101446
+father = 120000075
 
-	920.1.1 = {
-		   birth = yes
-		  }
-	
-	962.1.1 = {
-		   death = { death_reason = death_battle }
-		  }
+920.1.1 = {
+birth = yes
+}
+
+962.1.1 = {
+death = { death_reason = death_battle }
+}
 }
 
 120000077 = {
-	name = "Bardas"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101446
-	father = 120000075
+name = "Bardas"
+religion = chalcedonian
+culture = greek
+dynasty = 101446
+father = 120000075
 
-	923.1.1 = {
-		   birth = yes
-		  }
-	
-	981.1.1 = {
-		   death = yes
-		  }
+923.1.1 = {
+birth = yes
+}
+
+981.1.1 = {
+death = yes
+}
 }
 
 120000078 = {
-	name = "Nikephoros"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101446
-	father = 120000075
+name = "Nikephoros"
+religion = chalcedonian
+culture = greek
+dynasty = 101446
+father = 120000075
 
-	930.1.1 = {
-		   birth = yes
-		  }
-	
-	992.1.1 = {
-		   death = yes
-		  }
+930.1.1 = {
+birth = yes
+}
+
+992.1.1 = {
+death = yes
+}
 }
 
 120000079 = {
-	name = "Constantine"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 100000038
+name = "Constantine"
+religion = chalcedonian
+culture = greek
+dynasty = 1000254540
 
-	876.1.1 = {
-		   birth = yes
-		  }
+876.1.1 = {
+birth = yes
+}
 
-	917.1.1 = {
-		   death = { death_reason = death_battle }
-		  }
-	
+917.1.1 = {
+death = { death_reason = death_battle }
+}
+
 }
 
 120000080 = {
-	name = "Bardas"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 100000038
-	father = 120000079
+name = "Bardas"
+religion = chalcedonian
+culture = greek
+dynasty = 1000254540
+father = 120000079
 
-	917.1.1 = {
-		   birth = yes
-		  }
+917.1.1 = {
+birth = yes
+}
 
-	972.1.1 = {
-		   death = yes
-		  }
+972.1.1 = {
+death = yes
+}
 }
 
 120000081 = {
-	name = "Theoktistos"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 100000039
-	
-	908.1.1 = {
-		   birth = yes
-		  }
+name = "Theoktistos"
+religion = chalcedonian
+culture = greek
+dynasty = 1000254541
 
-	970.1.1 = {
-		   death = yes
-		  }
+908.1.1 = {
+birth = yes
+}
+
+970.1.1 = {
+death = yes
+}
 }
 
 120000082 = {
-	name = "Basileios"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101291
+name = "Basileios"
+religion = chalcedonian
+culture = greek
+dynasty = 101291
 
-	911.1.1 = {
-		   birth = yes
-		  }
+911.1.1 = {
+birth = yes
+}
 
-	972.1.1 = {
-		   death = yes
-		  }
+972.1.1 = {
+death = yes
+}
 }
 
 120000083 = {
-	name = "Michael"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101265
+name = "Michael"
+religion = chalcedonian
+culture = greek
+dynasty = 101265
 
-	901.1.1 = {
-		   birth = yes
-		  }
+901.1.1 = {
+birth = yes
+}
 
-	955.1.1 = {
-		   death = yes
-		  }
+955.1.1 = {
+death = yes
+}
 }
 
 120000084 = {
-	name = "Leon"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101322
+name = "Leon"
+religion = chalcedonian
+culture = greek
+dynasty = 101322
 
-	850.1.1 = {
-		   birth = yes
-		  }
+850.1.1 = {
+birth = yes
+}
 
-	912.1.1 = {
-		   death = yes
-		  }
+912.1.1 = {
+death = yes
+}
 }
 
 120000085 = {
-	name = "Theodoros"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101322
-	father = 120000084
+name = "Theodoros"
+religion = chalcedonian
+culture = greek
+dynasty = 101322
+father = 120000084
 
-	899.1.1 = {
-		   birth = yes
-		  }
+899.1.1 = {
+birth = yes
+}
 
-	958.1.1 = {
-		   death = yes
-		  }
+958.1.1 = {
+death = yes
+}
 }
 
 120000086 = {
-	name = "Arotras"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101349
-	
-	915.1.1 = {
-		   birth = yes
-		  }
-	
-	981.1.1 = {
-		   death = yes
-		  }
+name = "Arotras"
+religion = chalcedonian
+culture = greek
+dynasty = 101349
+
+915.1.1 = {
+birth = yes
+}
+
+981.1.1 = {
+death = yes
+}
 }
 
 120000087 = {
-	name = "Vakram"
-	religion = chalcedonian
-	culture = armenian
-	dynasty = 100000040
+name = "Vakram"
+religion = chalcedonian
+culture = armenian
+dynasty = 1000254542
 
-	906.1.1 = {
-		   birth = yes
-		  }
+906.1.1 = {
+birth = yes
+}
 
-	970.1.1 = {
-		   death = yes
-		  }
+970.1.1 = {
+death = yes
+}
 
 }
 
 120000088 = {
-	name = "Theoktistos"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101079
+name = "Theoktistos"
+religion = chalcedonian
+culture = greek
+dynasty = 101079
 
-	800.1.1 = {
-		   birth = yes
-		  }
+800.1.1 = {
+birth = yes
+}
 
-	865.1.1 = {
-		   death = yes
-		  }
+865.1.1 = {
+death = yes
+}
 }
 
 120000089 = {
-	name = "Konstantinos"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101079
-	father = 120000088
+name = "Konstantinos"
+religion = chalcedonian
+culture = greek
+dynasty = 101079
+father = 120000088
 
-	850.1.1 = {
-		   birth = yes
-		  }
+850.1.1 = {
+birth = yes
+}
 
-	916.1.1 = {
-		   death = yes
-		  }
+916.1.1 = {
+death = yes
+}
 }
 
 120000090 = {
-	name = "Theoktistos"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101079
-	father = 120000089
+name = "Theoktistos"
+religion = chalcedonian
+culture = greek
+dynasty = 101079
+father = 120000089
 
-	903.1.1 = {
-		   birth = yes
-		  }
+903.1.1 = {
+birth = yes
+}
 
-	965.1.1 = {
-		   death = yes
-		  }
+965.1.1 = {
+death = yes
+}
 }
 
 120000091 = {
-	name = "Ioannes"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101079
-	father = 120000090
+name = "Ioannes"
+religion = chalcedonian
+culture = greek
+dynasty = 101079
+father = 120000090
 
-	955.1.1 = {
-		   birth = yes
-		  }
+955.1.1 = {
+birth = yes
+}
 
-	1019.1.1 = {
-		    death = yes
-		   }
+1019.1.1 = {
+death = yes
+}
 }
 
 120000092 = {
-	name = "Niketas"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 1022284
-	
-	909.1.1 = {
-		   birth = yes
-		  }
+name = "Niketas"
+religion = chalcedonian
+culture = greek
+dynasty = 1022284
 
-	967.1.1 = {
-		   death = yes
-		  }
+909.1.1 = {
+birth = yes
+}
+
+967.1.1 = {
+death = yes
+}
 }
 
 120000093 = {
-	name = "Nikephoros"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 100000041
+name = "Nikephoros"
+religion = chalcedonian
+culture = greek
+dynasty = 1000254543
 
-	911.1.1 = {
-		   birth = yes
-		  }
+911.1.1 = {
+birth = yes
+}
 
-	963.1.1 = {
-		   death = yes
-		  }
+963.1.1 = {
+death = yes
+}
 }
 
 120000094 = {
-	name = "Alexandros"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 100000042
+name = "Alexandros"
+religion = chalcedonian
+culture = greek
+dynasty = 1000253217
 
-	898.1.1 = {
-		   birth = yes
-		  }
+898.1.1 = {
+birth = yes
+}
 
-	955.1.1 = {
-		   death = yes
-		  }
+955.1.1 = {
+death = yes
+}
 }
 
 120000095 = {
-	name = "Komitas"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 100000043
+name = "Komitas"
+religion = chalcedonian
+culture = greek
+dynasty = 1000253218
 
-	906.1.1 = {
-		   birth = yes
-		  }
+906.1.1 = {
+birth = yes
+}
 
-	959.1.1 = {
-		   death = yes
-		  }
+959.1.1 = {
+death = yes
+}
 }
 
 120000096 = {
-	name = "Georgios"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 100000044
+name = "Georgios"
+religion = chalcedonian
+culture = greek
+dynasty = 1000253219
 
-	909.1.1 = {
-		   birth = yes
-		  }
+909.1.1 = {
+birth = yes
+}
 
-	970.1.1 = {
-		   death = yes
-		  }
+970.1.1 = {
+death = yes
+}
 }
 
 120000097 = {
-	name = "Tiberios"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 100000045
+name = "Tiberios"
+religion = chalcedonian
+culture = greek
+dynasty = 1000253220
 
-	897.1.1 = {
-		   birth = yes
-		  }
+897.1.1 = {
+birth = yes
+}
 
-	963.1.1 = {
-		   death = yes
-		  }
+963.1.1 = {
+death = yes
+}
 }
 
 120000098 = {
-	name = "Pribina"
-	religion = chalcedonian
-	culture = croatian
-	dynasty = 100000046
+name = "Pribina"
+religion = chalcedonian
+culture = croatian
+dynasty = 1000253221
 
-	910.1.1 = {
-		   birth = yes
-		  }
+910.1.1 = {
+birth = yes
+}
 
-	969.1.1 = {
-		   death = yes
-		  }
+969.1.1 = {
+death = yes
+}
 
 }
 120000099 = {
-	name = "Tore" #fictional
-	dynasty = 1043303
-	religion = norse_pagan
-	culture = norse
-	father = 120000040 
+name = "Tore" #fictional
+dynasty = 1043303
+religion = norse_pagan
+culture = norse
+father = 120000040 
 
-	927.1.1 = {
-	           birth = yes
-	          }
-	
-	979.1.1 = {
-		   death = yes
-		  }
+927.1.1 = {
+birth = yes
+}
+
+979.1.1 = {
+death = yes
+}
 }
 
 120000100 = {
-	name = "Nikephoros" #fictional
-	dynasty = 100000066
-	religion = chalcedonian
-	culture = greek
+name = "Nikephoros" #fictional
+dynasty = 1000253239
+religion = chalcedonian
+culture = greek
 
-	923.1.1 = {
-	           birth = yes
-	          }
-	
-	979.1.1 = {
-		   death = yes
-		  }
+923.1.1 = {
+birth = yes
+}
+
+979.1.1 = {
+death = yes
+}
 }
 120000101 = {
-	name = "Romanos" #fictional
-	dynasty = 101322
-	religion = chalcedonian
-	culture = greek
-	father = 120000085
+name = "Romanos" #fictional
+dynasty = 101322
+religion = chalcedonian
+culture = greek
+father = 120000085
 
-	931.1.1 = {
-	           birth = yes
-	          }
-	
-	991.1.1 = {
-		   death = yes
-		  }
+931.1.1 = {
+birth = yes
+}
+
+991.1.1 = {
+death = yes
+}
 }
 120000102 = {
-	name = "Ioannes" #fictional
-	dynasty = 100000067
-	religion = chalcedonian
-	culture = greek
+name = "Ioannes" #fictional
+dynasty = 1000253240
+religion = chalcedonian
+culture = greek
 
-	924.1.1 = {
-	           birth = yes
-	          }
-	
-	973.1.1 = {
-		   death = yes
-		  }
+924.1.1 = {
+birth = yes
+}
+
+973.1.1 = {
+death = yes
+}
 }
 
 120000103 = {
-	name = "Mikhael"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 100000042
-	father = 120000094
+name = "Mikhael"
+religion = chalcedonian
+culture = greek
+dynasty = 1000253217
+father = 120000094
 
-	937.1.1 = {
-		   birth = yes
-		  }
+937.1.1 = {
+birth = yes
+}
 
-	995.1.1 = {
-		   death = yes
-		  }
+995.1.1 = {
+death = yes
+}
 }
 120000104 = {
-	name = "Bardas"
-	religion = chalcedonian
-	culture = greek
-	dynasty = 101446
-	father = 120000075
+name = "Bardas"
+religion = chalcedonian
+culture = greek
+dynasty = 101446
+father = 120000075
 
-	927.1.1 = {
-		   birth = yes
-		  }
-	
-	985.1.1 = {
-		   death = yes
-		  }
+927.1.1 = {
+birth = yes
+}
+
+985.1.1 = {
+death = yes
+}
 }
 120000105 = {
-	name = "Svetoslav"
-	religion = chalcedonian
-	culture = bulgarian
-	dynasty = 100000037
-	father = 120000073
+name = "Svetoslav"
+religion = chalcedonian
+culture = bulgarian
+dynasty = 1000254539
+father = 120000073
 
-	940.1.1 = {
-		   birth = yes
-		  }
-	
-	987.1.1 = {
-		   death = yes
-		  }
+940.1.1 = {
+birth = yes
+}
+
+987.1.1 = {
+death = yes
+}
 }
 120000106 = {
-	name = "Richer"
-	religion = chalcedonian
-	culture = german
-	879.1.1 = {
-		birth = yes
-	}
-	945.1.1 = {
-		death = yes
-	}
+name = "Richer"
+religion = chalcedonian
+culture = german
+879.1.1 = {
+birth = yes
+}
+945.1.1 = {
+death = yes
+}
 }
 120000107 = {
-	name = "Hugh"
-	religion = chalcedonian
-	culture = frankish
-	888.1.1 = {
-		birth = yes
-	}
-	947.1.1 = {
-		death = yes
-	}
+name = "Hugh"
+religion = chalcedonian
+culture = frankish
+888.1.1 = {
+birth = yes
+}
+947.1.1 = {
+death = yes
+}
 }
 120000108 = {
-	name = "Farabert"
-	religion = chalcedonian
-	culture = frankish
-	892.1.1 = {
-		birth = yes
-	}
-	953.1.1 = {
-		death = yes
-	}
+name = "Farabert"
+religion = chalcedonian
+culture = frankish
+892.1.1 = {
+birth = yes
+}
+953.1.1 = {
+death = yes
+}
 }
 120000109 = {
-	name = "Rathier"
-	religion = chalcedonian
-	culture = frankish
-	890.1.1 = {
-		birth = yes
-	}
-	974.4.25 = {
-		death = yes
-	}
+name = "Rathier"
+religion = chalcedonian
+culture = frankish
+890.1.1 = {
+birth = yes
+}
+974.4.25 = {
+death = yes
+}
 }
 120000110 = {
-	name = "Baldrick"
-	religion = chalcedonian
-	culture = german
-	901.1.1 = {
-		birth = yes
-	}
-	959.1.1 = {
-		death = yes
-	}
+name = "Baldrick"
+religion = chalcedonian
+culture = german
+901.1.1 = {
+birth = yes
+}
+959.1.1 = {
+death = yes
+}
 }
 120000111 = {
-	name = "Eraclus"
-	religion = chalcedonian
-	culture = german
-	897.1.1 = {
-		birth = yes
-	}
-	971.10.28 = {
-		death = yes
-	}
+name = "Eraclus"
+religion = chalcedonian
+culture = german
+897.1.1 = {
+birth = yes
+}
+971.10.28 = {
+death = yes
+}
 }
 120000112 = {
-	name = "Ricfrid"
-	religion = chalcedonian
-	culture = frankish
-	dynasty = 100000073
-	865.1.1 = {
-		birth = yes
-	}
-	950.1.1 = {
-		death = yes
-	}
+name = "Ricfrid"
+religion = chalcedonian
+culture = frankish
+dynasty = 1000253245
+865.1.1 = {
+birth = yes
+}
+950.1.1 = {
+death = yes
+}
 }
 120000113 = {
-	name = "Nibelung"
-	religion = chalcedonian
-	culture = frankish
-	dynasty = 100000073
-	father = 120000112
-	892.1.1 = {
-		birth = yes
-	}
-	917.1.1 = {
-		add_spouse = 120000117
-	}
-	953.1.1 = {
-		death = yes
-	}
+name = "Nibelung"
+religion = chalcedonian
+culture = frankish
+dynasty = 1000253245
+father = 120000112
+892.1.1 = {
+birth = yes
+}
+917.1.1 = {
+add_spouse = 120000117
+}
+953.1.1 = {
+death = yes
+}
 }
 120000114 = {
-	name = "Baldrick"
-	religion = chalcedonian
-	culture = frankish
-	dynasty = 100000073
-	father = 120000112
-	897.1.1 = {
-		birth = yes
-	}
-	975.1.1 = {
-		death = yes
-	}
+name = "Baldrick"
+religion = chalcedonian
+culture = frankish
+dynasty = 1000253245
+father = 120000112
+897.1.1 = {
+birth = yes
+}
+975.1.1 = {
+death = yes
+}
 }
 120000115 = {
-	name = "Rudolf"
-	religion = chalcedonian
-	culture = frankish
-	dynasty = 100000073
-	father = 120000112
-	889.1.1 = {
-		birth = yes
-	}
-	946.1.1 = {
-		death = yes
-	}
+name = "Rudolf"
+religion = chalcedonian
+culture = frankish
+dynasty = 1000253245
+father = 120000112
+889.1.1 = {
+birth = yes
+}
+946.1.1 = {
+death = yes
+}
 }
 120000116 = {
-	name = "Rudolf"
-	religion = chalcedonian
-	culture = frankish
-	dynasty = 100000073
-	father = 120000115
-	910.1.1 = {
-		birth = yes
-	}
-	963.1.1 = {
-		death = yes
-	}
+name = "Rudolf"
+religion = chalcedonian
+culture = frankish
+dynasty = 1000253245
+father = 120000115
+910.1.1 = {
+birth = yes
+}
+963.1.1 = {
+death = yes
+}
 }
 120000117 = {
-	name = "Liethard"
-	female = yes
-	religion = chalcedonian
-	culture = dutch
-	dynasty = 7198
-	father = 7811
-	901.1.1 = {
-		birth = yes
-	}
-	917.1.1 = {
-		add_spouse = 120000113
-	}
-	963.1.1 = {
-		death = yes
-	}
+name = "Liethard"
+female = yes
+religion = chalcedonian
+culture = dutch
+dynasty = 7198
+father = 7811
+901.1.1 = {
+birth = yes
+}
+917.1.1 = {
+add_spouse = 120000113
+}
+963.1.1 = {
+death = yes
+}
 }
 120000118 = {
-	name = "Odo"
-	religion = chalcedonian
-	culture = dutch
-	dynasty = 7198
-	father = 161296
-	962.1.1 = {
-		birth = yes
-	}
-	1016.1.1 = {
-		death = yes
-	}
+name = "Odo"
+religion = chalcedonian
+culture = dutch
+dynasty = 7198
+father = 161296
+962.1.1 = {
+birth = yes
+}
+1016.1.1 = {
+death = yes
+}
 }
 120000119 = {
-	name = "Baldrick"
-	religion = chalcedonian
-	culture = dutch
-	dynasty = 7198
-	father = 120000118
-	985.1.1 = {
-		birth = yes
-	}
-	1018.1.1 = {
-		death = yes
-	}
+name = "Baldrick"
+religion = chalcedonian
+culture = dutch
+dynasty = 7198
+father = 120000118
+985.1.1 = {
+birth = yes
+}
+1018.1.1 = {
+death = yes
+}
 }
 120000120 = {
-	name = "Stephen"
-	religion = chalcedonian
-	culture = frankish
-	dynasty = 100000074
-	902.1.1 = {
-		birth = yes
-	}
-	956.1.1 = {
-		death = yes
-	}
+name = "Stephen"
+religion = chalcedonian
+culture = frankish
+dynasty = 1000253246
+902.1.1 = {
+birth = yes
+}
+956.1.1 = {
+death = yes
+}
 }
 120000121 = {
-	name = "Wolbodo"
-	religion = chalcedonian
-	culture = frankish
-	950.1.1 = {
-		birth = yes
-	}
-	1021.4.20 = {
-		death = yes
-	}
+name = "Wolbodo"
+religion = chalcedonian
+culture = frankish
+950.1.1 = {
+birth = yes
+}
+1021.4.20 = {
+death = yes
+}
 }
 120000122 = {
 	name = "Durandus"
@@ -1928,7 +1884,7 @@
 
 120000130 = {
 	name = "Altun"
-	dynasty = 100000075 #Tash
+	dynasty = 1000253247 #Tash
 	religion = sunni
 	culture = turkish
 	958.1.1 = {
@@ -1941,7 +1897,7 @@
 
 120000131 = {
 	name = "Harun"
-	dynasty = 100000075 #Tash
+	dynasty = 1000253247 #Tash
 	religion = sunni
 	culture = turkish
 	father = 120000130
@@ -1950,14 +1906,14 @@
 	}
 	1035.1.1 = {
 		death = {
-				 death_reason = death_murder
-				 killer = 144127
-				}
+			death_reason = death_murder
+			killer = 144127
+		}
 	}
 }
 120000132 = {
 	name = "Ismail"
-	dynasty = 100000075 #Tash
+	dynasty = 1000253247 #Tash
 	religion = sunni
 	culture = turkish
 	father = 120000130
@@ -1974,302 +1930,287 @@
 	dynasty = 12272 #Yabguid
 	religion = sunni
 	culture = turkish
-	
+
 	1002.1.1 = {
-			birth = yes
+		birth = yes
 	}
 	1043.5.1 = {
-				death = {
-						 death_reason = death_murder
-						 killer = 3036
-						}
+		death = {
+			death_reason = death_murder
+			killer = 3036
+		}
 	}
 }
-		
+
 120000134  = {
-		name = "Narvait"
-		dynasty = 100374
-		religion = "baltic_pagan"
-		culture = "lettigallish"
-		father = 1000254903
-		
-		1002.1.1 = {
-			birth=yes
-			}
-		1059.1.1 = {
-			death=yes
-			}
-		}
-		
+	name = "Narvait"
+	dynasty = 100374
+	religion = "baltic_pagan"
+	culture = "lettigallish"
+	father = 1000254903
+
+	1002.1.1 = {
+		birth=yes
+	}
+	1059.1.1 = {
+		death=yes
+	}
+}
+
 120000135  = {
-		name = "Auctune"
-		dynasty = 100374
-		religion = "baltic_pagan"
-		culture = "lettigallish"
-		father = 120000134
-		
-		1023.1.1 = {
-			birth=yes
-			}
-		1066.1.1 = {
-			death=yes
-			}
-		}
-		
+	name = "Auctune"
+	dynasty = 100374
+	religion = "baltic_pagan"
+	culture = "lettigallish"
+	father = 120000134
+
+	1023.1.1 = {
+		birth=yes
+	}
+	1066.1.1 = {
+		death=yes
+	}
+}
+
 120000136  = {
-		name = "Deryab"
-		dynasty = 100376
-		religion = "finnish_pagan"
-		culture = "ugricbaltic"
-		
-		1012.1.1 = {
-			birth=yes
-			}
-		1065.1.1 = {
-			death=yes
-			}
-		}
-		
+	name = "Deryab"
+	dynasty = 100376
+	religion = "finnish_pagan"
+	culture = "ugricbaltic"
+
+	1012.1.1 = {
+		birth=yes
+	}
+	1065.1.1 = {
+		death=yes
+	}
+}
+
 120000137  = {
-		name = "Pukuveras"
-		dynasty = 100376
-		religion = "baltic_pagan"
-		culture = "lettigallish"
-		father = 1000254904
-		
-		1012.1.1 = {
-			birth=yes
-			}
-		1065.1.1 = {
-			death=yes
-			}
-		}
-		
+	name = "Pukuveras"
+	dynasty = 100376
+	religion = "baltic_pagan"
+	culture = "lettigallish"
+	father = 1000254904
+
+	1012.1.1 = {
+		birth=yes
+	}
+	1065.1.1 = {
+		death=yes
+	}
+}
+
 120000138  = {
-		name = "Uluj" #fictional
-		dynasty = 100000077
-		religion = "sunni"
-		culture = "turkish"
-		
-		878.1.1 = {
-			birth=yes
-			}
-		945.1.1 = {
-			death=yes
-			}
-		}
-		
+	name = "Uluj" #fictional
+	dynasty = 1000253249
+	religion = "sunni"
+	culture = "turkish"
+
+	878.1.1 = {
+		birth=yes
+	}
+	945.1.1 = {
+		death=yes
+	}
+}
+
 120000139  = {
-		name = "Muhammed" #fictional
-		dynasty = 100000077
-		religion = "sunni"
-		culture = "turkish"
-		father = 120000138
-		
-		917.1.1 = {
-			birth=yes
-			}
-		988.1.1 = {
-			death=yes
-			}
-		}
-		
+	name = "Muhammed" #fictional
+	dynasty = 1000253249
+	religion = "sunni"
+	culture = "turkish"
+	father = 120000138
+
+	917.1.1 = {
+		birth=yes
+	}
+	988.1.1 = {
+		death=yes
+	}
+}
+
 120000140  = {
-		name = "Manfred"
-		dynasty = 101842
-		religion = "chalcedonian"
-		culture = "frankish"
-		
-		861.1.1 = {
-			birth=yes
-			}
-		925.1.1 = {
-			death=yes
-			}
-		}
-		
+name = "Manfred"
+dynasty = 101842
+religion = "chalcedonian"
+culture = "frankish"
+
+861.1.1 = {
+birth=yes
+}
+925.1.1 = {
+death=yes
+}
+}
+
 120000141  = {
-		name = "Milo"
-		dynasty = 101842
-		religion = "chalcedonian"
-		culture = "frankish"
-		father = 120000140
-		
-		887.1.1 = {
-			birth=yes
-			}
-		955.1.1 = {
-			death=yes
-			}
-		}
-		
+name = "Milo"
+dynasty = 101842
+religion = "chalcedonian"
+culture = "frankish"
+father = 120000140
+
+887.1.1 = {
+birth=yes
+}
+955.1.1 = {
+death=yes
+}
+}
+
 120000142  = {
-		name = "Manfred"
-		dynasty = 101842
-		religion = "chalcedonian"
-		culture = "frankish"
-		father = 120000140
-		
-		891.1.1 = {
-			birth=yes
-			}
-		957.1.1 = {
-			death=yes
-			}
-		}
-		
+name = "Manfred"
+dynasty = 101842
+religion = "chalcedonian"
+culture = "frankish"
+father = 120000140
+
+891.1.1 = {
+birth=yes
+}
+957.1.1 = {
+death=yes
+}
+}
+
 120000143  = {
-		name = "Egelric"
-		dynasty = 101842
-		religion = "chalcedonian"
-		culture = "frankish"
-		father = 120000142
-		
-		921.1.1 = {
-			birth=yes
-			}
-		995.1.1 = {
-			death=yes
-			}
-		}
-		
-120000144  = {
-		name = "Bertram"
-		dynasty = 101842
-		religion = "chalcedonian"
-		culture = "veneto"
-		father = 1000252603
-		
-		977.1.1 = {
-			birth=yes
-			}
-		1027.1.1 = {
-			death=yes
-			}
-		}
-		
+name = "Egelric"
+dynasty = 101842
+religion = "chalcedonian"
+culture = "frankish"
+father = 120000142
+
+921.1.1 = {
+birth=yes
+}
+995.1.1 = {
+death=yes
+}
+}
+
 120000145  = {
-		name = "Heinrich"
-		dynasty = 247
-		religion = chalcedonian
-		culture = german
-		father = 10097
-		
-		911.1.1 = {
-			birth=yes
-			}
-		964.7.3 = {
-			death=yes
-			}
-		}
-		
+name = "Heinrich"
+dynasty = 247
+religion = chalcedonian
+culture = german
+father = 10097
+
+911.1.1 = {
+birth=yes
+}
+964.7.3 = {
+death=yes
+}
+}
+
 120000146  = {
-		name = "Dietrich"
-		religion = chalcedonian
-		culture = german
-		
-		916.1.1 = {
-			birth=yes
-			}
-		977.7.3 = {
-			death=yes
-			}
-		}
-		
+name = "Dietrich"
+religion = chalcedonian
+culture = german
+
+916.1.1 = {
+birth=yes
+}
+977.7.3 = {
+death=yes
+}
+}
+
 120000147  = {
-		name = "Egbert"
-		dynasty = 432
-		religion = chalcedonian
-		culture = dutch
-		father = 106550
-		
-		949.1.1 = {
-			birth=yes
-			}
-		993.12.9 = {
-			death=yes
-			}
-		}
-		
+name = "Egbert"
+dynasty = 432
+religion = chalcedonian
+culture = dutch
+father = 106550
+
+949.1.1 = {
+birth=yes
+}
+993.12.9 = {
+death=yes
+}
+}
+
 120000148  = {
-		name = "Megingod"
-		religion = chalcedonian
-		culture = german
-		
-		958.1.1 = {
-			birth=yes
-			}
-		1000.1.1 = {
-			culture = colognian
-		}
-		1015.1.1 = {
-			death=yes
-			}
-		}
-		
+name = "Megingod"
+religion = chalcedonian
+culture = german
+
+958.1.1 = {
+birth=yes
+}
+1000.1.1 = {
+culture = colognian
+}
+1015.1.1 = {
+death=yes
+}
+}
+
 120000149  = {
-		name = "Eberhard"
-		religion = chalcedonian
-		culture = colognian
-		
-		1010.1.1 = {
-			birth=yes
-			}
-		1054.1.1 = {
-			religion = catholic
-		}
-		1066.4.15 = {
-			death=yes
-			}
-		}
-		
+name = "Eberhard"
+religion = chalcedonian
+culture = colognian
+
+1010.1.1 = {
+birth=yes
+}
+1054.1.1 = {
+religion = catholic
+}
+1066.4.15 = {
+death=yes
+}
+}
+
 120000150  = {
-		name = "Konrad"
-		dynasty = 101692
-		religion = chalcedonian
-		culture = old_saxon
-		father = 20263
-		
-		1034.1.1 = {
-			birth=yes
-			}
-		1054.1.1 = {
-			religion = catholic
-		}
-		1066.6.1 = {
-			death = {
-					 death_reason = death_murder
-					}
-			}
-		}
-		
+name = "Konrad"
+dynasty = 101692
+religion = chalcedonian
+culture = old_saxon
+father = 20263
+
+1034.1.1 = {
+birth=yes
+}
+1054.1.1 = {
+religion = catholic
+}
+1066.6.1 = {
+death = {
+death_reason = death_murder
+}
+}
+}
+
 120000151  = {
-		name = "Hasan"
-		dynasty = 100000083
-		religion = sunni
-		culture = turkish
-		father = 130000108
-		
-		913.1.1 = {
-			birth=yes
-			}
-		980.1.1 = {
-			death = yes
-			}
-		}
-		
+name = "Hasan"
+dynasty = 1000253255
+religion = sunni
+culture = turkish
+father = 1000255924
+
+913.1.1 = {
+birth=yes
+}
+980.1.1 = {
+death = yes
+}
+}
+
 120000152  = {
-		name = "Mahmud"
-		dynasty = 100000083
-		religion = sunni
-		culture = turkish
-		father = 120000151
-		
-		934.1.1 = {
-			birth=yes
-			}
-		1000.1.1 = {
-			death = yes
-			}
-		}
+name = "Mahmud"
+dynasty = 1000253255
+religion = sunni
+culture = turkish
+father = 120000151
+
+934.1.1 = {
+birth=yes
+}
+1000.1.1 = {
+death = yes
+}
+}
 

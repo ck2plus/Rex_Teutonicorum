@@ -80,14 +80,14 @@
 	#holder = #Ceolwulf II
 #}
 881.1.1 = {
-	holder = 130000001 #Æthelred
+	holder = 1000255423 #Æthelred
 	set_tribute_suzerain = { who = d_somerset type = permanent }
 }
 911.1.1 = {
-	holder = 130000002 #Æthelflæd
+	holder = 1000255424 #Æthelflæd
 }
 918.6.12 = {
-	holder = 130000003 #Ælfwynn
+	holder = 1000255425 #Ælfwynn
 }
 918.12.5 = {
 	holder = 100 # Edward the Elder

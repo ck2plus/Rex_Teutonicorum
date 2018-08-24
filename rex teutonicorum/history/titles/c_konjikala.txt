@@ -10,7 +10,7 @@
 	holder=45106 # Faraz
 }
 882.1.1 = {
-	holder = 130000127 #Rafi
+	holder = 1000254565 #Rafi
 }
 933.1.1 = {
 	holder = 120000034 #Abu Bakr

@@ -3,34 +3,34 @@
 	liege = d_holland
 }
 788.1.2 = {
-	holder = 130000091 #Theodard
+	holder = 1000267203 #Theodard
 }
 790.1.1 = {
-	holder = 130000092 #Hamacarus
+	holder = 1000267204 #Hamacarus
 }
 806.1.1 = {
-	holder = 130000093 #Ricfried
+	holder = 1000267205 #Ricfried
 }
 816.1.1 = {
-	holder = 130000094 #Frederik
+	holder = 1000260304 #Frederik
 }
 834.1.1 = {
-	holder = 130000095 #Alberik
+	holder = 1000260302 #Alberik
 }
 845.1.1 = {
-	holder = 130000096 #Eginhard
+	holder = 1000252274 #Eginhard
 }
 848.1.1 = {
-	holder = 130000097 #Liudger
+	holder = 1000260303 #Liudger
 }
 854.1.1 = {
-	holder = 130000098 #Hunger
+	holder = 1000252044 #Hunger
 }
 866.1.1 = {
 	holder = 167706 #Adelbold
 }
 898.1.1 = {
-	holder = 130000099 #Radboud
+	holder = 1000260301 #Radboud
 }
 917.1.1 = {
 	holder = 120000114 #Baldrick

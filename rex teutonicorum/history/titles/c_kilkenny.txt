@@ -14,13 +14,13 @@
 	holder = 100000115 #Cormac mac Ailill
 }
 535.1.1 = {
-	holder = 100000116 #Coirpre mad Cormac
+	holder = 1000252536 #Coirpre mad Cormac
 }
 546.1.1 = {
-	holder = 100000117 #Colmán mac Coirpre
+	holder = 1000252537 #Colmán mac Coirpre
 }
 576.1.1 = {
-	holder = 100000118 #Áed mac Colmáin
+	holder = 1000252538 #Áed mac Colmáin
 }
 599.7.1 = {
 	holder = 83176  #Brandub son of Echu
@@ -32,142 +32,142 @@
 	holder = 83167  #Crundmáel son of Rónán
 }
 633.1.1 = {
-	holder = 100000119 #Fáelán mac Colmáin
+	holder = 1000252539 #Fáelán mac Colmáin
 }
 644.7.1 = {
 	holder = 83182  #Élothach son of Fáelchú
 }
 
 656.1.1 = {
-	holder = 100000119 #Fáelán mac Colmáin
+	holder = 1000252539 #Fáelán mac Colmáin
 }
 
 
 680.1.1 = {
-	holder = 100000121 #Bran mac Conaill
+	holder = 1000252541 #Bran mac Conaill
 }
 
 
 
 715.1.1 = {
-	holder = 100000122 #Murchad mac Bran
+	holder = 1000252542 #Murchad mac Bran
 }
 727.1.1 = {
-	holder = 100000123 #Dúnchad mac Murchad
+	holder = 1000252543 #Dúnchad mac Murchad
 }
 728.1.1 = {
-	holder = 100000124 #Fáelán mac Colmáin
+	holder = 1000252544 #Fáelán mac Colmáin
 }
 738.1.1 = {
-	holder = 100000125 #Bran mac Murchad
+	holder = 1000252545 #Bran mac Murchad
 }
 738.5.1 = {
-	holder = 100000126 #Muiredach mac Murchad
+	holder = 1000252546 #Muiredach mac Murchad
 }
 760.1.1 = {
-	holder = 100000127 #Cellach mac Dúnchad
+	holder = 1000252547 #Cellach mac Dúnchad
 }
 776.1.1 = {
-	holder = 100000139 #Ruaidrí mac Fáelán
+	holder = 1000252558 #Ruaidrí mac Fáelán
 }
 785.1.1 = {
-	holder = 100000147 #Bran mac Muiredach
+	holder = 1000252566 #Bran mac Muiredach
 }
 795.1.1 = {
-	holder = 100000128 #Fínsnechta mac Cellach
+	holder = 1000252548 #Fínsnechta mac Cellach
 }
 808.1.1 = {
-	holder = 100000148 #Muiredach mac Bran
+	holder = 1000252567 #Muiredach mac Bran
 }
 818.1.1 = {
-	holder = 100000140 #Muiredach mac Ruaidrí
+	holder = 1000252559 #Muiredach mac Ruaidrí
 }
 829.1.1 = {
-	holder = 100000149 #Cellach mac Bran
+	holder = 1000252568 #Cellach mac Bran
 }
 834.1.1 = {
-	holder = 100000130 #Bran mac Fáelán
+	holder = 1000252550 #Bran mac Fáelán
 }
 838.1.1 = {
-	holder = 100000150 #Lorcán mac Cellach
+	holder = 1000252569 #Lorcán mac Cellach
 }
 851.1.1 = {
-	holder = 100000151 #Túathal mac Muiredach
+	holder = 1000252570 #Túathal mac Muiredach
 }
 854.1.1 = {
-	holder = 100000132 #Ruarc mac Bran
+	holder = 1000252551 #Ruarc mac Bran
 }
 862.1.1 = {
-	holder = 100000142 #Muirecáin mac Diarmait
+	holder = 1000252561 #Muirecáin mac Diarmait
 }
 863.1.1 = {
-	holder = 100000152 #Dúnlaing mac Muiredach
+	holder = 1000252571 #Dúnlaing mac Muiredach
 }
 869.1.1 = {
-	holder = 100000153 #Ailill mac Dúnlaing
+	holder = 1000252572 #Ailill mac Dúnlaing
 }
 871.1.1 = {
-	holder = 100000143 #Domnall mac Muirecáin
+	holder = 1000252562 #Domnall mac Muirecáin
 }
 884.1.1 = {
-	holder = 100000133 #Muiredach mac Bran
+	holder = 1000252552 #Muiredach mac Bran
 }
 885.1.1 = {
-	holder = 130000004 #Cerball mac Muirecáin
+	holder = 1000252532 #Cerball mac Muirecáin
 }
 909.1.1 = {
-	holder = 100000154 #Úgaire mac Ailill
+	holder = 1000252573 #Úgaire mac Ailill
 }
 917.1.1 = {
-	holder = 100000134 #Fáelán mac Muiredach
+	holder = 1000252553 #Fáelán mac Muiredach
 }
 942.1.1 = {
-	holder = 100000135 #Lorcán mac Fáelán
+	holder = 1000252554 #Lorcán mac Fáelán
 }
 943.1.1 = {
-	holder = 100000145 #Bran mac Máel Mórda
+	holder = 1000252564 #Bran mac Máel Mórda
 }
 947.1.1 = {
-	holder = 100000015 #Túathal mac Úgaire
+	holder = 1000252580 #Túathal mac Úgaire
 }
 958.1.1 = {
-	holder = 100000136 #Cellach mac Fáelán
+	holder = 1000252555 #Cellach mac Fáelán
 }
 966.1.1 = {
 	holder = 166100 #Murchad mac Finn
 }
 972.1.1 = {
-	holder = 100000155 #Úgaire mac Túathal
+	holder = 1000252574 #Úgaire mac Túathal
 }
 978.1.1 = {
-	holder = 100000137 #Domnall mac Lorcán
+	holder = 1000252556 #Domnall mac Lorcán
 }
 984.1.1 = {
-	holder = 100000138 #Donnchad mac Domnall
+	holder = 1000252557 #Donnchad mac Domnall
 }
 1003.1.1 = {
 	holder = 166101 #Máel Mórda mac Murchada
 }
 1014.1.1 = {
-	holder = 100000156 #Dúnlaing mac Túathal
+	holder = 1000252575 #Dúnlaing mac Túathal
 }
 1014.7.1 = {
-	holder = 100000157 #Donncuan mac Dúnlaing
+	holder = 1000252576 #Donncuan mac Dúnlaing
 }
 1016.1.1 = {
-	holder = 100000146 #Bran mac Máel Mórda
+	holder = 1000252565 #Bran mac Máel Mórda
 }
 1018.1.1 = {
-	holder = 100000158 #Úgaire mac Dúnlaing
+	holder = 1000252577 #Úgaire mac Dúnlaing
 }
 1024.1.1 = {
-	holder = 100000159 #Donnchad mac Dúnlaing
+	holder = 1000252578 #Donnchad mac Dúnlaing
 }
 
 
 
 1039.1.1 = {
-	holder = 100000160 #Murchad mac Dúnlaing
+	holder = 1000252579 #Murchad mac Dúnlaing
 }
 1042.7.1 = {
 	holder = 922 #Diarmait son of Donnchad

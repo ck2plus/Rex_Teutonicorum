@@ -69,7 +69,7 @@ holder = 83710 #Spelán son of Cathnia
 holder = 83733 #Dub-dá-Bairenn son of Óengus
 }
 950.1.1 = {
-        holder = 100000016
+        holder = 1000252581
         liege = d_munster
 }
 959.1.1 = {

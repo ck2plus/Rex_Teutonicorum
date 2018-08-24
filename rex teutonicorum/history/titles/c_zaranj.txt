@@ -11,26 +11,26 @@
 	holder = 163164
 }
 901.1.1 = {
-	holder = 100000032
+	holder = 1000254534
 }
 908.1.1 = {
-	holder = 100000033
+	holder = 1000254535
 }
 910.1.1 = {
-	holder = 100000034
+	holder = 1000254536
 }
 911.1.1 = {
-	holder = 100000035
+	holder = 1000254537
 }
 912.1.1 = {
-	holder = 100000037
+	holder = 1000254539
 }
 922.1.1 = {
         liege = d_sistan
-        holder = 100000040
+        holder = 1000254542
 }
 963.1.1 = {
-	holder = 100000041
+	holder = 1000254543
 }
 1002.12.1={
 	liege = "k_afghanistan"

@@ -3,26 +3,26 @@
 	holder = 91506 #Jean Turpin, archbishop of Reims
 }
 816.1.1 = {
-	holder = 130000084 #Ebbo
+	holder = 1000267200 #Ebbo
 }
 835.1.1 = {
 	liege = "k_france"
 	holder = 163049
 }
 840.1.1 = {
-	holder = 130000084 #Ebbo, again
+	holder = 1000267200 #Ebbo, again
 }
 845.1.1 = {
-	holder = 130000085 #Hincmar
+	holder = 1000267202 #Hincmar
 }
 882.1.1 = {
 	holder = 167927 #Fulk the Venerable
 }
 900.1.1 = {
-	holder = 130000086 #Hervaeus
+	holder = 1000252040 #Hervaeus
 }
 922.1.1 = {
-	holder = 130000087 #Seulf
+	holder = 1000252041 #Seulf
 }
 925.1.1 = {
 	holder = 144977 #Hugh

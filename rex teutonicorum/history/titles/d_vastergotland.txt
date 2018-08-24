@@ -11,7 +11,7 @@
 	holder = 41258 # Hrane Gautske
 }
 875.1.1 = {
-	holder = 130000019
+	holder = 1000254113
 }
 947.1.2 = {
 	liege = "k_sweden"

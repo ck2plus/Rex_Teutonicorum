@@ -24,7 +24,7 @@
 	holder=168283
 }
 877.1.1 = {
-	holder = 130000050
+	holder = 1000250901
 }
 895.1.1 = {
 	liege = k_magyar

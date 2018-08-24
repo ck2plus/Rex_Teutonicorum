@@ -4423,7 +4423,7 @@
 	dynasty=811 # Tahirid
 	religion="sunni"
 	culture="persian"
-	father=130000109
+	father=1000254547
 	745.1.1={
 		birth=yes
 	}
@@ -7409,6 +7409,296 @@
 		death=yes
 	}
 }
+
+1000254527 = {
+	name = "Abi' Saj"
+	dynasty = 1000253174
+	religion = sunni
+	culture = persian
+
+	815.1.1 = {
+		birth = yes
+	}
+
+	879.1.1 = {
+		death = yes
+	}
+}
+
+1000254528 = {
+	name = "Muhammed"
+	dynasty = 1000253174
+	religion = sunni
+	culture = persian
+	father = 1000254527
+
+	859.1.1 = {
+		birth = yes
+	}
+
+	901.1.1 = {
+		death = { death_reason = death_poor_health }
+	}
+}
+
+1000254529 = {
+	name = "Devdad"
+	dynasty = 1000253174
+	religion = sunni
+	culture = persian
+	father = 1000254528
+
+	882.1.1 = {
+		birth = yes
+	}
+
+	901.5.1 = {
+		death = {
+			death_reason = death_murder  
+			killer = 1000254530
+		}
+	}
+}
+
+1000254530 = {
+	name = "Yusuf"
+	dynasty = 1000253174
+	religion = sunni
+	culture = persian
+	father = 1000254527
+
+	870.1.1 = {
+		birth = yes
+	}
+
+	928.1.1 = {
+		death = {
+			death_reason = death_execution
+			killer = 1000254532
+		}
+	}
+}
+
+1000254531 = {
+	name = "Abu'l"
+	dynasty = 1000253174
+	religion = sunni
+	culture = persian
+	father = 1000254528
+
+	894.1.1 = {
+		birth = yes
+	}
+
+	929.1.1 = {
+		death = { death_reason = death_murder_unknown }
+	}
+}
+
+1000254532 = {
+	name = "Abu-Tahir"
+	dynasty = 12279 #Jannabid
+	religion = qarmatian
+	culture = persian
+	trait = zealous
+	father = 74039
+
+	906.1.1 = {
+		birth = yes
+	}
+	944.1.1 = {
+		death = yes
+	}
+}
+
+1000254533 = {
+	name = "Muhammed"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 163164
+
+	863.1.1 = {
+		birth = yes
+	}
+	898.12.1 = {
+		death = yes 
+	}
+}
+
+1000254534 = {
+	name = "Tahir"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 1000254533
+
+	883.1.1 = {
+		birth = yes
+	}
+	934.1.1 = {
+		death = {
+			death_reason = death_dungeon
+			killer = 34021
+		}
+	}
+}
+
+1000254535 = {
+	name = "Layth"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 163165
+
+	864.1.1 = {
+		birth = yes
+	}
+	928.1.1 = {
+		death = {
+			death_reason = death_dungeon
+			killer = 34021
+		}
+	}
+}
+
+1000254536 = {
+	name = "Muhammed"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 163165
+
+	870.1.1 = {
+		birth = yes
+	}
+	926.1.1 = {
+		death = {
+			death_reason = death_dungeon
+			killer = 34021
+		}
+	}
+}
+
+1000254537 = {
+	name = "Al-Mu'addal"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 163165
+
+	871.1.1 = {
+		birth = yes
+	}
+	923.1.1 = {
+		death = yes
+	}
+}
+
+1000254538 = {
+	name = "Yaqub"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 163165
+
+	880.1.1 = {
+		birth = yes
+	}
+	929.1.1 = {
+		death = yes
+	}
+}
+
+1000254539 = {
+	name = "Amr"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 1000254538
+
+	902.1.1 = {
+		birth = yes
+	}
+	972.1.1 = {
+		death = yes
+	}
+}
+
+1000254540 = {
+	name = "Khalaf"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 1000254535
+
+	872.1.1 = {
+		birth = yes
+	}
+	907.1.1 = {
+		death = yes
+	}
+}
+
+1000254541 = {
+	name = "Muhammed"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 1000254540
+
+	889.1.1 = {
+		birth = yes
+	}
+	943.1.1 = {
+		death = yes
+	}
+}
+
+1000254542 = {
+	name = "Ahmed"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 1000254541
+
+	906.6.21 = {
+		birth = yes
+	}
+	963.3.31 = {
+		death = yes #Murdered
+	}
+}
+
+1000254543 = {
+	name = "Khalaf"
+	dynasty = 812 #Saffarid
+	religion = sunni
+	culture = persian
+	father = 1000254542
+
+	937.11.1 = {
+		birth = yes
+	}
+	1009.3.1 = {
+		death = yes
+	}
+}
+
+1000254544 = {
+	name = "Abu Ali" #fictional
+	dynasty = 1000253196
+	religion = sunni
+	culture = persian
+
+	920.1.1 = {
+		birth = yes
+	}
+	973.1.1 = {
+		death = yes
+	}
+}
+
 1000255903 = {
 	name = "Abu'l-Hasan"
 	dynasty = 1000124163

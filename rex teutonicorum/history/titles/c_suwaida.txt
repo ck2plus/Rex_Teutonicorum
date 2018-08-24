@@ -82,7 +82,7 @@
 }
 878.1.1 = {
 	liege = "k_egypt"
-	holder = 130000079
+	holder = 1000253403
 }
 936.5.1 = {
 	liege = k_egypt

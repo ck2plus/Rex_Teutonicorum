@@ -31,7 +31,7 @@
 	liege = 0
 }
 886.1.1 = {
-	holder = 130000035 #Rashid bin Al-Nadhar
+	holder = 1000250592 #Rashid bin Al-Nadhar
 }
 
 #890.1.1 = {
@@ -45,7 +45,7 @@
 #}
 
 899.1.1 = {
-	holder = 130000036 #Abdullah bin Mohammed
+	holder = 1000250593 #Abdullah bin Mohammed
 }
 
 #900.1.1 = {
@@ -77,7 +77,7 @@
 	holder = 1000250581
 }
 1002.1.1 = {
-	holder = 130000037 #al-Khalil bin Shadhan
+	holder = 1000250594 #al-Khalil bin Shadhan
 }
 1032.1.1 = {
 	holder = 100000198 #Rashid bin Sa'id 

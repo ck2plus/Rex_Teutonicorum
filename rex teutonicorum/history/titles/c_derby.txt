@@ -7,7 +7,7 @@
 }
 888.1.1 = {
 	liege = d_lancaster
-	holder = 130000030
+	holder = 1000254123
 }
 910.1.1 = {
 	liege = 0

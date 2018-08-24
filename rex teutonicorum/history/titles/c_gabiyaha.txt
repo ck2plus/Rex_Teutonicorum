@@ -16,7 +16,7 @@
 
 948.1.1 = {
 	liege = d_damietta
-	holder = 120000068
+	holder = 1000251616
 } 
 996.10.13 = {
 	#holder = 3092

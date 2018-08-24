@@ -23,7 +23,7 @@
 	liege = "e_karling"
 }
 879.1.1 = {
-	holder = 130000055
+	holder = 1000252273
 }
 888.1.1 = {
 	liege = d_swabia

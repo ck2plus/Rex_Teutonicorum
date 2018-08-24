@@ -7,7 +7,7 @@
 }
 875.1.1 = {
 	liege = d_smaland
-	holder = 130000017
+	holder = 1000254111
 }
 923.1.1 = {
 	holder = 110000034

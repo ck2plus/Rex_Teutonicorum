@@ -29,7 +29,7 @@
 }
 950.1.1 = {
 	liege = k_pechenegs
-	holder = 110000041
+	holder = 1000254408
 }
 990.1.1 = {
 	holder = 1000254400
