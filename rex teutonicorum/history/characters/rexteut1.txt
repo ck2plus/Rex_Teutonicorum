@@ -42,20 +42,6 @@ death = yes
 }
 }
 
-110000007 = {
-name = "Muzaffarradin"
-dynasty = 101731
-religion = sunni
-culture = bedouin_arabic
-
-909.1.1 = {
-birth = yes
-}
-970.1.1 = {
-death = yes
-}
-}
-
 110000008 = {
 name = "Jedvard"
 dynasty = 1043308
@@ -258,20 +244,6 @@ death = yes
 }
 }
 
-110000022 = {
-name = "Sviendorog"
-dynasty = 9530
-religion = baltic_pagan
-culture = lettigallish
-
-923.1.1 = {
-birth = yes
-}
-980.1.1 = {
-death = yes
-}
-}
-
 110000023 = {
 name = "Mahlakadeva"
 dynasty = 1044018
@@ -288,35 +260,6 @@ birth = yes
 death = yes
 }
 }
-
-110000025 = {
-name = "Jaolemb"
-dynasty = 100377
-religion = finnish_pagan
-culture = ugricbaltic
-
-918.1.1 = {
-birth = yes
-}
-965.1.1 = {
-death = yes
-}
-}
-
-110000026 = {
-name = "Tikshaya"
-dynasty = 1029108
-religion = finnish_pagan
-culture = mordvin
-
-927.1.1 = {
-birth = yes
-}
-968.1.1 = {
-death = yes
-}
-}
-
 110000027 = {
 name = "Barnim"
 dynasty = 101906
@@ -327,20 +270,6 @@ culture = pommeranian
 birth = yes
 }
 954.1.1 = {
-death = yes
-}
-}
-
-110000028 = {
-name = "Puresh"
-dynasty = 1029105
-religion = finnish_pagan
-culture = mordvin
-
-907.1.1 = {
-birth = yes
-}
-970.1.1 = {
 death = yes
 }
 }
@@ -509,37 +438,6 @@ death = yes
 }
 }
 
-110000042 = {
-name = "Kardaz"
-dynasty = 1029106
-religion = finnish_pagan
-culture = mordvin
-father = 159710
-
-863.1.1 = {
-birth = yes
-}
-
-918.1.1 = {
-death = yes
-}
-}
-
-110000043 = {
-name = "Chumbulat"
-dynasty = 1029106
-religion = finnish_pagan
-culture = mordvin
-father = 110000042
-
-910.1.1 = {
-birth = yes
-}
-
-965.1.1 = {
-death = yes
-}
-}
 110000044 = {
 name = "Pekko"
 religion = "finnish_pagan"
@@ -856,214 +754,6 @@ birth = yes
 }
 1011.1.1 = {
 death = yes
-}
-}
-
-110000071 = {
-name = "Yahya"
-dynasty = 1000253181 #Ukhaidid
-religion = shiite
-culture = bedouin_arabic
-father = 100000199
-
-984.1.1 = {
-birth = yes
-}
-1041.1.1 = {
-death = yes
-}
-}
-
-110000072 = {
-name = "Isma'il"
-dynasty = 1000253181 #Ukhaidid
-religion = shiite
-culture = bedouin_arabic
-father = 100000199
-
-990.1.1 = {
-birth = yes
-}
-1057.1.1 = {
-death = yes
-}
-}
-
-110000073 = {
-name = "Abdul-Qadir"
-dynasty = 1000253181 #Ukhaidid
-religion = shiite
-culture = bedouin_arabic
-father = 110000071
-
-1008.1.1 = {
-birth = yes
-}
-1053.1.1 = {
-death = yes
-}
-}
-
-110000074 = {
-name = "Muhammed"
-dynasty = 101731
-religion = sunni
-culture = bedouin_arabic
-father = 110000007
-
-937.1.1 = {
-birth = yes
-}
-993.1.1 = {
-death = yes
-}
-}
-
-110000075 = {
-name = "Ibrahim"
-dynasty = 101731
-religion = sunni
-culture = bedouin_arabic
-father = 1000250575
-
-1002.1.1 = {
-birth = yes
-}
-1051.1.1 = {
-death = yes
-}
-}
-
-110000076 = {
-name = "Azam"
-dynasty = 101731
-religion = sunni
-culture = bedouin_arabic
-father = 1000250575
-
-1008.1.1 = {
-birth = yes
-}
-1071.1.1 = {
-death = yes
-}
-}
-
-110000077 = {
-name = "Syrka"
-dynasty = 100592
-religion = finnish_pagan
-culture = mordvin
-father = 1000256000
-
-1007.1.1 = {
-birth = yes
-}
-1066.1.1 = {
-death = yes
-}
-}
-
-110000078  = {
-	name = "Ihala"
-	dynasty = 1000124225
-	religion = "finnish_pagan"
-	culture = "ugricbaltic"
-	father = 1000251900
-
-	969.1.1 = {
-		birth=yes
-	}
-	1031.1.1 = {
-		death=yes
-	}
-}
-
-110000079  = {
-	name = "Ukko"
-	dynasty = 1000124225
-	religion = "finnish_pagan"
-	culture = "ugricbaltic"
-	father = 1000251900
-
-	1004.1.1 = {
-		birth=yes
-	}
-	1066.1.1 = {
-		death=yes
-	}
-}
-110000080  = {
-	name = "Viryas"
-	dynasty = 100379
-	religion = "finnish_pagan"
-	culture = "ugricbaltic"
-	father = 1000251901
-
-	1001.1.1 = {
-		birth=yes
-	}
-	1069.1.1 = {
-		death=yes
-	}
-}
-110000082 = {
-name = "Nalka"
-dynasty = 100377
-religion = finnish_pagan
-culture = ugricbaltic
-father = 110000025
-
-942.1.1 = {
-birth = yes
-}
-996.1.1 = {
-death = yes
-}
-}
-110000083 = {
-name = "Vykantas"
-dynasty = 100377
-religion = finnish_pagan
-culture = ugricbaltic
-father = 1000256002
-
-1007.1.1 = {
-birth = yes
-}
-1060.1.1 = {
-death = yes
-}
-}
-110000084 = {
-name = "Nuyanza"
-dynasty = 1000124207
-religion = finnish_pagan
-culture = ugricbaltic
-father = 1000256003
-
-991.1.1 = {
-birth = yes
-}
-1052.1.1 = {
-death = yes
-}
-}
-110000085 = {
-name = "Kezhay"
-dynasty = 1000124207
-religion = finnish_pagan
-culture = ugricbaltic
-father = 110000084
-
-1022.1.1 = {
-birth = yes
-}
-1060.1.1 = {
-death = {
-death_reason = death_battle
-killer = 1000256001
-}
 }
 }
 

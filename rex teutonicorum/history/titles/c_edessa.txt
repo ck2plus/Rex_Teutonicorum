@@ -27,11 +27,11 @@
 	liege = "d_aleppo"
 }
 990.7.1 = {
-	holder = 100000202 #Waththab
+	holder = 1000268021 #Waththab
 	liege = 0
 }
 1020.1.1 = {
-	holder = 100000204 #Shabib
+	holder = 1000268023 #Shabib
 }
 1026.1.1 = {
 	liege = d_jazira
@@ -39,16 +39,16 @@
 }
 1031.1.1 = {
 	liege = d_edessa
-	holder = 100000202 #Shabib
+	holder = 1000268021 #Shabib
 }
 1040.1.1 = {
-	holder = 100000206 #Muta'in
+	holder = 1000268025 #Muta'in
 }
 1052.1.1 = {
-	holder = 100000208 #Mani'
+	holder = 1000268027 #Mani'
 }
 1063.4.1 = {
-	holder = 100000209 #Sabiq
+	holder = 1000268028 #Sabiq
 }
 1066.1.1 = {
 	liege = d_aleppo

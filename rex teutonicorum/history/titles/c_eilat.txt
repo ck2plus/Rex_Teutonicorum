@@ -13,7 +13,7 @@
 }
 940.1.1 = {
 	liege = d_sinai
-	holder = 120000070
+	holder = 1000250596
 }
 996.10.13 = {
   liege = "d_sinai"

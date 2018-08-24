@@ -403,7 +403,7 @@
 	culture = "levantine_arabic"
 	trait = "martial_cleric"
 	father = 159271
-	mother = 100000203
+	mother = 1000268022
 	1033.1.1 = {
 		birth=yes
 	}
@@ -5565,7 +5565,7 @@
 		birth=yes
 	}
 	1030.1.1 = {
-		add_spouse = 100000203
+		add_spouse = 1000268022
 	}
 	1038.1.1 = {
 		death=yes
@@ -5598,7 +5598,7 @@
 		birth=yes
 	}
 	1038.4.1 = {
-		add_spouse = 100000203
+		add_spouse = 1000268022
 	}
 	1062.1.1 = {
 		death=yes

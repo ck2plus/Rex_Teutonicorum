@@ -8,7 +8,7 @@
 	holder = 163147
 }
 875.1.1 = {
-	holder = 100000010
+	holder = 1000268002
 }
 #877.1.1 = {
 #	liege = 0
@@ -17,7 +17,7 @@
 #	liege = "k_africa"
 #}
 950.1.1 = {
-	holder = 120000053
+	holder = 1000253611
 }
 969.6.1 = {
 	liege = k_egypt

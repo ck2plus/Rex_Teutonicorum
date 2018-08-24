@@ -20,7 +20,7 @@
 	liege = "d_mordvins"
 }
 1020.1.1 = {
-	holder = 110000077
+	holder = 1000253904
 }
 1066.1.1 = {
 holder = 20632

@@ -284,69 +284,6 @@ death = yes
 }
 }
 
-120000050 = {
-name = "Tunya"
-religion = finnish_pagan
-culture = mordvin
-dynasty = 1029104
-father = 159708
-
-880.1.1 = {
-birth = yes
-}
-
-944.1.1 = {
-death = yes
-}
-}
-
-120000051 = {
-name = "Dergun"
-religion = finnish_pagan
-culture = mordvin
-dynasty = 1029104
-father = 120000050
-
-913.1.1 = {
-birth = yes
-}
-
-965.1.1 = {
-death = yes
-}
-}
-
-120000052 = {
-name = "Surt"
-religion = finnish_pagan
-culture = mordvin
-dynasty = 1029107
-father = 159714
-
-906.1.1 = {
-birth = yes
-}
-963.1.1 = {
-death = yes
-}
-
-}
-
-120000053 = {
-name = "Aras" #Fictional
-religion = sunni
-culture = maghreb_arabic
-dynasty = 1000253198
-
-918.1.1 = {
-birth = yes
-}
-
-971.1.1 = {
-death = yes
-}
-}
-
 120000054 = {
 name = "Umar" #Fictional
 religion = sunni
@@ -501,36 +438,6 @@ death = yes
 }
 }
 
-120000065 = {
-name = "Jalil" #Fictional
-religion = sunni
-culture = bedouin_arabic
-dynasty = 1000254533
-
-920.1.1 = {
-birth = yes
-}
-
-980.1.1 = {
-death = yes
-}
-}
-
-120000066 = {
-name = "Ibrahim" #Fictional
-religion = sunni
-culture = maghreb_arabic
-dynasty = 1000254534
-
-909.1.1 = {
-birth = yes
-}
-
-967.1.1 = {
-death = yes
-}
-}
-
 120000067 = {
 name = "Latif" #Fictional
 religion = sunni
@@ -557,21 +464,6 @@ birth = yes
 }
 
 985.1.1 = {
-death = yes
-}
-}
-
-120000070 = {
-name = "Muhammed" #Fictional
-religion = sunni
-culture = bedouin_arabic
-dynasty = 1000254536
-
-918.1.1 = {
-birth = yes
-}
-
-964.1.1 = {
 death = yes
 }
 }
@@ -1192,49 +1084,6 @@ death = yes
 	}
 	1048.1.1 = {
 		death = yes
-	}
-}
-
-120000134  = {
-	name = "Narvait"
-	dynasty = 100374
-	religion = "baltic_pagan"
-	culture = "lettigallish"
-	father = 1000254903
-
-	1002.1.1 = {
-		birth=yes
-	}
-	1059.1.1 = {
-		death=yes
-	}
-}
-120000135  = {
-	name = "Auctune"
-	dynasty = 100374
-	religion = "baltic_pagan"
-	culture = "lettigallish"
-	father = 120000134
-
-	1023.1.1 = {
-		birth=yes
-	}
-	1066.1.1 = {
-		death=yes
-	}
-}
-120000137 = {
-	name = "Pukuveras"
-	dynasty = 100376
-	religion = "baltic_pagan"
-	culture = "lettigallish"
-	father = 1000254904
-
-	1012.1.1 = {
-		birth=yes
-	}
-	1065.1.1 = {
-		death=yes
 	}
 }
 

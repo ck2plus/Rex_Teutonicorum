@@ -15,32 +15,32 @@
 	holder = 74040 #Abu Sa'id
 }
 923.1.1 = {
-	holder = 100000044 #Abu Tahir
+	holder = 1000254532 #Abu Tahir
 }
 944.1.1 = {
-	holder = 100000045 #Ahmad
+	holder = 1000268005 #Ahmad
 }
 970.1.1 = {
-	holder = 100000046 #Sa'id
+	holder = 1000268006 #Sa'id
 }
 972.1.1 = {
-	holder = 100000047 #Yusuf
+	holder = 1000268007 #Yusuf
 }
 977.1.1 = {
-	holder = 100000048 #Sa'id (fictional)
+	holder = 1000268008 #Sa'id (fictional)
 }
 1000.1.1 = {
 	holder = 1000250570 #al-Hasan
 	liege = "d_amman"
 }
 1025.1.1 = {
-	holder = 100000166 #Abu Tahir (fictional)
+	holder = 1000268016 #Abu Tahir (fictional)
 }
 1049.1.1 = {
-	holder = 100000167 #Abdullah (fictional)
+	holder = 1000268017 #Abdullah (fictional)
 }
 1067.1.1 = {
-	holder = 100000168 #Abu Tahir (fictional)
+	holder = 1000268018 #Abu Tahir (fictional)
 }
 1078.1.1 = {
 holder = 20900

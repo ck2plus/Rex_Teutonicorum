@@ -8,10 +8,10 @@
 	holder = 163147
 }
 875.1.1 = {
-	holder = 100000010
+	holder = 1000268002
 }
 950.1.1 = {
-	holder = 120000053
+	holder = 1000253611
 }
 1000.1.1 = {
 	#liege = "d_cyrenaica"

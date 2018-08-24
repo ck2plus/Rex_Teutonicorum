@@ -10,10 +10,10 @@
 	holder=74035
 }
 939.1.1 = {
-	holder = 100000030
+	holder = 1000268004
 }
 960.6.1 = {
-	holder = 100000161 #Rashid bin Waleed Azdid
+	holder = 1000268015 #Rashid bin Waleed Azdid
 }
 973.1.1 = {
 	holder = 1000250581
@@ -23,7 +23,7 @@
 	holder = 1000250594 #al-Khalil bin Shadhan
 }
 1032.1.1 = {
-	holder = 100000198 #Rashid bin Sa'id 
+	holder = 1000268001 #Rashid bin Sa'id 
 }
 1053.1.1 = {
 	holder = 1000250584

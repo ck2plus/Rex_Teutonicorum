@@ -26,10 +26,10 @@
 }
 1058.1.1 = {
 	liege = d_edessa
-	holder = 100000208 #Mani'
+	holder = 1000268027 #Mani'
 }
 1063.4.1 = {
-	holder = 100000209 #Sabiq
+	holder = 1000268028 #Sabiq
 }
 1066.1.1 = {
 	liege = "d_mosul"

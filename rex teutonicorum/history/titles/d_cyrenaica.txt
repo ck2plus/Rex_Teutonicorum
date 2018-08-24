@@ -7,7 +7,7 @@ holder=0
 }
 945.1.1 = {
 	liege = k_egypt
-	holder = 120000066
+	holder = 1000253612
 }
 1000.1.1 = {
 	liege = "k_egypt"

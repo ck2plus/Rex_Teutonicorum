@@ -9,7 +9,7 @@
 	liege = k_rus
 }
 920.1.1 = {
-	holder = 120000052
+	holder = 1000253907
 }
 987.1.2 = {
 holder = 612
