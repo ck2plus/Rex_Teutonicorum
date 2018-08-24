@@ -289,20 +289,6 @@ death = yes
 }
 }
 
-110000024 = {
-name = "Yaman"
-dynasty = 12272
-religion = tengri_pagan
-culture = turkish
-
-913.1.1 = {
-birth = yes
-}
-979.1.1 = {
-death = yes
-}
-}
-
 110000025 = {
 name = "Jaolemb"
 dynasty = 100377
@@ -869,66 +855,6 @@ father = 110000032
 birth = yes
 }
 1011.1.1 = {
-death = yes
-}
-}
-
-110000067 = {
-name = "Artuk"
-dynasty = 12272
-religion = tengri_pagan
-culture = turkish
-father = 110000024
-
-942.1.1 = {
-birth = yes
-}
-1003.1.1 = {
-death = yes
-}
-}
-
-110000068 = {
-name = "Kurboga"
-dynasty = 12272
-religion = tengri_pagan
-culture = turkish
-father = 110000067
-
-975.1.1 = {
-birth = yes
-}
-1033.1.1 = {
-death = yes
-}
-}
-
-110000069 = {
-name = "Yaman"
-dynasty = 12272
-religion = tengri_pagan
-culture = turkish
-father = 110000068
-
-996.1.1 = {
-birth = yes
-}
-1047.1.1 = {
-death = yes
-}
-}
-
-110000070 = {
-name = "Tugrul"
-dynasty = 12272
-religion = tengri_pagan
-culture = turkish
-father = 110000068
-
-1007.1.1 = {
-birth = yes
-}
-1054.1.1 = {
 death = yes
 }
 }

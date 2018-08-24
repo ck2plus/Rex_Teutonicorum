@@ -85,16 +85,16 @@
 }
 1017.6.1 = {
 	liege = k_afghanistan
-	holder = 120000130 #Altun Tash
+	holder = 1000255938 #Altun Tash
 }
 1032.1.1 = {
-	holder = 120000131 #Harun
+	holder = 1000255939 #Harun
 }
 1035.1.1 = {
-	holder = 120000132 #Ismail Khandan
+	holder = 1000255940 #Ismail Khandan
 }
 1041.1.1={
-	holder = 120000133 #Malik
+	holder = 1000255941 #Malik
 }
 1042.11.3 = {
 	liege = d_khorasan

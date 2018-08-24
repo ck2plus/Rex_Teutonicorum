@@ -73,64 +73,7 @@ birth = yes
 death = yes
 }
 }
-120000025 = {
-name = "Simjur al-Dawati"
-dynasty = 1000124164
-religion = sunni
-culture = turkish
 
-869.1.1 = {
-birth = yes
-}
-
-930.1.1 = {
-death = yes
-}
-}
-120000026 = {
-name = "Ibrahim"
-dynasty = 1000124164
-religion = sunni
-culture = turkish
-father = 120000025
-
-891.1.1 = {
-birth = yes
-}
-
-948.1.1 = {
-death = yes
-}
-}
-120000027 = {
-name = "Abu'l Hasan"
-dynasty = 1000124164
-religion = sunni
-culture = turkish
-father = 120000026
-
-914.1.1 = {
-birth = yes
-}
-
-982.1.1 = {
-death = yes
-}
-}
-120000028 = {
-name = "Qaratarkin"
-dynasty = 1000253194
-religion = sunni
-culture = turkish
-
-877.1.1 = {
-birth = yes
-}
-
-939.1.1 = {
-death = yes
-}
-}
 120000029 = {
 name = "Kamaluka"
 dynasty = 1043006
@@ -160,115 +103,6 @@ birth = yes
 }
 
 964.1.1 = {
-death = yes
-}
-}
-120000031 = {
-name = "Mansur"
-dynasty = 1000253194
-religion = sunni
-culture = turkish
-father = 120000028
-
-912.1.1 = {
-birth = yes
-}
-
-950.1.1 = {
-trait = drunkard
-}
-
-952.1.1 = {
-death = { death_reason = death_drunkard }
-}
-}
-
-120000032 = {
-name = "Muhtaj"
-dynasty = 1000253195
-religion = sunni
-culture = turkish
-
-820.1.1 = {
-birth = yes
-}
-
-875.1.1 = {
-death = yes
-}
-}
-120000033 = {
-name = "Muzuffar"
-dynasty = 1000253195
-religion = sunni
-culture = turkish
-father = 120000032
-
-847.1.1 = {
-birth = yes
-}
-
-900.1.1 = {
-death = yes
-}
-}
-120000034 = {
-name = "Abu Bakr"
-dynasty = 1000253195
-religion = sunni
-culture = turkish
-father = 120000033
-
-877.1.1 = {
-birth = yes
-}
-
-941.1.1 = {
-death = { death_reason = death_poor_health }
-}
-}
-120000035 = {
-name = "Abu Ali"
-dynasty = 1000253195
-religion = sunni
-culture = turkish
-father = 120000034
-
-902.1.1 = {
-birth = yes
-}
-
-955.1.1 = {
-death = { death_reason = death_plague }
-}
-}
-120000036 = {
-name = "Muhammed"
-dynasty = 1000253195
-religion = sunni
-culture = turkish
-father = 120000035
-
-926.1.1 = {
-birth = yes
-}
-
-955.1.1 = {
-death = { death_reason = death_plague }
-}
-}
-120000037 = {
-name = "Abu'l Muzaffar"
-dynasty = 1000253195
-religion = sunni
-culture = turkish
-father = 120000036
-
-943.1.1 = {
-birth = yes
-}
-
-998.1.1 = {
 death = yes
 }
 }
@@ -1381,64 +1215,6 @@ death = yes
 		death = yes
 	}
 }
-120000130 = {
-	name = "Altun"
-	dynasty = 1000253247 #Tash
-	religion = sunni
-	culture = turkish
-	958.1.1 = {
-		birth = yes
-	}
-	1032.1.1 = {
-		death = yes
-	}
-}
-120000131 = {
-	name = "Harun"
-	dynasty = 1000253247 #Tash
-	religion = sunni
-	culture = turkish
-	father = 120000130
-	978.1.1 = {
-		birth = yes
-	}
-	1035.1.1 = {
-		death = {
-			death_reason = death_murder
-			killer = 144127
-		}
-	}
-}
-120000132 = {
-	name = "Ismail"
-	dynasty = 1000253247 #Tash
-	religion = sunni
-	culture = turkish
-	father = 120000130
-	983.1.1 = {
-		birth = yes
-	}
-	1043.1.1 = {
-		death = yes
-	}
-}
-
-120000133 = {
-	name = "Malik"
-	dynasty = 12272 #Yabguid
-	religion = sunni
-	culture = turkish
-
-	1002.1.1 = {
-		birth = yes
-	}
-	1043.5.1 = {
-		death = {
-			death_reason = death_murder
-			killer = 3036
-		}
-	}
-}
 
 120000134  = {
 	name = "Narvait"
@@ -1484,7 +1260,7 @@ death = yes
 	}
 }
 
-120000137  = {
+120000137 = {
 	name = "Pukuveras"
 	dynasty = 100376
 	religion = "baltic_pagan"
@@ -1499,36 +1275,7 @@ death = yes
 	}
 }
 
-120000138  = {
-	name = "Uluj" #fictional
-	dynasty = 1000253249
-	religion = "sunni"
-	culture = "turkish"
-
-	878.1.1 = {
-		birth=yes
-	}
-	945.1.1 = {
-		death=yes
-	}
-}
-
-120000139  = {
-	name = "Muhammed" #fictional
-	dynasty = 1000253249
-	religion = "sunni"
-	culture = "turkish"
-	father = 120000138
-
-	917.1.1 = {
-		birth=yes
-	}
-	988.1.1 = {
-		death=yes
-	}
-}
-
-120000140  = {
+120000140 = {
 name = "Manfred"
 dynasty = 101842
 religion = "chalcedonian"
@@ -1542,7 +1289,7 @@ death=yes
 }
 }
 
-120000141  = {
+120000141 = {
 name = "Milo"
 dynasty = 101842
 religion = "chalcedonian"
@@ -1557,7 +1304,7 @@ death=yes
 }
 }
 
-120000142  = {
+120000142 = {
 name = "Manfred"
 dynasty = 101842
 religion = "chalcedonian"
@@ -1584,36 +1331,6 @@ birth=yes
 }
 995.1.1 = {
 death=yes
-}
-}
-
-120000151  = {
-name = "Hasan"
-dynasty = 1000253255
-religion = sunni
-culture = turkish
-father = 1000255924
-
-913.1.1 = {
-birth=yes
-}
-980.1.1 = {
-death = yes
-}
-}
-
-120000152  = {
-name = "Mahmud"
-dynasty = 1000253255
-religion = sunni
-culture = turkish
-father = 120000151
-
-934.1.1 = {
-birth=yes
-}
-1000.1.1 = {
-death = yes
 }
 }
 

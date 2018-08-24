@@ -14553,3 +14553,47 @@
 		death=yes
 	}
 }
+1000250592 = {
+	name = "Rashid"
+	dynasty = 12277
+	religion = ibadi
+	culture = bedouin_arabic
+
+	827.1.1 = {
+		birth = yes
+	}
+
+	890.1.1 = {
+		death = yes
+	}
+}
+
+1000250593 = {
+	name = "Abdallah"
+	dynasty = 1042182
+	religion = ibadi
+	culture = bedouin_arabic
+
+	848.1.1 = {
+		birth = yes
+	}
+
+	900.1.1 = {
+		death = yes
+	}
+}
+
+1000250594 = {
+	name = "al-Khalil"
+	dynasty = 1042103
+	religion = ibadi
+	culture = bedouin_arabic
+
+	964.1.1 = {
+		birth = yes
+	}
+
+	1032.1.1 = {
+		death = yes
+	}
+}

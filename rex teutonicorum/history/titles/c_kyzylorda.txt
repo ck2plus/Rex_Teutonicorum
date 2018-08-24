@@ -7,7 +7,7 @@
 	holder = 74029
 }
 950.1.1 = {
-	holder = 110000024
+	holder = 1000255944
 }
 998.1.1 = {
 	liege = "d_khiva"

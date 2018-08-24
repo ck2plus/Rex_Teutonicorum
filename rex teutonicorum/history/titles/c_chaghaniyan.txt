@@ -7,22 +7,22 @@
 }
 
 850.1.1 = {
-	holder = 120000032
+	holder = 1000255932
 }
 864.1.1={
 	liege = "k_khwarizm"
 }
 875.1.1 = {
-	holder = 120000033
+	holder = 1000255933
 }
 900.1.1 = {
-	holder = 120000034
+	holder = 1000255934
 }
 939.1.1 = {
-	holder = 120000035
+	holder = 1000255935
 }
 953.1.1 = {
-	holder = 120000037
+	holder = 1000255937
 }
 998.1.1 = {
 	liege = k_afghanistan

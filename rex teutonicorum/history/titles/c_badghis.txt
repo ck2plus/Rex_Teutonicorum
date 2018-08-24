@@ -23,16 +23,16 @@
 }
 933.1.1 = {
 	liege = d_khorasan
-	holder = 120000034 #Abu Bakr
+	holder = 1000255934 #Abu Bakr
 }
 939.1.1 = {
-	holder = 120000035 #Abu Ali
+	holder = 1000255935 #Abu Ali
 }
 945.1.1 = {
-	holder = 120000026 #Ibrahim
+	holder = 1000255928 #Ibrahim
 }
 948.1.1 = {
-	holder = 120000031 #Mansur
+	holder = 1000255931 #Mansur
 }
 977.1.1 = {
 	liege = "k_afghanistan"

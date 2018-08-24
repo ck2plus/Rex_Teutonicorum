@@ -1673,36 +1673,22 @@ death = yes
 }
 
 100000185 = {
-name = "Abu Shuja"
-dynasty = 1000253244 #Fatikid
-religion = shiite
-culture = armenian
-father = 100000184
-trait = skilled_tactician
+	name = "Abu Shuja"
+	dynasty = 1000253244 #Fatikid
+	religion = shiite
+	culture = armenian
+	father = 100000184
+	trait = skilled_tactician
 
-977.1.1 = {
-birth = yes
-}
-1022.7.6 = {
-death = {
-death_reason = death_murder
-killer = 100000186
-}
-}
-}
-
-100000186 = {
-name = "Abu'l"
-religion = shiite
-culture = turkish
-trait = skilled_tactician
-
-986.1.1 = {
-birth = yes
-}
-1040.1.1 = {
-death = yes
-}
+	977.1.1 = {
+		birth = yes
+	}
+	1022.7.6 = {
+		death = {
+			death_reason = death_murder
+			killer = 1000255945
+		}
+	}
 }
 
 ###
