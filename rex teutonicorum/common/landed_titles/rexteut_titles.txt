@@ -1,127 +1,121 @@
 
 
 k_grand_lorraine = {
-		
-		color = { 235 80 20 }
-		capital = 129 #Verdun
-		culture = franconian
-		dignity = 10
-		title_prefix = "GRANDDUKE_OF"
-		title = "GRANDDUKE"
-		title_female = "GRANDDUCHESS"
-		
-		german = "Lothringen"
-		franconian = "Lothringen"
-		austrian = "Lothringen"
-		swiss = "Lothringen"
-		old_saxon = "Lothringen"
-		thuringian = "Lothringen"
-		imperial_german = "Lothringen"
-		swabian = "Lothringen"
-		colognian = "Lothringen"
-		bavarian = "Lothringen"
-		teutonic = "Lothringen"
-		
-		allow = {
-				 may_create_kingdom_trigger = yes
-				 OR = {
-					   has_holder_trigger = yes
-					   is_not_titular_trigger = yes
-					   ROOT = {
-							   lower_tier_than = king
-							   german_cultures_trigger = yes
-							  }
-					  }
-				}
+	color = { 235 80 20 }
+	capital = 129 #Verdun
+	culture = franconian
+	dignity = 10
+	title_prefix = "GRANDDUKE_OF"
+	title = "GRANDDUKE"
+	title_female = "GRANDDUCHESS"
 
-				   }
-				   
+	german = "Lothringen"
+	franconian = "Lothringen"
+	austrian = "Lothringen"
+	swiss = "Lothringen"
+	old_saxon = "Lothringen"
+	thuringian = "Lothringen"
+	imperial_german = "Lothringen"
+	swabian = "Lothringen"
+	colognian = "Lothringen"
+	bavarian = "Lothringen"
+	teutonic = "Lothringen"
+
+	allow = {
+		may_create_kingdom_trigger = yes
+		OR = {
+			has_holder_trigger = yes
+			is_not_titular_trigger = yes
+			ROOT = {
+				lower_tier_than = king
+				german_cultures_trigger = yes
+			}
+		}
+	}
+}
+
 k_grand_holland = {
+	color = { 220 170 30 }
+	capital = 80 #Holland
+	culture = dutch
+	dignity = 10
+	title_prefix = "GRANDDUKE_OF"
+	title = "GRANDDUKE"
+	title_female = "GRANDDUCHESS"
 
-		color = { 220 170 30 }
-		capital = 80 #Holland
-		culture = dutch
-		dignity = 10
-		title_prefix = "GRANDDUKE_OF"
-		title = "GRANDDUKE"
-		title_female = "GRANDDUCHESS"
-		allow = {
-				 may_create_kingdom_trigger = yes
-				 OR = {
-					   has_holder_trigger = yes
-					   is_not_titular_trigger = yes
-					   ROOT = {
-							   lower_tier_than = king
-							   culture = dutch
-							  }
-					  }
-				}
+	allow = {
+		may_create_kingdom_trigger = yes
+		OR = {
+			has_holder_trigger = yes
+			is_not_titular_trigger = yes
+			ROOT = {
+				lower_tier_than = king
+				culture = dutch
+			}
+		}
+	}
+}
 
-				  }
-				  
 k_grand_aquitaine = {
+	color = { 60 153 151 }
+	capital = 149 #Bordeaux
+	culture = occitan
+	dignity = 10
+	title_prefix = "GRANDDUKE_OF"
+	title = "GRANDDUKE"
+	title_female = "GRANDDUCHESS"
 
-		color = { 60 153 151 }
-		capital = 149 #Bordeaux
-		culture = occitan
-		dignity = 10
-		title_prefix = "GRANDDUKE_OF"
-		title = "GRANDDUKE"
-		title_female = "GRANDDUCHESS"
-		allow = {
-				 may_create_kingdom_trigger = yes
-				 OR = {
-					   has_holder_trigger = yes
-					   is_not_titular_trigger = yes
-					   ROOT = {
-							   lower_tier_than = king
-							   culture = occitan
-							  }
-					  }
-				}
+	allow = {
+		may_create_kingdom_trigger = yes
+		OR = {
+			has_holder_trigger = yes
+			is_not_titular_trigger = yes
+			ROOT = {
+				lower_tier_than = king
+				culture = occitan
+			}
+		}
+	}
+}
 
-					}
-					
 k_grand_burgundy = {
-
-		color = { 212 18 78 }
-		capital = 136 #Dijon
-		culture = frankish
-		dignity = 10
-		title_prefix = "GRANDDUKE_OF"
-		title = "GRANDDUKE"
-		title_female = "GRANDDUCHESS"
-		allow = {
-				 may_create_kingdom_trigger = yes
-				 OR = {
-					   has_holder_trigger = yes
-					   is_not_titular_trigger = yes
-					   ROOT = {
-							   lower_tier_than = king
-							   culture = frankish
-							  }
-					  }
-				}
-				   }
+	color = { 212 18 78 }
+	capital = 136 #Dijon
+	culture = frankish
+	dignity = 10
+	title_prefix = "GRANDDUKE_OF"
+	title = "GRANDDUKE"
+	title_female = "GRANDDUCHESS"
+	allow = {
+		may_create_kingdom_trigger = yes
+		OR = {
+			has_holder_trigger = yes
+			is_not_titular_trigger = yes
+			ROOT = {
+				lower_tier_than = king
+				culture = frankish
+			}
+		}
+	}
+}
 
 k_grand_normandy = {
-
-		color = { 73 136 4 }
-		capital = 97 #Rouen
-		culture = norman
-		dignity = 10
-		title_prefix = "GRANDDUKE_OF"
-		title = "GRANDDUKE"
-		title_female = "GRANDDUCHESS"
-		allow = {
-				 may_create_kingdom_trigger = yes
-				 OR = {
-					   has_holder_trigger = yes
-					   is_not_titular_trigger = yes
-					   ROOT = {
-							   lower_tier_than = king
-							   culture = norman
-							  }
-					  }
-				}
-				   }
+	color = { 73 136 4 }
+	capital = 97 #Rouen
+	culture = norman
+	dignity = 10
+	title_prefix = "GRANDDUKE_OF"
+	title = "GRANDDUKE"
+	title_female = "GRANDDUCHESS"
+	allow = {
+		may_create_kingdom_trigger = yes
+		OR = {
+			has_holder_trigger = yes
+			is_not_titular_trigger = yes
+			ROOT = {
+				lower_tier_than = king
+				culture = norman
+			}
+		}
+	}
+}

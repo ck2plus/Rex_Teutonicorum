@@ -1,78 +1,76 @@
 bm_karling_collapse = {
-		       name = "BM_KARLING_COLLAPSE"
-		       desc = "BM_KARLING_COLLAPSE_DESC"
-		       date = 888.1.13
-		       selectable_character = {
-					       id = 71901 #Berengar I of Italy
-					      }
-		       selectable_character = {
-					       id = 6448 #Eudes of France
-					      }
-		       selectable_character = {
-					       id = 7945 #Arnulf of Carinthia
-					      }
-		       selectable_character = {
-					       id = 7984 #Rudolf I of Burgundy
-					      }
-		      }
-			   
+	name = "BM_KARLING_COLLAPSE"
+	desc = "BM_KARLING_COLLAPSE_DESC"
+	date = 888.1.13
+	selectable_character = {
+		id = 71901 #Berengar I of Italy
+	}
+	selectable_character = {
+		id = 6448 #Eudes of France
+	}
+	selectable_character = {
+		id = 7945 #Arnulf of Carinthia
+	}
+	selectable_character = {
+		id = 7984 #Rudolf I of Burgundy
+	}
+}
+
 bm_teuton = {
-             name = "BM_TEUTON"
-             desc = "BM_TEUTON_DESC"
-             date = 950.11.23
+	name = "BM_TEUTON"
+	desc = "BM_TEUTON_DESC"
+	date = 950.11.23
 
-             selectable_character = {
-                        	     id = 1282 #Otto I
-                                    }
-             selectable_character = {
-                        	     id = 1108 #Berengar II
-                                    }
+	selectable_character = {
+		id = 1282 #Otto I
+	}
+	selectable_character = {
+		id = 1108 #Berengar II
+	}
+}
 
-            }
-			
 bm_hre_formed = {
-			name = "BM_HRE_FORMED"
-			desc = "BM_HRE_FORMED_DESC"
-			date = 962.2.2
-			
-			selectable_character = {
-								id = 1282 #Otto I
-								   }
-				}
-			
+	name = "BM_HRE_FORMED"
+	desc = "BM_HRE_FORMED_DESC"
+	date = 962.2.2
+
+	selectable_character = {
+		id = 1282 #Otto I
+	}
+}
+
 #bm_salian = { #OH SHIT DAWG *MORE* GODDAMN BOOKMARKS? At some point, yes.#
-#			name = "BM_SALIAN"
-#			desc = "BM_SALIAN_DESC"
-#			date = 1024.9.8
-#			
-#			selectable_character = {
-#								id = 1312 #Conrad II
-#								   }
-#			selectable_character = {
-#								id = 101510 #Knut
-#								   }
+#	name = "BM_SALIAN"
+#	desc = "BM_SALIAN_DESC"
+#	date = 1024.9.8
 #
-#			}
+#	selectable_character = {
+#		id = 1312 #Conrad II
+#	 }
+#	selectable_character = {
+#		id = 101510 #Knut
+#	}
+#}
+
 #bm_arles = {
-#			name = "BM_ARLES"
-#			desc = "BM_ARLES_DESC"
-#			date = 1032.9.6
-#			
-#			selectable_character = {
-#								id = 1312 #Conrad II
-#								   }
-#			selectable_character = {
-#								id = 101510 #Knut
-#								   }
+#	name = "BM_ARLES"
+#	desc = "BM_ARLES_DESC"
+#	date = 1032.9.6
 #
-#			}
+#	selectable_character = {
+#		id = 1312 #Conrad II
+#	}
+#	selectable_character = {
+#		id = 101510 #Knut
+#	}
+#}
 
 bm_investiture = {
-		  name = "BM_INVESTITURE"
-		  desc = "BM_INVESTITURE_DESC"
-		  date = 1075.2.21
+	name = "BM_INVESTITURE"
+	desc = "BM_INVESTITURE_DESC"
+	date = 1075.2.21
 
-		  selectable_character = {
-					  id = 1316 #Henry IV
-					 }
-		 }
+	selectable_character = {
+		id = 1316 #Henry IV
+	}
+}
