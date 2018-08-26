@@ -21729,3 +21729,447 @@
 	}
 }
 
+1000252323 = {
+	name = "Konstantinos"
+	dynasty = 1022275
+	religion = "chalcedonian"
+	culture = "greek"
+	father = 145930
+	839.1.1 = {
+		birth = yes
+	}
+	897.1.1 = {
+		death = yes
+	}
+}
+
+1000252324 = {
+	name = "Ioannes"
+	dynasty = 1000253236
+	religion = "chalcedonian"
+	culture = "greek"
+	854.1.1 = {
+		birth = yes
+	}
+	903.1.1 = {
+		death = yes
+	}
+}
+
+1000252325 = {
+	name = "Adrianos"
+	dynasty = 1000253241
+	religion = chalcedonian
+	culture = greek
+	839.1.1 = {
+		birth=yes
+	}
+	900.1.1 = {
+		death=yes
+	}
+}
+#VASSAL RULERS#
+1000252326 = {
+	name = "Constantine"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 641
+	father = 41317
+
+	915.1.1 = {
+		birth = yes
+	}
+
+	964.1.1 = {
+		death = { death_reason = death_poor_health }
+	}
+}
+1000252327 = {
+	name = "Theodoulos"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101446
+
+	904.1.1 = {
+		birth = yes
+	}
+
+	970.1.1 = {
+		death = yes
+	}
+}
+1000252328 = {
+	name = "Theodore"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101446
+	father = 1000252327
+
+	920.1.1 = {
+		birth = yes
+	}
+
+	962.1.1 = {
+		death = { death_reason = death_battle }
+	}
+}
+1000252329 = {
+	name = "Bardas"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101446
+	father = 1000252327
+
+	923.1.1 = {
+		birth = yes
+	}
+
+	981.1.1 = {
+		death = yes
+	}
+}
+1000252330 = {
+	name = "Nikephoros"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101446
+	father = 1000252327
+
+	930.1.1 = {
+		birth = yes
+	}
+
+	992.1.1 = {
+		death = yes
+	}
+}
+1000252331 = {
+	name = "Constantine"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 1000254540
+
+	876.1.1 = {
+		birth = yes
+	}
+
+	917.1.1 = {
+		death = { death_reason = death_battle }
+	}
+}
+1000252332 = {
+	name = "Bardas"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 1000254540
+	father = 1000252331
+
+	917.1.1 = {
+		birth = yes
+	}
+
+	972.1.1 = {
+		death = yes
+	}
+}
+1000252333 = {
+	name = "Theoktistos"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 1000254541
+
+	908.1.1 = {
+		birth = yes
+	}
+
+	970.1.1 = {
+		death = yes
+	}
+}
+1000252334 = {
+	name = "Basileios"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101291
+
+	911.1.1 = {
+		birth = yes
+	}
+
+	972.1.1 = {
+		death = yes
+	}
+}
+1000252335 = {
+	name = "Michael"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101265
+
+	901.1.1 = {
+		birth = yes
+	}
+
+	955.1.1 = {
+		death = yes
+	}
+}
+1000252336 = {
+	name = "Leon"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101322
+
+	850.1.1 = {
+		birth = yes
+	}
+
+	912.1.1 = {
+		death = yes
+	}
+}
+1000252337 = {
+	name = "Theodoros"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101322
+	father = 1000252336
+
+	899.1.1 = {
+		birth = yes
+	}
+
+	958.1.1 = {
+		death = yes
+	}
+}
+1000252338 = {
+	name = "Arotras"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101349
+
+	915.1.1 = {
+		birth = yes
+	}
+
+	981.1.1 = {
+		death = yes
+	}
+}
+1000252339 = {
+	name = "Theoktistos"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101079
+
+	800.1.1 = {
+	birth = yes
+	}
+
+	865.1.1 = {
+	death = yes
+	}
+}
+1000252340 = {
+	name = "Konstantinos"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101079
+	father = 1000252339
+
+	850.1.1 = {
+		birth = yes
+	}
+
+	916.1.1 = {
+		death = yes
+	}
+}
+1000252341 = {
+	name = "Theoktistos"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101079
+	father = 1000252340
+
+	903.1.1 = {
+		birth = yes
+	}
+
+	965.1.1 = {
+		death = yes
+	}
+}
+1000252342 = {
+	name = "Ioannes"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101079
+	father = 1000252341
+
+	955.1.1 = {
+		birth = yes
+	}
+
+	1019.1.1 = {
+		death = yes
+	}
+}
+1000252343 = {
+	name = "Niketas"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 1022284
+
+	909.1.1 = {
+		birth = yes
+	}
+
+	967.1.1 = {
+		death = yes
+	}
+}
+1000252344 = {
+	name = "Nikephoros"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 1000254543
+
+	911.1.1 = {
+		birth = yes
+	}
+
+	963.1.1 = {
+		death = yes
+	}
+}
+1000252345 = {
+	name = "Alexandros"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 1000253217
+
+	898.1.1 = {
+		birth = yes
+	}
+
+	955.1.1 = {
+		death = yes
+	}
+}
+1000252346 = {
+	name = "Komitas"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 1000253218
+
+	906.1.1 = {
+		birth = yes
+	}
+
+	959.1.1 = {
+		death = yes
+	}
+}
+1000252347 = {
+	name = "Georgios"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 1000253219
+
+	909.1.1 = {
+		birth = yes
+	}
+
+	970.1.1 = {
+		death = yes
+	}
+}
+1000252348 = {
+	name = "Tiberios"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 1000253220
+
+	897.1.1 = {
+		birth = yes
+	}
+
+	963.1.1 = {
+		death = yes
+	}
+}
+1000252349 = {
+	name = "Nikephoros" #fictional
+	dynasty = 1000253239
+	religion = chalcedonian
+	culture = greek
+
+	923.1.1 = {
+		birth = yes
+	}
+
+	979.1.1 = {
+		death = yes
+	}
+}
+1000252350 = {
+	name = "Romanos" #fictional
+	dynasty = 101322
+	religion = chalcedonian
+	culture = greek
+	father = 1000252337
+
+	931.1.1 = {
+		birth = yes
+	}
+
+	991.1.1 = {
+		death = yes
+	}
+}
+1000252351 = {
+	name = "Ioannes" #fictional
+	dynasty = 1000253240
+	religion = chalcedonian
+	culture = greek
+
+	924.1.1 = {
+		birth = yes
+	}
+
+	973.1.1 = {
+		death = yes
+	}
+}
+1000252352 = {
+	name = "Mikhael"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 1000253217
+	father = 1000252345
+
+	937.1.1 = {
+		birth = yes
+	}
+
+	995.1.1 = {
+		death = yes
+	}
+}
+1000252353 = {
+	name = "Bardas"
+	religion = chalcedonian
+	culture = greek
+	dynasty = 101446
+	father = 1000252327
+
+	927.1.1 = {
+		birth = yes
+	}
+
+	985.1.1 = {
+		death = yes
+	}
+}

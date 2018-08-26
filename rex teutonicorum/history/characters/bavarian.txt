@@ -4570,3 +4570,17 @@
 		death=yes
 	}
 }
+
+# Mod added characters
+1000258600 = {
+	name = "Conrad"
+	religion = catholic
+	culture = bavarian
+
+	1077.1.1 = {
+		birth = yes
+	}
+	1131.1.1 = {
+		death = yes
+	}
+}

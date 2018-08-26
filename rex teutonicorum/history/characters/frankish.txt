@@ -47921,3 +47921,473 @@
 		death = "1083.11.28"
 	}
 }
+
+
+1000252022 = {
+	name = "Bernard"
+	dynasty = 100217
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 73784
+	841.1.1 = {
+		birth=yes
+	}
+	885.1.1 = {
+		death=yes
+	}
+}
+1000252023 = {
+	name = "Lietald"
+	dynasty = 100217
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 73784
+	846.1.1 = {
+		birth=yes
+	}
+	900.1.1 = {
+		death=yes
+	}
+}
+1000252024 = {
+	name = "Ranoux"
+	dynasty = 100217
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252022
+	858.1.1 = {
+		birth=yes
+	}
+	915.1.1 = {
+		death=yes
+	}
+}
+1000252025 = {
+	name = "Eudes"
+	dynasty = 667
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 168082
+	850.1.1 = {
+		birth=yes
+	}
+	910.1.2 = {
+		death=yes
+	}
+}
+1000252026 = {
+	name = "Hilgaud"
+	dynasty = 9574
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 168171
+	862.1.1 = {
+		birth=yes
+	}
+	913.1.1 = {
+		death=yes
+	}
+}
+1000252027 = {
+	name = "Renaud"
+	dynasty = 9569
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 168039
+	860.1.1 = {
+		birth=yes
+	}
+	911.1.1 = {
+		death=yes
+	}
+}
+1000252028 = {
+	name = "Guillaume"
+	dynasty = 1000253232
+	religion = "chalcedonian"
+	culture = "frankish"
+	764.1.1 = {
+		birth=yes
+	}
+	821.1.1 = {
+		death=yes
+	}
+}
+1000252029 = {
+	name = "Bernard"
+	dynasty = 1000253232
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252028
+	783.1.1 = {
+		birth=yes
+	}
+	844.1.1 = {
+		death=yes
+	}
+}
+1000252030 = {
+	name = "Turpio"
+	dynasty = 1000253232
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252028
+	803.1.1 = {
+		birth=yes
+	}
+	863.1.1 = {
+		death = {
+			death_reason = death_battle
+		}
+	}
+}
+1000252031 = {
+	name = "Emenon"
+	dynasty = 1000253232
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252028
+	810.1.1 = {
+		birth=yes
+	}
+	860.1.1 = {
+		add_spouse = 1000252035
+	}
+	866.1.1 = {
+		death=yes
+	}
+}
+1000252032 = {
+	name = "Eudes"
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 91005
+	816.1.1 = {
+		birth=yes
+	}
+	871.1.1 = {
+		death=yes
+	}
+}
+1000252033 = {
+	name = "Eudes"
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252032
+	838.1.1 = {
+		birth=yes
+	}
+	876.1.1 = {
+		death=yes
+	}
+}
+1000252034 = {
+	name = "Robert"
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252032
+	845.1.1 = {
+		birth=yes
+	}
+	886.1.1 = {
+		death = {
+			death_reason = death_battle
+		}
+	}
+}
+1000252035 = {
+	name = "Gerberga"
+	female = yes
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252032
+	840.1.1 = {
+		birth=yes
+	}
+	860.1.1 = {
+		add_spouse = 1000252031
+	}
+	886.1.1 = {
+		death=yes
+	}
+}
+1000252036 = {
+	name = "Adalelm"
+	dynasty = 1000253232
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252031
+	mother = 1000252035
+	862.1.1 = {
+		birth=yes
+	}
+	894.1.1 = {
+		death=yes
+	}
+}
+1000252037 = {
+	name = "Adhemar"
+	dynasty = 1000253232
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252031
+	mother = 1000252035
+	864.1.1 = {
+		birth=yes
+	}
+	926.1.1 = {
+		death=yes
+	}
+}
+1000252038 = {
+	name = "Warnegald"
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 163065
+	846.1.1 = {
+		birth=yes
+	}
+	906.1.1 = {
+		death=yes
+	}
+}
+1000252039 = {
+	name = "Gello"
+	dynasty = 743
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252038
+	870.1.1 = {
+		birth=yes
+	}
+	928.1.1 = {
+		death=yes
+	}
+}
+1000252040 = {
+	name = "Hervé"
+	religion = chalcedonian
+	culture = frankish
+	858.1.1 = {
+		birth=yes
+	}
+	922.1.1 = {
+		death=yes
+	}
+}
+1000252041 = {
+	name = "Seulfe"
+	religion = chalcedonian
+	culture = frankish
+	871.1.1 = {
+		birth=yes
+	}
+	925.1.1 = {
+		death=yes
+	}
+}
+1000252042 = {
+	name = "Pirard"
+	religion = chalcedonian
+	culture = frankish
+	771.1.1 = {
+		birth = yes
+	}
+	838.1.1 = {
+		death = yes
+	}
+}
+1000252043 = {
+	name = "Hartgard"
+	religion = chalcedonian
+	culture = frankish
+	796.1.1 = {
+		birth = yes
+	}
+	855.1.1 = {
+		death = yes
+	}
+}
+1000252044 = {
+	name = "Hunger"
+	religion = chalcedonian
+	culture = frankish
+	793.1.1 = {
+		birth = yes
+	}
+	866.1.1 = {
+		death = yes
+	}
+}
+1000252045 = {
+	name = "Odalric"
+	religion = chalcedonian
+	culture = frankish
+
+	904.1.1 = {
+		birth = yes
+	}
+	969.1.1 = {
+		death = yes
+	}
+}
+1000252046 = {
+	name = "Hugh"
+	religion = chalcedonian
+	culture = frankish
+	888.1.1 = {
+		birth = yes
+	}
+	947.1.1 = {
+		death = yes
+	}
+}
+1000252047 = {
+	name = "Farabert"
+	religion = chalcedonian
+	culture = frankish
+	892.1.1 = {
+		birth = yes
+	}
+	953.1.1 = {
+		death = yes
+	}
+}
+1000252048 = {
+	name = "Rathier"
+	religion = chalcedonian
+	culture = frankish
+	890.1.1 = {
+		birth = yes
+	}
+	974.4.25 = {
+		death = yes
+	}
+}
+1000252049 = {
+	name = "Stephen"
+	religion = chalcedonian
+	culture = frankish
+	dynasty = 1000253246
+	902.1.1 = {
+		birth = yes
+	}
+	956.1.1 = {
+		death = yes
+	}
+}
+1000252050 = {
+	name = "Wolbodo"
+	religion = chalcedonian
+	culture = frankish
+	950.1.1 = {
+		birth = yes
+	}
+	1021.4.20 = {
+		death = yes
+	}
+}
+1000252051 = {
+	name = "Durandus"
+	religion = chalcedonian
+	culture = frankish
+	964.1.1 = {
+		birth = yes
+	}
+	1025.1.1 = {
+		death = yes
+	}
+}
+1000252052 = {
+	name = "Reginard"
+	religion = chalcedonian
+	culture = frankish
+	967.1.1 = {
+		birth = yes
+	}
+	1037.1.1 = {
+		death = yes
+	}
+}
+1000252053 = {
+	name = "Nithard"
+	religion = chalcedonian
+	culture = frankish
+	983.1.1 = {
+		birth = yes
+	}
+	1042.1.1 = {
+		death = yes
+	}
+}
+1000252054 = {
+	name = "Wazo"
+	religion = chalcedonian
+	culture = frankish
+	985.1.1 = {
+		birth = yes
+	}
+	1048.1.1 = {
+		death = yes
+	}
+}
+1000252055 = {
+	name = "Manfred"
+	dynasty = 101842
+	religion = "chalcedonian"
+	culture = "frankish"
+
+	861.1.1 = {
+		birth=yes
+	}
+	925.1.1 = {
+		death=yes
+	}
+}
+1000252056 = {
+	name = "Milo"
+	dynasty = 101842
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252055
+
+	887.1.1 = {
+		birth=yes
+	}
+	955.1.1 = {
+		death=yes
+	}
+}
+1000252057 = {
+	name = "Manfred"
+	dynasty = 101842
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252055
+
+	891.1.1 = {
+		birth=yes
+	}
+	957.1.1 = {
+		death=yes
+	}
+}
+1000252058  = {
+	name = "Egelric"
+	dynasty = 101842
+	religion = "chalcedonian"
+	culture = "frankish"
+	father = 1000252057
+
+	921.1.1 = {
+		birth=yes
+	}
+	995.1.1 = {
+		death=yes
+	}
+}

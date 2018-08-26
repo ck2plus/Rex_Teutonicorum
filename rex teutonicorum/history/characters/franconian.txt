@@ -5416,3 +5416,17 @@
 		death = "880.1.1"
 	}
 }
+
+# Mod added characters
+1000260000 = {
+	name = "Rabodo"
+	religion = catholic
+	culture = franconian
+
+	1073.1.1 = {
+		birth = yes
+	}
+	1119.1.1 = {
+		death = { death_reason = death_battle }
+	}
+}
