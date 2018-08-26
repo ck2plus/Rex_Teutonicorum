@@ -1,13 +1,13 @@
 #Farighunids#
 866.1.1 = {
 	liege = k_khorasan
-	holder = 120000020
+	holder = 1000254566
 }
 873.1.1 = {
 	liege = 0
 }
 886.1.1 = {
-	holder = 120000021
+	holder = 1000254567
 }
 890.1.1 = {
 	liege = k_baluchistan
@@ -16,16 +16,16 @@
 	liege = "k_khwarizm"
 }
 940.1.1 = {
-	holder = 120000022
+	holder = 1000254568
 }
 982.1.1 = {
-	holder = 120000023
+	holder = 1000254569
 }
 995.1.1 = {
 	liege = "k_afghanistan"
 }
 1000.1.1 = {
-	holder = 120000024
+	holder = 1000254570
 }
 1010.1.1 = {
 	holder = 0

@@ -63,7 +63,7 @@
 	stewardship = 8
 	religion = "finnish_pagan"
 	culture = "lappish"
-	father = 110000088
+	father = 1000253106
 	trait = "skilled_tactician"
 	1050.1.1 = {
 		birth=yes
@@ -489,7 +489,7 @@
 	dynasty = 100387
 	religion = "finnish_pagan"
 	culture = "lappish"
-	father = 110000089
+	father = 1000253107
 	971.1.1 = {
 		birth=yes
 	}
@@ -502,7 +502,7 @@
 	dynasty = 100387
 	religion = "finnish_pagan"
 	culture = "lappish"
-	father = 110000089
+	father = 1000253107
 	982.1.1 = {
 		birth=yes
 	}

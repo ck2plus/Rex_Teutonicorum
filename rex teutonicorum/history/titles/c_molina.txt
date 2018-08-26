@@ -27,7 +27,7 @@
 	liege=d_toledo
 }
 927.1.1={
-	holder= 120000058
+	holder= 1000250400
 }
 968.1.1={
 	holder=3202 # al-Hakam II Umayyad

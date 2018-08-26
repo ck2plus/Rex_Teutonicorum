@@ -10,16 +10,16 @@
 	holder = 190113 #Manava
 }
 910.1.1 = {
-	holder = 110000036
+	holder = 1000256803
 }
 941.1.1 = {
-	holder = 110000023
+	holder = 1000256805
 }
 982.1.1 = {
-	holder = 110000037
+	holder = 1000256802
 }
 997.1.1 = {
-	holder = 110000038
+	holder = 1000256804
 }
 1046.1.1= {
 	holder = 191393 #Kamalapala Singara

@@ -7217,7 +7217,7 @@
 	dynasty=7331
 	religion="shiite"
 	culture="persian"
-	father = 100000197
+	father = 1000254583
 	965.1.1={
 		birth=yes
 	}

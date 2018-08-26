@@ -38,7 +38,7 @@
 	holder = 1000254121 #Blacaire
 }
 948.1.1 = {
-        holder = 100000014 #Gofraid mac Sihtirc
+        holder = 1000254149 #Gofraid mac Sihtirc
 }
 952.1.1 = {
 	holder = 5790 # Olaf Cuaran

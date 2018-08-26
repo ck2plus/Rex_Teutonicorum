@@ -10,7 +10,7 @@
 	liege=k_kosala
 }
 950.1.1 = {
-	holder = 110000014
+	holder = 1000256801
 }
 990.1.1 = {
 	liege = 0

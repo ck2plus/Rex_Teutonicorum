@@ -37,7 +37,7 @@
 	holder = 144976 #Altald, again
 }
 962.1.1 = {
-	holder = 100000189 #Odelric
+	holder = 1000252045 #Odelric
 }
 969.1.1 = {
 	holder = 165026 #Adalberon

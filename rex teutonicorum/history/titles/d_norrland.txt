@@ -2,10 +2,10 @@
 	holder=167728
 }
 950.1.1 = {
-	holder = 110000029
+	holder = 1000253103
 }
 959.1.1 = {
-	holder = 110000060
+	holder = 1000253104
 }
 1000.1.1 = {
 	de_jure_liege = "k_sweden"

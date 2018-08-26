@@ -21,10 +21,10 @@ holder = 70383
 }
 945.1.1 = {
 	liege = "d_vidin"
-	holder = 120000073
+	holder = 1000250904
 }
 962.1.1 = {
-	holder = 120000105
+	holder = 1000250905
 }
 987.1.1 = {
 	liege = "d_vidin"

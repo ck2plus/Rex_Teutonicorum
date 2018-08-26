@@ -42,10 +42,10 @@
 	holder = 188013 #Devapala
 }
 954.1.1 = {
-	holder = 100000163 #Vinayakapala
+	holder = 1000268600 #Vinayakapala
 }
 955.1.1 = {
-	holder = 100000164 #Mahipala II
+	holder = 1000268601 #Mahipala II
 }
 956.1.1 = {
 	holder = 188014 #Vijayapala II
@@ -57,7 +57,7 @@
 	holder = 188016 #Trilochanpala
 }
 1027.1.1 = {
-	holder = 100000165 #Yasahpala
+	holder = 1000268602 #Yasahpala
 }
 1036.1.1={
 	holder = 191045 #Vigrahapala Rashtrakuta

@@ -38,19 +38,19 @@
 	holder = 1000254512 #Baha
 }
 1012.12.22 = {
-	holder = 100000025 #Sultan
+	holder = 1000254573 #Sultan
 }
 1024.12.1 = {
-	holder = 100000026 #Abu Kalijar
+	holder = 1000254574 #Abu Kalijar
 }
 1048.10.1 = {
-	holder = 100000027 #Abu Mansur
+	holder = 1000254575 #Abu Mansur
 }
 1051.1.1 = {
-	holder = 100000028 #Abu Said
+	holder = 1000254576 #Abu Said
 }
 1054.1.1 = {
-	holder = 100000027 #Abu Mansur
+	holder = 1000254575 #Abu Mansur
 }
 1062.1.1 = {
 	holder = 3038

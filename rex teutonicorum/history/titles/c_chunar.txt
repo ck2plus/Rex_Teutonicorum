@@ -43,10 +43,10 @@
 	holder = 190113 #Manava
 }#910 return to rajastan
 910.1.1 = {
-	holder = 110000036
+	holder = 1000256803
 }
 941.1.1 = {
-	holder = 110000023
+	holder = 1000256805
 }
 
 954.1.1={

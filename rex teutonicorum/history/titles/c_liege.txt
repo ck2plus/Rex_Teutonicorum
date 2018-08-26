@@ -25,13 +25,13 @@
 	holder = 1000252285 #Richer
 }
 945.1.1 = {
-	holder = 120000107 #Hugh
+	holder = 1000252046 #Hugh
 }
 947.1.1 = {
-	holder = 120000108 #Farabert
+	holder = 1000252047 #Farabert
 }
 953.1.1 = {
-	holder = 120000109 #Rathier
+	holder = 1000252048 #Rathier
 }
 955.1.1 = {
 	holder = 1000252283 #Baldrick
@@ -47,19 +47,19 @@
 	holder = 1000251515 #Baldrick II son of Otto
 }
 1018.1.1 = {
-	holder = 120000121 #Wolbodo
+	holder = 1000252050 #Wolbodo
 }
 1021.4.20 = {
-	holder = 120000122 #Durandus
+	holder = 1000252051 #Durandus
 }
 1025.1.1 = {
-	holder = 120000123 #Reginard
+	holder = 1000252052 #Reginard
 }
 1037.1.1 = {
-	holder = 120000124 #Nithard
+	holder = 1000252053 #Nithard
 }
 1042.1.1 = {
-	holder = 120000125 #Wazo
+	holder = 1000252054 #Wazo
 }
 1048.1.1 = {
 liege = "d_lower_lorraine"

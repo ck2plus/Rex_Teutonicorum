@@ -17,7 +17,7 @@
 	holder = 189079 #Jayasimha II
 }
 718.1.1 = {
-	holder = 100000083 #Kokkili
+	holder = 1000268200 #Kokkili
 }
 719.1.1 = {
 	holder = 189081 #Vishnuvardhana III
@@ -44,7 +44,7 @@
 	holder = 189089 #Vijayaditya IV
 }
 921.6.1 = {
-	holder = 100000084 #Amma I
+	holder = 1000268201 #Amma I
 }
 927.1.1 = {
 	holder = 189090 #Vijayaditya V
@@ -65,7 +65,7 @@
 	holder = 189098 #Danarnava
 }
 973.1.1 = {
-	holder = 100000085 #Bhima III
+	holder = 1000268202 #Bhima III
 }
 999.1.1 = {
 	holder = 189099 #Sakti Varman I
@@ -104,10 +104,10 @@
 	holder = 0
 }
 1280.1.1 = {
-	holder = 100000109
+	holder = 1000268203
 }
 1319.1.1 = {
-	holder = 100000110
+	holder = 1000268204
 }
 1323.1.1 = {
 	liege = e_rajastan
@@ -116,8 +116,8 @@
 	liege = 0
 }
 1335.1.1 = {
-	holder = 100000111
+	holder = 1000268205
 }
 1364.1.1 = {
-	holder = 100000112
+	holder = 1000268206
 }

@@ -9,7 +9,7 @@
 }
 945.1.1 = {
 	liege = d_athens
-	holder = 120000086
+	holder = 1000252338
 }
 1000.1.1 = {
 	liege = d_thessalonika

@@ -1730,7 +1730,7 @@
 	
 	culture = bodpa
 	religion = buddhist
-	father = 110000116
+	father = 1000257225
 	trait = vajrayana_buddhist
 	
 	1040.1.1={
@@ -7103,7 +7103,7 @@
 243013 = {
 	name="Jungney" # Fictional
 	dynasty=1053027
-	father = 110000123
+	father = 1000257217
 	
 	culture = bodpa
 	religion="bon"
@@ -7754,7 +7754,7 @@
 	
 	culture = bodpa
 	religion = tibetan_pagan
-	father = 110000122
+	father = 1000257216
 
 	980.1.1={
 		birth=yes
@@ -7770,7 +7770,7 @@
 	
 	culture = bodpa
 	religion = buddhist
-	father = 110000118
+	father = 1000257227
 	trait = vajrayana_buddhist
 
 	970.1.1={
@@ -7814,7 +7814,7 @@
 1000257213 = {
 	name="Jetsun"
 	dynasty=1000252095
-	father = 110000111
+	father = 1000257220
 	
 	culture = bodpa
 	religion = buddhist

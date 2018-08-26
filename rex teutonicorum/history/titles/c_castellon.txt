@@ -22,10 +22,10 @@
 	holder=73913 # Abd al-Aziz Hayyunid
 }
 920.1.1={
-	holder = 120000054
+	holder = 1000250109
 }
 937.1.1 = {
-	holder = 120000055
+	holder = 1000250110
 }
 973.1.1={
 	holder=3202 # al-Hakam II Umayyad

@@ -11,7 +11,7 @@
 	liege = d_turnovo
 }
 945.1.1 = {
-	holder = 120000072
+	holder = 1000250903
 }
 995.1.1 = {
 	liege = d_thessalonika

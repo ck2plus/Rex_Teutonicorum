@@ -10,7 +10,7 @@
 }
 932.1.1 = {
 	liege = d_hormuz
-	holder = 100000012
+	holder = 1000254571
 }
 967.1.1 = {
 	liege = "k_persia"

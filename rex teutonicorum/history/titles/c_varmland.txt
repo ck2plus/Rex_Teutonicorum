@@ -11,7 +11,7 @@
 	holder = 1000254114
 }
 950.1.1 = {
-	holder = 110000017
+	holder = 1000254138
 }
 995.1.2 = {
 	holder = 100506 # Olof Skötkonung

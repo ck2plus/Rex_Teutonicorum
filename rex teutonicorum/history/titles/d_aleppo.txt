@@ -15,10 +15,10 @@
 
 #Hamdanids
 945.1.1 = {
-    holder = 100000017
+    holder = 1000253404
 }
 967.1.1 = {
-	holder = 100000021
+	holder = 1000253408
 }
 991.1.1 = {
 	holder = 1000250572
@@ -32,10 +32,10 @@
 
 #Luluids
 1004.6.1 = {
-	holder = 100000171
+	holder = 1000253420
 }
 1009.1.1 = {
-	holder = 100000172
+	holder = 1000253421
 }
 
 #Fatimid governors

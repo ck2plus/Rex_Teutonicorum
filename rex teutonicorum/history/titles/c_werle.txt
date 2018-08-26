@@ -12,7 +12,7 @@
 }
 930.1.1 = {
 	liege = d_mecklemburg
-	holder = 110000027
+	holder = 1000254708
 }
 954.1.1 = {
 	holder=161118 #Nakon Nakonid

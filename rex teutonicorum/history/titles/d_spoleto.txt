@@ -86,7 +86,7 @@ holder = 30657
 holder = 33466
 }
 1127.1.1 = {
-holder = 100000067 #Conrad
+holder = 1000258600 #Conrad
 }
 1131.1.1 = {
 	holder = 1000263200 #Rampret

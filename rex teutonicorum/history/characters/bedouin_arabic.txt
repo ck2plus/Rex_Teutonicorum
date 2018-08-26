@@ -13932,7 +13932,7 @@
 	dynasty=1027020
 	religion="shiite"
 	culture="bedouin_arabic"
-    father = 100000021
+    father = 1000253408
 	970.1.1={
 		birth=yes
 	}

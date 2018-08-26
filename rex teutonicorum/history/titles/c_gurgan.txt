@@ -24,7 +24,7 @@
 	holder = 220994 #al-Marzuban
 }
 985.1.1 = {
-	holder = 100000196 #Shervin III, brother
+	holder = 1000254582 #Shervin III, brother
 }
 986.1.1 = {
 	holder = 1000254513 #Shahriyar III

@@ -11,7 +11,7 @@
 	holder=145147
 }
 945.1.1 = {
-	holder = 120000074
+	holder = 1000252326
 }
 964.1.1={
 	liege="d_armenia_minor"

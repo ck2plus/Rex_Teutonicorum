@@ -72,11 +72,11 @@
 	holder = 7757
 }
 1115.7.24 = {
-	holder = 100000066 #Rabodo
+	holder = 1000258600 #Rabodo
 	law = succ_feudal_elective
 }
 1119.1.1 = {
-	holder = 100000067 #Conrad
+	holder = 1000258600 #Conrad
 }
 1131.1.1 = {
 	holder = 1000263200 #Rampret

@@ -30,10 +30,10 @@
 	liege=k_andalusia
 }
 928.1.1={
-	holder = 120000056
+	holder = 1000250111
 }
 944.1.1 = {
-	holder = 120000057
+	holder = 1000250112
 }
 989.1.1 ={
 	holder=3202 # al-Hakam II Umayyad

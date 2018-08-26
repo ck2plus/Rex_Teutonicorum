@@ -14,10 +14,10 @@
 }
 890.1.1 = {
 	liege = d_smolensk
-	holder = 120000041
+	holder = 1000255212
 }
 939.1.1 = {
-	holder = 120000042
+	holder = 1000255213
 }
 988.1.2 = {
 liege = "d_smolensk"

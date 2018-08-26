@@ -12,7 +12,7 @@
 	holder=184001 #Msciwoj
 }
 930.1.1 = {
-	holder = 110000027
+	holder = 1000254708
 }
 954.1.1 = {
 	holder=161118 #Nakon Nakonid

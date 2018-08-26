@@ -70,7 +70,7 @@ holder = 714
 }
 945.1.1 = {
 	liege = "k_bulgaria"
-	holder = 120000072
+	holder = 1000250903
 }
 969.1.30 = {
 holder = 716

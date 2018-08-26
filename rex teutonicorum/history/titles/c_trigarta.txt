@@ -9,7 +9,7 @@
 	holder=188396 # Samkaravarman
 }
 950.1.1 = {
-	holder = 110000016
+	holder = 1000256616
 }
 990.1.1 = {
 	holder = 1000256607

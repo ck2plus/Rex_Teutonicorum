@@ -20,7 +20,7 @@
 	holder=3200 # Abd al-Rahman III Umayyad
 }
 950.1.1 = {
-	holder = 120000061
+	holder = 1000250115
 }
 973.1.1={
 	holder=3202 # al-Hakam II Umayyad

@@ -25,10 +25,10 @@
 }
 930.1.1={
 	liege = d_badajoz
-	holder = 120000056
+	holder = 1000250111
 }
 944.1.1 = {
-	holder = 120000057
+	holder = 1000250112
 }
 989.1.1 = {
 	holder=3204 # Hisham II Umayyad

@@ -60,7 +60,7 @@
 }
 945.1.1 = {
 	liege = "d_turnovo"
-	holder = 120000072
+	holder = 1000250903
 }
 998.1.1 = {
 	holder = 730

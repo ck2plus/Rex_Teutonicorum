@@ -12120,7 +12120,7 @@
 	culture = "greek"
 	trait = "content"
 	trait = "flamboyant_schemer"
-	father = 120000091
+	father = 1000252342
 	1009.1.1 = {
 		birth = yes
 	}

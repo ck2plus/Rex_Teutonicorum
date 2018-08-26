@@ -11,7 +11,7 @@
 holder = 184004
 }
 950.1.1 = {
-	holder = 110000031
+	holder = 1000254709
 }
 1066.1.1 = {
 holder = 30522 #Siemomysl

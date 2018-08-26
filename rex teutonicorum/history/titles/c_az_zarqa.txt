@@ -19,7 +19,7 @@
 }
 947.1.1 = {
 	liege = d_damascus
-	holder = 120000067
+	holder = 1000253424
 }
 998.1.1 = {
 holder = 1000250576

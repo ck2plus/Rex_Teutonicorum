@@ -28,7 +28,7 @@
 	holder = 1000251512 #Rudolf II Son of above
 }
 948.1.1 = {
-	holder = 120000120 #Stephen
+	holder = 1000252049 #Stephen
 }
 956.1.1 = {
 	holder = 6410 #Otto

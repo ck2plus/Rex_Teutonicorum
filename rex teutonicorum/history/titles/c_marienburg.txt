@@ -12,7 +12,7 @@
 	holder = 167741
 }
 950.1.1 = {
-	holder = 110000032
+	holder = 1000254909
 }
 1000.1.1 = {
 	liege = "d_pruthenians"

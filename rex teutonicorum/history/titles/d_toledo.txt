@@ -21,7 +21,7 @@
 	holder=73823 # Muhammad Qasid
 }
 927.1.1={
-	holder= 120000058
+	holder= 1000250400
 }
 976.10.16 = {
 	holder = 3206

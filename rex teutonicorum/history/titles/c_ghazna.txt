@@ -30,10 +30,10 @@
 }
 
 895.1.1 = {
-	holder = 120000029 #Kamaluka Shahi
+	holder = 1000267001 #Kamaluka Shahi
 }
 921.1.1 = {
-	holder = 120000030 #Bhima Shahi
+	holder = 1000267002 #Bhima Shahi
 }
 961.1.1={
 	holder=170303 #Took Ghazna from Lawiks

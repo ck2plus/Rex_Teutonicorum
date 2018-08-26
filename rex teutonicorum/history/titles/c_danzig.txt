@@ -13,7 +13,7 @@ liege = d_pommerania
 holder = 168589
 }
 950.1.1 = {
-	holder = 110000031
+	holder = 1000254709
 }
 992.5.25 = {
 	holder = 756

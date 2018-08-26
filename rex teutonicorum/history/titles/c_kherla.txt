@@ -17,7 +17,7 @@
 }
 #Ruler Placeholder until something better#
 950.1.1 = {
-	holder = 110000010
+	holder = 1000268700
 }
 1000.1.1 = {
 	liege = "k_maharastra"

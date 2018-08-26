@@ -13,11 +13,11 @@
 	liege = 0
 }
 1017.1.1 = {
-	holder = 110000095
+	holder = 1000254153
 }
 1049.1.1 = {
 	liege = d_uppland
-	holder = 110000096
+	holder = 1000254154
 }
 1065.1.1 = {
 	holder = 100527
