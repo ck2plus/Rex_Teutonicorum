@@ -64,6 +64,7 @@
 888.1.13 = {
 	holder = 71901 #Berengar I
 	liege = 0
+	de_jure_liege = e_placeholder
 }
 889.1.1 = {
 	holder = 71903 #Guy of Spoleto
@@ -104,9 +105,9 @@
 }
 952.8.11 = {
 	set_tribute_suzerain = {
-							who = k_germany
-							type = default
-						   }
+		who = k_germany
+		type = default
+	}
 }
 960.10.1 = {
 	clear_tribute_suzerain = k_germany

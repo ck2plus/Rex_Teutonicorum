@@ -10,7 +10,7 @@
 	effect = { 
 		set_title_flag = "carolingian_empire_formed" 
 		set_title_flag = "pre_set_gavelkind"
-}
+	}
 }
 814.1.28 = {
 	holder = 90095 #Louis I

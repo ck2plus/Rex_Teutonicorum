@@ -33,12 +33,12 @@
 	effect = { set_global_flag = "emperor_excommunicated_one" }
 }
 1077.1.28 = {
-	     law = investiture_law_0
-	     effect = { change_variable = { which = imperial_decadence value = 3 } }
+	law = investiture_law_0
+	effect = { change_variable = { which = imperial_decadence value = 3 } }
 }
 1080.4.15 = {
-	     law = investiture_law_1
-	     effect = { change_variable = { which = imperial_decadence value = -3 } }
+	law = investiture_law_1
+	effect = { change_variable = { which = imperial_decadence value = -3 } }
 }
 1106.7.8 = { 
 	holder = 7901 #Heinrich V 
@@ -46,9 +46,9 @@
 1122.9.23 = {
 	law = investiture_law_0 # Concordat of Worms
 	effect = { 
-			  change_variable = { which = imperial_decadence value = 5 } 
-			  set_title_flag = "ended_co_crownings"
-			 }
+		change_variable = { which = imperial_decadence value = 5 }
+		set_title_flag = "ended_co_crownings"
+	}
 }
 1125.8.24 = { 
 	holder = 30219 #Lothar III von Supplingburg
@@ -79,9 +79,9 @@
 	set_global_flag = "statutum_in_favorem_principum"
 	set_global_flag = "sifp_activated"
 	effect = { 
-			  change_variable = { which = imperial_decadence value = 5 } 
-			  set_title_flag = "ended_co_crownings"
-			 }
+		change_variable = { which = imperial_decadence value = 5 } 
+		set_title_flag = "ended_co_crownings"
+	}
 }
 1250.12.13 = {
 	holder = 30760 #Konrad IV von Hohenstaufen

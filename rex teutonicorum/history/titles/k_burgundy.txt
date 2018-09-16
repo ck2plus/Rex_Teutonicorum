@@ -30,9 +30,9 @@
 	holder = 144998 # Lothaire II
 	liege = 0
 	set_tribute_suzerain = {
-							who = e_karling
-							type = carolingian_king
-						   }
+		who = e_karling
+		type = carolingian_king
+	}
 }
 869.8.8 = {
 	holder = 90105 # Charles II the Fat
