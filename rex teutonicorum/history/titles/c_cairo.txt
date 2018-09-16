@@ -12,6 +12,8 @@
 	#liege = "k_egypt"
 	de_jure_liege = "d_cairo"
 	liege = "d_cairo"
+}
+866.1.1 = {
 	holder = 163115
 }
 884.5.10 = {
